@@ -1,4 +1,4 @@
-# Pure-gen - generate massive amounts of fake data in the browser and node.js
+# Pure-gen - Generate fake data to be used in test automation
 
 This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker.js) and that's why most of that code is here. This fork is created to update some features inside original repo and extends its functionality.
 

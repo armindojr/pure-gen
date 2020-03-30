@@ -16,3 +16,4 @@ reports/
 /npm-debug.log
 /coverage
 /.npm
+/doc/

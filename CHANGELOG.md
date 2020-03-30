@@ -125,3 +125,4 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * Integrate ESLint and Husky #841
 * fix: remove mrmartineau #881
 * Update README.md with ES6 syntax #891
+* Update packages.json
