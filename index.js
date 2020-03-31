@@ -1,4 +1,6 @@
 // since we are requiring the top level of pure-gen, load all locales by default
-var Pure = require('./lib');
-var pure = new Pure({ locales: require('./lib/locales') });
-module['exports'] = pure;
+const Pure = require('./lib');
+const locales = require('./lib/locales');
+
+const pure = new Pure({ locales });
+module.exports = pure;

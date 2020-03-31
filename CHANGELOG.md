@@ -126,3 +126,8 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * fix: remove mrmartineau #881
 * Update README.md with ES6 syntax #891
 * Update packages.json
+* Removed some console.log() inside unit tests
+* Added new logo
+* fixed address.unit on `occasionally returns a 3-digit street number` where address is undefined but test wont fail
+* removed support to use this package with browsers, and support only node v8 and up
+* fixed all lint errors inside ./lib

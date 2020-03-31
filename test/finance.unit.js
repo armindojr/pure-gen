@@ -263,7 +263,6 @@ describe('finance.js', function () {
       it("returns a random credit card number", function(){
         var number = pure.finance.creditCardNumber();
         number = number.replace(/\D/g,""); // remove formating
-        console.log("version:", process.version, number, number.length);
         assert.ok(number.length >= 13 && number.length <= 20);
         assert.ok(number.match(/^[0-9]{13,20}$/));
         assert.ok(luhnFormula(number));

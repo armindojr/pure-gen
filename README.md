@@ -1,4 +1,16 @@
-# Pure-gen - Generate fake data to be used in test automation
+<div>
+    <p  align="center">
+    	<a>
+    	    <img  alt="Pure-gen"  src="https://raw.githubusercontent.com/armindojr/pure-gen/master/logo/javascript-logo.png"  width="200">
+    	</a>
+    </p>
+</div>
+
+<div>
+    <p  align="center">
+    	Generate fake data to be used in test automation
+    </p>
+</div>
 
 This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker.js) and that's why most of that code is here. This fork is created to update some features inside original repo and extends its functionality.
 
@@ -364,7 +376,7 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds to make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions below to v8. All unit tests is rewrite to use modern testing tools like jest. Extended changelog in [CHANGELOG.md](./CHANGELOG.md)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like jest. Extended changelog in [CHANGELOG.md](https://raw.githubusercontent.com/armindojr/pure-gen/master/CHANGELOG.md)
 
 ## Maintainer
 

@@ -26,7 +26,7 @@ describe("lorem.js", function () {
             it("returns a word with the biggest lenght", function () {
                 var str = pure.lorem.word(50);
                 assert.ok(typeof str === 'string');
-                assert.isDefined(str, 'is undefined!');
+                assert.ok(typeof str !== undefined);
             });
         });
     });

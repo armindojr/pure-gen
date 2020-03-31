@@ -30,7 +30,6 @@ describe("phone_number.js", function () {
             pure.locale = "en";
             for (var i = 0; i < 25; i++) {
               var phone_number = pure.phone.phoneNumberFormat(1);
-              console.log(phone_number)
               assert.ok(phone_number.match(/\([2-9]\d\d\) [2-9]\d\d-\d\d\d\d/));
             }
         });
