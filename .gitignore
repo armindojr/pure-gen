@@ -17,3 +17,5 @@ reports/
 /coverage
 /.npm
 /doc/
+.nyc_output
+static/README.md

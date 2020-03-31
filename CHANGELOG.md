@@ -131,3 +131,4 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * fixed address.unit on `occasionally returns a 3-digit street number` where address is undefined but test wont fail
 * removed support to use this package with browsers, and support only node v8 and up
 * fixed all lint errors inside ./lib
+* restructured unit tests, updating mocha and sinon

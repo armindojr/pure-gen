@@ -1,7 +1,7 @@
 <div>
     <p  align="center">
     	<a>
-    	    <img  alt="Pure-gen"  src="https://raw.githubusercontent.com/armindojr/pure-gen/master/logo/javascript-logo.png"  width="200">
+    	    <img  alt="Pure-gen"  src="static/logo/logo-completo-hor.svg"  width="350">
     	</a>
     </p>
 </div>
@@ -376,8 +376,39 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like jest. Extended changelog in [CHANGELOG.md](https://raw.githubusercontent.com/armindojr/pure-gen/master/CHANGELOG.md)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](static/doc/CHANGELOG.md)
 
 ## Maintainer
 
 #### Armindo Junior
+
+## License
+
+pure-gen - Copyright (c) 2020
+Armindo Junior
+http://github.com/
+
+pure-gen was inspired by and has used data definitions from:
+
+ * https://github.com/Marak/faker.js - Copyright (c) 2017 by Marak Squires
+ * https://github.com/stympy/faker/ - Copyright (c) 2007-2010 by Benjamin Curtis
+ * http://search.cpan.org/~jasonk/Data-Faker-0.07/ - Copyright (c) 2004-2005 by Jason Kohles
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

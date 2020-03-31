@@ -11,36 +11,12 @@
   },
   "scripts": {
     "lint": "npx eslint ./lib",
-    "test": "npx mocha test/*.*.js",
-    "doc": "npx jsdoc -c conf.json -t ./node_modules/ink-docstrap/template --readme ./README.md",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
-  },
-  "nyc": {
-    "all": false,
-    "include": [
-      "lib/**/*.js",
-      "vendor/*.js"
-    ],
-    "exclude": [
-      "coverage",
-      "locales",
-      "modules",
-      "white",
-      "docs",
-      "docker",
-      "public",
-      "reports",
-      "tests",
-      "node_modules"
-    ],
-    "reporter": [
-      "html",
-      "lcov",
-      "clover"
-    ],
-    "report-dir": "./reports/coverage"
+    "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
+    "doc": "node doc-publish.js; npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",
+    "coverage": "npx nyc --nycrc-path ./nyc.conf.json npm run test"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
@@ -49,7 +25,9 @@
     "jsdoc": "^3.6.3",
     "lodash": "^4.17.15",
     "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
     "optimist": "0.6.1",
+    "showdown": "^1.9.1",
     "sinon": "^9.0.1"
   },
   "dependencies": {
@@ -60,7 +38,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": ""
+      "pre-push": "npm run test"
     }
   }
 }

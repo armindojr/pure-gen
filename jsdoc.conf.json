@@ -1,0 +1,32 @@
+{
+  "opts": {
+    "destination": "./doc/",
+    "template": "./node_modules/ink-docstrap/template"
+  },
+  "source": {
+    "include": [
+      "lib",
+      "lib/image_providers"
+    ],
+    "exclude": [
+      "lib/locales"
+    ]
+  },
+  "templates": {
+    "systemName": "pure-gen",
+    "linenums": true,
+    "inverseNav": true,
+    "syntaxTheme": "dark",
+    "theme": "flatly",
+    "default": {
+      "staticFiles": {
+        "include": [
+          "static/"
+        ]
+      }
+    }
+  },
+  "plugins": [
+    "plugins/markdown"
+  ]
+}
