@@ -123,6 +123,9 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * soon
   * month
   * weekday
+* document
+  * cpf
+  * cnpj
 * fake
 * finance
   * account
@@ -356,8 +359,6 @@ _Note_: Setting the seed to `0` (`pure.seed(0)`) is the same as not having a see
 $ npm run test
 ```
 
-You can view a code coverage report generated in coverage/lcov-report/index.html.
-
 ## Building JSDocs
 
 ```
@@ -376,7 +377,7 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](static/doc/CHANGELOG.md)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](static/doc/CHANGELOG.md)
 
 ## Maintainer
 

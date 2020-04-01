@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.0.1
+## v1.0.0
 
 Changes implemented from base version, all PR's here have been tested and merged manually by me. So if anything is wrong, please let me know.
 
@@ -28,6 +28,7 @@ Fixed method name to be more clear of its function
 ```
 * add commerce.productDescription random product description generator #823
 * Added music.genre Music module #837
+* Added document.cpf and document.cnpj
 
 ## Locality Updates
 
@@ -129,6 +130,6 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * Removed some console.log() inside unit tests
 * Added new logo
 * fixed address.unit on `occasionally returns a 3-digit street number` where address is undefined but test wont fail
-* removed support to use this package with browsers, and support only node v8 and up
+* removed support to use this package with browsers, and support only node v10 and up
 * fixed all lint errors inside ./lib
 * restructured unit tests, updating mocha and sinon
