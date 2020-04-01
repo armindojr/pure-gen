@@ -123,6 +123,9 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * soon
   * month
   * weekday
+* document
+  * cpf
+  * cnpj
 * fake
 * finance
   * account
@@ -374,7 +377,7 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](doc/CHANGELOG.html)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](doc/CHANGELOG.html)
 
 ## Maintainer
 

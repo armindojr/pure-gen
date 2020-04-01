@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>pure-gen Namespace: phone</title>
+	<title>pure-gen Namespace: document</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: phone</h1>
+	<h1 class="page-title">Namespace: document</h1>
 <section>
 
 <header>
@@ -80,7 +80,7 @@
         <h2>
             <span class="ancestors"><a href="pure.html">pure</a>.</span>
         
-        phone
+        document
         </h2>
         
     
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".phoneFormats"><span class="type-signature">&lt;static> </span>phoneFormats()</h4>
+    <h4 class="name" id=".cnpj"><span class="type-signature">&lt;static> </span>cnpj(opts)</h4>
     
     
 </dt>
@@ -163,85 +163,8 @@
 
     
     <div class="description">
-        <p>phoneFormats</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".phoneFormatsArrayIndex"><span class="type-signature">&lt;static> </span>phoneFormatsArrayIndex(phoneFormatsArrayIndex)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>phoneNumberFormat</p>
+        <p>cnpj
+Method to generate random valid document number for Brazillian company</p>
     </div>
     
 
@@ -276,10 +199,16 @@
 
         <tr>
             
-                <td class="name"><code>phoneFormatsArrayIndex</code></td>
+                <td class="name"><code>opts</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
             
             </td>
 
@@ -287,94 +216,9 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".phoneNumber"><span class="type-signature">&lt;static> </span>phoneNumber(format)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>phoneNumber</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
+            <td class="description last"><p>Options passed through object</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
 
 <table class="params table table-striped">
     <thead>
@@ -386,7 +230,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -404,7 +252,7 @@
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">boolean</span>
 
 
 
@@ -412,10 +260,33 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Define that result is formated or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -475,6 +346,253 @@
     
 
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>valid document number or object with valid document number</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">mixed</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".cpf"><span class="type-signature">&lt;static> </span>cpf(opts)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>cpf
+Method to generate random valid document number for Brazillian citizen</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options passed through object</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>format</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Define that result is formated or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>valid document number</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
 
     
 </dd>
@@ -529,7 +647,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:56-03:00
+		on 2020-04-01T17:40:55-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
