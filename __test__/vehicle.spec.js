@@ -1,62 +1,62 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("vehicle.js", function () {
-  describe("vehicle()", function () {
-      it("returns a random vehicle", function () {
-          sinon.stub(pure.vehicle, 'vehicle').returns('Ford Explorer');
-          var vehicle = pure.vehicle.vehicle();
+describe('vehicle.js', () => {
+    describe('vehicle()', () => {
+        it('returns a random vehicle', () => {
+            sinon.stub(pure.vehicle, 'vehicle').returns('Ford Explorer');
+            const vehicle = pure.vehicle.vehicle();
 
-          assert.equal(vehicle, 'Ford Explorer');
-          pure.vehicle.vehicle.restore();
-      });
-  });
+            assert.equal(vehicle, 'Ford Explorer');
+            pure.vehicle.vehicle.restore();
+        });
+    });
 
-  describe("manufacturer()", function () {
-      it("returns random manufacturer", function () {
-          sinon.stub(pure.vehicle, 'manufacturer').returns('Porsche');
-          var manufacturer = pure.vehicle.manufacturer();
+    describe('manufacturer()', () => {
+        it('returns random manufacturer', () => {
+            sinon.stub(pure.vehicle, 'manufacturer').returns('Porsche');
+            const manufacturer = pure.vehicle.manufacturer();
 
-          assert.equal(manufacturer, 'Porsche');
-          pure.vehicle.manufacturer.restore();
-      });
-  });
+            assert.equal(manufacturer, 'Porsche');
+            pure.vehicle.manufacturer.restore();
+        });
+    });
 
-  describe("type()", function () {
-    it("returns random vehicle type", function () {
-      sinon.stub(pure.vehicle, 'type').returns('Minivan');
-          var type = pure.vehicle.type();
+    describe('type()', () => {
+        it('returns random vehicle type', () => {
+            sinon.stub(pure.vehicle, 'type').returns('Minivan');
+            const type = pure.vehicle.type();
 
-          assert.equal(type, 'Minivan');
-          pure.vehicle.type.restore();
-      });
-  });
+            assert.equal(type, 'Minivan');
+            pure.vehicle.type.restore();
+        });
+    });
 
-  describe("fuel()", function () {
-      it("returns a fuel type", function () {
-          sinon.stub(pure.vehicle, 'fuel').returns('Hybrid');
-          var fuel = pure.vehicle.fuel();
+    describe('fuel()', () => {
+        it('returns a fuel type', () => {
+            sinon.stub(pure.vehicle, 'fuel').returns('Hybrid');
+            const fuel = pure.vehicle.fuel();
 
-          assert.equal(fuel, 'Hybrid');
-          pure.vehicle.fuel.restore();
-      });
-  });
+            assert.equal(fuel, 'Hybrid');
+            pure.vehicle.fuel.restore();
+        });
+    });
 
-  describe("vin()", function () {
-      it("returns valid vin number", function () {
-        var vin = pure.vehicle.vin();
-        assert.ok(vin.match(/^[A-Z0-9]{10}[A-Z]{1}[A-Z0-9]{1}\d{5}$/));
-      });
-  });
+    describe('vin()', () => {
+        it('returns valid vin number', () => {
+            const vin = pure.vehicle.vin();
+            assert.ok(vin.match(/^[A-Z0-9]{10}[A-Z]{1}[A-Z0-9]{1}\d{5}$/));
+        });
+    });
 
-  describe("color()", function () {
-      it("returns a random color", function () {
-          sinon.stub(pure.vehicle, 'color').returns('black');
-          var color = pure.vehicle.color();
+    describe('color()', () => {
+        it('returns a random color', () => {
+            sinon.stub(pure.vehicle, 'color').returns('black');
+            const color = pure.vehicle.color();
 
-          assert.equal(color, 'black');
-          pure.vehicle.color.restore();
-      });
-  });
+            assert.equal(color, 'black');
+            pure.vehicle.color.restore();
+        });
+    });
 });

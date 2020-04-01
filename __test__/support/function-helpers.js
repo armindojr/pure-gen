@@ -1,17 +1,13 @@
-if (typeof module !== 'undefined') {
-    var assert = require('assert');
-    var sinon = require('sinon');
-    var pure = require('../../index');
-}
+const pure = require('../../index');
 
-var functionHelpers = {};
+const functionHelpers = {};
 
 module.exports = functionHelpers;
 
 
-var IGNORED_MODULES = ['locales', 'locale', 'localeFallback', 'definitions', 'fake', 'helpers'];
-var IGNORED_METHODS = {
-    system: ['directoryPath', 'filePath'] // these are TODOs
+const IGNORED_MODULES = ['locales', 'locale', 'localeFallback', 'definitions', 'fake', 'helpers'];
+const IGNORED_METHODS = {
+    system: ['directoryPath', 'filePath'], // these are TODOs
 };
 
 function isTestableModule(mod) {
@@ -19,32 +15,27 @@ function isTestableModule(mod) {
 }
 
 function isMethodOf(mod) {
-    return function(meth) {
-        return typeof pure[mod][meth] === 'function';
-    };
+    return (meth) => typeof pure[mod][meth] === 'function';
 }
 
 function isTestableMethod(mod) {
-    return function(meth) {
-        return !(mod in IGNORED_METHODS && IGNORED_METHODS[mod].indexOf(meth) >= 0);
-    };
+    return (meth) => !(mod in IGNORED_METHODS && IGNORED_METHODS[mod].indexOf(meth) >= 0);
 }
 
 function both(pred1, pred2) {
-    return function(value) {
-        return pred1(value) && pred2(value);
-    };
+    return (value) => pred1(value) && pred2(value);
 }
 
 // Basic smoke tests to make sure each method is at least implemented and returns a value.
 
-functionHelpers.modulesList = function modulesList () {
-  var modules = Object.keys(pure)
-      .filter(isTestableModule)
-      .reduce(function(result, mod) {
-          result[mod] = Object.keys(pure[mod]).filter(both(isMethodOf(mod), isTestableMethod(mod)));
-          return result;
-      }, {});
-      
-  return modules;
-}
+functionHelpers.modulesList = function modulesList() {
+    const modules = Object.keys(pure)
+        .filter(isTestableModule)
+        .reduce((result, mod) => {
+            const def = result;
+            def[mod] = Object.keys(pure[mod]).filter(both(isMethodOf(mod), isTestableMethod(mod)));
+            return def;
+        }, {});
+
+    return modules;
+};

@@ -1,91 +1,89 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("lorem.js", function () {
-    describe("word()", function () {
-
-        context("when no 'length' param passed in", function () {
-            it("returns a word with a random length", function () {
-                var str = pure.lorem.word();
+describe('lorem.js', () => {
+    describe('word()', () => {
+        context("when no 'length' param passed in", () => {
+            it('returns a word with a random length', () => {
+                const str = pure.lorem.word();
                 assert.ok(typeof str === 'string');
             });
         });
 
-        context("when 'length' param passed in", function () {
-            it("returns a word with the requested length", function () {
-                var str = pure.lorem.word(5);
+        context("when 'length' param passed in", () => {
+            it('returns a word with the requested length', () => {
+                const str = pure.lorem.word(5);
                 assert.ok(typeof str === 'string');
                 assert.equal(str.length, 5);
             });
         });
 
-        context("when 'length' param is bigger than word list", function () {
-            it("returns a word with the biggest lenght", function () {
-                var str = pure.lorem.word(50);
+        context("when 'length' param is bigger than word list", () => {
+            it('returns a word with the biggest lenght', () => {
+                const str = pure.lorem.word(50);
                 assert.ok(typeof str === 'string');
-                assert.ok(typeof str !== undefined);
+                assert.ok(typeof str !== 'undefined');
             });
         });
     });
 
-    describe("words()", function () {
-        beforeEach(function () {
+    describe('words()', () => {
+        beforeEach(() => {
             sinon.spy(pure.helpers, 'shuffle');
         });
 
-        afterEach(function () {
+        afterEach(() => {
             pure.helpers.shuffle.restore();
         });
 
-        context("when no 'num' param passed in", function () {
-            it("returns three words", function () {
-                var str = pure.lorem.words();
-                var words = str.split(' ');
+        context("when no 'num' param passed in", () => {
+            it('returns three words', () => {
+                const str = pure.lorem.words();
+                const words = str.split(' ');
                 assert.ok(Array.isArray(words));
                 assert.equal(true, words.length >= 3);
                 // assert.ok(pure.helpers.shuffle.called);
             });
         });
 
-        context("when 'num' param passed in", function () {
-            it("returns requested number of words", function () {
-                var str = pure.lorem.words(7);
-                var words = str.split(' ');
+        context("when 'num' param passed in", () => {
+            it('returns requested number of words', () => {
+                const str = pure.lorem.words(7);
+                const words = str.split(' ');
                 assert.ok(Array.isArray(words));
                 assert.equal(words.length, 7);
             });
         });
     });
 
-    describe("slug()", function () {
-        beforeEach(function () {
+    describe('slug()', () => {
+        beforeEach(() => {
             sinon.spy(pure.helpers, 'shuffle');
         });
 
-        afterEach(function () {
+        afterEach(() => {
             pure.helpers.shuffle.restore();
         });
 
-        var validateSlug = function (wordCount, str) {
+        const validateSlug = (wordCount, str) => {
             assert.equal(1, str.match(/^[a-z][a-z-]*[a-z]$/).length);
             assert.equal(wordCount - 1, str.match(/-/g).length);
         };
 
-        context("when no 'wordCount' param passed in", function () {
-            it("returns a slug with three words", function () {
-                var str = pure.lorem.slug();
+        context("when no 'wordCount' param passed in", () => {
+            it('returns a slug with three words', () => {
+                const str = pure.lorem.slug();
                 validateSlug(3, str);
             });
         });
 
-        context("when 'wordCount' param passed in", function () {
-            it("returns a slug with requested number of words", function () {
-                var str = pure.lorem.slug(7);
+        context("when 'wordCount' param passed in", () => {
+            it('returns a slug with requested number of words', () => {
+                const str = pure.lorem.slug(7);
                 validateSlug(7, str);
             });
         });
-
     });
 
     /*
@@ -131,7 +129,8 @@ describe("lorem.js", function () {
                 assert.ok(typeof sentence === 'string');
                 var parts = sentence.split(' ');
                 assert.equal(parts.length, 14); // requested 10 plus stubbed 4.
-                assert.ok(pure.random.number.calledWith(4)); // random.number should be called with the 'range' we passed. 
+                // random.number should be called with the 'range' we passed.
+                assert.ok(pure.random.number.calledWith(4));
                 assert.ok(pure.lorem.words.calledWith(14));
 
                 pure.lorem.words.restore();
@@ -207,7 +206,7 @@ describe("lorem.js", function () {
         });
     });
     */
-    
+
     /*
 
     describe("paragraphs()", function () {

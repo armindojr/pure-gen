@@ -1,45 +1,43 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("phone_number.js", function () {
-    describe("phoneNumber()", function () {
-        it("returns a random phoneNumber with a random format", function () {
+describe('phone_number.js', () => {
+    describe('phoneNumber()', () => {
+        it('returns a random phoneNumber with a random format', () => {
             sinon.spy(pure.helpers, 'replaceSymbolWithNumber');
-            var phone_number = pure.phone.phoneNumber();
+            const phoneNumber = pure.phone.phoneNumber();
 
-            assert.ok(phone_number.match(/\d/));
+            assert.ok(phoneNumber.match(/\d/));
             assert.ok(pure.helpers.replaceSymbolWithNumber.called);
 
             pure.helpers.replaceSymbolWithNumber.restore();
         });
     });
 
-    describe("phoneNumberFormat()", function () {
-        it("returns phone number with requested format (Array index)", function () {
-            pure.locale = "en";
-            for (var i = 0; i < 10; i++) {
-              var phone_number = pure.phone.phoneNumberFormat(1);
-              assert.ok(phone_number.match(/\(\d\d\d\) \d\d\d-\d\d\d\d/));
+    describe('phoneNumberFormat()', () => {
+        it('returns phone number with requested format (Array index)', () => {
+            pure.locale = 'en';
+            for (let i = 0; i < 10; i += 1) {
+                const phoneNumber = pure.phone.phoneNumberFormat(1);
+                assert.ok(phoneNumber.match(/\(\d\d\d\) \d\d\d-\d\d\d\d/));
             }
         });
 
-        it("returns phone number with proper format US (Array index)", function () {
-            pure.locale = "en";
-            for (var i = 0; i < 25; i++) {
-              var phone_number = pure.phone.phoneNumberFormat(1);
-              assert.ok(phone_number.match(/\([2-9]\d\d\) [2-9]\d\d-\d\d\d\d/));
+        it('returns phone number with proper format US (Array index)', () => {
+            pure.locale = 'en';
+            for (let i = 0; i < 25; i += 1) {
+                const phoneNumber = pure.phone.phoneNumberFormat(1);
+                assert.ok(phoneNumber.match(/\([2-9]\d\d\) [2-9]\d\d-\d\d\d\d/));
             }
         });
 
-        it("returns phone number with proper format CA (Array index)", function () {
-            pure.locale = "en_CA";
-            for (var i = 0; i < 25; i++) {
-              var phone_number = pure.phone.phoneNumberFormat(1);
-              assert.ok(phone_number.match(/\([2-9]\d\d\)[2-9]\d\d-\d\d\d\d/));
+        it('returns phone number with proper format CA (Array index)', () => {
+            pure.locale = 'en_CA';
+            for (let i = 0; i < 25; i += 1) {
+                const phoneNumber = pure.phone.phoneNumberFormat(1);
+                assert.ok(phoneNumber.match(/\([2-9]\d\d\)[2-9]\d\d-\d\d\d\d/));
             }
         });
-
     });
-
 });

@@ -1,29 +1,29 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("airport.js", function () {
-  describe("name()", function () {
-      it("returns a random international airport", function () {
-          sinon.stub(pure.airport, 'name').returns('Los Angeles International Airport');
-          var airport = pure.airport.name();
+describe('airport.js', () => {
+    describe('name()', () => {
+        it('returns a random international airport', () => {
+            sinon.stub(pure.airport, 'name').returns('Los Angeles International Airport');
+            const airport = pure.airport.name();
 
-          assert.equal(airport, 'Los Angeles International Airport');
-          pure.airport.name.restore();
-      });
-  });
+            assert.equal(airport, 'Los Angeles International Airport');
+            pure.airport.name.restore();
+        });
+    });
 
-  describe("iataCode()", function () {
-      it("returns random IATA code", function () {
-        var iataCode = pure.airport.iataCode();
-        assert.ok(iataCode.match(/^[A-Z]{3}$/));
-      });
-  });
+    describe('iataCode()', () => {
+        it('returns random IATA code', () => {
+            const iataCode = pure.airport.iataCode();
+            assert.ok(iataCode.match(/^[A-Z]{3}$/));
+        });
+    });
 
-  describe("icaoCode()", function () {
-      it("returns random ICAO code", function () {
-        var icaoCode = pure.airport.icaoCode();
-        assert.ok(icaoCode.match(/^[A-Z]{2}$/));
-      });
-  });
+    describe('icaoCode()', () => {
+        it('returns random ICAO code', () => {
+            const icaoCode = pure.airport.icaoCode();
+            assert.ok(icaoCode.match(/^[A-Z]{2}$/));
+        });
+    });
 });

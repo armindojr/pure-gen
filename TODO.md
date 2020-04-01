@@ -1,5 +1,4 @@
 # TODO:
-* Remove console.log in unit tests
 * Review ./lib/index.js [_definitions]
 * Refactor code to not use while loop = lib/finance.js / lib/helpers.js
 * Change all references from LoremPixel to placeimg
@@ -11,4 +10,3 @@
 * Put slugify package inside pure.helpers.slugify
 * unit test for hacker.js
 * improve coverage
-* Use chai inside unit tests, not assert

@@ -1,12 +1,12 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("music.js", function () {
-    describe("genre()", function () {
-        it("returns a genre", function () {
+describe('music.js', () => {
+    describe('genre()', () => {
+        it('returns a genre', () => {
             sinon.stub(pure.music, 'genre').returns('Rock');
-            var genre = pure.music.genre();
+            const genre = pure.music.genre();
 
             assert.equal(genre, 'Rock');
             pure.music.genre.restore();

@@ -1,15 +1,14 @@
-var assert = require('assert');
-var sinon = require('sinon');
-var pure = require('../index');
+const { assert } = require('chai');
+const sinon = require('sinon');
+const pure = require('../index');
 
-describe("company.js", function () {
-    describe("companyName()", function () {
-
-        it("sometimes returns three last names", function () {
+describe('company.js', () => {
+    describe('companyName()', () => {
+        it('sometimes returns three last names', () => {
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(2);
-            var name = pure.company.companyName();
-            var parts = name.split(' ');
+            const name = pure.company.companyName();
+            const parts = name.split(' ');
 
             assert.strictEqual(parts.length, 4); // account for word 'and'
             assert.ok(pure.name.lastName.calledThrice);
@@ -18,11 +17,11 @@ describe("company.js", function () {
             pure.name.lastName.restore();
         });
 
-        it("sometimes returns two last names separated by a hyphen", function () {
+        it('sometimes returns two last names separated by a hyphen', () => {
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(1);
-            var name = pure.company.companyName();
-            var parts = name.split('-');
+            const name = pure.company.companyName();
+            const parts = name.split('-');
 
             assert.ok(parts.length >= 2);
             assert.ok(pure.name.lastName.calledTwice);
@@ -31,12 +30,12 @@ describe("company.js", function () {
             pure.name.lastName.restore();
         });
 
-        it("sometimes returns a last name with a company suffix", function () {
+        it('sometimes returns a last name with a company suffix', () => {
             sinon.spy(pure.company, 'companySuffix');
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(0);
-            var name = pure.company.companyName();
-            var parts = name.split(' ');
+            const name = pure.company.companyName();
+            const parts = name.split(' ');
 
             assert.ok(parts.length >= 2);
             assert.ok(pure.name.lastName.calledOnce);
@@ -48,20 +47,20 @@ describe("company.js", function () {
         });
     });
 
-    describe("companySuffix()", function () {
-        it("returns random value from company.suffixes array", function () {
-            var suffix = pure.company.companySuffix();
+    describe('companySuffix()', () => {
+        it('returns random value from company.suffixes array', () => {
+            const suffix = pure.company.companySuffix();
             assert.ok(pure.company.suffixes().indexOf(suffix) !== -1);
         });
     });
 
-    describe("catchPhrase()", function () {
-        it("returns phrase comprising of a catch phrase adjective, descriptor, and noun", function () {
+    describe('catchPhrase()', () => {
+        it('returns phrase comprising of a catch phrase adjective, descriptor, and noun', () => {
             sinon.spy(pure.random, 'arrayElement');
             sinon.spy(pure.company, 'catchPhraseAdjective');
             sinon.spy(pure.company, 'catchPhraseDescriptor');
             sinon.spy(pure.company, 'catchPhraseNoun');
-            var phrase = pure.company.catchPhrase();
+            const phrase = pure.company.catchPhrase();
 
             assert.ok(phrase.split(' ').length >= 3);
             assert.ok(pure.random.arrayElement.calledThrice);
@@ -76,13 +75,13 @@ describe("company.js", function () {
         });
     });
 
-    describe("bs()", function () {
-        it("returns phrase comprising of a BS buzz, adjective, and noun", function () {
+    describe('bs()', () => {
+        it('returns phrase comprising of a BS buzz, adjective, and noun', () => {
             sinon.spy(pure.random, 'arrayElement');
             sinon.spy(pure.company, 'bsBuzz');
             sinon.spy(pure.company, 'bsAdjective');
             sinon.spy(pure.company, 'bsNoun');
-            var bs = pure.company.bs();
+            const bs = pure.company.bs();
 
             assert.ok(typeof bs === 'string');
             assert.ok(pure.random.arrayElement.calledThrice);
@@ -90,7 +89,7 @@ describe("company.js", function () {
             assert.ok(pure.company.bsAdjective.calledOnce);
             assert.ok(pure.company.bsNoun.calledOnce);
 
-            pure.random.arrayElement.restore();        
+            pure.random.arrayElement.restore();
             pure.company.bsBuzz.restore();
             pure.company.bsAdjective.restore();
             pure.company.bsNoun.restore();
