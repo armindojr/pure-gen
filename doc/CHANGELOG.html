@@ -1,0 +1,138 @@
+<h1 id="changelog">CHANGELOG</h1>
+<h2 id="v001">v0.0.1</h2>
+<p>Changes implemented from base version, all PR's here have been tested and merged manually by me. So if anything is wrong, please let me know.</p>
+<h2 id="newapimethods">New API Methods</h2>
+<ul>
+<li>Added faker.date.soon #487</li>
+<li>Added aba routing number #423</li>
+<li>Added method faker.random.float #530</li>
+<li>Added address.nearbyGPSCoordinate method #378</li>
+<li>Added finance.creditCardNumber #382</li>
+<li>Added git faker module #662</li>
+<li>Add faker.markdown #511</li>
+</ul>
+<pre><code>Fixed bug where emphasis return undefined
+</code></pre>
+<ul>
+<li>Add default_country method #550</li>
+<li>add Airport namespace #559</li>
+<li>Add litecoinAddress generator #597 </li>
+</ul>
+<pre><code>Fixed a bug when addressLength generated value is 26, regex inside unit test fail
+</code></pre>
+<ul>
+<li>Add date.arrayBetween array of dates between two dates #775</li>
+</ul>
+<pre><code>Fixed method name to be more clear of its function
+</code></pre>
+<ul>
+<li>add commerce.productDescription random product description generator #823</li>
+<li>Added music.genre Music module #837</li>
+</ul>
+<h2 id="localityupdates">Locality Updates</h2>
+<ul>
+<li>Added South African za Locale #517</li>
+<li>Added nl_BE locale #529</li>
+<li>Added fa locality #391</li>
+<li>Added ro locality #327</li>
+<li>Added ar locality ( partial ) #505</li>
+<li>Added pt_PT locality #714</li>
+<li>Updated to 500 US Census names for en locality #360</li>
+<li>Added a few female names ( sv locale ) #397</li>
+<li>Wrong cell phone format for pl locale #655</li>
+<li>Added address.zipCodeByState method #600</li>
+<li>Added ru locale hacker directory #476</li>
+<li>Use proper full names for zh_CN states' names #358</li>
+<li>+ lib/locales/ru/name/title.js #393</li>
+<li>+ ru sentences dictionary #394</li>
+<li>Fix typo in city names #485</li>
+<li>Typo fixes &amp; small style improvements to docs.md #536</li>
+<li>Update Chinese phone format #545</li>
+<li>Added pt_BR commerce #571</li>
+<li>Fix pt_BR city suffixes #572</li>
+<li>Update Czech last names #578</li>
+<li>Firstname and lastname are not read properly for locale 'SV' #609</li>
+<li>Update last_name.js in polish locales #644</li>
+<li>Fixes Swedish translation for products. #653</li>
+<li>Improve "fr" translation #658</li>
+<li>new first and last names in pt_BR #669</li>
+<li>Update Vietnamese locale data #698</li>
+<li>updated first<em>name.js en</em>IND #702</li>
+<li>added more suffix en_IND #706</li>
+<li>added some suffix en_IND #707</li>
+<li>Add date to pt_BR #719</li>
+<li>Better names for pt_BR #720</li>
+<li>Add 92 range number of MEO #721</li>
+<li>Add ar name #726</li>
+<li>Add gendered french first names #728</li>
+<li>Update currency symbol of turkish lira #731</li>
+<li>Change fallback for fr-CH to fr #738</li>
+<li>Add gendered italian first names and the most common last names #742</li>
+<li>add Japanese lorem data #748</li>
+<li>Fix for some expansion key ar/az/cz/es_MX/sk #751</li>
+<li>Add 'fr' and 'ja' locale country names and adjust 'pt_BR' city suffixes #777</li>
+<li>correct dobra code and symbol #812</li>
+<li>Adding some names pt_BR #816</li>
+<li>fix Chinese first name and last name #821</li>
+<li>fix: absurd street name in ru #835</li>
+<li>Add gendered names to de locale de #839</li>
+<li>Add support for Nigerian locale #844</li>
+<li>Czech Republic #848</li>
+<li>Fixed the currency list #853</li>
+<li>Translate to ar #859</li>
+<li>feat: add lorem ipsum to russian locale #868</li>
+</ul>
+<h2 id="apichanges">API Changes</h2>
+<ul>
+<li>random.alphaNumeric now accepts count as a argument #363</li>
+<li>Added comma replace for price method. #392 -&gt; with adjusts to include object as parameters for price method</li>
+<li>Implement length argument in lorem.word #553</li>
+</ul>
+<pre><code>Fixed bug when passing length to method that is bigger then all of words return undefined
+</code></pre>
+<ul>
+<li>Update options.max for random.number to Number.MAX<em>SAFE</em>INTEGER #793</li>
+<li>feat: added support for generating a random ISO_3166-1 alpha-3 country code #800</li>
+</ul>
+<pre><code>Modified verification of country-code
+</code></pre>
+<ul>
+<li>Add possibility to generate iban for specific country #888</li>
+</ul>
+<pre><code>Fixed bug when passing unknown country code throw error. Fallback to random
+</code></pre>
+<ul>
+<li>Add multi parameters support for faker.fake #896</li>
+<li>Removed an unused variable, password, found in internet.js on line 354 #897</li>
+</ul>
+<h2 id="apifixes">API Fixes</h2>
+<ul>
+<li>internet.userAgent missing random seed #521</li>
+<li>commerce.price can no longer default to 0 #446</li>
+<li>Generation of float numbers #401 #478</li>
+<li>Added an explict faker.setLocale method to resolve ES6 import issue #488</li>
+<li>this missing in password generator #386</li>
+<li>Bugfix random.shuffle last element. #614</li>
+<li>Handle negative maximum with no minimum (random.number) #648</li>
+<li>Ensure faker.random.word does not return more than one word #683</li>
+<li>Fixed issue where <code>useAbbr</code> parameter in address.state not used. #840</li>
+<li>Fix special characters in internet.url #895</li>
+</ul>
+<h2 id="generalfixes">General Fixes</h2>
+<ul>
+<li>Readme.md: Add note about <code>faker.seed(0)</code> #551</li>
+<li>update finance.js typo in doc #566</li>
+<li>fix(npm): reduce package size #717</li>
+<li>Readme: add syntax highlight #743</li>
+<li>docs: fix typo #788</li>
+<li>Integrate ESLint and Husky #841</li>
+<li>fix: remove mrmartineau #881</li>
+<li>Update README.md with ES6 syntax #891</li>
+<li>Update packages.json</li>
+<li>Removed some console.log() inside unit tests</li>
+<li>Added new logo</li>
+<li>fixed address.unit on <code>occasionally returns a 3-digit street number</code> where address is undefined but test wont fail</li>
+<li>removed support to use this package with browsers, and support only node v8 and up</li>
+<li>fixed all lint errors inside ./lib</li>
+<li>restructured unit tests, updating mocha and sinon</li>
+</ul>

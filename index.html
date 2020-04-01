@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>pure-gen Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.flatly.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">pure-gen</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><div>
+    <p  align="center">
+    	<a>
+    	    <img  alt="Pure-gen"  src="logo/logo-completo-hor.svg"  width="350">
+    	</a>
+    </p>
+</div>
+<div>
+    <p  align="center">
+    	Generate fake data to be used in test automation
+    </p>
+</div>
+<p>This project is derivative (Fork) from <a href="https://github.com/Marak/faker.js">Faker.js</a> and that's why most of that code is here. This fork is created to update some features inside original repo and extends its functionality.</p>
+<h2>API Documentation</h2>
+<h2>Usage</h2>
+<h3>Node.js</h3>
+<pre class="prettyprint source lang-js"><code>const pure = require('pure-gen');
+
+let randomName = pure.name.findName(); // Rowan Nikolaus
+let randomEmail = pure.internet.email(); // Kassandra.Haley@erich.biz
+let randomCard = pure.helpers.createCard(); // random contact card containing many properties
+</code></pre>
+<h2>API</h2>
+<h3>pure.fake()</h3>
+<p>pure-gen contains a super useful generator method <code>pure.fake</code> for combining pure API methods using a mustache string format.</p>
+<p><strong>Example:</strong></p>
+<pre class="prettyprint source lang-js"><code>console.log(pure.fake(&quot;{{name.lastName}}, {{name.firstName}} {{name.suffix}}&quot;));
+// outputs: &quot;Marks, Dean Sr.&quot;
+</code></pre>
+<p>This will interpolate the format string with the value of methods <code>name.lastName()</code>, <code>name.firstName()</code>, and <code>name.suffix()</code></p>
+<p>If you want to pass parameters to the method you called in <code>pure.fake</code>, just pass them in a valid JSON format. That is to say, strings and object keys must be written in double quotes.</p>
+<p><strong>Example:</strong></p>
+<pre class="prettyprint source lang-js"><code>console.log(pure.fake('{{helpers.randomize([&quot;randomA&quot;,&quot;randomB&quot;])}}'));
+// outputs &quot;randomA&quot; or &quot;randomB&quot;
+</code></pre>
+<h3>JSDoc API Browser</h3>
+<h3>API Methods</h3>
+<ul>
+<li>address
+<ul>
+<li>zipCode</li>
+<li>zipCodeByState</li>
+<li>city</li>
+<li>cityPrefix</li>
+<li>citySuffix</li>
+<li>cityName</li>
+<li>streetName</li>
+<li>streetAddress</li>
+<li>streetSuffix</li>
+<li>streetPrefix</li>
+<li>secondaryAddress</li>
+<li>county</li>
+<li>country</li>
+<li>defaultCountry</li>
+<li>countryCode</li>
+<li>state</li>
+<li>stateAbbr</li>
+<li>latitude</li>
+<li>longitude</li>
+<li>direction</li>
+<li>cardinalDirection</li>
+<li>ordinalDirection</li>
+<li>nearbyGPSCoordinate</li>
+</ul>
+</li>
+<li>airport
+<ul>
+<li>name</li>
+<li>iataCode</li>
+<li>icaoCode</li>
+</ul>
+</li>
+<li>commerce
+<ul>
+<li>color</li>
+<li>department</li>
+<li>productName</li>
+<li>price</li>
+<li>productAdjective</li>
+<li>productMaterial</li>
+<li>product</li>
+<li>productDescription</li>
+</ul>
+</li>
+<li>company
+<ul>
+<li>suffixes</li>
+<li>companyName</li>
+<li>companySuffix</li>
+<li>catchPhrase</li>
+<li>bs</li>
+<li>catchPhraseAdjective</li>
+<li>catchPhraseDescriptor</li>
+<li>catchPhraseNoun</li>
+<li>bsAdjective</li>
+<li>bsBuzz</li>
+<li>bsNoun</li>
+</ul>
+</li>
+<li>database
+<ul>
+<li>column</li>
+<li>type</li>
+<li>collation</li>
+<li>engine</li>
+</ul>
+</li>
+<li>date
+<ul>
+<li>past</li>
+<li>future</li>
+<li>between</li>
+<li>arrayBetween</li>
+<li>recent</li>
+<li>soon</li>
+<li>month</li>
+<li>weekday</li>
+</ul>
+</li>
+<li>fake</li>
+<li>finance
+<ul>
+<li>account</li>
+<li>accountName</li>
+<li>routingNumber</li>
+<li>mask</li>
+<li>amount</li>
+<li>transactionType</li>
+<li>currencyCode</li>
+<li>currencyName</li>
+<li>currencySymbol</li>
+<li>bitcoinAddress</li>
+<li>creditCardNumber</li>
+<li>creditCardCVV</li>
+<li>ethereumAddress</li>
+<li>litecoinAddress</li>
+<li>iban</li>
+<li>bic</li>
+</ul>
+</li>
+<li>git
+<ul>
+<li>branch</li>
+<li>commitEntry</li>
+<li>commitMessage</li>
+<li>commitSha</li>
+<li>shortSha</li>
+</ul>
+</li>
+<li>hacker
+<ul>
+<li>abbreviation</li>
+<li>adjective</li>
+<li>noun</li>
+<li>verb</li>
+<li>ingverb</li>
+<li>phrase</li>
+</ul>
+</li>
+<li>helpers
+<ul>
+<li>randomize</li>
+<li>slugify</li>
+<li>replaceSymbolWithNumber</li>
+<li>replaceSymbols</li>
+<li>shuffle</li>
+<li>mustache</li>
+<li>createCard</li>
+<li>contextualCard</li>
+<li>userCard</li>
+<li>createTransaction</li>
+</ul>
+</li>
+<li>image
+<ul>
+<li>image</li>
+<li>avatar</li>
+<li>imageUrl</li>
+<li>abstract</li>
+<li>animals</li>
+<li>business</li>
+<li>cats</li>
+<li>city</li>
+<li>food</li>
+<li>nightlife</li>
+<li>fashion</li>
+<li>people</li>
+<li>nature</li>
+<li>sports</li>
+<li>technics</li>
+<li>transport</li>
+<li>dataUri</li>
+</ul>
+</li>
+<li>internet
+<ul>
+<li>avatar</li>
+<li>email</li>
+<li>exampleEmail</li>
+<li>userName</li>
+<li>protocol</li>
+<li>url</li>
+<li>domainName</li>
+<li>domainSuffix</li>
+<li>domainWord</li>
+<li>ip</li>
+<li>ipv6</li>
+<li>userAgent</li>
+<li>color</li>
+<li>mac</li>
+<li>password</li>
+</ul>
+</li>
+<li>markdown
+<ul>
+<li>header</li>
+<li>emphasis</li>
+<li>table</li>
+<li>orderedList</li>
+<li>unorderedList</li>
+<li>inlineCode</li>
+<li>blockCode</li>
+</ul>
+</li>
+<li>music
+<ul>
+<li>genre</li>
+</ul>
+</li>
+<li>lorem
+<ul>
+<li>word</li>
+<li>words</li>
+<li>sentence</li>
+<li>slug</li>
+<li>sentences</li>
+<li>paragraph</li>
+<li>paragraphs</li>
+<li>text</li>
+<li>lines</li>
+</ul>
+</li>
+<li>name
+<ul>
+<li>firstName</li>
+<li>lastName</li>
+<li>findName</li>
+<li>jobTitle</li>
+<li>prefix</li>
+<li>suffix</li>
+<li>title</li>
+<li>jobDescriptor</li>
+<li>jobArea</li>
+<li>jobType</li>
+</ul>
+</li>
+<li>phone
+<ul>
+<li>phoneNumber</li>
+<li>phoneNumberFormat</li>
+<li>phoneFormats</li>
+</ul>
+</li>
+<li>random
+<ul>
+<li>number</li>
+<li>float</li>
+<li>arrayElement</li>
+<li>objectElement</li>
+<li>uuid</li>
+<li>boolean</li>
+<li>word</li>
+<li>words</li>
+<li>image</li>
+<li>locale</li>
+<li>alpha</li>
+<li>alphaNumeric</li>
+<li>hexaDecimal</li>
+</ul>
+</li>
+<li>system
+<ul>
+<li>fileName</li>
+<li>commonFileName</li>
+<li>mimeType</li>
+<li>commonFileType</li>
+<li>commonFileExt</li>
+<li>fileType</li>
+<li>fileExt</li>
+<li>directoryPath</li>
+<li>filePath</li>
+<li>semver</li>
+</ul>
+</li>
+</ul>
+<h2>Localization</h2>
+<p>pure-gen has support for multiple localities.</p>
+<p>The default language locale is set to English.</p>
+<p>Setting a new locale is simple:</p>
+<pre class="prettyprint source lang-js"><code>// sets locale to de
+pure.setLocale(&quot;de&quot;);
+// or
+pure.locale = &quot;de&quot;;
+</code></pre>
+<ul>
+<li>az</li>
+<li>cz</li>
+<li>de</li>
+<li>de_AT</li>
+<li>de_CH</li>
+<li>en</li>
+<li>en_AU</li>
+<li>en_BORK</li>
+<li>en_CA</li>
+<li>en_GB</li>
+<li>en_IE</li>
+<li>en_IND</li>
+<li>en_NG</li>
+<li>en_US</li>
+<li>en_ZA</li>
+<li>en_au_ocker</li>
+<li>es</li>
+<li>es_MX</li>
+<li>fa</li>
+<li>fr</li>
+<li>fr_CA</li>
+<li>ge</li>
+<li>id_ID</li>
+<li>it</li>
+<li>ja</li>
+<li>ko</li>
+<li>nb_NO</li>
+<li>nep</li>
+<li>nl</li>
+<li>pl</li>
+<li>pt_BR</li>
+<li>pt_PT</li>
+<li>ru</li>
+<li>sk</li>
+<li>sv</li>
+<li>tr</li>
+<li>uk</li>
+<li>vi</li>
+<li>zh_CN</li>
+<li>zh_TW</li>
+</ul>
+<h3>Individual Localization Packages</h3>
+<p>pure-gen also supports incremental loading of locales.</p>
+<p>By default, requiring <code>pure</code> will include <em>all</em> locale data.</p>
+<p>In a production environment, you may only want to include the locale data for a specific set of locales.</p>
+<pre class="prettyprint source lang-js"><code>// loads only de locale
+const pure = require('pure-gen/locale/de');
+</code></pre>
+<h2>Setting a randomness seed</h2>
+<p>If you want consistent results, you can set your own seed:</p>
+<pre class="prettyprint source lang-js"><code>pure.seed(123);
+
+let firstRandom = pure.random.number();
+
+// Setting the seed again resets the sequence.
+pure.seed(123);
+
+let secondRandom = pure.random.number();
+
+console.log(firstRandom === secondRandom);
+</code></pre>
+<p><em>Note</em>: Setting the seed to <code>0</code> (<code>pure.seed(0)</code>) is the same as not having a seed. The seed must be greater than zero.</p>
+<h2>Tests</h2>
+<pre class="prettyprint source"><code>$ npm run test
+</code></pre>
+<h2>Building JSDocs</h2>
+<pre class="prettyprint source"><code>$ npm run doc
+</code></pre>
+<h2>FAQ</h2>
+<p>What purpose serve this repository?</p>
+<ul>
+<li>This project purpose is to update old code from faker.js and extend it with new functionalities</li>
+</ul>
+<p>Why have you decided to fork?</p>
+<ul>
+<li>Just because i wanted to bring some quick features without the gap time that exists if i have done an PR to original project</li>
+</ul>
+<p>Why did you renamed it?</p>
+<ul>
+<li>Because i wanted to publish this as an new package in npm</li>
+</ul>
+<p>What are the major changes compared to original project?</p>
+<ul>
+<li>I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v8. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in <a href="doc/CHANGELOG.html">CHANGELOG.md</a></li>
+</ul>
+<h2>Maintainer</h2>
+<h4>Armindo Junior</h4>
+<h2>License</h2>
+<p>pure-gen - Copyright (c) 2020
+Armindo Junior
+http://github.com/</p>
+<p>pure-gen was inspired by and has used data definitions from:</p>
+<ul>
+<li>https://github.com/Marak/faker.js - Copyright (c) 2017 by Marak Squires</li>
+<li>https://github.com/stympy/faker/ - Copyright (c) 2007-2010 by Benjamin Curtis</li>
+<li>http://search.cpan.org/~jasonk/Data-Faker-0.07/ - Copyright (c) 2004-2005 by Jason Kohles</li>
+</ul>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+	
+		on 2020-03-31T23:18:07-03:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
