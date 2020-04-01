@@ -1,6 +1,6 @@
 
 const { assert } = require('chai');
-const _ = require('lodash');
+const lodash = require('lodash');
 const pure = require('../index');
 const mersenne = require('../vendor/mersenne');
 
@@ -37,17 +37,17 @@ describe('random.js', () => {
 
         it('provides numbers with a given precision', () => {
             const options = { min: 0, max: 1.5, precision: 0.5 };
-            const results = _.chain(_.range(50))
+            const results = lodash.chain(lodash.range(50))
                 .map(() => pure.random.number(options))
                 .uniq()
                 .value()
                 .sort();
 
-            assert.ok(_.includes(results, 0.5));
-            assert.ok(_.includes(results, 1.0));
+            assert.ok(lodash.includes(results, 0.5));
+            assert.ok(lodash.includes(results, 1.0));
 
             assert.equal(results[0], 0);
-            assert.equal(_.last(results), 1.5);
+            assert.equal(lodash.last(results), 1.5);
         });
 
         it('provides numbers with a with exact precision', () => {
@@ -133,17 +133,17 @@ describe('random.js', () => {
 
         it('provides numbers with a given precision', () => {
             const options = { min: 0, max: 1.5, precision: 0.5 };
-            const results = _.chain(_.range(50))
+            const results = lodash.chain(lodash.range(50))
                 .map(() => pure.random.float(options))
                 .uniq()
                 .value()
                 .sort();
 
-            assert.ok(_.includes(results, 0.5));
-            assert.ok(_.includes(results, 1.0));
+            assert.ok(lodash.includes(results, 0.5));
+            assert.ok(lodash.includes(results, 1.0));
 
             assert.equal(results[0], 0);
-            assert.equal(_.last(results), 1.5);
+            assert.equal(lodash.last(results), 1.5);
         });
 
         it('provides numbers with a with exact precision', () => {
