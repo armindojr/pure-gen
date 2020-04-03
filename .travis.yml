@@ -11,7 +11,6 @@ install:
   - npm i
 
 script:
-  - "npm test"
   - "npm run coverage"
 
 after_success: npm run coverage:report

@@ -13,7 +13,8 @@
     "lint": "npx eslint ./lib --fix",
     "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
     "doc": "node doc-publish.js; npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",
-    "coverage": "npx nyc --nycrc-path ./nyc.conf.json npm run test",
+    "coverage": "npx nyc --nycrc-path ./nyc.conf.json --reporter=lcov npm run test",
+    "coverage:html": "npx nyc --nycrc-path ./nyc.conf.json --reporter=html npm run test",
     "coverage:report": "codecov"
   },
   "devDependencies": {

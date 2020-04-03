@@ -15,10 +15,5 @@
         "reports",
         "tests",
         "node_modules"
-    ],
-    "reporter": [
-        "html",
-        "text-summary"
-    ],
-    "report-dir": "./reports/coverage/"
+    ]
 }
