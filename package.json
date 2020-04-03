@@ -14,7 +14,7 @@
     "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
     "doc": "node doc-publish.js; npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",
     "coverage": "npx nyc --nycrc-path ./nyc.conf.json npm run test",
-    "coverage:report": "npx nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "coverage:report": "codecov"
   },
   "devDependencies": {
     "chai": "^4.2.0",

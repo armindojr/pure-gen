@@ -12,4 +12,6 @@ install:
 
 script:
   - "npm test"
-  - "npm run coverage:report"
+  - "npm run coverage"
+
+after_success: npm run coverage:report
