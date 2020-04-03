@@ -1,5 +1,4 @@
 const { assert } = require('chai');
-const sinon = require('sinon');
 const pure = require('../index');
 
 describe('document.js', () => {

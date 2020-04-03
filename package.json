@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "contributors": [
     "Armindo Junior <armindo.junior05@gmail.com>"
   ],
@@ -13,7 +13,8 @@
     "lint": "npx eslint ./lib --fix",
     "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
     "doc": "node doc-publish.js; npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",
-    "coverage": "npx nyc --nycrc-path ./nyc.conf.json npm run test"
+    "coverage": "npx nyc --nycrc-path ./nyc.conf.json npm run test",
+    "coverage:report": "npx nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -1,17 +1,17 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
 describe('lorem.js', () => {
     describe('word()', () => {
-        context("when no 'length' param passed in", () => {
+        describe("when no 'length' param passed in", () => {
             it('returns a word with a random length', () => {
                 const str = pure.lorem.word();
                 assert.ok(typeof str === 'string');
             });
         });
 
-        context("when 'length' param passed in", () => {
+        describe("when 'length' param passed in", () => {
             it('returns a word with the requested length', () => {
                 const str = pure.lorem.word(5);
                 assert.ok(typeof str === 'string');
@@ -19,7 +19,7 @@ describe('lorem.js', () => {
             });
         });
 
-        context("when 'length' param is bigger than word list", () => {
+        describe("when 'length' param is bigger than word list", () => {
             it('returns a word with the biggest lenght', () => {
                 const str = pure.lorem.word(50);
                 assert.ok(typeof str === 'string');
@@ -37,7 +37,7 @@ describe('lorem.js', () => {
             pure.helpers.shuffle.restore();
         });
 
-        context("when no 'num' param passed in", () => {
+        describe("when no 'num' param passed in", () => {
             it('returns three words', () => {
                 const str = pure.lorem.words();
                 const words = str.split(' ');
@@ -47,7 +47,7 @@ describe('lorem.js', () => {
             });
         });
 
-        context("when 'num' param passed in", () => {
+        describe("when 'num' param passed in", () => {
             it('returns requested number of words', () => {
                 const str = pure.lorem.words(7);
                 const words = str.split(' ');
@@ -71,14 +71,14 @@ describe('lorem.js', () => {
             assert.equal(wordCount - 1, str.match(/-/g).length);
         };
 
-        context("when no 'wordCount' param passed in", () => {
+        describe("when no 'wordCount' param passed in", () => {
             it('returns a slug with three words', () => {
                 const str = pure.lorem.slug();
                 validateSlug(3, str);
             });
         });
 
-        context("when 'wordCount' param passed in", () => {
+        describe("when 'wordCount' param passed in", () => {
             it('returns a slug with requested number of words', () => {
                 const str = pure.lorem.slug(7);
                 validateSlug(7, str);
@@ -86,156 +86,112 @@ describe('lorem.js', () => {
         });
     });
 
-    /*
-    describe("sentence()", function () {
-        context("when no 'wordCount' or 'range' param passed in", function () {
-            it("returns a string of at least three words", function () {
-                sinon.spy(pure.lorem, 'words');
-                sinon.stub(pure.random, 'number').returns(2);
-                var sentence = pure.lorem.sentence();
-                assert.ok(typeof sentence === 'string');
-                var parts = sentence.split(' ');
-                assert.equal(parts.length, 5); // default 3 plus stubbed 2.
-                assert.ok(pure.lorem.words.calledWith(5));
-
-                pure.lorem.words.restore();
-                pure.random.number.restore();
-            });
-        });
-
-        context("when 'wordCount' param passed in", function () {
-            it("returns a string of at least the requested number of words", function () {
-                sinon.spy(pure.lorem, 'words');
-                sinon.stub(pure.random, 'number').withArgs(7).returns(2);
-                var sentence = pure.lorem.sentence(10);
-
-                assert.ok(typeof sentence === 'string');
-                var parts = sentence.split(' ');
-                assert.equal(parts.length, 12); // requested 10 plus stubbed 2.
-                assert.ok(pure.lorem.words.calledWith(12));
-
-                pure.lorem.words.restore();
-                pure.random.number.restore();
-            });
-        });
-
-        context("when 'wordCount' and 'range' params passed in", function () {
-            it("returns a string of at least the requested number of words", function () {
-                sinon.spy(pure.lorem, 'words');
-                sinon.stub(pure.random, 'number').withArgs(4).returns(4);
-
-                var sentence = pure.lorem.sentence(10, 4);
-
-                assert.ok(typeof sentence === 'string');
-                var parts = sentence.split(' ');
-                assert.equal(parts.length, 14); // requested 10 plus stubbed 4.
-                // random.number should be called with the 'range' we passed.
-                assert.ok(pure.random.number.calledWith(4));
-                assert.ok(pure.lorem.words.calledWith(14));
-
-                pure.lorem.words.restore();
-                pure.random.number.restore();
-            });
-
-
-        });
-    });
-    */
-    /*
-    describe("sentences()", function () {
-        context("when no 'sentenceCount' param passed in", function () {
-            it("returns newline-separated string of three sentences", function () {
+    describe('sentences()', () => {
+        describe("when no 'sentenceCount' param passed in", () => {
+            it('returns random sentences from lorem ipsum', () => {
                 sinon.spy(pure.lorem, 'sentence');
-                var sentences = pure.lorem.sentences();
+                const sentences = pure.lorem.sentences();
 
                 assert.ok(typeof sentences === 'string');
-                var parts = sentences.split('\n');
-                assert.equal(parts.length, 3);
-                assert.ok(pure.lorem.sentence.calledThrice);
+                const words = sentences.split(' ');
+                expect(words.length).greaterThan(0);
 
                 pure.lorem.sentence.restore();
             });
         });
-
-        context("when 'sentenceCount' param passed in", function () {
-            it("returns newline-separated string of requested number of sentences", function () {
+        describe("when 'sentenceCount' param passed in", () => {
+            it('returns random sentences', () => {
                 sinon.spy(pure.lorem, 'sentence');
-                var sentences = pure.lorem.sentences(5);
+                const sentences = pure.lorem.sentences(1);
 
                 assert.ok(typeof sentences === 'string');
-                var parts = sentences.split('\n');
-                assert.equal(parts.length, 5);
+                const words = sentences.split(' ');
+                expect(words.length).greaterThan(0);
 
                 pure.lorem.sentence.restore();
             });
         });
+        describe('When using RU locale', () => {
+            it('Generate random sentences', () => {
+                pure.locale = 'ru';
+                const sentences = pure.lorem.sentence(2);
+
+                assert.ok(typeof sentences === 'string');
+                const words = sentences.split(' ');
+                expect(words.length).greaterThan(1);
+
+                pure.locale = 'en';
+            });
+        });
     });
-    */
-    /*
-    describe("paragraph()", function () {
-        context("when no 'wordCount' param passed in", function () {
-            it("returns a string of at least three sentences", function () {
+
+    describe('paragraph()', () => {
+        describe("when no 'sentenceCount' param passed in", () => {
+            it('returns a string of at least three sentences', () => {
                 sinon.spy(pure.lorem, 'sentences');
-                sinon.stub(pure.random, 'number').returns(2);
-                var paragraph = pure.lorem.paragraph();
+                const paragraph = pure.lorem.paragraph();
 
                 assert.ok(typeof paragraph === 'string');
-                var parts = paragraph.split('\n');
-                assert.equal(parts.length, 5); // default 3 plus stubbed 2.
+                const parts = paragraph.split('. ');
+                assert.equal(parts.length, 3);
+                assert.ok(pure.lorem.sentences.calledWith(3));
+
+                pure.lorem.sentences.restore();
+            });
+        });
+
+        describe("when 'sentenceCount' param passed in", () => {
+            it('returns a string of at least the requested number of sentences', () => {
+                sinon.spy(pure.lorem, 'sentences');
+                const paragraph = pure.lorem.paragraph(5);
+
+                assert.ok(typeof paragraph === 'string');
+                const parts = paragraph.split('. ');
+                assert.equal(parts.length, 5);
                 assert.ok(pure.lorem.sentences.calledWith(5));
 
                 pure.lorem.sentences.restore();
-                pure.random.number.restore();
-            });
-        });
-
-        context("when 'wordCount' param passed in", function () {
-            it("returns a string of at least the requested number of sentences", function () {
-                sinon.spy(pure.lorem, 'sentences');
-                sinon.stub(pure.random, 'number').returns(2);
-                var paragraph = pure.lorem.paragraph(10);
-
-                assert.ok(typeof paragraph === 'string');
-                var parts = paragraph.split('\n');
-                assert.equal(parts.length, 12); // requested 10 plus stubbed 2.
-                assert.ok(pure.lorem.sentences.calledWith(12));
-
-                pure.lorem.sentences.restore();
-                pure.random.number.restore();
             });
         });
     });
-    */
 
-    /*
-
-    describe("paragraphs()", function () {
-        context("when no 'paragraphCount' param passed in", function () {
-            it("returns newline-separated string of three paragraphs", function () {
+    describe('paragraphs()', () => {
+        describe("when no 'paragraphCount' param passed in", () => {
+            it('returns newline-separated string of three paragraphs', () => {
                 sinon.spy(pure.lorem, 'paragraph');
-                var paragraphs = pure.lorem.paragraphs();
+                const paragraphs = pure.lorem.paragraphs();
 
                 assert.ok(typeof paragraphs === 'string');
-                var parts = paragraphs.split('\n \r');
+                const parts = paragraphs.split('\n \r');
                 assert.equal(parts.length, 3);
                 assert.ok(pure.lorem.paragraph.calledThrice);
 
                 pure.lorem.paragraph.restore();
             });
         });
-
-        context("when 'paragraphCount' param passed in", function () {
-            it("returns newline-separated string of requested number of paragraphs", function () {
+        describe("when 'paragraphCount' param passed in", () => {
+            it('returns newline-separated string of requested number of paragraphs', () => {
                 sinon.spy(pure.lorem, 'paragraph');
-                var paragraphs = pure.lorem.paragraphs(5);
+                const paragraphs = pure.lorem.paragraphs(5);
 
                 assert.ok(typeof paragraphs === 'string');
-                var parts = paragraphs.split('\n \r');
+                const parts = paragraphs.split('\n \r');
                 assert.equal(parts.length, 5);
 
                 pure.lorem.paragraph.restore();
             });
         });
+        describe("when 'separator' param passed in", () => {
+            it('returns newline-separated </br> string of requested number of paragraphs', () => {
+                sinon.spy(pure.lorem, 'paragraph');
+                const paragraphs = pure.lorem.paragraphs(3, '</br>');
+
+                assert.ok(typeof paragraphs === 'string');
+                const parts = paragraphs.split('</br>');
+                assert.equal(parts.length, 3);
+
+                pure.lorem.paragraph.restore();
+            });
+        });
     });
-    */
 });

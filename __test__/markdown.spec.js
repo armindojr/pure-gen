@@ -4,14 +4,14 @@ const pure = require('../index');
 
 describe('markdown.js', () => {
     describe('header()', () => {
-        context("when no 'num' param passed in", () => {
+        describe("when no 'num' param passed in", () => {
             it("returns text beginning with '#'", () => {
                 const header = pure.markdown.header();
                 assert.equal(0, header.indexOf('#'));
             });
         });
 
-        context("when 'num' param passd in", () => {
+        describe("when 'num' param passd in", () => {
             it("returns text beginning with '#' * num", () => {
                 const header = pure.markdown.header(5);
                 assert.equal(0, header.indexOf('#####'));
@@ -20,7 +20,7 @@ describe('markdown.js', () => {
     });
 
     describe('emphasis()', () => {
-        context("when no 'type' param passed in", () => {
+        describe("when no 'type' param passed in", () => {
             it('returns emphasis text', () => {
                 const text = pure.markdown.emphasis();
                 const regexp = /\*|_|~/gi;
@@ -29,7 +29,7 @@ describe('markdown.js', () => {
             });
         });
 
-        context("when 'type' param passed in", () => {
+        describe("when 'type' param passed in", () => {
             it('returns striped text', () => {
                 const text = pure.markdown.emphasis('~');
                 const regexp = /[~]/gi;
@@ -40,14 +40,14 @@ describe('markdown.js', () => {
     });
 
     describe('table()', () => {
-        context("when no 'num' param passed in", () => {
+        describe("when no 'num' param passed in", () => {
             it('returns number of rows is 5 (head + hyphens + num)', () => {
                 const table = pure.markdown.table().split('\n');
                 assert.equal(table.length, 5);
             });
         });
 
-        context("when 'num' param passed in", () => {
+        describe("when 'num' param passed in", () => {
             it("returns number of rows is 'num'", () => {
                 const table = pure.markdown.table(5).split('\n');
                 assert.equal(table.length, 7);
@@ -56,7 +56,7 @@ describe('markdown.js', () => {
     });
 
     describe('orderdList()', () => {
-        context("when no 'num' param passed in", () => {
+        describe("when no 'num' param passed in", () => {
             it('returns 3 ordered list', () => {
                 const list = pure.markdown.orderedList().split('\n');
                 assert.equal(list.length, 3);
@@ -64,7 +64,7 @@ describe('markdown.js', () => {
             });
         });
 
-        context("when 'num' param passed in", () => {
+        describe("when 'num' param passed in", () => {
             it('returns 5 ordered list', () => {
                 const list = pure.markdown.orderedList(5).split('\n');
                 assert.equal(list.length, 5);
@@ -74,7 +74,7 @@ describe('markdown.js', () => {
     });
 
     describe('unorderdList()', () => {
-        context("when no 'num' param passed in", () => {
+        describe("when no 'num' param passed in", () => {
             it('returns 3 unordered list', () => {
                 const list = pure.markdown.unorderedList().split('\n');
                 assert.equal(list.length, 3);
@@ -82,7 +82,7 @@ describe('markdown.js', () => {
             });
         });
 
-        context("when 'num' param passed in", () => {
+        describe("when 'num' param passed in", () => {
             it('returns 5 unordered list', () => {
                 const list = pure.markdown.unorderedList(5).split('\n');
                 assert.equal(list.length, 5);

@@ -1,10 +1,32 @@
 # CHANGELOG
 
+## v1.0.1
+
+`` WIP ``
+
+### General fixes
+* added badges
+* improve coverage
+From:
+```
+Statements   : 98.91% ( 4465/4514 )
+Branches     : 86.82% ( 540/622 )
+Functions    : 97.81% ( 312/319 )
+Lines        : 98.92% ( 4300/4347 )
+```
+To:
+```
+Statements   : 99.49% ( 4487/4510 )
+Branches     : 92.86% ( 572/616 )
+Functions    : 98.75% ( 315/319 )
+Lines        : 99.47% ( 4324/4347 )
+```
+
 ## v1.0.0
 
 Changes implemented from base version, all PR's here have been tested and merged manually by me. So if anything is wrong, please let me know.
 
-## New API Methods
+### New API Methods
 
 * Added faker.date.soon #487
 * Added aba routing number #423
@@ -30,7 +52,7 @@ Fixed method name to be more clear of its function
 * Added music.genre Music module #837
 * Added document.cpf and document.cnpj
 
-## Locality Updates
+### Locality Updates
 
 * Added South African za Locale #517
 * Added nl_BE locale #529
@@ -83,7 +105,7 @@ Fixed method name to be more clear of its function
 * Translate to ar #859
 * feat: add lorem ipsum to russian locale #868
 
-## API Changes
+### API Changes
 
 * random.alphaNumeric now accepts count as a argument #363
 * Added comma replace for price method. #392 -> with adjusts to include object as parameters for price method
@@ -103,7 +125,7 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * Add multi parameters support for faker.fake #896
 * Removed an unused variable, password, found in internet.js on line 354 #897
 
-## API Fixes
+### API Fixes
 
 * internet.userAgent missing random seed #521
 * commerce.price can no longer default to 0 #446
@@ -116,7 +138,7 @@ Fixed bug when passing unknown country code throw error. Fallback to random
 * Fixed issue where `useAbbr` parameter in address.state not used. #840
 * Fix special characters in internet.url #895
 
-## General Fixes
+### General Fixes
 
 * Readme.md: Add note about `faker.seed(0)` #551
 * update finance.js typo in doc #566

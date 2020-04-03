@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const pure = require('../index');
 
 describe('image.js', () => {
@@ -18,6 +18,11 @@ describe('image.js', () => {
                 const imageUrl = pure.image.lorempixel.imageUrl(100, 100, 'abstract');
 
                 assert.equal(imageUrl, 'https://lorempixel.com/100/100/abstract');
+            });
+            it('returns a random image url from lorempixel with random set to true', () => {
+                const imageUrl = pure.image.lorempixel.imageUrl(undefined, undefined, undefined, true);
+
+                expect(imageUrl).to.contain('lorempixel.com/640/480?');
             });
         });
         describe('avatar()', () => {
@@ -103,10 +108,22 @@ describe('image.js', () => {
                 assert.equal(transport, 'https://lorempixel.com/640/480/transport');
             });
         });
+        describe('image()', () => {
+            it('returns a random category from lorempixel', () => {
+                const category = pure.image.lorempixel.image();
+
+                assert.typeOf(category, 'string');
+            });
+        });
     });
 
     describe('unsplash', () => {
         describe('imageUrl()', () => {
+            it('returns a random avatar url from unsplash', () => {
+                const avatar = pure.image.unsplash.avatar();
+
+                expect(avatar).to.contain('uifaces/faces');
+            });
             it('returns a random image url from unsplash', () => {
                 const imageUrl = pure.image.unsplash.imageUrl();
 
@@ -176,6 +193,21 @@ describe('image.js', () => {
             });
         });
     });
+
+    describe('imageUrl()', () => {
+        it('returns a random image url with https set to true', () => {
+            const imageUrl = pure.image.imageUrl(undefined, undefined, undefined, undefined, true);
+
+            expect(imageUrl).to.contain('https://');
+        });
+
+        it('returns a random image url with random set to true', () => {
+            const imageUrl = pure.image.imageUrl(undefined, undefined, undefined, true, undefined);
+
+            expect(imageUrl).to.contain('lorempixel.com/640/480?');
+        });
+    });
+
     describe('dataUri', () => {
         it('returns a blank data', () => {
             const dataUri = pure.image.dataUri(200, 300);

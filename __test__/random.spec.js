@@ -219,6 +219,33 @@ describe('random.js', () => {
                 this[element] = true;
             }, {});
         });
+
+        it('returns a subset of lenght equal to one passed by', () => {
+            const testArray = ['hello', 'to', 'you', 'my', 'friend'];
+            const subset = pure.random.arrayElements(testArray, 8);
+
+            // Check length
+            assert.ok(subset.length === testArray.length);
+
+            // Check elements
+            subset.forEach((element) => {
+                assert.ok(testArray.indexOf(element) > -1);
+            });
+
+            // Check uniqueness
+            subset.forEach(function check(element) {
+                assert.ok(!Object.prototype.hasOwnProperty.call(this, element));
+                this[element] = true;
+            }, {});
+        });
+
+        it('returns an empty array if count is 0', () => {
+            const testArray = ['hello', 'to', 'you', 'my', 'friend'];
+            const subset = pure.random.arrayElements(testArray, -1);
+
+            // Check length
+            assert.ok(subset.length === 0);
+        });
     });
 
     describe('UUID', () => {

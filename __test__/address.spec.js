@@ -119,7 +119,6 @@ describe('address.js', () => {
         });
     });
 
-
     describe('streetAddress()', () => {
         beforeEach(() => {
             sinon.spy(pure.address, 'streetName');
@@ -165,7 +164,19 @@ describe('address.js', () => {
             pure.random.number.restore();
         });
 
-        context('when useFulladdress is true', () => {
+        it('returns 2-digit street number it random.number is greater than 2', () => {
+            sinon.stub(pure.random, 'number').returns(3);
+            const address = pure.address.streetAddress();
+            const parts = address.split(' ');
+
+            assert.equal(parts[0].length, 2);
+            assert.ok(pure.address.streetName.called);
+            assert.ok(!pure.address.secondaryAddress.called);
+
+            pure.random.number.restore();
+        });
+
+        describe('when useFulladdress is true', () => {
             it('adds a secondary address to the result', () => {
                 const address = pure.address.streetAddress(true);
                 const parts = address.split(' ');
@@ -175,7 +186,6 @@ describe('address.js', () => {
             });
         });
     });
-
 
     describe('secondaryAddress()', () => {
         it('randomly chooses an Apt or Suite number', () => {
@@ -533,6 +543,84 @@ describe('address.js', () => {
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
+        });
+
+        it('test coordinateWithOffset when isMetric is true', () => {
+            function haversine(lat1, lon1, lat2, lon2, isMetric) {
+                function degreesToRadians(degrees) {
+                    return degrees * (Math.PI / 180.0);
+                }
+                function kilometersToMiles(miles) {
+                    return miles * 0.621371;
+                }
+                const R = 6378.137;
+                const dLat = degreesToRadians(lat2 - lat1);
+                const dLon = degreesToRadians(lon2 - lon1);
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                    + Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2))
+                    * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const distance = R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+                return isMetric ? distance : kilometersToMiles(distance);
+            }
+            const latFloat1 = parseFloat(pure.address.latitude());
+            const lonFloat1 = parseFloat(pure.address.longitude());
+            const isMetric = (Math.round(Math.random()) === 1);
+            for (let i = 0; i < 10000; i += 1) {
+                const radius = (Math.random() * 99) + 1; // range of [1, 100)
+
+                const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], radius, isMetric);
+                assert.ok(coordinate.length === 2);
+                assert.ok(typeof coordinate[0] === 'string');
+                assert.ok(typeof coordinate[1] === 'string');
+
+                const latFloat2 = parseFloat(coordinate[0]);
+                assert.ok(latFloat2 >= -90.0);
+                assert.ok(latFloat2 <= 90.0);
+
+                const lonFloat2 = parseFloat(coordinate[1]);
+                assert.ok(lonFloat2 >= -180.0);
+                assert.ok(lonFloat2 <= 180.0);
+
+                // Due to floating point math, and constants that are not extremely precise,
+                // returned points will not be strictly within the given radius of the input
+                // coordinate. Using a error of 1.0 to compensate.
+                const error = 1.0;
+                const actualDistance = haversine(latFloat1, lonFloat1, latFloat2, lonFloat2, isMetric);
+                assert.ok(actualDistance <= (radius + error));
+            }
+
+            // test once with undefined radius
+            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+        });
+        it('test coordinateWithOffset when lon2 is lesser than -3.14...', () => {
+            sinon.stub(Math, 'atan2').returns(-0.80);
+            pure.seed(5);
+            const latFloat1 = parseFloat(pure.address.latitude());
+            const lonFloat1 = parseFloat(pure.address.longitude());
+
+            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+            Math.atan2.restore();
+            pure.seed();
+        });
+        it('test coordinateWithOffset when lon2 is greater than 3.14...', () => {
+            sinon.stub(Math, 'atan2').returns(0.50);
+            pure.seed(1);
+            const latFloat1 = parseFloat(pure.address.latitude());
+            const lonFloat1 = parseFloat(pure.address.longitude());
+
+            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+            Math.atan2.restore();
+            pure.seed();
         });
     });
 });

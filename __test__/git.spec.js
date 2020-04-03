@@ -67,7 +67,7 @@ describe('git.js', () => {
             assert.ok(pure.name.lastName.calledTwice);
         });
 
-        context("with options['merge'] equal to true", () => {
+        describe("with options['merge'] equal to true", () => {
             beforeEach(() => {
                 sinon.spy(pure.git, 'shortSha');
             });

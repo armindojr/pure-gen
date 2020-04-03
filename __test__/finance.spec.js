@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const pure = require('../index');
 const luhnFormula = require('./support/luhnCheck.js');
 const ibanLib = require('../lib/iban');
@@ -226,7 +226,6 @@ describe('finance.js', () => {
             assert.ok(number.match(/^[0-9]{13,20}$/));
             assert.ok(luhnFormula(number));
         });
-
         it('returns a valid credit card number', () => {
             assert.ok(luhnFormula(pure.finance.creditCardNumber('')));
             assert.ok(luhnFormula(pure.finance.creditCardNumber()));
@@ -287,7 +286,6 @@ describe('finance.js', () => {
         });
     });
 
-
     describe('iban()', () => {
         it('returns a random yet formally correct IBAN number', () => {
             const iban = pure.finance.iban();
@@ -302,6 +300,21 @@ describe('finance.js', () => {
 
             assert.equal(ibanLib.mod97(ibanLib.toDigitString(bban)), 1, 'the result should be equal to 1');
             assert.equal(iban.substring(0, 2), 'DE', 'iban should contain country code');
+        });
+
+        it('returns a random and formatted correct IBAN number for specific country', () => {
+            const iban = pure.finance.iban(true, 'DE');
+
+            let result = iban.split(' ')
+            assert.equal(result.length, 6);
+            assert.equal(iban.substring(0, 2), 'DE', 'iban should contain country code');
+        });
+
+        it('returns a random and formatted correct IBAN number when country don\'t exists', () => {
+            const iban = pure.finance.iban(true, 'QQ');
+
+            let result = iban.split(' ')
+            expect(result.length).greaterThan(5)
         });
     });
 

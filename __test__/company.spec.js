@@ -45,6 +45,17 @@ describe('company.js', () => {
             pure.name.lastName.restore();
             pure.company.companySuffix.restore();
         });
+
+        it('returns three last names when parameter is number', () => {
+            sinon.spy(pure.name, 'lastName');
+            const name = pure.company.companyName(2);
+            const parts = name.split(' ');
+
+            assert.strictEqual(parts.length, 4); // account for word 'and'
+            assert.ok(pure.name.lastName.calledThrice);
+
+            pure.name.lastName.restore();
+        });
     });
 
     describe('companySuffix()', () => {

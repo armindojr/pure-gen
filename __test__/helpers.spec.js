@@ -5,14 +5,21 @@ const luhnCheck = require('./support/luhnCheck');
 
 describe('helpers.js', () => {
     describe('replaceSymbolWithNumber()', () => {
-        context('when no symbol passed in', () => {
+        describe('when no symbol passed in', () => {
             it("uses '#' by default", () => {
                 const num = pure.helpers.replaceSymbolWithNumber('#AB');
                 assert.ok(num.match(/\dAB/));
             });
         });
 
-        context('when symbol passed in', () => {
+        describe('when no string passed in', () => {
+            it('returns an empty string', () => {
+                const num = pure.helpers.replaceSymbolWithNumber();
+                assert.equal(num, '');
+            });
+        });
+
+        describe('when symbol passed in', () => {
             it('replaces that symbol with integers', () => {
                 const num = pure.helpers.replaceSymbolWithNumber('#AB', 'A');
                 assert.ok(num.match(/#\dB/));
@@ -21,10 +28,20 @@ describe('helpers.js', () => {
     });
 
     describe('replaceSymbols()', () => {
-        context("when '*' passed", () => {
+        describe("when '*' passed", () => {
             it('replaces it with alphanumeric', () => {
                 const num = pure.helpers.replaceSymbols('*AB');
                 assert.ok(num.match(/\wAB/));
+            });
+        });
+
+        describe('when random boolean return false', () => {
+            it('symbol is replaced with random number', () => {
+                sinon.stub(pure.random, 'boolean').returns(false);
+                const num = pure.helpers.replaceSymbols('*AB');
+                assert.ok(num.match(/\wAB/));
+
+                pure.random.boolean.restore();
             });
         });
     });
@@ -40,6 +57,11 @@ describe('helpers.js', () => {
 
         it('empty array returns empty array', () => {
             const shuffled = pure.helpers.shuffle([]);
+            assert.ok(shuffled.length === 0);
+        });
+
+        it('empty parameter returns empty array', () => {
+            const shuffled = pure.helpers.shuffle();
             assert.ok(shuffled.length === 0);
         });
 
@@ -59,8 +81,12 @@ describe('helpers.js', () => {
 
     describe('slugify()', () => {
         it('removes unwanted characters from URI string', () => {
-            assert.equal(pure.helpers.slugify('Aiden.Harªann'), 'Aiden.Harann');
+            assert.equal(pure.helpers.slugify('Aiden.Harªann'), 'Aiden.Haraann');
             assert.equal(pure.helpers.slugify("d'angelo.net"), 'dangelo.net');
+        });
+
+        it('return empty string if passed one is empty too', () => {
+            assert.equal(pure.helpers.slugify(), '');
         });
     });
 
@@ -127,6 +153,11 @@ describe('helpers.js', () => {
             assert.ok(number.match(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/));
             assert.ok(luhnCheck(number));
         });
+        it('returns only one digit if no string is passed', () => {
+            const number = pure.helpers.replaceCreditCardSymbols();
+
+            assert.equal(number.length, 1);
+        });
         it('supports different symbols', () => {
             const number = pure.helpers.replaceCreditCardSymbols('6453-****-****-****-***L', '*');
             assert.ok(number.match(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/));
@@ -163,6 +194,10 @@ describe('helpers.js', () => {
         });
         it('creates a numerical range', () => {
             const string = pure.helpers.regexpStyleStringParse('Hello[0-9]');
+            assert.ok(string.match(/^Hello[0-9]$/));
+        });
+        it('creates a numerical range with min greater than max', () => {
+            const string = pure.helpers.regexpStyleStringParse('Hello[9-7]');
             assert.ok(string.match(/^Hello[0-9]$/));
         });
         it('deals with multiple tokens in one string', () => {

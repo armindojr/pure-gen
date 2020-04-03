@@ -1,5 +1,6 @@
 const { assert } = require('chai');
 const sinon = require('sinon');
+const slugify = require('slugify');
 const pure = require('../index');
 
 describe('internet.js', () => {
@@ -60,6 +61,23 @@ describe('internet.js', () => {
             pure.name.lastName.restore();
             pure.random.arrayElement.restore();
         });
+
+        it('return username with firstname and number when random.number is greater than 3', () => {
+            sinon.stub(pure.random, 'number').returns(3);
+            sinon.spy(pure.name, 'firstName');
+            sinon.spy(pure.name, 'lastName');
+            sinon.spy(pure.random, 'arrayElement');
+            const username = pure.internet.userName();
+
+            assert.ok(username);
+            assert.ok(pure.name.firstName.called);
+            assert.ok(username.match(/[\w]+\d/g));
+
+            pure.random.number.restore();
+            pure.name.firstName.restore();
+            pure.name.lastName.restore();
+            pure.random.arrayElement.restore();
+        });
     });
 
     describe('domainName()', () => {
@@ -105,6 +123,18 @@ describe('internet.js', () => {
             assert.strictEqual(domainWord, 'ana-julia');
 
             pure.name.firstName.restore();
+        });
+
+        it('return random word when slugify returns empty string', () => {
+            sinon.stub(pure.name, 'firstName').returns('FOO');
+            sinon.stub(slugify, 'default').returns('');
+            const domainWord = pure.internet.domainWord();
+
+            assert.ok(domainWord);
+            assert.ok(domainWord.length > 0);
+
+            pure.name.firstName.restore();
+            slugify.default.restore();
         });
     });
 
@@ -198,6 +228,19 @@ describe('internet.js', () => {
 
             mac = pure.internet.mac('&');
             assert.ok(mac.match(/^([a-f0-9]{2}:){5}[a-f0-9]{2}$/));
+        });
+    });
+
+    describe('password()', () => {
+        it('generate password that is memorable with only letters', () => {
+            const password = pure.internet.password(undefined, true, undefined, undefined);
+
+            assert.ok(password.match(/\w/g));
+        });
+        it('generate password that is memorable with only letters when parameter is null', () => {
+            const password = pure.internet.password(null, null, undefined, undefined);
+
+            assert.ok(password.match(/\w/g));
         });
     });
 });
