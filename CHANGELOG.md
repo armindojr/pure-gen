@@ -3,6 +3,17 @@
 ## v1.0.1
 
 `` WIP ``
+### API Changes
+* Change image url to stable provider #885
+```
+Provider choosed is placeimage, where their APIs is the same from lorempixel
+```
+
+### Api fixes
+* Update Random to create a per-instance copy of the RNG #513
+```
+Fixed bug where creating seeeds with array as parameter always return same results
+```
 
 ### General fixes
 * added badges
@@ -16,10 +27,7 @@ Lines        : 98.92% ( 4300/4347 )
 ```
 To:
 ```
-Statements   : 99.49% ( 4487/4510 )
-Branches     : 92.86% ( 572/616 )
-Functions    : 98.75% ( 315/319 )
-Lines        : 99.47% ( 4324/4347 )
+See codecov
 ```
 
 ## v1.0.0

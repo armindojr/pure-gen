@@ -2,7 +2,7 @@
     "all": false,
     "include": [
         "lib/**/*.js",
-        "vendor/*.js"
+        "vendor/unique.js.js"
     ],
     "exclude": [
         "coverage",

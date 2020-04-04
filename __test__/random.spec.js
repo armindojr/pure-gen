@@ -1,7 +1,8 @@
 
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const lodash = require('lodash');
 const pure = require('../index');
+const Pure = require('../lib');
 const mersenne = require('../vendor/mersenne');
 
 describe('random.js', () => {
@@ -339,4 +340,47 @@ describe('random.js', () => {
             }, Error);
         });
     });
+
+    describe('independent', () => {
+        it('generates independent sequences', () => {
+            const pure1 = new Pure();
+            pure1.seed(1);
+
+            const pure2 = new Pure();
+            pure2.seed(1);
+
+            assert.equal(pure1.random.number(), pure2.random.number());
+        });
+
+        it('has different default seeds across invocations', (done) => {
+            const pure1 = new Pure();
+
+            // Execute the rest of the test after a short delay, so the second
+            // instance gets a different random seed.
+            setTimeout(() => {
+                const pure2 = new Pure();
+
+                assert.notEqual(pure1.random.number(), pure2.random.number());
+                done();
+            }, 2);
+        });
+    });
+
+    describe('seed', () => {
+        it('passing empty array to seed', () => {
+            pure.seed([])
+
+            let name = pure.name.findName()
+            expect(name.length).greaterThan(1)
+        })
+    })
+
+    describe('words', () => {
+        it('passing "count" parameter', () => {
+            let words = pure.random.words(5)
+
+            let result = words.split(' ')
+            assert.equal(result.length, 5)
+        })
+    })
 });

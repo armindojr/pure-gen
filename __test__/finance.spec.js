@@ -305,7 +305,7 @@ describe('finance.js', () => {
         it('returns a random and formatted correct IBAN number for specific country', () => {
             const iban = pure.finance.iban(true, 'DE');
 
-            let result = iban.split(' ')
+            const result = iban.split(' ');
             assert.equal(result.length, 6);
             assert.equal(iban.substring(0, 2), 'DE', 'iban should contain country code');
         });
@@ -313,8 +313,7 @@ describe('finance.js', () => {
         it('returns a random and formatted correct IBAN number when country don\'t exists', () => {
             const iban = pure.finance.iban(true, 'QQ');
 
-            let result = iban.split(' ')
-            expect(result.length).greaterThan(5)
+            expect(iban.length).greaterThan(15);
         });
     });
 

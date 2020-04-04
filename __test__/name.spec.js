@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -23,6 +23,26 @@ describe('name.js', () => {
             assert.equal(lastName, 'foo');
 
             pure.name.lastName.restore();
+        });
+        describe('When using RU locale', () => {
+            it('returns localized lastname', () => {
+                pure.locale = 'ru';
+                const lastNameRu = pure.name.lastName();
+
+                assert.ok(typeof lastNameRu === 'string');
+                expect(lastNameRu.length).greaterThan(1);
+
+                pure.locale = 'en';
+            });
+            it('and passing "gender" parameter as 1', () => {
+                pure.locale = 'ru';
+                const lastNameRu = pure.name.lastName(1);
+
+                assert.ok(typeof lastNameRu === 'string');
+                expect(lastNameRu.length).greaterThan(1);
+
+                pure.locale = 'en';
+            });
         });
     });
 

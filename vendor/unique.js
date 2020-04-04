@@ -27,7 +27,8 @@ const defaultCompare = function (obj, key) {
 unique.errorMessage = function (now, code, opts) {
     // console.error('error', code);
     // console.log('found', Object.keys(found).length, 'unique entries before throwing error. \nretried:', currentIterations, '\ntotal time:', now - opts.startTime, 'ms');
-    throw new Error(`${code} for uniqueness check \n\nMay not be able to generate any more unique values with current settings. \nTry adjusting maxTime or maxRetries parameters for pure.unique()`);
+    let err = `${code} for uniqueness check \n\nMay not be able to generate any more unique values with current settings. \nTry adjusting maxTime or maxRetries parameters for pure.unique()`
+    throw new Error(err);
 };
 
 unique.exec = function (method, args, opts) {

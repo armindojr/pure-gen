@@ -6,9 +6,7 @@ module.exports = functionHelpers;
 
 
 const IGNORED_MODULES = ['locales', 'locale', 'localeFallback', 'definitions', 'fake', 'helpers'];
-const IGNORED_METHODS = {
-    system: ['directoryPath', 'filePath'], // these are TODOs
-};
+const IGNORED_METHODS = {};
 
 function isTestableModule(mod) {
     return IGNORED_MODULES.indexOf(mod) === -1;

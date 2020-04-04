@@ -1,7 +1,7 @@
 <div>
     <p  align="center">
     	<a>
-    	    <img  alt="Pure-gen"  src="static/logo/logo-completo-hor.svg"  width="350">
+    	    <img  alt="Pure-gen"  src="https://cdn.statically.io/gh/armindojr/pure-gen/v1.0.0/static/logo/logo-completo-hor.svg"  width="350">
     	</a>
     </p>
 </div>
@@ -409,7 +409,7 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](static/doc/CHANGELOG.md)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in CHANGELOG.md
 
 ## Maintainer
 

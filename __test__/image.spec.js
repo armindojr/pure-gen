@@ -2,122 +2,122 @@ const { assert, expect } = require('chai');
 const pure = require('../index');
 
 describe('image.js', () => {
-    describe('lorempixel', () => {
+    describe('placeimg()', () => {
         describe('imageUrl()', () => {
-            it('returns a random image url from lorempixel', () => {
-                const imageUrl = pure.image.lorempixel.imageUrl();
+            it('returns a random image url from placeimg', () => {
+                const imageUrl = pure.image.placeimg.imageUrl();
 
-                assert.equal(imageUrl, 'https://lorempixel.com/640/480');
+                assert.equal(imageUrl, 'https://placeimg.com/640/480');
             });
-            it('returns a random image url from lorempixel with width and height', () => {
-                const imageUrl = pure.image.lorempixel.imageUrl(100, 100);
+            it('returns a random image url from placeimg with width and height', () => {
+                const imageUrl = pure.image.placeimg.imageUrl(100, 100);
 
-                assert.equal(imageUrl, 'https://lorempixel.com/100/100');
+                assert.equal(imageUrl, 'https://placeimg.com/100/100');
             });
             it('returns a random image url for a specified category', () => {
-                const imageUrl = pure.image.lorempixel.imageUrl(100, 100, 'abstract');
+                const imageUrl = pure.image.placeimg.imageUrl(100, 100, 'abstract');
 
-                assert.equal(imageUrl, 'https://lorempixel.com/100/100/abstract');
+                assert.equal(imageUrl, 'https://placeimg.com/100/100/abstract');
             });
-            it('returns a random image url from lorempixel with random set to true', () => {
-                const imageUrl = pure.image.lorempixel.imageUrl(undefined, undefined, undefined, true);
+            it('returns a random image url from placeimg with random set to true', () => {
+                const imageUrl = pure.image.placeimg.imageUrl(undefined, undefined, undefined, true);
 
-                expect(imageUrl).to.contain('lorempixel.com/640/480?');
+                expect(imageUrl).to.contain('placeimg.com/640/480?');
             });
         });
         describe('avatar()', () => {
             it('return a random avatar from UIFaces', () => {
-                assert.notEqual(-1, pure.image.lorempixel.avatar().indexOf('s3.amazonaws.com/uifaces/faces'));
+                assert.notEqual(-1, pure.image.placeimg.avatar().indexOf('s3.amazonaws.com/uifaces/faces'));
             });
         });
         describe('abstract()', () => {
             it('returns a random abstract image url', () => {
-                const abstract = pure.image.lorempixel.abstract();
-                assert.equal(abstract, 'https://lorempixel.com/640/480/abstract');
+                const abstract = pure.image.placeimg.abstract();
+                assert.equal(abstract, 'https://placeimg.com/640/480/abstract');
             });
         });
         describe('animals()', () => {
             it('returns a random animals image url', () => {
-                const animals = pure.image.lorempixel.animals();
-                assert.equal(animals, 'https://lorempixel.com/640/480/animals');
+                const animals = pure.image.placeimg.animals();
+                assert.equal(animals, 'https://placeimg.com/640/480/animals');
             });
         });
         describe('business()', () => {
             it('returns a random business image url', () => {
-                const business = pure.image.lorempixel.business();
-                assert.equal(business, 'https://lorempixel.com/640/480/business');
+                const business = pure.image.placeimg.business();
+                assert.equal(business, 'https://placeimg.com/640/480/business');
             });
         });
         describe('cats()', () => {
             it('returns a random cats image url', () => {
-                const cats = pure.image.lorempixel.cats();
-                assert.equal(cats, 'https://lorempixel.com/640/480/cats');
+                const cats = pure.image.placeimg.cats();
+                assert.equal(cats, 'https://placeimg.com/640/480/cats');
             });
         });
         describe('city()', () => {
             it('returns a random city image url', () => {
-                const city = pure.image.lorempixel.city();
-                assert.equal(city, 'https://lorempixel.com/640/480/city');
+                const city = pure.image.placeimg.city();
+                assert.equal(city, 'https://placeimg.com/640/480/city');
             });
         });
         describe('food()', () => {
             it('returns a random food image url', () => {
-                const food = pure.image.lorempixel.food();
-                assert.equal(food, 'https://lorempixel.com/640/480/food');
+                const food = pure.image.placeimg.food();
+                assert.equal(food, 'https://placeimg.com/640/480/food');
             });
         });
         describe('nightlife()', () => {
             it('returns a random nightlife image url', () => {
-                const nightlife = pure.image.lorempixel.nightlife();
-                assert.equal(nightlife, 'https://lorempixel.com/640/480/nightlife');
+                const nightlife = pure.image.placeimg.nightlife();
+                assert.equal(nightlife, 'https://placeimg.com/640/480/nightlife');
             });
         });
         describe('fashion()', () => {
             it('returns a random fashion image url', () => {
-                const fashion = pure.image.lorempixel.fashion();
-                assert.equal(fashion, 'https://lorempixel.com/640/480/fashion');
+                const fashion = pure.image.placeimg.fashion();
+                assert.equal(fashion, 'https://placeimg.com/640/480/fashion');
             });
         });
         describe('people()', () => {
             it('returns a random people image url', () => {
-                const people = pure.image.lorempixel.people();
-                assert.equal(people, 'https://lorempixel.com/640/480/people');
+                const people = pure.image.placeimg.people();
+                assert.equal(people, 'https://placeimg.com/640/480/people');
             });
         });
         describe('nature()', () => {
             it('returns a random nature image url', () => {
-                const nature = pure.image.lorempixel.nature();
-                assert.equal(nature, 'https://lorempixel.com/640/480/nature');
+                const nature = pure.image.placeimg.nature();
+                assert.equal(nature, 'https://placeimg.com/640/480/nature');
             });
         });
         describe('sports()', () => {
             it('returns a random sports image url', () => {
-                const sports = pure.image.lorempixel.sports();
-                assert.equal(sports, 'https://lorempixel.com/640/480/sports');
+                const sports = pure.image.placeimg.sports();
+                assert.equal(sports, 'https://placeimg.com/640/480/sports');
             });
         });
         describe('technics()', () => {
             it('returns a random technics image url', () => {
-                const technics = pure.image.lorempixel.technics();
-                assert.equal(technics, 'https://lorempixel.com/640/480/technics');
+                const technics = pure.image.placeimg.technics();
+                assert.equal(technics, 'https://placeimg.com/640/480/technics');
             });
         });
         describe('transport()', () => {
             it('returns a random transport image url', () => {
-                const transport = pure.image.lorempixel.transport();
-                assert.equal(transport, 'https://lorempixel.com/640/480/transport');
+                const transport = pure.image.placeimg.transport();
+                assert.equal(transport, 'https://placeimg.com/640/480/transport');
             });
         });
         describe('image()', () => {
-            it('returns a random category from lorempixel', () => {
-                const category = pure.image.lorempixel.image();
+            it('returns a random category from placeimg', () => {
+                const category = pure.image.placeimg.image();
 
                 assert.typeOf(category, 'string');
             });
         });
     });
 
-    describe('unsplash', () => {
+    describe('unsplash()', () => {
         describe('imageUrl()', () => {
             it('returns a random avatar url from unsplash', () => {
                 const avatar = pure.image.unsplash.avatar();
@@ -204,7 +204,7 @@ describe('image.js', () => {
         it('returns a random image url with random set to true', () => {
             const imageUrl = pure.image.imageUrl(undefined, undefined, undefined, true, undefined);
 
-            expect(imageUrl).to.contain('lorempixel.com/640/480?');
+            expect(imageUrl).to.contain('placeimg.com/640/480?');
         });
     });
 

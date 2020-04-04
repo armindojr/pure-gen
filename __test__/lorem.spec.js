@@ -194,4 +194,25 @@ describe('lorem.js', () => {
             });
         });
     });
+
+    describe('lines()', () => {
+        describe("when no 'lineCount' is passed in", () => {
+            it('returns more then 1 lines from lorem', () => {
+                const lines = pure.lorem.lines();
+
+                assert.ok(typeof lines === 'string');
+                const parts = lines.split('\n');
+                expect(parts.length).greaterThan(0);
+            });
+        });
+        describe("when 'lineCount' is passed in", () => {
+            it('returns 5 lines from lorem', () => {
+                const lines = pure.lorem.lines(5);
+
+                assert.ok(typeof lines === 'string');
+                const parts = lines.split('\n');
+                assert.equal(parts.length, 5);
+            });
+        });
+    });
 });
