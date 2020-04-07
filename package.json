@@ -33,6 +33,7 @@
     "sinon": "^9.0.1"
   },
   "dependencies": {
+    "glob": "^7.1.6",
     "slugify": "^1.4.0"
   },
   "license": "MIT",
