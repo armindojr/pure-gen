@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>avatar</p>
+        <p>Generate a random avatar url</p>
     </div>
     
 
@@ -227,13 +227,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.avatar());
+//outputs: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/...&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".color"><span class="type-signature">&lt;static> </span>color(baseRed255, baseGreen255, baseBlue255)</h4>
+    <h4 class="name" id=".color"><span class="type-signature">&lt;static> </span>color( [baseRed255] [, baseGreen255] [, baseBlue255])</h4>
     
     
 </dt>
@@ -241,7 +248,7 @@
 
     
     <div class="description">
-        <p>color</p>
+        <p>Generates a random color</p>
     </div>
     
 
@@ -264,7 +271,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -290,10 +301,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The red value. Valid values are 0 - 255.</p></td>
         </tr>
 
     
@@ -314,10 +341,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The green value. Valid values are 0 - 255.</p></td>
         </tr>
 
     
@@ -338,10 +381,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>The blue value. Valid values are 0 - 255.</p></td>
         </tr>
 
     
@@ -403,6 +462,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.color());
+//outputs: &quot;#06267f&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -417,7 +483,7 @@
 
     
     <div class="description">
-        <p>domainName</p>
+        <p>Generates a random domain name</p>
     </div>
     
 
@@ -479,6 +545,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.domainName());
+//outputs: &quot;marvin.org&quot;</pre>
+
 
     
 </dd>
@@ -495,7 +568,7 @@
 
     
     <div class="description">
-        <p>domainSuffix</p>
+        <p>Generates a random domain suffix</p>
     </div>
     
 
@@ -557,6 +630,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.domainSuffix());
+//outputs: &quot;net&quot;</pre>
+
 
     
 </dd>
@@ -573,7 +653,7 @@
 
     
     <div class="description">
-        <p>domainWord</p>
+        <p>Generates a random domain word</p>
     </div>
     
 
@@ -637,13 +717,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.domainWord());
+//outputs: &quot;alyce&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".email"><span class="type-signature">&lt;static> </span>email(firstName, lastName, provider)</h4>
+    <h4 class="name" id=".email"><span class="type-signature">&lt;static> </span>email( [firstName] [, lastName] [, provider])</h4>
     
     
 </dt>
@@ -651,7 +738,7 @@
 
     
     <div class="description">
-        <p>email</p>
+        <p>Generates a random email</p>
     </div>
     
 
@@ -674,7 +761,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -700,10 +791,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>First name</p></td>
         </tr>
 
     
@@ -724,10 +831,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Last name</p></td>
         </tr>
 
     
@@ -748,10 +871,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Provider to use on email</p></td>
         </tr>
 
     
@@ -813,13 +952,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.email());
+//outputs: &quot;Lucius_Pfannerstill@yahoo.com&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".exampleEmail"><span class="type-signature">&lt;static> </span>exampleEmail(firstName, lastName)</h4>
+    <h4 class="name" id=".exampleEmail"><span class="type-signature">&lt;static> </span>exampleEmail( [firstName] [, lastName])</h4>
     
     
 </dt>
@@ -827,7 +973,7 @@
 
     
     <div class="description">
-        <p>exampleEmail</p>
+        <p>Generates a random example email</p>
     </div>
     
 
@@ -850,7 +996,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -876,10 +1026,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>First name</p></td>
         </tr>
 
     
@@ -900,10 +1066,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Last name</p></td>
         </tr>
 
     
@@ -965,6 +1147,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.exampleEmail());
+//outputs: &quot;Twila_Hettinger@example.net&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -979,7 +1168,7 @@
 
     
     <div class="description">
-        <p>ip</p>
+        <p>Generates a random ip</p>
     </div>
     
 
@@ -1041,6 +1230,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.ip());
+//outputs: &quot;97.238.241.11&quot;</pre>
+
 
     
 </dd>
@@ -1057,7 +1253,7 @@
 
     
     <div class="description">
-        <p>ipv6</p>
+        <p>Generates a random ipv6</p>
     </div>
     
 
@@ -1121,13 +1317,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.ipv6());
+//outputs: &quot;2001:0db8:6276:b1a7:5213:22f1:25df:c8a0&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".mac"><span class="type-signature">&lt;static> </span>mac(sep)</h4>
+    <h4 class="name" id=".mac"><span class="type-signature">&lt;static> </span>mac( [sep])</h4>
     
     
 </dt>
@@ -1135,7 +1338,7 @@
 
     
     <div class="description">
-        <p>mac</p>
+        <p>Generates a random mac address</p>
     </div>
     
 
@@ -1158,7 +1361,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1184,10 +1391,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    ':'
+                
+                </td>
+            
+
+            <td class="description last"><p>Separator to use in mac address. ['-', '', ':']</p></td>
         </tr>
 
     
@@ -1249,13 +1472,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.mac());
+//outputs: &quot;78:06:cc:ae:b3:81&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".password"><span class="type-signature">&lt;static> </span>password(len, memorable, pattern, prefix)</h4>
+    <h4 class="name" id=".password"><span class="type-signature">&lt;static> </span>password( [len] [, memorable] [, pattern] [, prefix])</h4>
     
     
 </dt>
@@ -1263,7 +1493,7 @@
 
     
     <div class="description">
-        <p>password</p>
+        <p>Generates a random password</p>
     </div>
     
 
@@ -1286,7 +1516,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1312,10 +1546,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    15
+                
+                </td>
+            
+
+            <td class="description last"><p>The number of characters in the password.</p></td>
         </tr>
 
     
@@ -1336,10 +1586,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether a password should be easy to remember.</p></td>
         </tr>
 
     
@@ -1360,10 +1626,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    '/\w/'
+                
+                </td>
+            
+
+            <td class="description last"><p>A regex to match each character of the password against. If memorable is true, then this will be ignored</p></td>
         </tr>
 
     
@@ -1384,10 +1666,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last"><p>A value to prepend to the generated password.</p></td>
         </tr>
 
     
@@ -1449,6 +1747,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.password());
+//outputs: &quot;AM7zl6Mg&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -1463,7 +1768,7 @@
 
     
     <div class="description">
-        <p>protocol</p>
+        <p>Generates a random protocol</p>
     </div>
     
 
@@ -1525,6 +1830,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.protocol());
+//outputs: &quot;https&quot;</pre>
+
 
     
 </dd>
@@ -1541,7 +1853,7 @@
 
     
     <div class="description">
-        <p>url</p>
+        <p>Generates a random url</p>
     </div>
     
 
@@ -1603,6 +1915,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.url());
+//outputs: &quot;http://harvey.net&quot;</pre>
+
 
     
 </dd>
@@ -1619,7 +1938,7 @@
 
     
     <div class="description">
-        <p>userAgent</p>
+        <p>Generates a random user agent</p>
     </div>
     
 
@@ -1683,13 +2002,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.userAgent());
+//outputs: &quot;Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_7_5 rv:6.0; SL) AppleWebKit/532.0.1 (KHTML, like Gecko) Version/7.1.6 Safari/532.0.1&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".userName"><span class="type-signature">&lt;static> </span>userName(firstName, lastName)</h4>
+    <h4 class="name" id=".userName"><span class="type-signature">&lt;static> </span>userName( [firstName] [, lastName])</h4>
     
     
 </dt>
@@ -1697,7 +2023,7 @@
 
     
     <div class="description">
-        <p>userName</p>
+        <p>Generates a random user name</p>
     </div>
     
 
@@ -1720,7 +2046,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1746,10 +2076,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>First name</p></td>
         </tr>
 
     
@@ -1770,10 +2116,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Last name</p></td>
         </tr>
 
     
@@ -1833,6 +2195,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.internet.userName());
+//outputs: &quot;Kirstin39&quot;</pre>
+
 
     
 </dd>
@@ -1887,7 +2256,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

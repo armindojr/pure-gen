@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".lines"><span class="type-signature">&lt;static> </span>lines(lineCount)</h4>
+    <h4 class="name" id=".lines"><span class="type-signature">&lt;static> </span>lines( [lineCount])</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>returns lines of lorem separated by <code>'\n'</code></p>
+        <p>Returns lines of lorem separated by <code>'\n'</code></p>
     </div>
     
 
@@ -186,7 +186,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -212,10 +216,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defaults to a random number between 1 and 5</p></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of lines</p></td>
         </tr>
 
     
@@ -277,13 +297,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.lines());
+//outputs: &quot;Earum repellendus dolores ea sint non eum libero.&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".paragraph"><span class="type-signature">&lt;static> </span>paragraph(sentenceCount)</h4>
+    <h4 class="name" id=".paragraph"><span class="type-signature">&lt;static> </span>paragraph( [sentenceCount])</h4>
     
     
 </dt>
@@ -291,7 +318,7 @@
 
     
     <div class="description">
-        <p>paragraph</p>
+        <p>Generates a random paragraph</p>
     </div>
     
 
@@ -314,7 +341,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -340,10 +371,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defaults to 3</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>number of sentences</p></td>
         </tr>
 
     
@@ -405,13 +452,21 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.paragraph());
+//outputs: &quot;Odit voluptas laudantium illo sit animi ut. Atque doloribus suscipit.
+// Ut dolore iusto modi corrupti facere.&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".paragraphs"><span class="type-signature">&lt;static> </span>paragraphs(paragraphCount, separator)</h4>
+    <h4 class="name" id=".paragraphs"><span class="type-signature">&lt;static> </span>paragraphs( [paragraphCount] [, separator])</h4>
     
     
 </dt>
@@ -419,7 +474,7 @@
 
     
     <div class="description">
-        <p>paragraphs</p>
+        <p>Generates random paragraphs</p>
     </div>
     
 
@@ -442,7 +497,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -468,10 +527,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defaults to 3</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>number of paragraphs</p></td>
         </tr>
 
     
@@ -492,10 +567,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defaults to <code>'\n \r'</code></p></td>
+            
+                <td class="default">
+                
+                    '\n \r'
+                
+                </td>
+            
+
+            <td class="description last"><p>Separator of paragraphs</p></td>
         </tr>
 
     
@@ -557,13 +648,22 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.paragraphs());
+//outputs: &quot;Autem et vero voluptates. Commodi et ipsam sed aut dolorem sapiente ut. Ut assumenda ut sed id iusto et quaerat tempora.
+// Itaque accusantium doloremque quae nisi et dignissimos rerum et quis. Rerum sint ex aliquam. Quis ut voluptatem nostrum odio expedita.
+// Consequuntur illo magnam. Provident nihil ut est. Exercitationem sed aliquam soluta molestiae fugit.&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".sentence"><span class="type-signature">&lt;static> </span>sentence(wordCount, range)</h4>
+    <h4 class="name" id=".sentence"><span class="type-signature">&lt;static> </span>sentence( [wordCount])</h4>
     
     
 </dt>
@@ -571,7 +671,7 @@
 
     
     <div class="description">
-        <p>sentence</p>
+        <p>Generates a random sentence</p>
     </div>
     
 
@@ -594,7 +694,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -620,34 +724,26 @@
             </td>
 
             
-
-            
-
-            <td class="description last"><p>defaults to a random number between 3 and 10</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>range</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">number</span>
+                    &lt;optional><br>
+                
 
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>number of words</p></td>
         </tr>
 
     
@@ -709,13 +805,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.sentence());
+//outputs: &quot;Facere enim quibusdam.&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".sentences"><span class="type-signature">&lt;static> </span>sentences(sentenceCount, separator)</h4>
+    <h4 class="name" id=".sentences"><span class="type-signature">&lt;static> </span>sentences( [sentenceCount] [, separator])</h4>
     
     
 </dt>
@@ -723,7 +826,7 @@
 
     
     <div class="description">
-        <p>sentences</p>
+        <p>Generates random sentences</p>
     </div>
     
 
@@ -746,7 +849,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -772,10 +879,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defautls to a random number between 2 and 6</p></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>number of sentences</p></td>
         </tr>
 
     
@@ -796,10 +919,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>defaults to <code>' '</code></p></td>
+            
+                <td class="default">
+                
+                    ' '
+                
+                </td>
+            
+
+            <td class="description last"><p>Separator of sentences</p></td>
         </tr>
 
     
@@ -861,13 +1000,21 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.sentences());
+//outputs: &quot;Voluptatem eius ab exercitationem sint ut provident
+// et cupiditate. Et omnis natus qui. Velit qui dolore. Alias sed similique voluptate delectus.&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".slug"><span class="type-signature">&lt;static> </span>slug(wordCount)</h4>
+    <h4 class="name" id=".slug"><span class="type-signature">&lt;static> </span>slug( [wordCount])</h4>
     
     
 </dt>
@@ -875,7 +1022,7 @@
 
     
     <div class="description">
-        <p>slug</p>
+        <p>Generates a random word slugify</p>
     </div>
     
 
@@ -898,7 +1045,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -924,138 +1075,26 @@
             </td>
 
             
-
-            
-
-            <td class="description last"><p>number of words, defaults to 3</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".text"><span class="type-signature">&lt;static> </span>text(times)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>returns random text based on a random lorem method</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>times</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">number</span>
+                    &lt;optional><br>
+                
 
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>number of words</p></td>
         </tr>
 
     
@@ -1117,13 +1156,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.slug());
+//outputs: &quot;beatae-magni-fugiat&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".word"><span class="type-signature">&lt;static> </span>word(length)</h4>
+    <h4 class="name" id=".text"><span class="type-signature">&lt;static> </span>text()</h4>
     
     
 </dt>
@@ -1131,7 +1177,92 @@
 
     
     <div class="description">
-        <p>generates a word of a specified length</p>
+        <p>Returns random text based on a random lorem method</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.text());
+//outputs: &quot;Fuga nesciunt laudantium autem nisi. Illo nulla illo ut. In ipsam quia consequatur dolorem nesciunt quia sint et.&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".word"><span class="type-signature">&lt;static> </span>word( [length])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Generates a word of a specified length</p>
     </div>
     
 
@@ -1154,7 +1285,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1180,10 +1315,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>length of the word that should be returned. Defaults to a random length</p></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>length of the word that should be returned</p></td>
         </tr>
 
     
@@ -1245,13 +1396,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.word());
+//outputs: &quot;quidem&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".words"><span class="type-signature">&lt;static> </span>words(num)</h4>
+    <h4 class="name" id=".words"><span class="type-signature">&lt;static> </span>words( [num])</h4>
     
     
 </dt>
@@ -1259,7 +1417,7 @@
 
     
     <div class="description">
-        <p>generates a space separated list of words</p>
+        <p>Generates a space separated list of words</p>
     </div>
     
 
@@ -1282,7 +1440,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1308,10 +1470,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>number of words, defaults to 3</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>number of words</p></td>
         </tr>
 
     
@@ -1371,6 +1549,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.lorem.words());
+//outputs: &quot;et id voluptatem&quot;</pre>
+
 
     
 </dd>
@@ -1425,7 +1610,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

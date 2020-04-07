@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".commonFileExt"><span class="type-signature">&lt;static> </span>commonFileExt(type)</h4>
+    <h4 class="name" id=".commonFileExt"><span class="type-signature">&lt;static> </span>commonFileExt()</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>returns a commonly used file extension based on optional type</p>
+        <p>Returns a commonly used file extension based on optional type</p>
     </div>
     
 
@@ -172,56 +172,6 @@
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -277,13 +227,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.commonFileExt());
+//outputs: &quot;wav&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".commonFileName"><span class="type-signature">&lt;static> </span>commonFileName(ext, type)</h4>
+    <h4 class="name" id=".commonFileName"><span class="type-signature">&lt;static> </span>commonFileName( [ext])</h4>
     
     
 </dt>
@@ -291,7 +248,7 @@
 
     
     <div class="description">
-        <p>commonFileName</p>
+        <p>Generates a file name with common extension</p>
     </div>
     
 
@@ -314,7 +271,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -340,34 +301,26 @@
             </td>
 
             
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">string</span>
+                    &lt;optional><br>
+                
 
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Define what extension to use</p></td>
         </tr>
 
     
@@ -429,6 +382,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.commonFileName());
+//outputs: &quot;thx.gif&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -443,7 +403,7 @@
 
     
     <div class="description">
-        <p>returns a commonly used file type</p>
+        <p>Returns a commonly used file type</p>
     </div>
     
 
@@ -505,6 +465,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.commonFileType());
+//outputs: &quot;video&quot;</pre>
+
 
     
 </dd>
@@ -521,7 +488,7 @@
 
     
     <div class="description">
-        <p>returns directory path</p>
+        <p>Returns directory path</p>
     </div>
     
 
@@ -585,13 +552,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.directoryPath());
+//outputs: &quot;/private/tmp&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".fileExt"><span class="type-signature">&lt;static> </span>fileExt(mimeType)</h4>
+    <h4 class="name" id=".fileExt"><span class="type-signature">&lt;static> </span>fileExt( [mimeType])</h4>
     
     
 </dt>
@@ -599,7 +573,7 @@
 
     
     <div class="description">
-        <p>fileExt</p>
+        <p>Returns file extension based on mime type</p>
     </div>
     
 
@@ -622,7 +596,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -648,10 +626,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Define what internet media type to use</p></td>
         </tr>
 
     
@@ -713,13 +707,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.fileExt());
+//outputs: &quot;c4u&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".fileName"><span class="type-signature">&lt;static> </span>fileName(ext, type)</h4>
+    <h4 class="name" id=".fileName"><span class="type-signature">&lt;static> </span>fileName( [ext])</h4>
     
     
 </dt>
@@ -727,7 +728,7 @@
 
     
     <div class="description">
-        <p>generates a file name with extension or optional type</p>
+        <p>Generates a file name with extension</p>
     </div>
     
 
@@ -750,7 +751,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -776,34 +781,26 @@
             </td>
 
             
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">string</span>
+                    &lt;optional><br>
+                
 
+                
 
-
-            
-            </td>
-
-            
-
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Define what extension to use</p></td>
         </tr>
 
     
@@ -865,6 +862,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.fileName());
+//outputs: &quot;account_home.ipk&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -879,7 +883,7 @@
 
     
     <div class="description">
-        <p>returns file path</p>
+        <p>Returns file path</p>
     </div>
     
 
@@ -941,6 +945,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.filePath());
+//outputs: &quot;/usr/src/solutions_virtual.mif&quot;</pre>
+
 
     
 </dd>
@@ -957,7 +968,7 @@
 
     
     <div class="description">
-        <p>returns any file type available as mime-type</p>
+        <p>Returns any file type available as mime-type</p>
     </div>
     
 
@@ -1019,6 +1030,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.fileType());
+//outputs: &quot;x-shader&quot;</pre>
+
 
     
 </dd>
@@ -1035,7 +1053,7 @@
 
     
     <div class="description">
-        <p>mimeType</p>
+        <p>Generates a random internet media type</p>
     </div>
     
 
@@ -1097,6 +1115,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.mimeType());
+//outputs: &quot;application/vnd.picsel&quot;</pre>
+
 
     
 </dd>
@@ -1113,7 +1138,7 @@
 
     
     <div class="description">
-        <p>semver</p>
+        <p>Returns random semantic versioning number</p>
     </div>
     
 
@@ -1175,6 +1200,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.system.semver());
+//outputs: &quot;9.8.1&quot;</pre>
+
 
     
 </dd>
@@ -1229,7 +1261,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:56-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

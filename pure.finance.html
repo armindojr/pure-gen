@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".account"><span class="type-signature">&lt;static> </span>account(length)</h4>
+    <h4 class="name" id=".account"><span class="type-signature">&lt;static> </span>account( [length])</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>account</p>
+        <p>Return random account number</p>
     </div>
     
 
@@ -186,7 +186,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -212,10 +216,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Locale
+                
+                </td>
+            
+
+            <td class="description last"><p>Length of account number</p></td>
         </tr>
 
     
@@ -277,6 +297,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.account());
+//outputs: &quot;91143029&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -291,7 +318,7 @@
 
     
     <div class="description">
-        <p>accountName</p>
+        <p>Return random account name</p>
     </div>
     
 
@@ -355,13 +382,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.accountName());
+//outputs: &quot;Personal Loan Account&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".amount"><span class="type-signature">&lt;static> </span>amount(min, max, dec, symbol)</h4>
+    <h4 class="name" id=".amount"><span class="type-signature">&lt;static> </span>amount( [min] [, max] [, dec] [, symbol])</h4>
     
     
 </dt>
@@ -369,7 +403,7 @@
 
     
     <div class="description">
-        <p>amount</p>
+        <p>Return random amount value</p>
     </div>
     
 
@@ -392,7 +426,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -418,10 +456,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Minimum amount value</p></td>
         </tr>
 
     
@@ -442,10 +496,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    1000
+                
+                </td>
+            
+
+            <td class="description last"><p>Maximum amount value</p></td>
         </tr>
 
     
@@ -466,10 +536,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    2
+                
+                </td>
+            
+
+            <td class="description last"><p>Floating point precision</p></td>
         </tr>
 
     
@@ -490,10 +576,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last"><p>Amount symbol</p></td>
         </tr>
 
     
@@ -553,26 +655,13 @@
     
 
     
-    <h5>Returns:</h5>
+
     
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
+        <h5>Example</h5>
         
-<span class="param-type">string</span>
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.amount());
+//outputs: &quot;891.45&quot;</pre>
 
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
@@ -589,7 +678,7 @@
 
     
     <div class="description">
-        <p>bic</p>
+        <p>Return random Bank Identifier Code</p>
     </div>
     
 
@@ -651,6 +740,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.bic());
+//outputs: &quot;WMCAAFT1479&quot;</pre>
+
 
     
 </dd>
@@ -667,7 +763,7 @@
 
     
     <div class="description">
-        <p>bitcoinAddress</p>
+        <p>Return random bitcoin address</p>
     </div>
     
 
@@ -729,6 +825,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.bitcoinAddress());
+//outputs: &quot;1Xm61sVQkERphwvJ5QHY2UggghKZXuXas&quot;</pre>
+
 
     
 </dd>
@@ -745,7 +848,7 @@
 
     
     <div class="description">
-        <p>Credit card CVV</p>
+        <p>Return random CVV</p>
     </div>
     
 
@@ -809,13 +912,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.creditCardCVV());
+//outputs: &quot;256&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".creditCardNumber"><span class="type-signature">&lt;static> </span>creditCardNumber(provider)</h4>
+    <h4 class="name" id=".creditCardNumber"><span class="type-signature">&lt;static> </span>creditCardNumber( [provider])</h4>
     
     
 </dt>
@@ -823,7 +933,7 @@
 
     
     <div class="description">
-        <p>Credit card number</p>
+        <p>Return random localized credit card number</p>
     </div>
     
 
@@ -846,7 +956,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -872,10 +986,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>| scheme</p></td>
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last"><p>Provider to generate from schema</p></td>
         </tr>
 
     
@@ -937,6 +1067,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.creditCardNumber());
+//outputs: &quot;3677-158240-5783&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -951,7 +1088,7 @@
 
     
     <div class="description">
-        <p>currencyCode</p>
+        <p>Return random currency code</p>
     </div>
     
 
@@ -1013,6 +1150,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.currencyCode());
+//outputs: &quot;OMR&quot;</pre>
+
 
     
 </dd>
@@ -1029,7 +1173,7 @@
 
     
     <div class="description">
-        <p>currencyName</p>
+        <p>Return random currency name</p>
     </div>
     
 
@@ -1091,6 +1235,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.currencyName());
+//outputs: &quot;US Dollar&quot;</pre>
+
 
     
 </dd>
@@ -1107,7 +1258,7 @@
 
     
     <div class="description">
-        <p>currencySymbol</p>
+        <p>Return random currency symbol</p>
     </div>
     
 
@@ -1169,6 +1320,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.currencySymbol());
+//outputs: &quot;₡&quot;</pre>
+
 
     
 </dd>
@@ -1185,7 +1343,7 @@
 
     
     <div class="description">
-        <p>ethereumAddress</p>
+        <p>Return random ethereum address</p>
     </div>
     
 
@@ -1249,82 +1407,11 @@
     
 
     
-</dd>
-
+        <h5>Example</h5>
         
-            
-<hr>
-<dt>
-    <h4 class="name" id=".iban"><span class="type-signature">&lt;static> </span>iban()</h4>
-    
-    
-</dt>
-<dd>
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.ethereumAddress());
+//outputs: &quot;0x43ea6bb9a79e2e12c18dd0f2d8ff08fd205cf97c&quot;</pre>
 
-    
-    <div class="description">
-        <p>iban</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 </dd>
@@ -1333,7 +1420,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".litecoinAddress"><span class="type-signature">&lt;static> </span>litecoinAddress()</h4>
+    <h4 class="name" id=".iban"><span class="type-signature">&lt;static> </span>iban( [formatted] [, country])</h4>
     
     
 </dt>
@@ -1341,85 +1428,7 @@
 
     
     <div class="description">
-        <p>litecoinAddress</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".mask"><span class="type-signature">&lt;static> </span>mask(length, parens, ellipsis)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>mask</p>
+        <p>Return random International Bank Account Number</p>
     </div>
     
 
@@ -1442,7 +1451,291 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>formatted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>If output is formatted or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>country</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    Random country
+                
+                </td>
+            
+
+            <td class="description last"><p>Alpha-2 country code</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.iban());
+//outputs: &quot;FI2750016855791009&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".litecoinAddress"><span class="type-signature">&lt;static> </span>litecoinAddress()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return random litecoin address</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.litecoinAddress());
+//outputs: &quot;3jiLj9MZrdXGkBPcmEfX4ka1Yrgm9WQ&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".mask"><span class="type-signature">&lt;static> </span>mask( [length] [, parens] [, ellipsis])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return random mask number</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1468,10 +1761,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    4
+                
+                </td>
+            
+
+            <td class="description last"><p>Length of mask number</p></td>
         </tr>
 
     
@@ -1492,10 +1801,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Format with parentesis</p></td>
         </tr>
 
     
@@ -1516,10 +1841,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Format with ellipsis</p></td>
         </tr>
 
     
@@ -1581,6 +1922,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.mask());
+//outputs: &quot;3085&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -1595,7 +1943,7 @@
 
     
     <div class="description">
-        <p>routingNumber</p>
+        <p>Return random routing number</p>
     </div>
     
 
@@ -1657,6 +2005,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.routingNumber());
+//outputs: &quot;104791008&quot;</pre>
+
 
     
 </dd>
@@ -1673,7 +2028,7 @@
 
     
     <div class="description">
-        <p>transactionType</p>
+        <p>Return random transaction type</p>
     </div>
     
 
@@ -1735,6 +2090,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.finance.transactionType());
+//outputs: &quot;deposit&quot;</pre>
+
 
     
 </dd>
@@ -1789,7 +2151,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

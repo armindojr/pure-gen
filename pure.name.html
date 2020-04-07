@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".findName"><span class="type-signature">&lt;static> </span>findName(firstName, lastName, gender)</h4>
+    <h4 class="name" id=".findName"><span class="type-signature">&lt;static> </span>findName( [gender])</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>findName</p>
+        <p>Generate random complete name</p>
     </div>
     
 
@@ -186,7 +186,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -198,61 +202,13 @@
 
         <tr>
             
-                <td class="name"><code>firstName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>lastName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>gender</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">mixed</span>
+<span class="param-type">number</span>
 
 
 
@@ -260,10 +216,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Defines gendered names by 0 male and 1 female</p></td>
         </tr>
 
     
@@ -323,6 +295,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.findName());
+//outputs: &quot;Dorothy Littel&quot;</pre>
+
 
     
 </dd>
@@ -331,7 +310,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".firstName"><span class="type-signature">&lt;static> </span>firstName(gender)</h4>
+    <h4 class="name" id=".firstName"><span class="type-signature">&lt;static> </span>firstName( [gender])</h4>
     
     
 </dt>
@@ -339,7 +318,7 @@
 
     
     <div class="description">
-        <p>firstName</p>
+        <p>Generate random first names</p>
     </div>
     
 
@@ -362,7 +341,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -380,7 +363,7 @@
             <td class="type">
             
                 
-<span class="param-type">mixed</span>
+<span class="param-type">number</span>
 
 
 
@@ -388,10 +371,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Defines gendered names by 0 male and 1 female</p></td>
         </tr>
 
     
@@ -451,6 +450,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.firstName());
+//outputs: &quot;Jennifer&quot;</pre>
+
 
     
 </dd>
@@ -467,7 +473,7 @@
 
     
     <div class="description">
-        <p>gender</p>
+        <p>Generate random gender</p>
     </div>
     
 
@@ -529,6 +535,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.gender());
+//outputs: &quot;Hermaphrodite&quot;</pre>
+
 
     
 </dd>
@@ -545,7 +558,7 @@
 
     
     <div class="description">
-        <p>jobArea</p>
+        <p>Generate random job area</p>
     </div>
     
 
@@ -607,6 +620,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.jobArea());
+//outputs: &quot;Operations&quot;</pre>
+
 
     
 </dd>
@@ -623,7 +643,7 @@
 
     
     <div class="description">
-        <p>jobDescriptor</p>
+        <p>Generate random job descriptor</p>
     </div>
     
 
@@ -685,6 +705,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.jobDescriptor());
+//outputs: &quot;Dynamic&quot;</pre>
+
 
     
 </dd>
@@ -701,7 +728,7 @@
 
     
     <div class="description">
-        <p>jobTitle</p>
+        <p>Generates a random job title</p>
     </div>
     
 
@@ -763,6 +790,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.jobTitle());
+//outputs: &quot;Regional Infrastructure Consultant&quot;</pre>
+
 
     
 </dd>
@@ -779,7 +813,7 @@
 
     
     <div class="description">
-        <p>jobType</p>
+        <p>Generate random job area</p>
     </div>
     
 
@@ -843,13 +877,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.jobType());
+//outputs: &quot;Administrator&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".lastName"><span class="type-signature">&lt;static> </span>lastName(gender)</h4>
+    <h4 class="name" id=".lastName"><span class="type-signature">&lt;static> </span>lastName( [gender])</h4>
     
     
 </dt>
@@ -857,7 +898,7 @@
 
     
     <div class="description">
-        <p>lastName</p>
+        <p>Generate random last names</p>
     </div>
     
 
@@ -880,7 +921,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -898,7 +943,7 @@
             <td class="type">
             
                 
-<span class="param-type">mixed</span>
+<span class="param-type">number</span>
 
 
 
@@ -906,10 +951,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Defines gendered names by 0 male and 1 female</p></td>
         </tr>
 
     
@@ -969,6 +1030,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.lastName());
+//outputs: &quot;Bartell&quot;</pre>
+
 
     
 </dd>
@@ -985,7 +1053,7 @@
 
     
     <div class="description">
-        <p>prefix</p>
+        <p>Generate random prefix</p>
     </div>
     
 
@@ -1099,6 +1167,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.prefix());
+//outputs: &quot;Miss&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -1113,7 +1188,7 @@
 
     
     <div class="description">
-        <p>suffix</p>
+        <p>Generate random suffix</p>
     </div>
     
 
@@ -1175,6 +1250,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.suffix());
+//outputs: &quot;IV&quot;</pre>
+
 
     
 </dd>
@@ -1191,7 +1273,7 @@
 
     
     <div class="description">
-        <p>title</p>
+        <p>Generate random title</p>
     </div>
     
 
@@ -1253,6 +1335,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.name.title());
+//outputs: &quot;Corporate Research Associate&quot;</pre>
+
 
     
 </dd>
@@ -1307,7 +1396,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:56-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

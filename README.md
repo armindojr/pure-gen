@@ -1,7 +1,7 @@
 <div>
     <p  align="center">
     	<a>
-    	    <img  alt="Pure-gen"  src="logo/logo-completo-hor.svg"  width="350">
+    	    <img  alt="Pure-gen"  src="https://cdn.statically.io/gh/armindojr/pure-gen/a62e2abc/static/logo/logo-completo-hor.svg"  width="350">
     	</a>
     </p>
 </div>
@@ -9,6 +9,17 @@
 <div>
     <p  align="center">
     	Generate fake data to be used in test automation
+    </p>
+</div>
+
+<div>
+    <p align="center">
+      <a href="https://travis-ci.org/armindojr/pure-gen">
+        <img alt="Build Status" src="https://travis-ci.org/armindojr/pure-gen.svg?branch=master">
+      </a>
+      <a href="https://codecov.io/gh/armindojr/pure-gen">
+        <img alt="CodeCov" src="https://codecov.io/gh/armindojr/pure-gen/branch/master/graph/badge.svg">
+      </a>
     </p>
 </div>
 
@@ -20,6 +31,11 @@ This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker
 ## Usage
 
 ### Node.js
+
+First, install package with:
+```
+$ npm i --save pure-gen
+```
 
 ```js
 const pure = require('pure-gen');
@@ -54,96 +70,106 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
 // outputs "randomA" or "randomB"
 ```
 
-### JSDoc API Browser
-
+### JSDoc API
+- https://armindojr.github.io/pure-gen/
 
 
 ### API Methods
 
 * address
-  * zipCode
-  * zipCodeByState
+  * cardinalDirection
   * city
+  * cityName
   * cityPrefix
   * citySuffix
-  * cityName
-  * streetName
-  * streetAddress
-  * streetSuffix
-  * streetPrefix
-  * secondaryAddress
-  * county
   * country
-  * defaultCountry
   * countryCode
-  * state
-  * stateAbbr
+  * county
+  * defaultCountry
+  * direction
   * latitude
   * longitude
-  * direction
-  * cardinalDirection
-  * ordinalDirection
   * nearbyGPSCoordinate
+  * ordinalDirection
+  * secondaryAddress
+  * state
+  * stateAbbr
+  * streetAddress
+  * streetName
+  * streetPrefix
+  * streetSuffix
+  * zipCode
+  * zipCodeByState
 * airport
-  * name
   * iataCode
   * icaoCode
+  * name
 * commerce
+  * categories
   * color
   * department
-  * productName
   * price
-  * productAdjective
-  * productMaterial
   * product
+  * productAdjective
   * productDescription
+  * productMaterial
+  * productName
 * company
-  * suffixes
-  * companyName
-  * companySuffix
-  * catchPhrase
   * bs
-  * catchPhraseAdjective
-  * catchPhraseDescriptor
-  * catchPhraseNoun
   * bsAdjective
   * bsBuzz
   * bsNoun
+  * catchPhrase
+  * catchPhraseAdjective
+  * catchPhraseDescriptor
+  * catchPhraseNoun
+  * companyName
+  * companySuffix
+  * suffixes
 * database
-  * column
-  * type
   * collation
+  * column
   * engine
+  * type
 * date
-  * past
-  * future
-  * between
   * arrayBetween
+  * between
+  * future
+  * month
+  * past
   * recent
   * soon
-  * month
   * weekday
+* dessert
+  * flavor
+  * topping
+  * variety
 * document
-  * cpf
-  * cnpj
+  * brazilianCitizenNumber
+  * brazilianCompanyNumber
+  * brazilianId
 * fake
 * finance
   * account
   * accountName
-  * routingNumber
-  * mask
   * amount
-  * transactionType
+  * bic
+  * bitcoinAddress
+  * creditCardCVV
+  * creditCardNumber
   * currencyCode
   * currencyName
   * currencySymbol
-  * bitcoinAddress
-  * creditCardNumber
-  * creditCardCVV
   * ethereumAddress
-  * litecoinAddress
   * iban
-  * bic
+  * litecoinAddress
+  * mask
+  * routingNumber
+  * transactionType
+* games
+  * title
+  * genre
+  * platform
 * git
   * branch
   * commitEntry
@@ -153,115 +179,125 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
 * hacker
   * abbreviation
   * adjective
-  * noun
-  * verb
   * ingverb
+  * noun
   * phrase
+  * verb
 * helpers
-  * randomize
-  * slugify
-  * replaceSymbolWithNumber
-  * replaceSymbols
-  * shuffle
-  * mustache
-  * createCard
   * contextualCard
-  * userCard
+  * createCard
   * createTransaction
+  * mustache
+  * randomize
+  * replaceSymbols
+  * replaceSymbolWithNumber
+  * shuffle
+  * slugify
+  * userCard
 * image
-  * image
-  * avatar
-  * imageUrl
   * abstract
   * animals
+  * avatar
   * business
   * cats
   * city
-  * food
-  * nightlife
+  * dataUri
   * fashion
-  * people
+  * food
+  * image
+  * imageUrl
   * nature
+  * nightlife
+  * people
   * sports
   * technics
   * transport
-  * dataUri
+  * placeimg
+  * unsplash
 * internet
   * avatar
-  * email
-  * exampleEmail
-  * userName
-  * protocol
-  * url
+  * color
   * domainName
   * domainSuffix
   * domainWord
+  * email
+  * exampleEmail
   * ip
   * ipv6
-  * userAgent
-  * color
   * mac
   * password
-* markdown
-  * header
-  * emphasis
-  * table
-  * orderedList
-  * unorderedList
-  * inlineCode
-  * blockCode
-* music
-  * genre
+  * protocol
+  * url
+  * userAgent
+  * userName
 * lorem
-  * word
-  * words
-  * sentence
-  * slug
-  * sentences
+  * lines
   * paragraph
   * paragraphs
+  * sentence
+  * sentences
+  * slug
   * text
-  * lines
+  * word
+  * words
+* markdown
+  * blockCode
+  * emphasis
+  * header
+  * inlineCode
+  * orderedList
+  * table
+  * unorderedList
+* music
+  * genre
 * name
-  * firstName
-  * lastName
   * findName
+  * firstName
+  * jobArea
+  * jobDescriptor
   * jobTitle
+  * jobType
+  * lastName
   * prefix
   * suffix
   * title
-  * jobDescriptor
-  * jobArea
-  * jobType
 * phone
+  * phoneFormats
   * phoneNumber
   * phoneNumberFormat
-  * phoneFormats
 * random
-  * number
-  * float
-  * arrayElement
-  * objectElement
-  * uuid
-  * boolean
-  * word
-  * words
-  * image
-  * locale
   * alpha
   * alphaNumeric
+  * arrayElement
+  * boolean
+  * float
   * hexaDecimal
+  * image
+  * locale
+  * number
+  * objectElement
+  * uuid
+  * word
+  * words
 * system
-  * fileName
-  * commonFileName
-  * mimeType
-  * commonFileType
   * commonFileExt
-  * fileType
-  * fileExt
+  * commonFileName
+  * commonFileType
   * directoryPath
+  * fileExt
+  * fileName
   * filePath
+  * fileType
+  * mimeType
   * semver
+* vehicle
+  * vehicle
+  * manufacturer
+  * model
+  * type
+  * fuel
+  * vin
+  * color
 
 
 ## Localization
@@ -279,11 +315,14 @@ pure.setLocale("de");
 pure.locale = "de";
 ```
 
+ * af_ZA
+ * ar
  * az
  * cz
  * de
  * de_AT
  * de_CH
+ * el
  * en
  * en_AU
  * en_BORK
@@ -300,17 +339,21 @@ pure.locale = "de";
  * fa
  * fr
  * fr_CA
+ * fr_CH
  * ge
  * id_ID
  * it
  * ja
  * ko
+ * lv
  * nb_NO
  * nep
  * nl
+ * nl_BE
  * pl
  * pt_BR
  * pt_PT
+ * ro
  * ru
  * sk
  * sv
@@ -319,6 +362,7 @@ pure.locale = "de";
  * vi
  * zh_CN
  * zh_TW
+ * zu_ZA
 
 
 ### Individual Localization Packages
@@ -377,7 +421,7 @@ Why did you renamed it?
 - Because i wanted to publish this as an new package in npm
 
 What are the major changes compared to original project?
-- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in [CHANGELOG.md](doc/CHANGELOG.html)
+- I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in CHANGELOG.md
 
 ## Maintainer
 

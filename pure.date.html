@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".arrayBetween"><span class="type-signature">&lt;static> </span>arrayBetween(from, to, num)</h4>
+    <h4 class="name" id=".arrayBetween"><span class="type-signature">&lt;static> </span>arrayBetween(from, to [, num])</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>arrayBetween</p>
+        <p>Generate array with random dates between two reference dates</p>
     </div>
     
 
@@ -186,7 +186,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -212,7 +216,19 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -236,7 +252,19 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -260,10 +288,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>number of samples to return in array</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of samples to return in array</p></td>
         </tr>
 
     
@@ -325,6 +369,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.arrayBetween(&#x27;2015-10-18T06:40:58.676Z&#x27;, &#x27;2021-02-13T02:06:21.464Z&#x27;));
+//outputs: &quot;[2017-02-15T11:32:19.373Z,2018-06-16T16:23:39.697Z,2019-10-15T21:14:59.697Z]&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -339,7 +390,7 @@
 
     
     <div class="description">
-        <p>between</p>
+        <p>Generate random date between two reference dates</p>
     </div>
     
 
@@ -477,13 +528,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.between(&#x27;2015-10-18T06:40:58.676Z&#x27;, &#x27;2021-02-13T02:06:21.464Z&#x27;));
+//outputs: &quot;2016-03-17T11:42:53.411Z&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".future"><span class="type-signature">&lt;static> </span>future(years, refDate)</h4>
+    <h4 class="name" id=".future"><span class="type-signature">&lt;static> </span>future( [years] [, refDate])</h4>
     
     
 </dt>
@@ -491,7 +549,7 @@
 
     
     <div class="description">
-        <p>future</p>
+        <p>Generate random future date from today or parameters</p>
     </div>
     
 
@@ -514,7 +572,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -540,10 +602,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>How many years the date possible be after refDate</p></td>
         </tr>
 
     
@@ -564,10 +642,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Today
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference to generate future this time</p></td>
         </tr>
 
     
@@ -629,13 +723,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.future());
+//outputs: &quot;2021-02-13T02:06:21.464Z&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".month"><span class="type-signature">&lt;static> </span>month(options)</h4>
+    <h4 class="name" id=".month"><span class="type-signature">&lt;static> </span>month( [options])</h4>
     
     
 </dt>
@@ -643,7 +744,7 @@
 
     
     <div class="description">
-        <p>month</p>
+        <p>Generate random month</p>
     </div>
     
 
@@ -665,6 +766,8 @@
 
         <th>Type</th>
 
+        
+        <th>Argument</th>
         
 
         
@@ -692,10 +795,130 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>abbr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Abbreviated return</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
             <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -757,13 +980,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.month());
+//outputs: &quot;June&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".past"><span class="type-signature">&lt;static> </span>past(years, refDate)</h4>
+    <h4 class="name" id=".past"><span class="type-signature">&lt;static> </span>past( [years] [, refDate])</h4>
     
     
 </dt>
@@ -771,7 +1001,7 @@
 
     
     <div class="description">
-        <p>past</p>
+        <p>Generate random past date from today or parameters</p>
     </div>
     
 
@@ -794,7 +1024,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -820,10 +1054,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>How many years the date possible be before refDate</p></td>
         </tr>
 
     
@@ -844,10 +1094,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Today
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference to generate past this time</p></td>
         </tr>
 
     
@@ -909,13 +1175,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.past());
+//outputs: &quot;2020-01-20T10:01:25.062Z&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".recent"><span class="type-signature">&lt;static> </span>recent(days, refDate)</h4>
+    <h4 class="name" id=".recent"><span class="type-signature">&lt;static> </span>recent( [days] [, refDate])</h4>
     
     
 </dt>
@@ -923,7 +1196,7 @@
 
     
     <div class="description">
-        <p>recent</p>
+        <p>Generate random recent date from today or parameters</p>
     </div>
     
 
@@ -946,7 +1219,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -972,10 +1249,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference to generate past date</p></td>
         </tr>
 
     
@@ -996,10 +1289,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Today
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference date to use</p></td>
         </tr>
 
     
@@ -1061,13 +1370,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.recent());
+//outputs: &quot;2020-04-05T20:16:55.855Z&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".soon"><span class="type-signature">&lt;static> </span>soon(days, refDate)</h4>
+    <h4 class="name" id=".soon"><span class="type-signature">&lt;static> </span>soon( [days] [, refDate])</h4>
     
     
 </dt>
@@ -1075,7 +1391,7 @@
 
     
     <div class="description">
-        <p>soon</p>
+        <p>Generate random recent date from today or parameters</p>
     </div>
     
 
@@ -1098,7 +1414,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1124,10 +1444,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference to generate future date</p></td>
         </tr>
 
     
@@ -1148,10 +1484,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Today
+                
+                </td>
+            
+
+            <td class="description last"><p>Reference date to use</p></td>
         </tr>
 
     
@@ -1213,13 +1565,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.soon());
+//outputs: &quot;2020-04-06T08:10:13.362Z&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".weekday"><span class="type-signature">&lt;static> </span>weekday(options)</h4>
+    <h4 class="name" id=".weekday"><span class="type-signature">&lt;static> </span>weekday( [options])</h4>
     
     
 </dt>
@@ -1227,7 +1586,7 @@
 
     
     <div class="description">
-        <p>weekday</p>
+        <p>Generate random weekday</p>
     </div>
     
 
@@ -1249,6 +1608,8 @@
 
         <th>Type</th>
 
+        
+        <th>Argument</th>
         
 
         
@@ -1276,10 +1637,130 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
+            <td class="description last">
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>abbr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Abbreviated return</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
             <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -1339,6 +1820,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.date.weekday());
+//outputs: &quot;Wednesday&quot;</pre>
+
 
     
 </dd>
@@ -1393,7 +1881,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

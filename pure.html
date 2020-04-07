@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -164,10 +164,16 @@
             <dt><a href="namespaces.html#pure.date"><a href="pure.date.html">date</a></a></dt>
             <dd></dd>
         
+            <dt><a href="namespaces.html#pure.dessert"><a href="pure.dessert.html">dessert</a></a></dt>
+            <dd></dd>
+        
             <dt><a href="namespaces.html#pure.document"><a href="pure.document.html">document</a></a></dt>
             <dd></dd>
         
             <dt><a href="namespaces.html#pure.finance"><a href="pure.finance.html">finance</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#pure.games"><a href="pure.games.html">games</a></a></dt>
             <dd></dd>
         
             <dt><a href="namespaces.html#pure.git"><a href="pure.git.html">git</a></a></dt>
@@ -206,9 +212,6 @@
             <dt><a href="namespaces.html#pure.system"><a href="pure.system.html">system</a></a></dt>
             <dd></dd>
         
-            <dt><a href="namespaces.html#pure.unique"><a href="pure.unique.html">unique</a></a></dt>
-            <dd></dd>
-        
             <dt><a href="namespaces.html#pure.vehicle"><a href="pure.vehicle.html">vehicle</a></a></dt>
             <dd></dd>
         </dl>
@@ -231,12 +234,7 @@
 
     
     <div class="description">
-        <p>Generator method for combining pure methods based on string input</p>
-<p><strong>Example:</strong></p>
-<pre class="prettyprint source"><code>console.log(pure.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}'));
-//outputs: &quot;Marks, Dean Sr.&quot;
-</code></pre>
-<p>This will interpolate the format string with the value of methods
+        <p>This will interpolate the format string with the value of methods
 <a href="pure.name.html#.lastName">name.lastName</a>, <a href="pure.name.html#.firstName">name.firstName</a>,
 and <a href="pure.name.html#.suffix">name.suffix</a></p>
     </div>
@@ -290,7 +288,7 @@ and <a href="pure.name.html#.suffix">name.suffix</a></p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Docstring to replace with methods</p></td>
         </tr>
 
     
@@ -352,6 +350,13 @@ and <a href="pure.name.html#.suffix">name.suffix</a></p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.fake(&#x27;{{name.lastName}}, {{name.firstName}} {{name.suffix}}&#x27;));
+//outputs: &quot;Marks, Dean Sr.&quot;</pre>
+
+
+    
 </dd>
 
         </dl>
@@ -404,7 +409,7 @@ and <a href="pure.name.html#.suffix">name.suffix</a></p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

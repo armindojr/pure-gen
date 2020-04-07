@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -155,7 +155,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".cardinalDirection"><span class="type-signature">&lt;static> </span>cardinalDirection(useAbbr)</h4>
+    <h4 class="name" id=".cardinalDirection"><span class="type-signature">&lt;static> </span>cardinalDirection( [useAbbr])</h4>
     
     
 </dt>
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>cardinal direction</p>
+        <p>Returns random cardinal direction</p>
     </div>
     
 
@@ -186,7 +186,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -212,10 +216,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>return direction abbreviation. defaults to false</p></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Cardinal direction abbreviation</p></td>
         </tr>
 
     
@@ -277,6 +297,13 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.cardinalDirection());
+//outputs: &quot;South&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -292,15 +319,14 @@
     
     <div class="description">
         <p>Generates a random localized city name. The format string can contain any
-method provided by pure wrapped in <code>{{}}</code>, e.g. <code>{{name.firstName}}</code> in
-order to build the city name.</p>
-<p>If no format string is provided one of the following is randomly used:</p>
-<ul>
-<li><code>{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}</code></li>
-<li><code>{{address.cityPrefix}} {{name.firstName}}</code></li>
-<li><code>{{name.firstName}}{{address.citySuffix}}</code></li>
-<li><code>{{name.lastName}}{{address.citySuffix}}</code></li>
-</ul>
+<br> method provided by pure wrapped in <code>{{}}</code>, e.g. <code>{{name.firstName}}</code> in
+<br> order to build the city name.
+<br> If no format string is provided one of the following is randomly used:
+<br>
+<br> * <code>{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}</code>
+<br> * <code>{{address.cityPrefix}} {{name.firstName}}</code>
+<br> * <code>{{name.firstName}}{{address.citySuffix}}</code>
+<br> * <code>{{name.lastName}}{{address.citySuffix}}</code></p>
     </div>
     
 
@@ -352,7 +378,7 @@ order to build the city name.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>What format to use when generate city name</p></td>
         </tr>
 
     
@@ -414,6 +440,13 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.city());
+//outputs: &quot;Roobchester&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -428,7 +461,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>cityName</p>
+        <p>Return a random localized city name</p>
     </div>
     
 
@@ -490,6 +523,14 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">pure.locale = &#x27;pt_PT&#x27;
+console.log(pure.address.cityName());
+//outputs: &quot;Gafanha da Nazaré&quot;</pre>
+
 
     
 </dd>
@@ -570,6 +611,13 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.cityPrefix());
+//outputs: &quot;New&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -648,6 +696,13 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.citySuffix());
+//outputs: &quot;port&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -662,7 +717,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>country</p>
+        <p>Returns a localized country</p>
     </div>
     
 
@@ -726,13 +781,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.country());
+//outputs: &quot;Philippines&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".countryCode"><span class="type-signature">&lt;static> </span>countryCode(alphaCode)</h4>
+    <h4 class="name" id=".countryCode"><span class="type-signature">&lt;static> </span>countryCode( [alphaCode])</h4>
     
     
 </dt>
@@ -740,7 +802,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>countryCode</p>
+        <p>Returns a random country code</p>
     </div>
     
 
@@ -763,7 +825,11 @@ order to build the city name.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -789,10 +855,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default alpha-2</p></td>
+            
+                <td class="default">
+                
+                    alpha-2
+                
+                </td>
+            
+
+            <td class="description last"><p>Define what type of code return</p></td>
         </tr>
 
     
@@ -852,6 +934,13 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.countryCode());
+//outputs: &quot;GN&quot;</pre>
+
 
     
 </dd>
@@ -868,7 +957,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>county</p>
+        <p>Returns a localized county</p>
     </div>
     
 
@@ -930,6 +1019,13 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.county());
+//outputs: &quot;Bedfordshire&quot;</pre>
+
 
     
 </dd>
@@ -946,7 +1042,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>defaultCountry</p>
+        <p>Returns a localized default country</p>
     </div>
     
 
@@ -1010,13 +1106,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.defaultCountry());
+//outputs: &quot;United States of America&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".direction"><span class="type-signature">&lt;static> </span>direction(useAbbr)</h4>
+    <h4 class="name" id=".direction"><span class="type-signature">&lt;static> </span>direction( [useAbbr])</h4>
     
     
 </dt>
@@ -1024,7 +1127,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>direction</p>
+        <p>Returns random direction</p>
     </div>
     
 
@@ -1047,7 +1150,11 @@ order to build the city name.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1073,10 +1180,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>return direction abbreviation. defaults to false</p></td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Direction abbreviation</p></td>
         </tr>
 
     
@@ -1138,13 +1261,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.direction());
+//outputs: &quot;Northeast&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".latitude"><span class="type-signature">&lt;static> </span>latitude(max, min, precision)</h4>
+    <h4 class="name" id=".latitude"><span class="type-signature">&lt;static> </span>latitude( [max] [, min] [, precision])</h4>
     
     
 </dt>
@@ -1152,7 +1282,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>latitude</p>
+        <p>Returns random latitude respecting parameters</p>
     </div>
     
 
@@ -1175,7 +1305,11 @@ order to build the city name.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1201,10 +1335,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is 90</p></td>
+            
+                <td class="default">
+                
+                    90
+                
+                </td>
+            
+
+            <td class="description last"><p>Valid max range of latitude</p></td>
         </tr>
 
     
@@ -1225,10 +1375,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is -90</p></td>
+            
+                <td class="default">
+                
+                    -90
+                
+                </td>
+            
+
+            <td class="description last"><p>Valid min range of latitude</p></td>
         </tr>
 
     
@@ -1249,10 +1415,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is 4</p></td>
+            
+                <td class="default">
+                
+                    4
+                
+                </td>
+            
+
+            <td class="description last"><p>Floating point precision</p></td>
         </tr>
 
     
@@ -1314,13 +1496,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.latitude());
+//outputs: &quot;-24.9689&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".longitude"><span class="type-signature">&lt;static> </span>longitude(max, min, precision)</h4>
+    <h4 class="name" id=".longitude"><span class="type-signature">&lt;static> </span>longitude( [max] [, min] [, precision])</h4>
     
     
 </dt>
@@ -1328,7 +1517,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>longitude</p>
+        <p>Returns random longitude respecting parameters</p>
     </div>
     
 
@@ -1351,7 +1540,11 @@ order to build the city name.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1377,10 +1570,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is 180</p></td>
+            
+                <td class="default">
+                
+                    180
+                
+                </td>
+            
+
+            <td class="description last"><p>Valid max range of longitude</p></td>
         </tr>
 
     
@@ -1401,10 +1610,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is -180</p></td>
+            
+                <td class="default">
+                
+                    -180
+                
+                </td>
+            
+
+            <td class="description last"><p>Valid min range of longitude</p></td>
         </tr>
 
     
@@ -1425,10 +1650,26 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>default is 4</p></td>
+            
+                <td class="default">
+                
+                    4
+                
+                </td>
+            
+
+            <td class="description last"><p>Floating point precision</p></td>
         </tr>
 
     
@@ -1490,13 +1731,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.longitude());
+//outputs: &quot;-19.0215&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".ordinalDirection"><span class="type-signature">&lt;static> </span>ordinalDirection(useAbbr)</h4>
+    <h4 class="name" id=".nearbyGPSCoordinate"><span class="type-signature">&lt;static> </span>nearbyGPSCoordinate( [coordinate] [, radius] [, isMetric])</h4>
     
     
 </dt>
@@ -1504,7 +1752,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>ordinal direction</p>
+        <p>Returns random nearby GPS coordinate closed to specified point</p>
     </div>
     
 
@@ -1527,7 +1775,11 @@ order to build the city name.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1539,13 +1791,13 @@ order to build the city name.</p>
 
         <tr>
             
-                <td class="name"><code>useAbbr</code></td>
+                <td class="name"><code>coordinate</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Boolean</span>
+<span class="param-type">Array</span>
 
 
 
@@ -1553,199 +1805,33 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>return direction abbreviation. defaults to false</p></td>
+            
+                <td class="default">
+                
+                    ['random', 'random']
+                
+                </td>
+            
+
+            <td class="description last"><p>Array with latitude and longitude</p></td>
         </tr>
 
     
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".secondaryAddress"><span class="type-signature">&lt;static> </span>secondaryAddress()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>secondaryAddress</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".state"><span class="type-signature">&lt;static> </span>state(useAbbr)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>state</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>useAbbr</code></td>
+                <td class="name"><code>radius</code></td>
             
 
             <td class="type">
@@ -1759,7 +1845,63 @@ order to build the city name.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    10.0
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isMetric</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
             
 
             <td class="description last"></td>
@@ -1824,13 +1966,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.nearbyGPSCoordinate());
+//outputs: &quot;[ &#x27;-87.0506&#x27;, &#x27;-95.7426&#x27; ]&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".stateAbbr"><span class="type-signature">&lt;static> </span>stateAbbr()</h4>
+    <h4 class="name" id=".ordinalDirection"><span class="type-signature">&lt;static> </span>ordinalDirection( [useAbbr])</h4>
     
     
 </dt>
@@ -1838,7 +1987,162 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>stateAbbr</p>
+        <p>Returns random ordinal direction</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>useAbbr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Ordinal direction abbreviation</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.ordinalDirection());
+//outputs: &quot;Southwest&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".secondaryAddress"><span class="type-signature">&lt;static> </span>secondaryAddress()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns a secondary address</p>
     </div>
     
 
@@ -1900,6 +2204,253 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.secondaryAddress());
+//outputs: &quot;Apt. 110&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".state"><span class="type-signature">&lt;static> </span>state( [useAbbr])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns random localized state</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>useAbbr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Define if state is abbreviated or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.state());
+//outputs: &quot;Maine&quot;</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".stateAbbr"><span class="type-signature">&lt;static> </span>stateAbbr()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns random localized state abbreviated</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.stateAbbr());
+//outputs: &quot;SD&quot;</pre>
+
 
     
 </dd>
@@ -1968,7 +2519,7 @@ order to build the city name.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Change street address to use full address</p></td>
         </tr>
 
     
@@ -2028,6 +2579,13 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.streetAddress());
+//outputs: &quot;947 Lina Wells&quot;</pre>
+
 
     
 </dd>
@@ -2108,6 +2666,13 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.streetName());
+//outputs: &quot;Botsford Mills&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -2122,7 +2687,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>streetPrefix</p>
+        <p>Returns a localized street prefix</p>
     </div>
     
 
@@ -2184,6 +2749,14 @@ order to build the city name.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">pure.locale = &#x27;pt_PT&#x27;
+console.log(pure.address.streetPrefix());
+//outputs: &quot;Acesso&quot;</pre>
+
 
     
 </dd>
@@ -2200,7 +2773,7 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>streetSuffix</p>
+        <p>Returns a localized street suffix</p>
     </div>
     
 
@@ -2264,13 +2837,20 @@ order to build the city name.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.streetSuffix());
+//outputs: &quot;Skyway&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".zipCode"><span class="type-signature">&lt;static> </span>zipCode(format)</h4>
+    <h4 class="name" id=".zipCode"><span class="type-signature">&lt;static> </span>zipCode( [format])</h4>
     
     
 </dt>
@@ -2278,8 +2858,8 @@ order to build the city name.</p>
 
     
     <div class="description">
-        <p>Generates random zipcode from format. If format is not specified, the
-locale's zip format is used.</p>
+        <p>Generates random zipcode from format.
+<br> If format is not specified, the locale's zip format is used.</p>
     </div>
     
 
@@ -2302,7 +2882,11 @@ locale's zip format is used.</p>
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -2328,10 +2912,26 @@ locale's zip format is used.</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    Locale default format
+                
+                </td>
+            
+
+            <td class="description last"><p>What format to use when generate zipCode</p></td>
         </tr>
 
     
@@ -2393,6 +2993,13 @@ locale's zip format is used.</p>
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.address.zipCode());
+//outputs: &quot;54566-5363&quot;</pre>
+
+
+    
 </dd>
 
         
@@ -2408,10 +3015,10 @@ locale's zip format is used.</p>
     
     <div class="description">
         <p>Generates random zipcode from state abbreviation. If state abbreviation is
-not specified, a random zip code is generated according to the locale's zip format.
-Only works for locales with postcode_by_state definition. If a locale does not
-have a postcode_by_state definition, a random zip code is generated according
-to the locale's zip format.</p>
+<br> not specified, a random zip code is generated according to the locale's zip format.
+<br> Only works for locales with postcode_by_state definition. If a locale does not
+<br> have a postcode_by_state definition, a random zip code is generated according
+<br> to the locale's zip format.</p>
     </div>
     
 
@@ -2463,7 +3070,7 @@ to the locale's zip format.</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>State used to format zipCode</p></td>
         </tr>
 
     
@@ -2523,6 +3130,14 @@ to the locale's zip format.</p>
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">pure.locale = &#x27;en_US&#x27;
+console.log(pure.address.zipCodeByState(&#x27;CA&#x27;))
+//outputs: &quot;91357&quot;</pre>
+
 
     
 </dd>
@@ -2577,7 +3192,7 @@ to the locale's zip format.</p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

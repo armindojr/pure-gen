@@ -1,7 +1,57 @@
 <h1 id="changelog">CHANGELOG</h1>
+<h2 id="v110">v1.1.0</h2>
+<p><code>WIP</code></p>
+<h3 id="newapimethods">New API Methods</h3>
+<ul>
+<li>Added pure.commerce.categories again</li>
+<li>Added pure.dessert generator</li>
+<li>Added pure.document.brazilianId</li>
+<li>Added pure.games generator</li>
+</ul>
+<h3 id="apichanges">API Changes</h3>
+<ul>
+<li>Change image url to stable provider #885</li>
+</ul>
+<pre><code>Provider choosed is placeimage, where their APIs is the same from lorempixel
+</code></pre>
+<ul>
+<li>Unsplash image provider doesn't have category in their api's, so i changed to keywords</li>
+<li>pure.system.fileName and pure.system.commonFileName now accepts extensions as parameter</li>
+<li>pure.helpers.createTransaction now creates transaction with dates from past 20 years</li>
+<li>pure.document.cpf renamed to pure.document.brazilianCitizenNumber</li>
+<li>pure.document.cnpj renamed to pure.document.brazilianCompanyNumber</li>
+</ul>
+<h3 id="apifixes">Api fixes</h3>
+<ul>
+<li>Update Random to create a per-instance copy of the RNG #513</li>
+</ul>
+<pre><code>Fixed bug where creating seeeds with array as parameter always return same results
+</code></pre>
+<ul>
+<li>pure.system.commonFileName now really do his job generating files with common ext</li>
+</ul>
+<h3 id="generalfixes">General fixes</h3>
+<ul>
+<li>added badges</li>
+<li>improve coverage
+From:</li>
+</ul>
+<pre><code>Statements   : 98.91% ( 4465/4514 )
+Branches     : 86.82% ( 540/622 )
+Functions    : 97.81% ( 312/319 )
+Lines        : 98.92% ( 4300/4347 )
+</code></pre>
+<p>To:</p>
+<pre><code>See codecov
+</code></pre>
+<ul>
+<li>Fix comented code / tests</li>
+<li>Improve documents description and add examples to methods in docs</li>
+<li>Locales definition moved from lib/locales to locale/modules</li>
+</ul>
 <h2 id="v100">v1.0.0</h2>
 <p>Changes implemented from base version, all PR's here have been tested and merged manually by me. So if anything is wrong, please let me know.</p>
-<h2 id="newapimethods">New API Methods</h2>
+<h3 id="newapimethods-1">New API Methods</h3>
 <ul>
 <li>Added faker.date.soon #487</li>
 <li>Added aba routing number #423</li>
@@ -30,7 +80,7 @@
 <li>Added music.genre Music module #837</li>
 <li>Added document.cpf and document.cnpj</li>
 </ul>
-<h2 id="localityupdates">Locality Updates</h2>
+<h3 id="localityupdates">Locality Updates</h3>
 <ul>
 <li>Added South African za Locale #517</li>
 <li>Added nl_BE locale #529</li>
@@ -83,7 +133,7 @@
 <li>Translate to ar #859</li>
 <li>feat: add lorem ipsum to russian locale #868</li>
 </ul>
-<h2 id="apichanges">API Changes</h2>
+<h3 id="apichanges-1">API Changes</h3>
 <ul>
 <li>random.alphaNumeric now accepts count as a argument #363</li>
 <li>Added comma replace for price method. #392 -&gt; with adjusts to include object as parameters for price method</li>
@@ -106,7 +156,7 @@
 <li>Add multi parameters support for faker.fake #896</li>
 <li>Removed an unused variable, password, found in internet.js on line 354 #897</li>
 </ul>
-<h2 id="apifixes">API Fixes</h2>
+<h3 id="apifixes-1">API Fixes</h3>
 <ul>
 <li>internet.userAgent missing random seed #521</li>
 <li>commerce.price can no longer default to 0 #446</li>
@@ -119,7 +169,7 @@
 <li>Fixed issue where <code>useAbbr</code> parameter in address.state not used. #840</li>
 <li>Fix special characters in internet.url #895</li>
 </ul>
-<h2 id="generalfixes">General Fixes</h2>
+<h3 id="generalfixes-1">General Fixes</h3>
 <ul>
 <li>Readme.md: Add note about <code>faker.seed(0)</code> #551</li>
 <li>update finance.js typo in doc #566</li>

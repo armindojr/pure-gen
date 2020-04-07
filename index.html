@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -96,7 +96,7 @@
         <article><div>
     <p  align="center">
     	<a>
-    	    <img  alt="Pure-gen"  src="logo/logo-completo-hor.svg"  width="350">
+    	    <img  alt="Pure-gen"  src="https://cdn.statically.io/gh/armindojr/pure-gen/a62e2abc/static/logo/logo-completo-hor.svg"  width="350">
     	</a>
     </p>
 </div>
@@ -105,10 +105,23 @@
     	Generate fake data to be used in test automation
     </p>
 </div>
+<div>
+    <p align="center">
+      <a href="https://travis-ci.org/armindojr/pure-gen">
+        <img alt="Build Status" src="https://travis-ci.org/armindojr/pure-gen.svg?branch=master">
+      </a>
+      <a href="https://codecov.io/gh/armindojr/pure-gen">
+        <img alt="CodeCov" src="https://codecov.io/gh/armindojr/pure-gen/branch/master/graph/badge.svg">
+      </a>
+    </p>
+</div>
 <p>This project is derivative (Fork) from <a href="https://github.com/Marak/faker.js">Faker.js</a> and that's why most of that code is here. This fork is created to update some features inside original repo and extends its functionality.</p>
 <h2>API Documentation</h2>
 <h2>Usage</h2>
 <h3>Node.js</h3>
+<p>First, install package with:</p>
+<pre class="prettyprint source"><code>$ npm i --save pure-gen
+</code></pre>
 <pre class="prettyprint source lang-js"><code>const pure = require('pure-gen');
 
 let randomName = pure.name.findName(); // Rowan Nikolaus
@@ -128,94 +141,106 @@ let randomCard = pure.helpers.createCard(); // random contact card containing ma
 <pre class="prettyprint source lang-js"><code>console.log(pure.fake('{{helpers.randomize([&quot;randomA&quot;,&quot;randomB&quot;])}}'));
 // outputs &quot;randomA&quot; or &quot;randomB&quot;
 </code></pre>
-<h3>JSDoc API Browser</h3>
+<h3>JSDoc API</h3>
+<ul>
+<li>https://armindojr.github.io/pure-gen/</li>
+</ul>
 <h3>API Methods</h3>
 <ul>
 <li>address
 <ul>
-<li>zipCode</li>
-<li>zipCodeByState</li>
+<li>cardinalDirection</li>
 <li>city</li>
+<li>cityName</li>
 <li>cityPrefix</li>
 <li>citySuffix</li>
-<li>cityName</li>
-<li>streetName</li>
-<li>streetAddress</li>
-<li>streetSuffix</li>
-<li>streetPrefix</li>
-<li>secondaryAddress</li>
-<li>county</li>
 <li>country</li>
-<li>defaultCountry</li>
 <li>countryCode</li>
-<li>state</li>
-<li>stateAbbr</li>
+<li>county</li>
+<li>defaultCountry</li>
+<li>direction</li>
 <li>latitude</li>
 <li>longitude</li>
-<li>direction</li>
-<li>cardinalDirection</li>
-<li>ordinalDirection</li>
 <li>nearbyGPSCoordinate</li>
+<li>ordinalDirection</li>
+<li>secondaryAddress</li>
+<li>state</li>
+<li>stateAbbr</li>
+<li>streetAddress</li>
+<li>streetName</li>
+<li>streetPrefix</li>
+<li>streetSuffix</li>
+<li>zipCode</li>
+<li>zipCodeByState</li>
 </ul>
 </li>
 <li>airport
 <ul>
-<li>name</li>
 <li>iataCode</li>
 <li>icaoCode</li>
+<li>name</li>
 </ul>
 </li>
 <li>commerce
 <ul>
+<li>categories</li>
 <li>color</li>
 <li>department</li>
-<li>productName</li>
 <li>price</li>
-<li>productAdjective</li>
-<li>productMaterial</li>
 <li>product</li>
+<li>productAdjective</li>
 <li>productDescription</li>
+<li>productMaterial</li>
+<li>productName</li>
 </ul>
 </li>
 <li>company
 <ul>
-<li>suffixes</li>
-<li>companyName</li>
-<li>companySuffix</li>
-<li>catchPhrase</li>
 <li>bs</li>
-<li>catchPhraseAdjective</li>
-<li>catchPhraseDescriptor</li>
-<li>catchPhraseNoun</li>
 <li>bsAdjective</li>
 <li>bsBuzz</li>
 <li>bsNoun</li>
+<li>catchPhrase</li>
+<li>catchPhraseAdjective</li>
+<li>catchPhraseDescriptor</li>
+<li>catchPhraseNoun</li>
+<li>companyName</li>
+<li>companySuffix</li>
+<li>suffixes</li>
 </ul>
 </li>
 <li>database
 <ul>
-<li>column</li>
-<li>type</li>
 <li>collation</li>
+<li>column</li>
 <li>engine</li>
+<li>type</li>
 </ul>
 </li>
 <li>date
 <ul>
-<li>past</li>
-<li>future</li>
-<li>between</li>
 <li>arrayBetween</li>
+<li>between</li>
+<li>future</li>
+<li>month</li>
+<li>past</li>
 <li>recent</li>
 <li>soon</li>
-<li>month</li>
 <li>weekday</li>
+</ul>
+</li>
+<li>dessert
+<ul>
+<li>flavor</li>
+<li>topping</li>
+<li>variety</li>
 </ul>
 </li>
 <li>document
 <ul>
-<li>cpf</li>
-<li>cnpj</li>
+<li>brazilianCitizenNumber</li>
+<li>brazilianCompanyNumber</li>
+<li>brazilianId</li>
 </ul>
 </li>
 <li>fake</li>
@@ -223,20 +248,27 @@ let randomCard = pure.helpers.createCard(); // random contact card containing ma
 <ul>
 <li>account</li>
 <li>accountName</li>
-<li>routingNumber</li>
-<li>mask</li>
 <li>amount</li>
-<li>transactionType</li>
+<li>bic</li>
+<li>bitcoinAddress</li>
+<li>creditCardCVV</li>
+<li>creditCardNumber</li>
 <li>currencyCode</li>
 <li>currencyName</li>
 <li>currencySymbol</li>
-<li>bitcoinAddress</li>
-<li>creditCardNumber</li>
-<li>creditCardCVV</li>
 <li>ethereumAddress</li>
-<li>litecoinAddress</li>
 <li>iban</li>
-<li>bic</li>
+<li>litecoinAddress</li>
+<li>mask</li>
+<li>routingNumber</li>
+<li>transactionType</li>
+</ul>
+</li>
+<li>games
+<ul>
+<li>title</li>
+<li>genre</li>
+<li>platform</li>
 </ul>
 </li>
 <li>git
@@ -252,75 +284,90 @@ let randomCard = pure.helpers.createCard(); // random contact card containing ma
 <ul>
 <li>abbreviation</li>
 <li>adjective</li>
-<li>noun</li>
-<li>verb</li>
 <li>ingverb</li>
+<li>noun</li>
 <li>phrase</li>
+<li>verb</li>
 </ul>
 </li>
 <li>helpers
 <ul>
-<li>randomize</li>
-<li>slugify</li>
-<li>replaceSymbolWithNumber</li>
-<li>replaceSymbols</li>
-<li>shuffle</li>
-<li>mustache</li>
-<li>createCard</li>
 <li>contextualCard</li>
-<li>userCard</li>
+<li>createCard</li>
 <li>createTransaction</li>
+<li>mustache</li>
+<li>randomize</li>
+<li>replaceSymbols</li>
+<li>replaceSymbolWithNumber</li>
+<li>shuffle</li>
+<li>slugify</li>
+<li>userCard</li>
 </ul>
 </li>
 <li>image
 <ul>
-<li>image</li>
-<li>avatar</li>
-<li>imageUrl</li>
 <li>abstract</li>
 <li>animals</li>
+<li>avatar</li>
 <li>business</li>
 <li>cats</li>
 <li>city</li>
-<li>food</li>
-<li>nightlife</li>
+<li>dataUri</li>
 <li>fashion</li>
-<li>people</li>
+<li>food</li>
+<li>image</li>
+<li>imageUrl</li>
 <li>nature</li>
+<li>nightlife</li>
+<li>people</li>
 <li>sports</li>
 <li>technics</li>
 <li>transport</li>
-<li>dataUri</li>
+<li>placeimg</li>
+<li>unsplash</li>
 </ul>
 </li>
 <li>internet
 <ul>
 <li>avatar</li>
-<li>email</li>
-<li>exampleEmail</li>
-<li>userName</li>
-<li>protocol</li>
-<li>url</li>
+<li>color</li>
 <li>domainName</li>
 <li>domainSuffix</li>
 <li>domainWord</li>
+<li>email</li>
+<li>exampleEmail</li>
 <li>ip</li>
 <li>ipv6</li>
-<li>userAgent</li>
-<li>color</li>
 <li>mac</li>
 <li>password</li>
+<li>protocol</li>
+<li>url</li>
+<li>userAgent</li>
+<li>userName</li>
+</ul>
+</li>
+<li>lorem
+<ul>
+<li>lines</li>
+<li>paragraph</li>
+<li>paragraphs</li>
+<li>sentence</li>
+<li>sentences</li>
+<li>slug</li>
+<li>text</li>
+<li>word</li>
+<li>words</li>
 </ul>
 </li>
 <li>markdown
 <ul>
-<li>header</li>
-<li>emphasis</li>
-<li>table</li>
-<li>orderedList</li>
-<li>unorderedList</li>
-<li>inlineCode</li>
 <li>blockCode</li>
+<li>emphasis</li>
+<li>header</li>
+<li>inlineCode</li>
+<li>orderedList</li>
+<li>table</li>
+<li>unorderedList</li>
 </ul>
 </li>
 <li>music
@@ -328,69 +375,67 @@ let randomCard = pure.helpers.createCard(); // random contact card containing ma
 <li>genre</li>
 </ul>
 </li>
-<li>lorem
-<ul>
-<li>word</li>
-<li>words</li>
-<li>sentence</li>
-<li>slug</li>
-<li>sentences</li>
-<li>paragraph</li>
-<li>paragraphs</li>
-<li>text</li>
-<li>lines</li>
-</ul>
-</li>
 <li>name
 <ul>
-<li>firstName</li>
-<li>lastName</li>
 <li>findName</li>
+<li>firstName</li>
+<li>jobArea</li>
+<li>jobDescriptor</li>
 <li>jobTitle</li>
+<li>jobType</li>
+<li>lastName</li>
 <li>prefix</li>
 <li>suffix</li>
 <li>title</li>
-<li>jobDescriptor</li>
-<li>jobArea</li>
-<li>jobType</li>
 </ul>
 </li>
 <li>phone
 <ul>
+<li>phoneFormats</li>
 <li>phoneNumber</li>
 <li>phoneNumberFormat</li>
-<li>phoneFormats</li>
 </ul>
 </li>
 <li>random
 <ul>
-<li>number</li>
-<li>float</li>
-<li>arrayElement</li>
-<li>objectElement</li>
-<li>uuid</li>
-<li>boolean</li>
-<li>word</li>
-<li>words</li>
-<li>image</li>
-<li>locale</li>
 <li>alpha</li>
 <li>alphaNumeric</li>
+<li>arrayElement</li>
+<li>boolean</li>
+<li>float</li>
 <li>hexaDecimal</li>
+<li>image</li>
+<li>locale</li>
+<li>number</li>
+<li>objectElement</li>
+<li>uuid</li>
+<li>word</li>
+<li>words</li>
 </ul>
 </li>
 <li>system
 <ul>
-<li>fileName</li>
-<li>commonFileName</li>
-<li>mimeType</li>
-<li>commonFileType</li>
 <li>commonFileExt</li>
-<li>fileType</li>
-<li>fileExt</li>
+<li>commonFileName</li>
+<li>commonFileType</li>
 <li>directoryPath</li>
+<li>fileExt</li>
+<li>fileName</li>
 <li>filePath</li>
+<li>fileType</li>
+<li>mimeType</li>
 <li>semver</li>
+</ul>
+</li>
+<li>vehicle
+<ul>
+<li>vehicle</li>
+<li>manufacturer</li>
+<li>model</li>
+<li>type</li>
+<li>fuel</li>
+<li>vin</li>
+<li>color</li>
 </ul>
 </li>
 </ul>
@@ -404,11 +449,14 @@ pure.setLocale(&quot;de&quot;);
 pure.locale = &quot;de&quot;;
 </code></pre>
 <ul>
+<li>af_ZA</li>
+<li>ar</li>
 <li>az</li>
 <li>cz</li>
 <li>de</li>
 <li>de_AT</li>
 <li>de_CH</li>
+<li>el</li>
 <li>en</li>
 <li>en_AU</li>
 <li>en_BORK</li>
@@ -425,17 +473,21 @@ pure.locale = &quot;de&quot;;
 <li>fa</li>
 <li>fr</li>
 <li>fr_CA</li>
+<li>fr_CH</li>
 <li>ge</li>
 <li>id_ID</li>
 <li>it</li>
 <li>ja</li>
 <li>ko</li>
+<li>lv</li>
 <li>nb_NO</li>
 <li>nep</li>
 <li>nl</li>
+<li>nl_BE</li>
 <li>pl</li>
 <li>pt_BR</li>
 <li>pt_PT</li>
+<li>ro</li>
 <li>ru</li>
 <li>sk</li>
 <li>sv</li>
@@ -444,6 +496,7 @@ pure.locale = &quot;de&quot;;
 <li>vi</li>
 <li>zh_CN</li>
 <li>zh_TW</li>
+<li>zu_ZA</li>
 </ul>
 <h3>Individual Localization Packages</h3>
 <p>pure-gen also supports incremental loading of locales.</p>
@@ -487,7 +540,7 @@ console.log(firstRandom === secondRandom);
 </ul>
 <p>What are the major changes compared to original project?</p>
 <ul>
-<li>I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in <a href="doc/CHANGELOG.html">CHANGELOG.md</a></li>
+<li>I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in CHANGELOG.md</li>
 </ul>
 <h2>Maintainer</h2>
 <h4>Armindo Junior</h4>
@@ -562,7 +615,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

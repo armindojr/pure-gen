@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.lorempixel.html">pure.image.lorempixel</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.unique.html">pure.unique</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
+					<li><a href="pure.html">pure</a></li><li><a href="pure.address.html">pure.address</a></li><li><a href="pure.airport.html">pure.airport</a></li><li><a href="pure.commerce.html">pure.commerce</a></li><li><a href="pure.company.html">pure.company</a></li><li><a href="pure.database.html">pure.database</a></li><li><a href="pure.date.html">pure.date</a></li><li><a href="pure.dessert.html">pure.dessert</a></li><li><a href="pure.document.html">pure.document</a></li><li><a href="pure.finance.html">pure.finance</a></li><li><a href="pure.games.html">pure.games</a></li><li><a href="pure.git.html">pure.git</a></li><li><a href="pure.hacker.html">pure.hacker</a></li><li><a href="pure.helpers.html">pure.helpers</a></li><li><a href="pure.image.html">pure.image</a></li><li><a href="pure.image.placeimg.html">pure.image.placeimg</a></li><li><a href="pure.image.unsplash.html">pure.image.unsplash</a></li><li><a href="pure.internet.html">pure.internet</a></li><li><a href="pure.lorem.html">pure.lorem</a></li><li><a href="pure.markdown.html">pure.markdown</a></li><li><a href="pure.music.html">pure.music</a></li><li><a href="pure.name.html">pure.name</a></li><li><a href="pure.phone.html">pure.phone</a></li><li><a href="pure.random.html">pure.random</a></li><li><a href="pure.system.html">pure.system</a></li><li><a href="pure.vehicle.html">pure.vehicle</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#Fake">Fake</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#Fake">Fake</a></li>
 				</ul>
 			</li>
 			
@@ -163,7 +163,7 @@
 
     
     <div class="description">
-        <p>blockCode</p>
+        <p>Generate random markdown block code</p>
     </div>
     
 
@@ -227,13 +227,22 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.blockCode());
+//outputs: &quot;&#x60;&#x60;&#x60;javascript&quot;
+// &quot;quod&quot;
+// &quot;&#x60;&#x60;&#x60;&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".emphasis"><span class="type-signature">&lt;static> </span>emphasis(type)</h4>
+    <h4 class="name" id=".emphasis"><span class="type-signature">&lt;static> </span>emphasis( [type])</h4>
     
     
 </dt>
@@ -241,7 +250,7 @@
 
     
     <div class="description">
-        <p>emphasis</p>
+        <p>Generate random markdown emphasis</p>
     </div>
     
 
@@ -264,7 +273,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -290,10 +303,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>emphasis</p></td>
+            
+                <td class="default">
+                
+                    random
+                
+                </td>
+            
+
+            <td class="description last"><p>Emphasis to use ['_','~','*','**']</p></td>
         </tr>
 
     
@@ -355,13 +384,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.emphasis());
+//outputs: &quot;modi *hic* tenetur&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".header"><span class="type-signature">&lt;static> </span>header(num)</h4>
+    <h4 class="name" id=".header"><span class="type-signature">&lt;static> </span>header( [num])</h4>
     
     
 </dt>
@@ -369,7 +405,7 @@
 
     
     <div class="description">
-        <p>header</p>
+        <p>Generate random markdown header</p>
     </div>
     
 
@@ -392,7 +428,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -418,10 +458,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>number of '#', defaults to 1</p></td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of heading tags '#'</p></td>
         </tr>
 
     
@@ -481,6 +537,13 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.header());
+//outputs: &quot;# quia&quot;</pre>
+
 
     
 </dd>
@@ -497,7 +560,7 @@
 
     
     <div class="description">
-        <p>inlineCode</p>
+        <p>Generate random markdown inline code</p>
     </div>
     
 
@@ -561,13 +624,20 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.inlineCode());
+//outputs: &quot;&#x60;officia&#x60;&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".orderdList"><span class="type-signature">&lt;static> </span>orderdList(num)</h4>
+    <h4 class="name" id=".orderedList"><span class="type-signature">&lt;static> </span>orderedList( [num])</h4>
     
     
 </dt>
@@ -575,7 +645,7 @@
 
     
     <div class="description">
-        <p>orderedList</p>
+        <p>Generate random markdown ordered list</p>
     </div>
     
 
@@ -598,7 +668,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -624,10 +698,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>of list</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of itens in list</p></td>
         </tr>
 
     
@@ -689,13 +779,22 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.orderedList());
+//outputs: &quot;1. dolor&quot;
+// &quot;2. iste&quot;
+// &quot;3. provident&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".table"><span class="type-signature">&lt;static> </span>table(num)</h4>
+    <h4 class="name" id=".table"><span class="type-signature">&lt;static> </span>table( [num])</h4>
     
     
 </dt>
@@ -703,7 +802,7 @@
 
     
     <div class="description">
-        <p>table</p>
+        <p>Generate random markdown table</p>
     </div>
     
 
@@ -726,7 +825,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -752,10 +855,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>tabl rows</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Table rows</p></td>
         </tr>
 
     
@@ -817,13 +936,24 @@
     
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.table());
+//outputs: &quot;| head1 | head2 | head3 |&quot;
+// &quot;|:-----:|:-----:|:-----:|&quot;
+// &quot;|officiis|autem|excepturi|&quot;
+// &quot;|necessitatibus|quia|natus|&quot;
+// &quot;|omnis|corporis|repudiandae|&quot;</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".unorderdList"><span class="type-signature">&lt;static> </span>unorderdList(num)</h4>
+    <h4 class="name" id=".unorderedList"><span class="type-signature">&lt;static> </span>unorderedList( [num])</h4>
     
     
 </dt>
@@ -831,7 +961,7 @@
 
     
     <div class="description">
-        <p>unorderedList</p>
+        <p>Generate random markdown unordered list</p>
     </div>
     
 
@@ -854,7 +984,11 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -880,10 +1014,26 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>of list</p></td>
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last"><p>Number of itens in list</p></td>
         </tr>
 
     
@@ -943,6 +1093,15 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">console.log(pure.markdown.unorderedList());
+//outputs: &quot;* eveniet&quot;
+// &quot;* nemo&quot;
+// &quot;* iusto&quot;</pre>
+
 
     
 </dd>
@@ -997,7 +1156,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2020-04-01T17:40:55-03:00
+		on 2020-04-06T21:32:26-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
