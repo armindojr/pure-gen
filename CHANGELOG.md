@@ -1,19 +1,31 @@
 # CHANGELOG
 
-## v1.0.1
+## v1.1.0
 
 `` WIP ``
+### New API Methods
+* Added pure.commerce.categories again
+* Added pure.dessert generator
+* Added pure.document.brazilianId
+* Added pure.games generator
+
 ### API Changes
 * Change image url to stable provider #885
 ```
 Provider choosed is placeimage, where their APIs is the same from lorempixel
 ```
+* Unsplash image provider doesn't have category in their api's, so i changed to keywords
+* pure.system.fileName and pure.system.commonFileName now accepts extensions as parameter
+* pure.helpers.createTransaction now creates transaction with dates from past 20 years
+* pure.document.cpf renamed to pure.document.brazilianCitizenNumber
+* pure.document.cnpj renamed to pure.document.brazilianCompanyNumber
 
 ### Api fixes
 * Update Random to create a per-instance copy of the RNG #513
 ```
 Fixed bug where creating seeeds with array as parameter always return same results
 ```
+* pure.system.commonFileName now really do his job generating files with common ext
 
 ### General fixes
 * added badges
@@ -29,6 +41,9 @@ To:
 ```
 See codecov
 ```
+* Fix comented code / tests
+* Improve documents description and add examples to methods in docs
+* Locales definition moved from lib/locales to locale/modules
 
 ## v1.0.0
 

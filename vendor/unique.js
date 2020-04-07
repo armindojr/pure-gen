@@ -25,15 +25,11 @@ const defaultCompare = function (obj, key) {
 
 // common error handler for messages
 unique.errorMessage = function (now, code, opts) {
-    // console.error('error', code);
-    // console.log('found', Object.keys(found).length, 'unique entries before throwing error. \nretried:', currentIterations, '\ntotal time:', now - opts.startTime, 'ms');
     let err = `${code} for uniqueness check \n\nMay not be able to generate any more unique values with current settings. \nTry adjusting maxTime or maxRetries parameters for pure.unique()`
     throw new Error(err);
 };
 
 unique.exec = function (method, args, opts) {
-    // console.log(currentIterations)
-
     const now = new Date().getTime();
 
     opts = opts || {};
@@ -58,10 +54,10 @@ unique.exec = function (method, args, opts) {
     }
 
     if (opts.currentIterations > 0) {
-    // console.log('iterating', currentIterations)
+        // 
     }
 
-    // console.log(now - startTime)
+
     if (now - startTime >= opts.maxTime) {
         return unique.errorMessage(now, `Exceeded maxTime:${opts.maxTime}`, opts);
     }
@@ -79,7 +75,7 @@ unique.exec = function (method, args, opts) {
         opts.currentIterations = 0;
         return result;
     }
-    // console.log('conflict', result);
+
     opts.currentIterations++;
     return unique.exec(method, args, opts);
 };

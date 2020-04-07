@@ -1,7 +1,7 @@
 <div>
     <p  align="center">
     	<a>
-    	    <img  alt="Pure-gen"  src="https://cdn.statically.io/gh/armindojr/pure-gen/v1.0.0/static/logo/logo-completo-hor.svg"  width="350">
+    	    <img  alt="Pure-gen"  src="https://cdn.statically.io/gh/armindojr/pure-gen/a62e2abc/static/logo/logo-completo-hor.svg"  width="350">
     	</a>
     </p>
 </div>
@@ -70,8 +70,8 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
 // outputs "randomA" or "randomB"
 ```
 
-### JSDoc API Browser
-
+### JSDoc API
+- https://armindojr.github.io/pure-gen/
 
 
 ### API Methods
@@ -105,6 +105,7 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * icaoCode
   * name
 * commerce
+  * categories
   * color
   * department
   * price
@@ -139,9 +140,14 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * recent
   * soon
   * weekday
+* dessert
+  * flavor
+  * topping
+  * variety
 * document
-  * cpf
-  * cnpj
+  * brazilianCitizenNumber
+  * brazilianCompanyNumber
+  * brazilianId
 * fake
 * finance
   * account
@@ -160,6 +166,10 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * mask
   * routingNumber
   * transactionType
+* games
+  * title
+  * genre
+  * platform
 * git
   * branch
   * commitEntry
@@ -202,6 +212,8 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
   * sports
   * technics
   * transport
+  * placeimg
+  * unsplash
 * internet
   * avatar
   * color

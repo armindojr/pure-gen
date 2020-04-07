@@ -12,7 +12,8 @@ describe('date.js', () => {
             const refDate = new Date();
             const date = pure.date.past(0, refDate.toJSON());
 
-            assert.ok(date < refDate); // date should be before the date given
+            // date should be before the date given
+            assert.ok(date < refDate);
         });
 
         it('returns a date N years before the date given', () => {
@@ -37,7 +38,8 @@ describe('date.js', () => {
             const refDate = new Date();
             const date = pure.date.future(0, refDate.toJSON());
 
-            assert.ok(date > refDate); // date should be after the date given
+            // date should be after the date given
+            assert.ok(date > refDate);
         });
 
         it('returns a date N years after the date given', () => {

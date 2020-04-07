@@ -368,19 +368,19 @@ describe('random.js', () => {
 
     describe('seed', () => {
         it('passing empty array to seed', () => {
-            pure.seed([])
+            pure.seed([]);
 
-            let name = pure.name.findName()
-            expect(name.length).greaterThan(1)
-        })
-    })
+            const name = pure.name.findName();
+            expect(name.length).greaterThan(1);
+        });
+    });
 
     describe('words', () => {
         it('passing "count" parameter', () => {
-            let words = pure.random.words(5)
+            const words = pure.random.words(5);
 
-            let result = words.split(' ')
-            assert.equal(result.length, 5)
-        })
-    })
+            const result = words.split(' ');
+            assert.equal(result.length, 5);
+        });
+    });
 });

@@ -1,7 +1,7 @@
 const Pure = require('../lib');
 
 const pure = new Pure({ locale: 'sv', localeFallback: 'en' });
-pure.locales.sv = require('../lib/locales/sv');
-pure.locales.en = require('../lib/locales/en');
+pure.locales.sv = require('./modules/sv');
+pure.locales.en = require('./modules/en');
 
 module.exports = pure;

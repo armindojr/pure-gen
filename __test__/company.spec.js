@@ -10,7 +10,7 @@ describe('company.js', () => {
             const name = pure.company.companyName();
             const parts = name.split(' ');
 
-            assert.strictEqual(parts.length, 4); // account for word 'and'
+            assert.strictEqual(parts.length, 4);
             assert.ok(pure.name.lastName.calledThrice);
 
             pure.random.number.restore();
@@ -51,7 +51,7 @@ describe('company.js', () => {
             const name = pure.company.companyName(2);
             const parts = name.split(' ');
 
-            assert.strictEqual(parts.length, 4); // account for word 'and'
+            assert.strictEqual(parts.length, 4);
             assert.ok(pure.name.lastName.calledThrice);
 
             pure.name.lastName.restore();

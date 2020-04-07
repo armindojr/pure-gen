@@ -25,7 +25,6 @@ describe('markdown.js', () => {
                 const text = pure.markdown.emphasis();
                 const regexp = /\*|_|~/gi;
                 assert(text.match(regexp).length >= 2);
-                // assert.ok(pure.helpers.shuffle.called);
             });
         });
 
@@ -34,7 +33,6 @@ describe('markdown.js', () => {
                 const text = pure.markdown.emphasis('~');
                 const regexp = /[~]/gi;
                 assert(text.match(regexp).length >= 2);
-                // assert.ok(pure.helpers.shuffle.called);
             });
         });
     });

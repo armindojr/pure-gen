@@ -36,13 +36,6 @@ describe('pure.fake functional tests', () => {
                         // just make sure any result is returned
                         // an undefined result usually means an error
                         assert.ok(typeof result !== 'undefined');
-                    /*
-                    if (meth === 'boolean') {
-                        assert.ok(result === true || result === false);
-                    } else {
-                        assert.ok(result);
-                    }
-                    */
                     });
                 });
             });

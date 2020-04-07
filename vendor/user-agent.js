@@ -47,8 +47,11 @@ function rnd(a, b) {
     if (a && typeof a === 'object') {
         // returns a random key from the passed object; keys are weighted by the decimal probability in their value
         return (function (obj) {
-            const rand = rnd(0, 100) / 100; let min = 0; let max = 0; let key; let
-                return_val;
+            const rand = rnd(0, 100) / 100; 
+            let min = 0; 
+            let max = 0; 
+            let key; 
+            let return_val;
 
             for (key in obj) {
                 if (obj.hasOwnProperty(key)) {

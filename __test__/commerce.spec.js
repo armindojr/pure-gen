@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -15,36 +15,6 @@ describe('commerce.js', () => {
             const department = pure.commerce.department();
             assert.ok(department.split(' ').length === 1);
         });
-
-    /*
-
-    it("should return only one value if we specify a maximum of one", function() {
-        sinon.spy(pure.random, 'arrayElement');
-
-        var department = pure.commerce.department(1);
-
-        assert.strictEqual(department.split(" ").length, 1);
-        assert.ok(pure.random.arrayElement.calledOnce);
-
-        pure.random.arrayElement.restore();
-    });
-
-    it("should return the maxiumum value if we specify the fixed value", function() {
-        sinon.spy(pure.random, 'arrayElement');
-
-        var department = pure.commerce.department(5, true);
-
-        console.log(department);
-
-        // account for the separator
-        assert.strictEqual(department.split(" ").length, 6);
-        // Sometimes it will generate duplicates that aren't used in the final string,
-        // so we check if arrayElement has been called exactly or more than 5 times
-        assert.ok(pure.random.arrayElement.callCount >= 5);
-
-        pure.random.arrayElement.restore();
-    });
-    */
     });
 
     describe('productName()', () => {
@@ -141,6 +111,25 @@ describe('commerce.js', () => {
             assert.ok(pure.commerce.productDescription.calledOnce);
 
             pure.commerce.productDescription.restore();
+        });
+    });
+
+    describe('categories()', () => {
+        it('returns array of categories', () => {
+            const categories = pure.commerce.categories();
+
+            expect(categories.length).greaterThan(0);
+        });
+        it('returns specified lenght array of categories', () => {
+            const categories = pure.commerce.categories(5);
+
+            assert.equal(categories.length, 5);
+        });
+        it('returns all categories when parameter passed in is greater then lenght of categories', () => {
+            const categories = pure.commerce.categories(100);
+            const all = pure.definitions.commerce.department.length;
+
+            assert.equal(categories.length, all);
         });
     });
 });

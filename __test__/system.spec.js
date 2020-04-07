@@ -31,6 +31,16 @@ describe('system.js', () => {
 
             pure.random.words.restore();
         });
+        it('returns filenames passing "ext" as parameter', () => {
+            const fileName = pure.system.fileName('zip');
+
+            assert.ok(fileName.match(/(.*?)\.(zip)+$/g));
+        });
+        it('returns filenames passing "ext" as parameter with dot in begining', () => {
+            const fileName = pure.system.fileName('.jpg');
+
+            assert.ok(fileName.match(/(.*?)\.(jpg)+$/g));
+        });
     });
 
     describe('commonFileName()', () => {
@@ -40,6 +50,16 @@ describe('system.js', () => {
             assert.equal(fileName.indexOf('/'), -1, 'generated commonFileNames should not have path seperators');
 
             pure.random.words.restore();
+        });
+        it('returns filenames passing "ext" as parameter', () => {
+            const fileName = pure.system.commonFileName('zip');
+
+            assert.ok(fileName.match(/(.*?)\.(zip)+$/g));
+        });
+        it('returns filenames passing "ext" as parameter with dot in begining', () => {
+            const fileName = pure.system.commonFileName('.jpg');
+
+            assert.ok(fileName.match(/(.*?)\.(jpg)+$/g));
         });
     });
 });

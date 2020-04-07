@@ -108,14 +108,6 @@ describe('helpers.js', () => {
         });
     });
 
-    /*
-    describe("replaceCreditCardSymbols()", function () {
-        it("returns empty string with no arguments", function () {
-            assert.equal(pure.helpers.replaceCreditCardSymbols(), "");
-        });
-    });
-    */
-
     describe('createCard()', () => {
         it('returns an object', () => {
             const card = pure.helpers.createCard();

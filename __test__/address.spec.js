@@ -310,22 +310,25 @@ describe('address.js', () => {
             assert.ok(zipCode3 <= 99403);
         });
 
-        // it('returns undefined if state is invalid', () => {
-        //     const state = 'XX';
-        //     sinon.spy(pure.address, 'zipCode');
-        //     const zipCode = pure.address.zipCodeByState(state);
-        //     assert.ok(pure.address.zipCode.called);
-        //     pure.address.zipCode.restore();
-        // });
+        it('returns undefined if state is invalid', () => {
+            const state = 'XX';
+            sinon.spy(pure.address, 'zipCode');
+            const zipCode = pure.address.zipCodeByState(state);
+            assert.ok(typeof zipCode === 'string');
+            assert.ok(pure.address.zipCode.called);
+            pure.address.zipCode.restore();
+        });
 
-        // it('returns undefined if state is valid but localeis invalid', () => {
-        //     pure.locale = 'zh_CN';
-        //     const state = 'IL';
-        //     sinon.spy(pure.address, 'zipCode');
-        //     const zipCode = pure.address.zipCodeByState(state);
-        //     assert.ok(pure.address.zipCode.called);
-        //     pure.address.zipCode.restore();
-        // });
+        it('returns undefined if state is valid but localeis invalid', () => {
+            pure.locale = 'zh_CN';
+            const state = 'IL';
+            sinon.spy(pure.address, 'zipCode');
+            const zipCode = pure.address.zipCodeByState(state);
+            assert.ok(pure.address.zipCode.called);
+            assert.ok(typeof zipCode === 'string');
+            pure.address.zipCode.restore();
+            pure.locale = 'en';
+        });
     });
 
     describe('latitude()', () => {

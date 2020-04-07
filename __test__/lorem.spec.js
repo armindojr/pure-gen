@@ -43,7 +43,6 @@ describe('lorem.js', () => {
                 const words = str.split(' ');
                 assert.ok(Array.isArray(words));
                 assert.equal(true, words.length >= 3);
-                // assert.ok(pure.helpers.shuffle.called);
             });
         });
 

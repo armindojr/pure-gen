@@ -134,21 +134,6 @@ describe('image.js', () => {
 
                 assert.equal(imageUrl, 'https://source.unsplash.com/100x100');
             });
-            it('returns a random image url for a specified category', () => {
-                const imageUrl = pure.image.unsplash.imageUrl(100, 100, 'food');
-
-                assert.equal(imageUrl, 'https://source.unsplash.com/category/food/100x100');
-            });
-            it('returns a random image url with correct keywords for a specified category', () => {
-                const imageUrl = pure.image.unsplash.imageUrl(100, 100, 'food', 'keyword1,keyword2');
-
-                assert.equal(imageUrl, 'https://source.unsplash.com/category/food/100x100?keyword1,keyword2');
-            });
-            it('returns a random image url without keyword which format is wrong for a specified category', () => {
-                const imageUrl = pure.image.unsplash.imageUrl(100, 100, 'food', 'keyword1,?ds)0123$*908932409');
-
-                assert.equal(imageUrl, 'https://source.unsplash.com/category/food/100x100');
-            });
         });
         describe('image()', () => {
             it('returns a searching image url with keyword', () => {
@@ -159,37 +144,37 @@ describe('image.js', () => {
         describe('food()', () => {
             it('returns a random food image url', () => {
                 const food = pure.image.unsplash.food();
-                assert.equal(food, 'https://source.unsplash.com/category/food/640x480');
+                assert.equal(food, 'https://source.unsplash.com/640x480?food');
             });
         });
         describe('people()', () => {
             it('returns a random people image url', () => {
                 const people = pure.image.unsplash.people();
-                assert.equal(people, 'https://source.unsplash.com/category/people/640x480');
+                assert.equal(people, 'https://source.unsplash.com/640x480?people');
             });
         });
         describe('nature()', () => {
             it('returns a random nature image url', () => {
                 const nature = pure.image.unsplash.nature();
-                assert.equal(nature, 'https://source.unsplash.com/category/nature/640x480');
+                assert.equal(nature, 'https://source.unsplash.com/640x480?nature');
             });
         });
         describe('technology()', () => {
             it('returns a random technology image url', () => {
                 const transport = pure.image.unsplash.technology();
-                assert.equal(transport, 'https://source.unsplash.com/category/technology/640x480');
+                assert.equal(transport, 'https://source.unsplash.com/640x480?technology');
             });
         });
         describe('objects()', () => {
             it('returns a random objects image url', () => {
                 const transport = pure.image.unsplash.objects();
-                assert.equal(transport, 'https://source.unsplash.com/category/objects/640x480');
+                assert.equal(transport, 'https://source.unsplash.com/640x480?objects');
             });
         });
         describe('buildings()', () => {
             it('returns a random buildings image url', () => {
                 const transport = pure.image.unsplash.buildings();
-                assert.equal(transport, 'https://source.unsplash.com/category/buildings/640x480');
+                assert.equal(transport, 'https://source.unsplash.com/640x480?buildings');
             });
         });
     });

@@ -53,7 +53,8 @@ describe('finance.js', () => {
 
     describe('mask( length, parens, ellipsis )', () => {
         it('should set a default length', () => {
-            const expected = 4; // default account mask length
+            // default account mask length
+            const expected = 4;
 
             const mask = pure.finance.mask(null, false, false);
 
@@ -69,7 +70,8 @@ describe('finance.js', () => {
 
             const mask = pure.finance.mask(expected, false, false);
 
-            const actual = mask.length; // picks 4 if the random number generator picks 0
+            // picks 4 if the random number generator picks 0
+            const actual = mask.length;
 
             assert.equal(actual, expected, `The expected default mask length is ${expected} but it was ${actual}`);
         });
@@ -78,7 +80,8 @@ describe('finance.js', () => {
             const expected = 4;
 
             const mask = pure.finance.mask(0, false, false);
-            const actual = mask.length; // picks 4 if the random number generator picks 0
+            // picks 4 if the random number generator picks 0
+            const actual = mask.length;
 
             assert.equal(actual, expected, `The expected default mask length is ${expected} but it was ${actual}`);
         });
@@ -221,7 +224,7 @@ describe('finance.js', () => {
     describe('creditCardNumber()', () => {
         it('returns a random credit card number', () => {
             let number = pure.finance.creditCardNumber();
-            number = number.replace(/\D/g, ''); // remove formating
+            number = number.replace(/\D/g, '');
             assert.ok(number.length >= 13 && number.length <= 20);
             assert.ok(number.match(/^[0-9]{13,20}$/));
             assert.ok(luhnFormula(number));

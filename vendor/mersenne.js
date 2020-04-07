@@ -52,8 +52,11 @@
 
 function MersenneTwister19937() {
     /* constants should be scoped inside the class */
-    let N; let M; let MATRIX_A; let UPPER_MASK; let
-        LOWER_MASK;
+    let N; 
+    let M; 
+    let MATRIX_A; 
+    let UPPER_MASK; 
+    let LOWER_MASK;
     /* Period parameters */
     // c//#define N 624
     // c//#define M 397
@@ -122,8 +125,9 @@ function MersenneTwister19937() {
     // c//void init_by_array(unsigned long init_key[], int key_length)
     this.init_by_array = function (init_key, key_length) {
         // c//int i, j, k;
-        let i; let j; let
-            k;
+        let i; 
+        let j; 
+        let k;
         // c//init_genrand(19650218);
         this.init_genrand(19650218);
         i = 1; j = 0;
