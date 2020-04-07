@@ -1,8 +1,16 @@
 # CHANGELOG
 
-## v1.1.0
+## v1.1.1
 
 `` WIP ``
+### General fixes
+* Refactor lib/image.js to use class style and inherit from default provider
+* Compress locales to shrink size
+* Refactor functional tests to execute in less time
+
+
+## v1.1.0
+
 ### New API Methods
 * Added pure.commerce.categories again
 * Added pure.dessert generator

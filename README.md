@@ -423,6 +423,16 @@ Why did you renamed it?
 What are the major changes compared to original project?
 - I removed all script builds that make this generator compatible with standalone js. In my opinion older node versions is hard to mantain too, so i decided to only offer support to versions after v10. All unit tests is rewrite to use modern testing tools like chai and sinon with mocha. Extended changelog in CHANGELOG.md
 
+## Contributing
+I want to add or modify dictionary for my language, what i do?
+- Fork this repo
+- Clone your forked repo to your pc
+- Run:  ``node bundle.js decompress``
+- Edit your language pack inside ./locale
+- Run:  ``node bundle.js compress``
+- Commit changes to your branch
+- Create PR of your fork to this repo
+
 ## Maintainer
 
 #### Armindo Junior

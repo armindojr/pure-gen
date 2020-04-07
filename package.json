@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "contributors": [
     "Armindo Junior <armindo.junior05@gmail.com>"
   ],
@@ -10,6 +10,7 @@
     "url": ""
   },
   "scripts": {
+    "install": "node bundle.js decompress",
     "lint": "npx eslint ./lib --fix",
     "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
     "doc": "node doc-publish.js; npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",

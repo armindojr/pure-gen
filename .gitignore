@@ -19,3 +19,4 @@ reports/
 /doc/
 .nyc_output
 static/README.md
+locale/
