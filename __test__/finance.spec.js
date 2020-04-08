@@ -1,6 +1,7 @@
 const { assert, expect } = require('chai');
 const pure = require('../index');
 const luhnFormula = require('./support/luhnCheck.js');
+const sinon = require('sinon');
 const ibanLib = require('../lib/iban');
 
 describe('finance.js', () => {
@@ -279,6 +280,41 @@ describe('finance.js', () => {
             assert.ok(number.match(/^234[5-9]\d{1000}$/));
             assert.ok(luhnFormula(number));
         });
+        it('returns a valid credit card number when locale credit_card provider has only one string', () => {
+            var stub = sinon.stub(pure.definitions, 'finance').get(function getterFn() {
+                return {
+                    credit_card: {
+                        visa: '4###########L'
+                    }
+                };
+            })
+            let number = pure.finance.creditCardNumber();
+            assert.ok(number.length >= 13 && number.length <= 20);
+            stub.restore()
+        });
+        it('returns a valid credit card number when locale credit_card has one string', () => {
+            var stub = sinon.stub(pure.definitions, 'finance').get(function getterFn() {
+                return {
+                    credit_card: '4###########L'
+                };
+            })
+            let number = pure.finance.creditCardNumber();
+            assert.ok(number.length >= 13 && number.length <= 20);
+            stub.restore()
+        });
+        it('returns a valid credit card number when locale credit_card provider has only one string '+
+        'and provider is passed as parameter', () => {
+            var stub = sinon.stub(pure.definitions, 'finance').get(function getterFn() {
+                return {
+                    credit_card: {
+                        visa: '4###########L'
+                    }
+                };
+            })
+            let number = pure.finance.creditCardNumber('visa');
+            assert.ok(number.length >= 13 && number.length <= 20);
+            stub.restore()
+        });
     });
 
     describe('creditCardCVV()', () => {
@@ -318,6 +354,36 @@ describe('finance.js', () => {
 
             expect(iban.length).greaterThan(15);
         });
+
+        it('returns a correct IBAN number when checksum < 10', () => {
+            sinon.stub(ibanLib, 'mod97').returns(90);
+            const iban = pure.finance.iban();
+
+            assert.equal(iban.substring(2, 4), 08, 'the result should be equal to 1');
+            ibanLib.mod97.restore()
+        });
+
+        it('returns a correct IBAN number when ibanLib.formats.type is a', () => {
+            var stub = sinon.stub(ibanLib, 'formats').get(function getterFn() {
+                return [{
+                    country: 'VG',
+                    total: 24,
+                    bban: [
+                        {
+                            type: 'a',
+                            count: 4,
+                        }
+                    ],
+                    format: 'VGkk bbbb cccc cccc cccc cccc',
+                }];
+            })
+
+            const iban = pure.finance.iban();
+            const bban = iban.substring(4) + iban.substring(0, 4);
+
+            assert.equal(ibanLib.mod97(ibanLib.toDigitString(bban)), 1, 'the result should be equal to 1');
+            stub.restore()
+        });
     });
 
     describe('bic()', () => {
@@ -326,6 +392,23 @@ describe('finance.js', () => {
             const expr = new RegExp(`^[A-Z]{4}(${ibanLib.iso3166.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`, 'i');
 
             assert.ok(bic.match(expr));
+        });
+        it('returns correct BIC number when random number < 10', () => {
+            sinon.stub(pure.random, 'number').returns(3);
+            const bic = pure.finance.bic();
+            const expr = new RegExp(`^[A-Z]{4}(${ibanLib.iso3166.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`, 'i');
+
+            assert.ok(bic.match(expr));
+            pure.random.number.restore()
+        });
+        it('returns correct BIC number when random number < 40', () => {
+            sinon.stub(pure.random, 'number').returns(15);
+            sinon.stub(pure.random, 'arrayElement').returns('E')
+            const bic = pure.finance.bic();
+
+            assert.equal(bic.length, 13)
+            pure.random.number.restore()
+            pure.random.arrayElement.restore()
         });
     });
 });

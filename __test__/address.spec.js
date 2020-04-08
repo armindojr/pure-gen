@@ -292,6 +292,21 @@ describe('address.js', () => {
             const zipCode = pure.address.zipCode();
             assert.ok(zipCode.match(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/));
         });
+
+        it('returns random zipCode', () => {
+            sinon.spy(pure.address, 'zipCode');
+            var stub = sinon.stub(pure.definitions, 'address').get(function getterFn() {
+                return {
+                    postcode: '#####'
+                };
+            })
+            const zipCode = pure.address.zipCode();
+
+            assert.ok(zipCode);
+            assert.ok(pure.address.zipCode.called);
+            pure.address.zipCode.restore();
+            stub.restore()
+        });
     });
 
     describe('zipCodeByState()', () => {

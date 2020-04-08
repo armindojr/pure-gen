@@ -3,10 +3,15 @@
 ## v1.1.1
 
 `` WIP ``
+## API fixes
+* pure.finance.creditCardNumber verification don't break anymore when credit_card is only string
+* pure.name.firstName verification now return random names when first_name is undefined in locale
+
 ### General fixes
 * Refactor lib/image.js to use class style and inherit from default provider
 * Compress locales to shrink size
 * Refactor functional tests to execute in less time
+* Improve code coverage
 
 
 ## v1.1.0
