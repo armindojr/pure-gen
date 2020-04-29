@@ -1,8 +1,12 @@
 # CHANGELOG
 
-## v1.1.1
+## v1.2.0
 
 `` WIP ``
+### New API Methods
+* Added pure.electricalComponents generator
+* Added pure.esport generator
+
 ## API fixes
 * pure.finance.creditCardNumber verification don't break anymore when credit_card is only string
 * pure.name.firstName verification now return random names when first_name is undefined in locale

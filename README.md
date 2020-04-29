@@ -76,228 +76,32 @@ console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
 
 ### API Methods
 
-* address
-  * cardinalDirection
-  * city
-  * cityName
-  * cityPrefix
-  * citySuffix
-  * country
-  * countryCode
-  * county
-  * defaultCountry
-  * direction
-  * latitude
-  * longitude
-  * nearbyGPSCoordinate
-  * ordinalDirection
-  * secondaryAddress
-  * state
-  * stateAbbr
-  * streetAddress
-  * streetName
-  * streetPrefix
-  * streetSuffix
-  * zipCode
-  * zipCodeByState
-* airport
-  * iataCode
-  * icaoCode
-  * name
-* commerce
-  * categories
-  * color
-  * department
-  * price
-  * product
-  * productAdjective
-  * productDescription
-  * productMaterial
-  * productName
-* company
-  * bs
-  * bsAdjective
-  * bsBuzz
-  * bsNoun
-  * catchPhrase
-  * catchPhraseAdjective
-  * catchPhraseDescriptor
-  * catchPhraseNoun
-  * companyName
-  * companySuffix
-  * suffixes
-* database
-  * collation
-  * column
-  * engine
-  * type
-* date
-  * arrayBetween
-  * between
-  * future
-  * month
-  * past
-  * recent
-  * soon
-  * weekday
-* dessert
-  * flavor
-  * topping
-  * variety
-* document
-  * brazilianCitizenNumber
-  * brazilianCompanyNumber
-  * brazilianId
-* fake
-* finance
-  * account
-  * accountName
-  * amount
-  * bic
-  * bitcoinAddress
-  * creditCardCVV
-  * creditCardNumber
-  * currencyCode
-  * currencyName
-  * currencySymbol
-  * ethereumAddress
-  * iban
-  * litecoinAddress
-  * mask
-  * routingNumber
-  * transactionType
-* games
-  * title
-  * genre
-  * platform
-* git
-  * branch
-  * commitEntry
-  * commitMessage
-  * commitSha
-  * shortSha
-* hacker
-  * abbreviation
-  * adjective
-  * ingverb
-  * noun
-  * phrase
-  * verb
-* helpers
-  * contextualCard
-  * createCard
-  * createTransaction
-  * mustache
-  * randomize
-  * replaceSymbols
-  * replaceSymbolWithNumber
-  * shuffle
-  * slugify
-  * userCard
-* image
-  * abstract
-  * animals
-  * avatar
-  * business
-  * cats
-  * city
-  * dataUri
-  * fashion
-  * food
-  * image
-  * imageUrl
-  * nature
-  * nightlife
-  * people
-  * sports
-  * technics
-  * transport
-  * placeimg
-  * unsplash
-* internet
-  * avatar
-  * color
-  * domainName
-  * domainSuffix
-  * domainWord
-  * email
-  * exampleEmail
-  * ip
-  * ipv6
-  * mac
-  * password
-  * protocol
-  * url
-  * userAgent
-  * userName
-* lorem
-  * lines
-  * paragraph
-  * paragraphs
-  * sentence
-  * sentences
-  * slug
-  * text
-  * word
-  * words
-* markdown
-  * blockCode
-  * emphasis
-  * header
-  * inlineCode
-  * orderedList
-  * table
-  * unorderedList
-* music
-  * genre
-* name
-  * findName
-  * firstName
-  * jobArea
-  * jobDescriptor
-  * jobTitle
-  * jobType
-  * lastName
-  * prefix
-  * suffix
-  * title
-* phone
-  * phoneFormats
-  * phoneNumber
-  * phoneNumberFormat
-* random
-  * alpha
-  * alphaNumeric
-  * arrayElement
-  * boolean
-  * float
-  * hexaDecimal
-  * image
-  * locale
-  * number
-  * objectElement
-  * uuid
-  * word
-  * words
-* system
-  * commonFileExt
-  * commonFileName
-  * commonFileType
-  * directoryPath
-  * fileExt
-  * fileName
-  * filePath
-  * fileType
-  * mimeType
-  * semver
-* vehicle
-  * vehicle
-  * manufacturer
-  * model
-  * type
-  * fuel
-  * vin
-  * color
+* [address](https://armindojr.github.io/pure-gen/pure.address.html)
+* [airport](https://armindojr.github.io/pure-gen/pure.airport.html)
+* [commerce](https://armindojr.github.io/pure-gen/pure.commerce.html)
+* [company](https://armindojr.github.io/pure-gen/pure.company.html)
+* [database](https://armindojr.github.io/pure-gen/pure.database.html)
+* [date](https://armindojr.github.io/pure-gen/pure.date.html)
+* [dessert](https://armindojr.github.io/pure-gen/pure.dessert.html)
+* [document](https://armindojr.github.io/pure-gen/pure.document.html)
+* [electricalComponents](https://armindojr.github.io/pure-gen/pure.electricalComponents.html)
+* [esport](https://armindojr.github.io/pure-gen/pure.esport.html)
+* [fake](https://armindojr.github.io/pure-gen/pure.html)
+* [finance](https://armindojr.github.io/pure-gen/pure.finance.html)
+* [games](https://armindojr.github.io/pure-gen/pure.games.html)
+* [git](https://armindojr.github.io/pure-gen/pure.git.html)
+* [hacker](https://armindojr.github.io/pure-gen/pure.hacker.html)
+* [helpers](https://armindojr.github.io/pure-gen/pure.helpers.html)
+* [image](https://armindojr.github.io/pure-gen/pure.image.html)
+* [internet](https://armindojr.github.io/pure-gen/pure.internet.html)
+* [lorem](https://armindojr.github.io/pure-gen/pure.lorem.html)
+* [markdown](https://armindojr.github.io/pure-gen/pure.markdown.html)
+* [music](https://armindojr.github.io/pure-gen/pure.music.html)
+* [name](https://armindojr.github.io/pure-gen/pure.name.html)
+* [phone](https://armindojr.github.io/pure-gen/pure.phone.html)
+* [random](https://armindojr.github.io/pure-gen/pure.random.html)
+* [system](https://armindojr.github.io/pure-gen/pure.system.html)
+* [vehicle](https://armindojr.github.io/pure-gen/pure.vehicle.html)
 
 
 ## Localization
