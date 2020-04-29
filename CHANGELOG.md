@@ -2,7 +2,6 @@
 
 ## v1.2.0
 
-`` WIP ``
 ### New API Methods
 * Added pure.electricalComponents generator
 * Added pure.esport generator
