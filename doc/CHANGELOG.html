@@ -1,7 +1,25 @@
 <h1 id="changelog">CHANGELOG</h1>
-<h2 id="v110">v1.1.0</h2>
+<h2 id="v120">v1.2.0</h2>
 <p><code>WIP</code></p>
 <h3 id="newapimethods">New API Methods</h3>
+<ul>
+<li>Added pure.electricalComponents generator</li>
+<li>Added pure.esport generator</li>
+</ul>
+<h2 id="apifixes">API fixes</h2>
+<ul>
+<li>pure.finance.creditCardNumber verification don't break anymore when credit_card is only string</li>
+<li>pure.name.firstName verification now return random names when first_name is undefined in locale</li>
+</ul>
+<h3 id="generalfixes">General fixes</h3>
+<ul>
+<li>Refactor lib/image.js to use class style and inherit from default provider</li>
+<li>Compress locales to shrink size</li>
+<li>Refactor functional tests to execute in less time</li>
+<li>Improve code coverage</li>
+</ul>
+<h2 id="v110">v1.1.0</h2>
+<h3 id="newapimethods-1">New API Methods</h3>
 <ul>
 <li>Added pure.commerce.categories again</li>
 <li>Added pure.dessert generator</li>
@@ -21,7 +39,7 @@
 <li>pure.document.cpf renamed to pure.document.brazilianCitizenNumber</li>
 <li>pure.document.cnpj renamed to pure.document.brazilianCompanyNumber</li>
 </ul>
-<h3 id="apifixes">Api fixes</h3>
+<h3 id="apifixes-1">Api fixes</h3>
 <ul>
 <li>Update Random to create a per-instance copy of the RNG #513</li>
 </ul>
@@ -30,7 +48,7 @@
 <ul>
 <li>pure.system.commonFileName now really do his job generating files with common ext</li>
 </ul>
-<h3 id="generalfixes">General fixes</h3>
+<h3 id="generalfixes-1">General fixes</h3>
 <ul>
 <li>added badges</li>
 <li>improve coverage
@@ -51,7 +69,7 @@ Lines        : 98.92% ( 4300/4347 )
 </ul>
 <h2 id="v100">v1.0.0</h2>
 <p>Changes implemented from base version, all PR's here have been tested and merged manually by me. So if anything is wrong, please let me know.</p>
-<h3 id="newapimethods-1">New API Methods</h3>
+<h3 id="newapimethods-2">New API Methods</h3>
 <ul>
 <li>Added faker.date.soon #487</li>
 <li>Added aba routing number #423</li>
@@ -156,7 +174,7 @@ Lines        : 98.92% ( 4300/4347 )
 <li>Add multi parameters support for faker.fake #896</li>
 <li>Removed an unused variable, password, found in internet.js on line 354 #897</li>
 </ul>
-<h3 id="apifixes-1">API Fixes</h3>
+<h3 id="apifixes-2">API Fixes</h3>
 <ul>
 <li>internet.userAgent missing random seed #521</li>
 <li>commerce.price can no longer default to 0 #446</li>
@@ -169,7 +187,7 @@ Lines        : 98.92% ( 4300/4347 )
 <li>Fixed issue where <code>useAbbr</code> parameter in address.state not used. #840</li>
 <li>Fix special characters in internet.url #895</li>
 </ul>
-<h3 id="generalfixes-1">General Fixes</h3>
+<h3 id="generalfixes-2">General Fixes</h3>
 <ul>
 <li>Readme.md: Add note about <code>faker.seed(0)</code> #551</li>
 <li>update finance.js typo in doc #566</li>
