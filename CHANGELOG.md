@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.2.1
+
+### API Changes
+* Revert due to bugs : Update options.max for random.number to Number.MAX_SAFE_INTEGER #793
+
 ## v1.2.0
 
 ### New API Methods
