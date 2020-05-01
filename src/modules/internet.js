@@ -1,5 +1,5 @@
 const slugify = require('slugify');
-const randomUa = require('../vendor/user-agent');
+const randomUa = require('../../vendor/user-agent');
 
 /**
  *

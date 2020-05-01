@@ -1,33 +1,33 @@
 /**
  * Global assign
  */
-const Fake = require('./fake');
-const Unique = require('./unique');
-const Random = require('./random');
-const Helpers = require('./helpers');
-const Name = require('./name');
-const Address = require('./address');
-const Company = require('./company');
-const Finance = require('./finance');
-const Image = require('./image');
-const Lorem = require('./lorem');
-const Hacker = require('./hacker');
-const Internet = require('./internet');
-const Database = require('./database');
-const Phone = require('./phone_number');
-const Date = require('./date');
-const Commerce = require('./commerce');
-const System = require('./system');
-const Git = require('./git');
-const Markdown = require('./markdown');
-const Vehicle = require('./vehicle');
-const Airport = require('./airport');
-const Music = require('./music');
-const Document = require('./document');
-const Dessert = require('./dessert');
-const Games = require('./games');
-const ElectricalComponents = require('./electrical_components');
-const Esport = require('./esport');
+const Fake = require('./modules/fake');
+const Unique = require('./modules/unique');
+const Random = require('./modules/random');
+const Helpers = require('./modules/helpers');
+const Name = require('./modules/name');
+const Address = require('./modules/address');
+const Company = require('./modules/company');
+const Finance = require('./modules/finance');
+const Image = require('./modules/image');
+const Lorem = require('./modules/lorem');
+const Hacker = require('./modules/hacker');
+const Internet = require('./modules/internet');
+const Database = require('./modules/database');
+const Phone = require('./modules/phone_number');
+const Date = require('./modules/date');
+const Commerce = require('./modules/commerce');
+const System = require('./modules/system');
+const Git = require('./modules/git');
+const Markdown = require('./modules/markdown');
+const Vehicle = require('./modules/vehicle');
+const Airport = require('./modules/airport');
+const Music = require('./modules/music');
+const Document = require('./modules/document');
+const Dessert = require('./modules/dessert');
+const Games = require('./modules/games');
+const ElectricalComponents = require('./modules/electrical_components');
+const Esport = require('./modules/esport');
 
 /**
  *
@@ -45,7 +45,7 @@ class Pure {
         self.localeFallback = self.localeFallback || newOpts.localeFallback || 'en';
 
         self.definitions = {};
-        
+
         const definitions = {
             address: [
                 'city_prefix',
@@ -183,18 +183,18 @@ class Pure {
             title: '',
             separator: '',
         };
-    
+
         // Create a Getter for all definitions.foo.bar properties
         Object.keys(definitions).forEach((d) => {
             if (typeof self.definitions[d] === 'undefined') {
                 self.definitions[d] = {};
             }
-    
+
             if (typeof definitions[d] === 'string') {
                 self.definitions[d] = definitions[d];
                 return;
             }
-    
+
             definitions[d].forEach((p) => {
                 Object.defineProperty(self.definitions[d], p, {
                     get() {
@@ -212,44 +212,48 @@ class Pure {
                 });
             });
         });
+
+        this.fake = new Fake(this).fake;
+        this.unique = new Unique(this).unique;
+        this.random = new Random(this);
+        this.helpers = new Helpers(this);
+        this.name = new Name(this);
+        this.address = new Address(this);
+        this.company = new Company(this);
+        this.finance = new Finance(this);
+        this.image = new Image(this);
+        this.lorem = new Lorem(this);
+        this.hacker = new Hacker(this);
+        this.internet = new Internet(this);
+        this.database = new Database(this);
+        this.phone = new Phone(this);
+        this.date = new Date(this);
+        this.commerce = new Commerce(this);
+        this.system = new System(this);
+        this.git = new Git(this);
+        this.markdown = new Markdown(this);
+        this.vehicle = new Vehicle(this);
+        this.airport = new Airport(this);
+        this.music = new Music(this);
+        this.document = new Document(this);
+        this.dessert = new Dessert(this);
+        this.games = new Games(this);
+        this.electricalComponents = new ElectricalComponents(this);
+        this.esport = new Esport(this);
     }
 
     seed(value) {
         this.seedValue = value;
         this.random = new Random(this, this.seedValue);
-    };
+    }
 
     setLocale(locale) {
         this.locale = locale;
-    };
+    }
 
-    fake = new Fake(this).fake;
-    unique = new Unique(this).unique;
-    random = new Random(this);
-    helpers = new Helpers(this);
-    name = new Name(this);
-    address = new Address(this);
-    company = new Company(this);
-    finance = new Finance(this);
-    image = new Image(this);
-    lorem = new Lorem(this);
-    hacker = new Hacker(this);
-    internet = new Internet(this);
-    database = new Database(this);
-    phone = new Phone(this);
-    date = new Date(this);
-    commerce = new Commerce(this);
-    system = new System(this);
-    git = new Git(this);
-    markdown = new Markdown(this);
-    vehicle = new Vehicle(this);
-    airport = new Airport(this);
-    music = new Music(this);
-    document = new Document(this);
-    dessert = new Dessert(this);
-    games = new Games(this);
-    electricalComponents = new ElectricalComponents(this);
-    esport = new Esport(this);
+    getSeed() {
+        return this.random.returnSeed();
+    }
 }
 
 module.exports = Pure;

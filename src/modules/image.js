@@ -4,8 +4,8 @@
  * @description Return image url from default provider
  * @default Default provider is placeimg
  */
-const Placeimg = require('./image_providers/placeimg');
-const Unsplash = require('./image_providers/unsplash');
+const Placeimg = require('../image_providers/placeimg');
+const Unsplash = require('../image_providers/unsplash');
 
 class Image extends Placeimg {
     constructor(pure) {

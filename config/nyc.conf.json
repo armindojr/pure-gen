@@ -1,7 +1,7 @@
 {
     "all": false,
     "include": [
-        "lib/**/*.js",
+        "src/**/**/*.js",
         "vendor/unique.js.js"
     ],
     "exclude": [

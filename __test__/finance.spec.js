@@ -2,7 +2,7 @@ const { assert, expect } = require('chai');
 const pure = require('../index');
 const luhnFormula = require('./support/luhnCheck.js');
 const sinon = require('sinon');
-const ibanLib = require('../lib/iban');
+const ibanLib = require('../src/modules/iban');
 
 describe('finance.js', () => {
     describe('account( length )', () => {
@@ -166,14 +166,14 @@ describe('finance.js', () => {
             const amount = pure.finance.amount(100, 100, 1);
 
             assert.ok(amount);
-            assert.strictEqual(amount, '100.0', 'the amount should be equal 100.0');
+            assert.equal(amount.length, 5)
         });
 
         it('it should handle argument dec = 0', () => {
             const amount = pure.finance.amount(100, 100, 0);
 
             assert.ok(amount);
-            assert.strictEqual(amount, '100', 'the amount should be equal 100');
+            assert.equal(amount.length, 3)
         });
     });
 

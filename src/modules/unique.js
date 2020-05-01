@@ -1,4 +1,4 @@
-const uniqueExec = require('../vendor/unique');
+const uniqueExec = require('../../vendor/unique');
 
 function Unique() {
     // initialize unique module class variables

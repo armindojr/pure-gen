@@ -107,7 +107,7 @@ function Finance(pure) {
         const nMax = max || 1000;
         const nDec = dec === undefined ? 2 : dec;
         const nSymbol = symbol || '';
-        const randValue = pure.random.number({ max: nMax, min: nMin, precision: (10 ** -nDec) });
+        const randValue = pure.random.number({ max: nMax, min: nMin, precision: nDec });
 
         return nSymbol + randValue.toFixed(nDec);
     };

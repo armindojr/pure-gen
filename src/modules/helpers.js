@@ -35,7 +35,7 @@ function Helpers(pure) {
    */
     this.replaceSymbolWithNumber = (string, symbol) => {
         const def = string || '';
-        let sym = symbol || '#';
+        const sym = symbol || '#';
         let str = '';
 
         for (let i = 0; i < def.length; i += 1) {
@@ -62,8 +62,8 @@ function Helpers(pure) {
         const def = string || '';
         const alpha = [
             'A', 'B', 'C', 'D', 'E', 'F', 'G',
-            'H', 'I', 'J', 'K', 'L', 'M', 'N', 
-            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 
+            'H', 'I', 'J', 'K', 'L', 'M', 'N',
+            'O', 'P', 'Q', 'R', 'S', 'T', 'U',
             'V', 'W', 'X', 'Y', 'Z',
         ];
         let str = '';
@@ -131,7 +131,7 @@ function Helpers(pure) {
    */
     this.repeatString = (string, num) => {
         const str = string || '';
-        let number = num || 0;
+        const number = num || 0;
 
         return str.repeat(number);
     };
@@ -150,9 +150,9 @@ function Helpers(pure) {
         const RANGE_REP_REG = /(.)\{(\d+),(\d+)\}/;
         const REP_REG = /(.)\{(\d+)\}/;
         const RANGE_REG = /\[(\d+)-(\d+)\]/;
-        let min; 
-        let max; 
-        let tmp; 
+        let min;
+        let max;
+        let tmp;
         let repetitions;
         let token = def.match(RANGE_REP_REG);
         while (token !== null) {
@@ -210,8 +210,8 @@ function Helpers(pure) {
    * @param {array} o
    */
     this.shuffle = (o) => {
-        let def = o || [];
-        
+        const def = o || [];
+
         for (let x, j, i = def.length - 1; i > 0; i -= 1) {
             j = pure.random.number(i);
             x = def[i];
@@ -238,7 +238,7 @@ function Helpers(pure) {
                 def = def.replace(re, data[p]);
             });
         }
-        
+
         return def;
     };
 

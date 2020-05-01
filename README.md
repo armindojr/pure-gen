@@ -201,6 +201,12 @@ console.log(firstRandom === secondRandom);
 
 _Note_: Setting the seed to `0` (`pure.seed(0)`) is the same as not having a seed. The seed must be greater than zero.
 
+If you want to known your current seed then you can:
+
+```js
+console.log(pure.getSeed())
+```
+
 ## Tests
 
 ```

@@ -89,18 +89,20 @@ function Commerce(pure) {
      * //outputs: "[ 'Home', 'Clothing', 'Shoes', 'Toys', 'Tools' ]"
      */
     self.categories = (num) => {
-        const categories = [];
+        let categories = [];
         let def = num;
         if (typeof def === 'undefined') {
             def = pure.random.number({ min: 1, max: 10 });
-        } else if (def > pure.definitions.commerce.department.length) {
-            def = pure.definitions.commerce.department.length;
         }
 
-        while (categories.length < def) {
-            const category = pure.random.arrayElement(pure.definitions.commerce.department);
-            if (categories.indexOf(category) === -1) {
-                categories.push(category);
+        if (def > pure.definitions.commerce.department.length) {
+            categories = pure.definitions.commerce.department;
+        } else {
+            while (categories.length < def) {
+                const category = pure.random.arrayElement(pure.definitions.commerce.department);
+                if (categories.indexOf(category) === -1) {
+                    categories.push(category);
+                }
             }
         }
 

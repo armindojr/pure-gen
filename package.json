@@ -11,12 +11,12 @@
   },
   "scripts": {
     "install": "node bundle.js decompress",
-    "lint": "npx eslint ./lib",
-    "lint:fix": "npx eslint ./lib --fix",
-    "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
-    "doc": "npx jsdoc -c ./jsdoc.conf.json --readme ./static/README.md",
-    "coverage": "npx nyc --nycrc-path ./nyc.conf.json --reporter=lcov npm run test",
-    "coverage:html": "npx nyc --nycrc-path ./nyc.conf.json --reporter=html npm run test",
+    "lint": "npx eslint ./src",
+    "lint:fix": "npx eslint ./src --fix",
+    "test": "npx mocha --config ./config/mocha.conf.js ./__test__/*.spec.js",
+    "doc": "npx jsdoc -c ./config/jsdoc.conf.json --readme ./static/README.md",
+    "coverage": "npx nyc --nycrc-path ./config/nyc.conf.json --reporter=lcov npm run test",
+    "coverage:html": "npx nyc --nycrc-path ./config/nyc.conf.json --reporter=html npm run test",
     "coverage:report": "codecov"
   },
   "devDependencies": {

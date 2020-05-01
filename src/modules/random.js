@@ -1,4 +1,4 @@
-const mersenne = require('../vendor/mersenne');
+const mersenne = require('../../vendor/mersenne');
 
 /**
  *
@@ -41,7 +41,8 @@ function Random(pure, seed) {
      * @param {object} options
      * @param {number} [options.min= 0] Minimum number to generate
      * @param {number} [options.max= Node maximum int] Maximum number to generate
-     * @param {number} [options.precision= 1] Numbers of digits after floating point
+     * @param {number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
+     *  this is limited to 10
      * @method pure.random.number
      * @example
      * console.log(pure.random.number());
@@ -60,22 +61,26 @@ function Random(pure, seed) {
         }
 
         if (typeof def.precision === 'undefined') {
+            def.precision = 0;
+        }
+
+        if (def.precision > 10) {
+            def.precision = 10;
+        } else if (def.precision < 0) {
             def.precision = 1;
         }
 
-        // Make the range inclusive of the max value
-        let { max } = def;
-        if (max >= 0) {
-            max += def.precision;
+        let result = '';
+        const randomNumber = rand(def.max, def.min);
+
+        if (def.precision >= 1) {
+            const template = '#'.repeat(def.precision);
+            result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber(template)}`);
+        } else {
+            result = randomNumber;
         }
 
-        let randomNumber = Math.floor(
-            rand(max / def.precision, def.min / def.precision),
-        );
-        // Workaround problem in Float point arithmetics for e.g. 6681493 / 0.01
-        randomNumber /= (1 / def.precision);
-
-        return randomNumber;
+        return result;
     };
 
     /**
@@ -100,7 +105,7 @@ function Random(pure, seed) {
             };
         }
 
-        def.precision = def.precision || 0.01;
+        def.precision = def.precision || 1;
 
         return pure.random.number(def);
     };
@@ -460,6 +465,8 @@ function Random(pure, seed) {
 
         return `0x${wholeString}`;
     };
+
+    this.returnSeed = () => num;
 
     return this;
 }
