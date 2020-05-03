@@ -2,4 +2,3 @@ lib/definitions.js
 lib/version.js
 lib/helpers.js
 lib/locales/
-lib/index.js

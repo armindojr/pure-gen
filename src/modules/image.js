@@ -11,8 +11,6 @@ class Image extends Placeimg {
     constructor(pure) {
         super(pure);
         this.pure = pure;
-        this.width = 640;
-        this.height = 480;
         this.placeimg = new Placeimg(this.pure);
         this.unsplash = new Unsplash(this.pure);
     }
@@ -215,7 +213,7 @@ class Image extends Placeimg {
      * @description Method to return data URI
      * @param {number} [width= 640] Width of image
      * @param {number} [height= 480] Height of image
-     * @param {string} color
+     * @param {string} [color= random] Color fill
      * @method pure.image.dataUri
      * @example
      * console.log(pure.image.dataUri());
@@ -226,9 +224,9 @@ class Image extends Placeimg {
      * //middle%22%20fill%3D%22white%22%3E640x480%3C%2Ftext%3E%3C%2Fsvg%3E"
      */
     dataUri(width, height, color) {
-        const def = color || 'grey';
-        const nWidth = width || this.width;
-        const nHeight = height || this.height;
+        const def = color || this.pure.commerce.color();
+        const nWidth = width || 640;
+        const nHeight = height || 480;
         const svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"'
         + ` baseProfile="full" width="${nWidth}" height="${nHeight}"><rect width="100%"`
         + ` height="100%" fill="${def}"/><text x="${nWidth / 2}" y="${nHeight / 2}"`

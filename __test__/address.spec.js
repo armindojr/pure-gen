@@ -295,17 +295,15 @@ describe('address.js', () => {
 
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
-            var stub = sinon.stub(pure.definitions, 'address').get(function getterFn() {
-                return {
-                    postcode: '#####'
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'address').get(() => ({
+                postcode: '#####',
+            }));
             const zipCode = pure.address.zipCode();
 
             assert.ok(zipCode);
             assert.ok(pure.address.zipCode.called);
             pure.address.zipCode.restore();
-            stub.restore()
+            stub.restore();
         });
     });
 
@@ -348,87 +346,75 @@ describe('address.js', () => {
 
     describe('latitude()', () => {
         it('returns random latitude', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const latitude = pure.address.latitude();
-                assert.ok(typeof latitude === 'string');
-                const latitudeFloat = parseFloat(latitude);
-                assert.ok(latitudeFloat >= -90.0);
-                assert.ok(latitudeFloat <= 90.0);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const latitude = pure.address.latitude();
+            assert.ok(typeof latitude === 'string');
+            const latitudeFloat = parseFloat(latitude);
+            assert.ok(latitudeFloat >= -90.0);
+            assert.ok(latitudeFloat <= 90.0);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
 
         it('returns latitude with min and max and default precision', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const latitude = pure.address.latitude(-5, 5);
-                assert.ok(typeof latitude === 'string');
-                assert.equal(latitude.split('.')[1].length, 4);
-                const latitudeFloat = parseFloat(latitude);
-                assert.ok(latitudeFloat >= -5);
-                assert.ok(latitudeFloat <= 5);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const latitude = pure.address.latitude(-5, 5);
+            assert.ok(typeof latitude === 'string');
+            assert.equal(latitude.split('.')[1].length, 4);
+            const latitudeFloat = parseFloat(latitude);
+            assert.ok(latitudeFloat >= -5);
+            assert.ok(latitudeFloat <= 5);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
 
         it('returns random latitude with custom precision', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const latitude = pure.address.latitude(undefined, undefined, 7);
-                assert.ok(typeof latitude === 'string');
-                assert.equal(latitude.split('.')[1].length, 7);
-                const latitudeFloat = parseFloat(latitude);
-                assert.ok(latitudeFloat >= -180);
-                assert.ok(latitudeFloat <= 180);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const latitude = pure.address.latitude(undefined, undefined, 7);
+            assert.ok(typeof latitude === 'string');
+            assert.equal(latitude.split('.')[1].length, 7);
+            const latitudeFloat = parseFloat(latitude);
+            assert.ok(latitudeFloat >= -180);
+            assert.ok(latitudeFloat <= 180);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
     });
 
     describe('longitude()', () => {
         it('returns random longitude', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const longitude = pure.address.longitude();
-                assert.ok(typeof longitude === 'string');
-                const longitudeFloat = parseFloat(longitude);
-                assert.ok(longitudeFloat >= -180.0);
-                assert.ok(longitudeFloat <= 180.0);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const longitude = pure.address.longitude();
+            assert.ok(typeof longitude === 'string');
+            const longitudeFloat = parseFloat(longitude);
+            assert.ok(longitudeFloat >= -180.0);
+            assert.ok(longitudeFloat <= 180.0);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
 
         it('returns random longitude with min and max and default precision', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const longitude = pure.address.longitude(100, -30);
-                assert.ok(typeof longitude === 'string');
-                assert.equal(longitude.split('.')[1].length, 4);
-                const longitudeFloat = parseFloat(longitude);
-                assert.ok(longitudeFloat >= -30);
-                assert.ok(longitudeFloat <= 100);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const longitude = pure.address.longitude(100, -30);
+            assert.ok(typeof longitude === 'string');
+            assert.equal(longitude.split('.')[1].length, 4);
+            const longitudeFloat = parseFloat(longitude);
+            assert.ok(longitudeFloat >= -30);
+            assert.ok(longitudeFloat <= 100);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
 
         it('returns random longitude with custom precision', () => {
-            for (let i = 0; i < 100; i += 1) {
-                sinon.spy(pure.random, 'number');
-                const longitude = pure.address.longitude(undefined, undefined, 7);
-                assert.ok(typeof longitude === 'string');
-                assert.equal(longitude.split('.')[1].length, 7);
-                const longitudeFloat = parseFloat(longitude);
-                assert.ok(longitudeFloat >= -180);
-                assert.ok(longitudeFloat <= 180);
-                assert.ok(pure.random.number.called);
-                pure.random.number.restore();
-            }
+            sinon.spy(pure.random, 'number');
+            const longitude = pure.address.longitude(undefined, undefined, 7);
+            assert.ok(typeof longitude === 'string');
+            assert.equal(longitude.split('.')[1].length, 7);
+            const longitudeFloat = parseFloat(longitude);
+            assert.ok(longitudeFloat >= -180);
+            assert.ok(longitudeFloat <= 180);
+            assert.ok(pure.random.number.called);
+            pure.random.number.restore();
         });
     });
 

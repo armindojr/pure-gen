@@ -45,8 +45,6 @@ function Phone(pure) {
      * //outputs: "(!##) !##-####"
      */
     this.phoneFormats = () => pure.random.arrayElement(pure.definitions.phone_number.formats);
-
-    return this;
 }
 
 module.exports = Phone;

@@ -69,12 +69,13 @@ function Fake(pure) {
         // since we might actually be dealing with an object or array,
         // we always attempt to the parse the incoming parameters into JSON
         let params;
-        // Note: we experience a small performance hit here due to JSON.parse try / catch
-        // If anyone actually needs to optimize this specific code path, please open a support issue on github
-        try {
+        const verif1 = parameters[0] === '[' || parameters[0] === '{';
+        const verif2 = parameters.indexOf(',') !== -1 && verif1;
+        const verif3 = parameters !== '' && verif1;
+
+        if (verif1 || verif2 || verif3) {
             params = JSON.parse(parameters);
-        } catch (err) {
-            // since JSON.parse threw an error, assume parameters was actually a string
+        } else {
             params = parameters;
         }
 
@@ -93,8 +94,6 @@ function Fake(pure) {
         // return the response recursively until we are done finding all tags
         return fake(res);
     };
-
-    return this;
 }
 
 module.exports = Fake;

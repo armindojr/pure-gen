@@ -228,7 +228,36 @@ function pureDate(pure) {
         return pure.random.arrayElement(source);
     };
 
-    return this;
+    /**
+     * birthDay
+     *
+     * @description Generate random birthDay
+     * @param {boolean} [minAge= 18] Minimum age to generate date
+     * @param {boolean} [maxAge= 60] Maximum age to generate date
+     * @method pure.date.birthDay
+     * @example
+     * console.log(pure.date.birthDay());
+     * //outputs: "1992-04-25T14:44:34.415Z"
+     */
+    this.birthDay = (minAge, maxAge) => {
+        let min = minAge || 18;
+        let max = maxAge || 60;
+
+        if (min > max) {
+            min = maxAge;
+            max = minAge;
+        }
+
+        const actualYear = (new Date()).getFullYear();
+
+        const minYear = actualYear - min;
+        const maxYear = actualYear - max;
+
+        const minDateParsed = new Date(`${minYear}-12-31`);
+        const maxDateParsed = new Date(`${maxYear}-01-01`);
+
+        return pure.date.between(minDateParsed, maxDateParsed);
+    };
 }
 
 module.exports = pureDate;

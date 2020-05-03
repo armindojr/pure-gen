@@ -1,4 +1,4 @@
-const slugify = require('slugify');
+const slugify = require('../../vendor/slugify');
 const randomUa = require('../../vendor/user-agent');
 
 /**
@@ -97,10 +97,7 @@ function Internet(pure) {
      * console.log(pure.internet.protocol());
      * //outputs: "https"
      */
-    this.protocol = () => {
-        const protocols = ['http', 'https'];
-        return pure.random.arrayElement(protocols);
-    };
+    this.protocol = () => pure.random.arrayElement(['http', 'https']);
 
     /**
      * url
@@ -145,7 +142,7 @@ function Internet(pure) {
      * //outputs: "alyce"
      */
     this.domainWord = () => {
-        let name = slugify.default(pure.name.firstName(), { lower: true, strict: true });
+        let name = pure.helpers.slugify(pure.name.firstName(), { lower: true, strict: true });
 
         if (name.length === 0) {
             name = slugify(pure.lorem.word(), { lower: true, strict: true });
@@ -183,28 +180,8 @@ function Internet(pure) {
      */
     this.ipv6 = () => {
         const randHash = () => {
-            let result = '';
-            for (let i = 0; i < 4; i += 1) {
-                result += (pure.random.arrayElement([
-                    '0',
-                    '1',
-                    '2',
-                    '3',
-                    '4',
-                    '5',
-                    '6',
-                    '7',
-                    '8',
-                    '9',
-                    'a',
-                    'b',
-                    'c',
-                    'd',
-                    'e',
-                    'f',
-                ]));
-            }
-            return result;
+            const template = pure.helpers.repeatString('#', 4);
+            return pure.helpers.replaceSymbolWithHex(template);
         };
 
         const result = [];

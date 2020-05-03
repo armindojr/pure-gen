@@ -1,10 +1,7 @@
-const ibanLib = require('./iban');
 /**
  * @namespace pure.finance
  */
 function Finance(pure) {
-    const Helpers = pure.helpers;
-
     /**
      * account
      *
@@ -17,10 +14,9 @@ function Finance(pure) {
      */
     this.account = (length) => {
         const def = length || 8;
+        const template = pure.helpers.repeatString('#', def);
 
-        const template = '#'.repeat(def);
-
-        return Helpers.replaceSymbolWithNumber(template);
+        return pure.helpers.replaceSymbolWithNumber(template);
     };
 
     /**
@@ -32,7 +28,7 @@ function Finance(pure) {
      * console.log(pure.finance.accountName());
      * //outputs: "Personal Loan Account"
      */
-    this.accountName = () => [Helpers.randomize(pure.definitions.finance.account_type), 'Account'].join(' ');
+    this.accountName = () => [pure.helpers.randomize(pure.definitions.finance.account_type), 'Account'].join(' ');
 
     /**
      * routingNumber
@@ -44,7 +40,7 @@ function Finance(pure) {
      * //outputs: "104791008"
      */
     this.routingNumber = () => {
-        const routingNumber = Helpers.replaceSymbolWithNumber('########');
+        const routingNumber = pure.helpers.replaceSymbolWithNumber('########');
 
         // Modules 10 straight summation.
         let sum = 0;
@@ -76,7 +72,7 @@ function Finance(pure) {
         const nParens = (parens === null) ? true : parens;
         const nEllipsis = (ellipsis === null) ? true : ellipsis;
 
-        let template = '#'.repeat(def);
+        let template = pure.helpers.repeatString('#', def);
 
         // prefix with ellipsis
         template = (nEllipsis) ? ['...', template].join('') : template;
@@ -84,7 +80,7 @@ function Finance(pure) {
         template = (nParens) ? ['(', template, ')'].join('') : template;
 
         // generate random numbers
-        template = Helpers.replaceSymbolWithNumber(template);
+        template = pure.helpers.replaceSymbolWithNumber(template);
 
         return template;
     };
@@ -121,7 +117,7 @@ function Finance(pure) {
      * console.log(pure.finance.transactionType());
      * //outputs: "deposit"
      */
-    this.transactionType = () => Helpers.randomize(pure.definitions.finance.transaction_type);
+    this.transactionType = () => pure.helpers.randomize(pure.definitions.finance.transaction_type);
 
     /**
      * currencyCode
@@ -245,7 +241,7 @@ function Finance(pure) {
             }
         }
         format = format.replace(/\//g, '');
-        return Helpers.replaceCreditCardSymbols(format);
+        return pure.helpers.replaceCreditCardSymbols(format);
     };
     /**
      * Credit card CVV
@@ -256,12 +252,7 @@ function Finance(pure) {
      * console.log(pure.finance.creditCardCVV());
      * //outputs: "256"
      */
-    this.creditCardCVV = () => {
-        const digit1 = pure.random.number({ min: 0, max: 9 });
-        const digit2 = pure.random.number({ min: 0, max: 9 });
-        const digit3 = pure.random.number({ min: 0, max: 9 });
-        return `${digit1}${digit2}${digit3}`;
-    };
+    this.creditCardCVV = () => pure.helpers.replaceSymbolWithNumber('###');
 
     /**
      * ethereumAddress
@@ -272,11 +263,7 @@ function Finance(pure) {
      * console.log(pure.finance.ethereumAddress());
      * //outputs: "0x43ea6bb9a79e2e12c18dd0f2d8ff08fd205cf97c"
      */
-    this.ethereumAddress = () => {
-        const address = pure.random.hexaDecimal(40).toLowerCase();
-
-        return address;
-    };
+    this.ethereumAddress = () => `0x${pure.random.hexaDecimal(40).toLowerCase()}`;
 
     /**
      * iban
@@ -292,7 +279,7 @@ function Finance(pure) {
     this.iban = (formatted, country) => {
         let ibanFormat;
         if (typeof country === 'undefined') {
-            ibanFormat = pure.random.arrayElement(ibanLib.formats);
+            ibanFormat = pure.random.arrayElement(pure.definitions.iban.formats);
         } else {
             const form = (format) => {
                 let res;
@@ -301,11 +288,11 @@ function Finance(pure) {
                 }
                 return res;
             };
-            const res = ibanLib.formats.filter(form);
+            const res = pure.definitions.iban.formats.filter(form);
             [ibanFormat] = res;
 
             if (!ibanFormat) {
-                ibanFormat = pure.random.arrayElement(ibanLib.formats);
+                ibanFormat = pure.random.arrayElement(pure.definitions.iban.formats);
             }
         }
 
@@ -317,19 +304,19 @@ function Finance(pure) {
             count += bban.count;
             while (c > 0) {
                 if (bban.type === 'a') {
-                    s += pure.random.arrayElement(ibanLib.alpha);
+                    s += pure.random.alpha().toUpperCase();
                 } else if (bban.type === 'c') {
                     if (pure.random.number(100) < 80) {
                         s += pure.random.number(9);
                     } else {
-                        s += pure.random.arrayElement(ibanLib.alpha);
+                        s += pure.random.alpha().toUpperCase();
                     }
                 } else if (c >= 3 && pure.random.number(100) < 30) {
                     if (pure.random.boolean()) {
-                        s += pure.random.arrayElement(ibanLib.pattern100);
+                        s += `00${pure.random.number(9)}`;
                         c -= 2;
                     } else {
-                        s += pure.random.arrayElement(ibanLib.pattern10);
+                        s += `0${pure.random.number(9)}`;
                         c -= 1;
                     }
                 } else {
@@ -339,7 +326,7 @@ function Finance(pure) {
             }
             s = s.substring(0, count);
         }
-        let checksum = 98 - ibanLib.mod97(ibanLib.toDigitString(`${s + ibanFormat.country}00`));
+        let checksum = 98 - pure.helpers.mod97(pure.helpers.toDigitString(`${s + ibanFormat.country}00`));
         if (checksum < 10) {
             checksum = `0${checksum}`;
         }
@@ -361,14 +348,14 @@ function Finance(pure) {
         const prob = pure.random.number(100);
         let verification1 = '';
         if (prob < 10) {
-            verification1 = Helpers.replaceSymbols(`?${pure.random.arrayElement(vowels)}?`);
+            verification1 = pure.helpers.replaceSymbols(`?${pure.random.arrayElement(vowels)}?`);
         } else if (prob < 40) {
-            verification1 = Helpers.replaceSymbols('###');
+            verification1 = pure.helpers.replaceSymbols('###');
         }
-        return `${Helpers.replaceSymbols('???')
+        return `${pure.helpers.replaceSymbols('???')
           + pure.random.arrayElement(vowels)
-          + pure.random.arrayElement(ibanLib.iso3166)
-          + Helpers.replaceSymbols('?')}1${verification1}`;
+          + pure.random.arrayElement(pure.definitions.iban.countryCode)
+          + pure.helpers.replaceSymbols('?')}1${verification1}`;
     };
 }
 

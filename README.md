@@ -247,6 +247,14 @@ I want to add or modify dictionary for my language, what i do?
 
 #### Armindo Junior
 
+## Credits
+
+This repo use some codes from other projects and i want to credit them:
+
+* [Random ua gen](https://github.com/picturepan2/modern-random-ua)
+* [Slugify](https://github.com/simov/slugify)
+* [Node mersenne-twister implementation](https://github.com/jwatte/node-mersenne)
+
 ## License
 
 pure-gen - Copyright (c) 2020

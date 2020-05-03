@@ -1,4 +1,4 @@
-const slugify = require('slugify');
+const slugify = require('../../vendor/slugify');
 /**
  *
  * @namespace pure.helpers
@@ -21,9 +21,9 @@ function Helpers(pure) {
    * @method pure.helpers.slugify
    * @param {string} string
    */
-    this.slugify = (string) => {
+    this.slugify = (string, opts) => {
         const def = string || '';
-        return slugify.default(def).replace(/ /g, '-').replace(/[^\w.-]+/g, '');
+        return slugify.default(def, opts).replace(/ /g, '-').replace(/[^\w.-]+/g, '');
     };
 
     /**
@@ -43,6 +43,30 @@ function Helpers(pure) {
                 str += pure.random.number(9);
             } else if (def.charAt(i) === '!') {
                 str += pure.random.number({ min: 2, max: 9 });
+            } else {
+                str += def.charAt(i);
+            }
+        }
+
+        return str;
+    };
+
+    /**
+   * parses string for a symbol and replace it with a random hex char
+   *
+   * @method pure.helpers.replaceSymbolWithHex
+   * @param {string} string
+   * @param {string} symbol defaults to `"#"`
+   */
+    this.replaceSymbolWithHex = (string, symbol) => {
+        const hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        const def = string || '';
+        const sym = symbol || '#';
+        let str = '';
+
+        for (let i = 0; i < def.length; i += 1) {
+            if (def.charAt(i) === sym) {
+                str += pure.random.arrayElement(hex);
             } else {
                 str += def.charAt(i);
             }
@@ -376,7 +400,25 @@ function Helpers(pure) {
         account: pure.finance.account(),
     });
 
-    return this;
+    /**
+   * mod97
+   *
+   * @method pure.helpers.mod97
+   */
+    this.mod97 = (digitStr) => {
+        let m = 0;
+        for (let i = 0; i < digitStr.length; i += 1) {
+            m = ((m * 10) + (digitStr[i] | 0)) % 97;
+        }
+        return m;
+    };
+
+    /**
+   * toDigitString
+   *
+   * @method pure.helpers.toDigitString
+   */
+    this.toDigitString = (str) => str.replace(/[A-Z]/gi, (match) => match.toUpperCase().charCodeAt(0) - 55);
 }
 
 module.exports = Helpers;

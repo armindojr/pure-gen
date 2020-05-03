@@ -423,6 +423,11 @@ function Address(pure) {
      * //outputs: "[ '-87.0506', '-95.7426' ]"
      */
     this.nearbyGPSCoordinate = (coordinate, radius, isMetric) => {
+        // If there is no coordinate, the best we can do is return a random GPS coordinate.
+        if (coordinate === undefined) {
+            return [pure.address.latitude(), pure.address.longitude()];
+        }
+
         function degreesToRadians(degrees) {
             return degrees * (Math.PI / 180.0);
         }
@@ -460,11 +465,6 @@ function Address(pure) {
 
             return [radiansToDegrees(lat2), radiansToDegrees(lon2)];
         }
-
-        // If there is no coordinate, the best we can do is return a random GPS coordinate.
-        if (coordinate === undefined) {
-            return [pure.address.latitude(), pure.address.longitude()];
-        }
         const nRadius = radius || 10.0;
         const nIsMetric = isMetric || false;
 
@@ -474,8 +474,6 @@ function Address(pure) {
         );
         return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
     };
-
-    return this;
 }
 
 module.exports = Address;

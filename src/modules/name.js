@@ -41,15 +41,15 @@ function Name(pure) {
     };
 
     /**
-   * lastName
-   *
-   * @description Generate random last names
-   * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
-   * @method pure.name.lastName
-   * @example
-   * console.log(pure.name.lastName());
-   * //outputs: "Bartell"
-   */
+     * lastName
+     *
+     * @description Generate random last names
+     * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
+     * @method pure.name.lastName
+     * @example
+     * console.log(pure.name.lastName());
+     * //outputs: "Bartell"
+     */
     this.lastName = (gender) => {
         let def = gender;
         const maleVerification = (typeof pure.definitions.name.male_last_name !== 'undefined');
@@ -70,15 +70,15 @@ function Name(pure) {
     };
 
     /**
-   * findName
-   *
-   * @description Generate random complete name
-   * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
-   * @method pure.name.findName
-   * @example
-   * console.log(pure.name.findName());
-   * //outputs: "Dorothy Littel"
-   */
+     * findName
+     *
+     * @description Generate random complete name
+     * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
+     * @method pure.name.findName
+     * @example
+     * console.log(pure.name.findName());
+     * //outputs: "Dorothy Littel"
+     */
     this.findName = (gender) => {
         const r = pure.random.number(8);
         let prefix;

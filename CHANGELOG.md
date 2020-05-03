@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## v1.3.0
+
+### New API Methods
+* Added pure.date.birthDay
+* Added pure.getSeed to log what seed is using
+* Added pure.helpers.replaceSymbolWithHex
+* Added pure.helpers.mod97
+* Added pure.helpers.toDigitString
+
+### API Changes
+* Improved document generation with template string
+* Improved cvv generation with template string
+* Improved ethereumAddress generation wit template string
+* Method pure.image.dataUri now generates result containing random colors
+
+### API fixes
+* Memory leak fix when using pure.fake due to JSON.parse with try/catch
+
+## General fixes
+* Converted slugify to local package
+* src/modules/finance improved to use local methods and removed src/modules/iban
+* Improved unit tests execution
+
 ## v1.2.1
 
 ### API Changes

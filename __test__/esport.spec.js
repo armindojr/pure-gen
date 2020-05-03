@@ -10,8 +10,8 @@ describe('esport.js', () => {
 
             assert.equal(players, 'shroud');
             pure.esport.players.restore();
-        })
-    })
+        });
+    });
     describe('teams()', () => {
         it('returns teams name', () => {
             sinon.stub(pure.esport, 'teams').returns('FaZe');
@@ -19,8 +19,8 @@ describe('esport.js', () => {
 
             assert.equal(teams, 'FaZe');
             pure.esport.teams.restore();
-        })
-    })
+        });
+    });
     describe('events()', () => {
         it('returns events name', () => {
             sinon.stub(pure.esport, 'events').returns('ESL Cologne');
@@ -28,8 +28,8 @@ describe('esport.js', () => {
 
             assert.equal(events, 'ESL Cologne');
             pure.esport.events.restore();
-        })
-    })
+        });
+    });
     describe('leagues()', () => {
         it('returns leagues name', () => {
             sinon.stub(pure.esport, 'leagues').returns('IEM');
@@ -37,8 +37,8 @@ describe('esport.js', () => {
 
             assert.equal(leagues, 'IEM');
             pure.esport.leagues.restore();
-        })
-    })
+        });
+    });
     describe('games()', () => {
         it('returns games name', () => {
             sinon.stub(pure.esport, 'games').returns('CS:GO');
@@ -46,6 +46,6 @@ describe('esport.js', () => {
 
             assert.equal(games, 'CS:GO');
             pure.esport.games.restore();
-        })
-    })
-})
+        });
+    });
+});

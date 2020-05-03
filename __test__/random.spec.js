@@ -37,7 +37,7 @@ describe('random.js', () => {
         });
 
         it('provides numbers with a given precision', () => {
-            pure.seed(1)
+            pure.seed(1);
             const options = { min: 0, max: 1.5, precision: 1 };
             const results = lodash.chain(lodash.range(50))
                 .map(() => pure.random.number(options))
@@ -312,12 +312,12 @@ describe('random.js', () => {
 
         it('should generate single hex character when no additional argument was provided', () => {
             const hex = hexaDecimal();
-            assert.ok(hex.match(/^(0x)[0-9a-f]{1}$/i));
+            assert.ok(hex.match(/^[0-9a-f]{1}$/i));
         });
 
         it('should generate a random hex string', () => {
             const hex = hexaDecimal(5);
-            assert.ok(hex.match(/^(0x)[0-9a-f]+$/i));
+            assert.ok(hex.match(/^[0-9a-f]+$/i));
         });
     });
 

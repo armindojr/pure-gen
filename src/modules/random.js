@@ -74,7 +74,7 @@ function Random(pure, seed) {
         const randomNumber = rand(def.max, def.min);
 
         if (def.precision >= 1) {
-            const template = '#'.repeat(def.precision);
+            const template = pure.helpers.repeatString('#', def.precision);
             result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber(template)}`);
         } else {
             result = randomNumber;
@@ -90,7 +90,7 @@ function Random(pure, seed) {
      * @param {object} options
      * @param {number} [options.min= 0] Minimum number to generate
      * @param {number} [options.max= Node maximum int] Maximum number to generate
-     * @param {number} [options.precision= 0.01] Numbers of digits after floating point
+     * @param {number} [options.precision= 1] Numbers of digits after floating point
      * @method pure.random.float
      * @example
      * console.log(pure.random.float());
@@ -435,40 +435,12 @@ function Random(pure, seed) {
      * //outputs: "0xA"
      */
     this.hexaDecimal = (count = 1) => {
-        let wholeString = '';
-        for (let i = 0; i < count; i += 1) {
-            wholeString += pure.random.arrayElement([
-                '0',
-                '1',
-                '2',
-                '3',
-                '4',
-                '5',
-                '6',
-                '7',
-                '8',
-                '9',
-                'a',
-                'b',
-                'c',
-                'd',
-                'e',
-                'f',
-                'A',
-                'B',
-                'C',
-                'D',
-                'E',
-                'F',
-            ]);
-        }
+        const template = pure.helpers.repeatString('#', count);
 
-        return `0x${wholeString}`;
+        return pure.helpers.replaceSymbolWithHex(template);
     };
 
     this.returnSeed = () => num;
-
-    return this;
 }
 
 module.exports = Random;

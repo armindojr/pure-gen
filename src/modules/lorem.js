@@ -198,8 +198,6 @@ function Lorem(pure) {
 
         return pure.lorem.sentences(def, '\n');
     };
-
-    return this;
 }
 
 

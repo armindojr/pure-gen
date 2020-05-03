@@ -79,8 +79,6 @@ function Hacker(pure) {
         const phrase = pure.random.arrayElement(pure.definitions.hacker.phrase);
         return pure.helpers.mustache(phrase, data);
     };
-
-    return this;
 }
 
 module.exports = Hacker;

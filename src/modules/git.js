@@ -104,8 +104,6 @@ function Git(pure) {
 
         return shortSha;
     };
-
-    return this;
 }
 
 module.exports = Git;

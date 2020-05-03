@@ -3,8 +3,6 @@
  * @namespace pure.airport
  */
 function Airport(pure) {
-    const self = this;
-
     /**
      * name
      *
@@ -14,7 +12,7 @@ function Airport(pure) {
      * console.log(pure.airport.name());
      * //outputs: "Ram Lala International Airport"
      */
-    self.name = () => pure.random.arrayElement(pure.definitions.airport.name);
+    this.name = () => pure.random.arrayElement(pure.definitions.airport.name);
 
     /**
      * iataCode
@@ -25,7 +23,7 @@ function Airport(pure) {
      * console.log(pure.airport.iataCode());
      * //outputs: "YOA"
      */
-    self.iataCode = () => pure.random.alpha({ count: 3, upcase: true });
+    this.iataCode = () => pure.random.alpha({ count: 3, upcase: true });
 
     /**
      * icaoCode
@@ -36,7 +34,7 @@ function Airport(pure) {
      * console.log(pure.airport.icaoCode());
      * //outputs: "HR"
      */
-    self.icaoCode = () => pure.random.alpha({ count: 2, upcase: true });
+    this.icaoCode = () => pure.random.alpha({ count: 2, upcase: true });
 }
 
 module.exports = Airport;

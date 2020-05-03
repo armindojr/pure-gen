@@ -3,8 +3,6 @@
  * @namespace pure.commerce
  */
 function Commerce(pure) {
-    const self = this;
-
     /**
      * color
      *
@@ -14,7 +12,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.color());
      * //outputs: "pink"
      */
-    self.color = () => pure.random.arrayElement(pure.definitions.commerce.color);
+    this.color = () => pure.random.arrayElement(pure.definitions.commerce.color);
 
     /**
      * department
@@ -25,7 +23,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.department());
      * //outputs: "Games"
      */
-    self.department = () => pure.random.arrayElement(pure.definitions.commerce.department);
+    this.department = () => pure.random.arrayElement(pure.definitions.commerce.department);
 
     /**
      * productName
@@ -36,7 +34,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.productName());
      * //outputs: "Gorgeous Cotton Shirt"
      */
-    self.productName = () => `${pure.commerce.productAdjective()} ${
+    this.productName = () => `${pure.commerce.productAdjective()} ${
         pure.commerce.productMaterial()} ${
         pure.commerce.product()}`;
 
@@ -55,7 +53,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.price());
      * //outputs: "941.00"
      */
-    self.price = (options) => {
+    this.price = (options) => {
         let def = options;
         if (def === undefined) {
             def = {
@@ -88,7 +86,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.categories());
      * //outputs: "[ 'Home', 'Clothing', 'Shoes', 'Toys', 'Tools' ]"
      */
-    self.categories = (num) => {
+    this.categories = (num) => {
         let categories = [];
         let def = num;
         if (typeof def === 'undefined') {
@@ -98,19 +96,18 @@ function Commerce(pure) {
         if (def > pure.definitions.commerce.department.length) {
             categories = pure.definitions.commerce.department;
         } else {
-            while (categories.length < def) {
-                const category = pure.random.arrayElement(pure.definitions.commerce.department);
-                if (categories.indexOf(category) === -1) {
-                    categories.push(category);
-                }
-            }
+            const shuffledArr = pure.helpers.shuffle(pure.definitions.commerce.department);
+            const diff = pure.definitions.commerce.department.length - num;
+
+            shuffledArr.splice(0, diff);
+            categories = shuffledArr;
         }
 
         return categories;
     };
 
     /*
-    self.mergeCategories = function(categories) {
+    this.mergeCategories = function(categories) {
         var separator = pure.definitions.separator || " &";
         // TODO: find undefined here
         categories = categories || pure.definitions.commerce.categories;
@@ -129,7 +126,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.productAdjective());
      * //outputs: "Tasty"
      */
-    self.productAdjective = () => pure.random.arrayElement(pure.definitions.commerce.product_name.adjective);
+    this.productAdjective = () => pure.random.arrayElement(pure.definitions.commerce.product_name.adjective);
 
     /**
      * productMaterial
@@ -140,7 +137,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.productMaterial());
      * //outputs: "Granite"
      */
-    self.productMaterial = () => pure.random.arrayElement(pure.definitions.commerce.product_name.material);
+    this.productMaterial = () => pure.random.arrayElement(pure.definitions.commerce.product_name.material);
 
     /**
      * product
@@ -151,7 +148,7 @@ function Commerce(pure) {
      * console.log(pure.commerce.product());
      * //outputs: "Bike"
      */
-    self.product = () => pure.random.arrayElement(pure.definitions.commerce.product_name.product);
+    this.product = () => pure.random.arrayElement(pure.definitions.commerce.product_name.product);
 
     /**
      * productDescription
@@ -163,9 +160,7 @@ function Commerce(pure) {
      * //outputs: "New range of formal shirts are designed keeping you in mind. With fits and
      * //styling that will make you stand apart"
      */
-    self.productDescription = () => pure.random.arrayElement(pure.definitions.commerce.product_description);
-
-    return self;
+    this.productDescription = () => pure.random.arrayElement(pure.definitions.commerce.product_description);
 }
 
 module.exports = Commerce;

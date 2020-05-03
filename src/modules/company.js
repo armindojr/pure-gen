@@ -3,8 +3,6 @@
  * @namespace pure.company
  */
 function Company(pure) {
-    const self = this;
-
     /**
      * suffixes
      *
@@ -16,19 +14,19 @@ function Company(pure) {
      */
 
     // Don't want the source array exposed to modification, so return a copy
-    self.suffixes = () => pure.definitions.company.suffix.slice(0);
+    this.suffixes = () => pure.definitions.company.suffix.slice(0);
 
     /**
      * companyName
      *
      * @description Generate random company name
-     * @param {string} format Format to use when generate name
+     * @param {string} [format= random] Format to use when generate name
      * @method pure.company.companyName
      * @example
      * console.log(pure.company.companyName());
      * //outputs: "Corwin and Sons"
      */
-    self.companyName = (format) => {
+    this.companyName = (format) => {
         const def = format;
         let res;
         const formats = [
@@ -38,7 +36,7 @@ function Company(pure) {
         ];
 
         if (typeof def !== 'number') {
-            res = pure.fake(formats[pure.random.number(formats.length - 1)]);
+            res = pure.fake(pure.random.arrayElement(formats));
         } else {
             res = pure.fake(formats[def]);
         }
@@ -55,7 +53,7 @@ function Company(pure) {
      * console.log(pure.company.companySuffix());
      * //outputs: "Group"
      */
-    self.companySuffix = () => pure.random.arrayElement(pure.company.suffixes());
+    this.companySuffix = () => pure.random.arrayElement(pure.company.suffixes());
 
     /**
      * catchPhrase
@@ -66,7 +64,7 @@ function Company(pure) {
      * console.log(pure.company.catchPhrase());
      * //outputs: "Enterprise-wide mission-critical toolset"
      */
-    self.catchPhrase = () => pure.fake('{{company.catchPhraseAdjective}}'
+    this.catchPhrase = () => pure.fake('{{company.catchPhraseAdjective}}'
     + ' {{company.catchPhraseDescriptor}} {{company.catchPhraseNoun}}');
 
     /**
@@ -78,7 +76,7 @@ function Company(pure) {
      * console.log(pure.company.bs());
      * //outputs: "cultivate innovative bandwidth"
      */
-    self.bs = () => pure.fake('{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}');
+    this.bs = () => pure.fake('{{company.bsBuzz}} {{company.bsAdjective}} {{company.bsNoun}}');
 
     /**
      * catchPhraseAdjective
@@ -89,7 +87,7 @@ function Company(pure) {
      * console.log(pure.company.catchPhraseAdjective());
      * //outputs: "Vision-oriented"
      */
-    self.catchPhraseAdjective = () => pure.random.arrayElement(pure.definitions.company.adjective);
+    this.catchPhraseAdjective = () => pure.random.arrayElement(pure.definitions.company.adjective);
 
     /**
      * catchPhraseDescriptor
@@ -100,7 +98,7 @@ function Company(pure) {
      * console.log(pure.company.catchPhraseDescriptor());
      * //outputs: "actuating"
      */
-    self.catchPhraseDescriptor = () => pure.random.arrayElement(pure.definitions.company.descriptor);
+    this.catchPhraseDescriptor = () => pure.random.arrayElement(pure.definitions.company.descriptor);
 
     /**
      * catchPhraseNoun
@@ -111,7 +109,7 @@ function Company(pure) {
      * console.log(pure.company.catchPhraseNoun());
      * //outputs: "knowledge base"
      */
-    self.catchPhraseNoun = () => pure.random.arrayElement(pure.definitions.company.noun);
+    this.catchPhraseNoun = () => pure.random.arrayElement(pure.definitions.company.noun);
 
     /**
      * bsAdjective
@@ -122,7 +120,7 @@ function Company(pure) {
      * console.log(pure.company.bsAdjective());
      * //outputs: "frictionless"
      */
-    self.bsAdjective = () => pure.random.arrayElement(pure.definitions.company.bs_adjective);
+    this.bsAdjective = () => pure.random.arrayElement(pure.definitions.company.bs_adjective);
 
     /**
      * bsBuzz
@@ -133,7 +131,7 @@ function Company(pure) {
      * console.log(pure.company.bsBuzz());
      * //outputs: "syndicate"
      */
-    self.bsBuzz = () => pure.random.arrayElement(pure.definitions.company.bs_verb);
+    this.bsBuzz = () => pure.random.arrayElement(pure.definitions.company.bs_verb);
 
     /**
      * bsNoun
@@ -144,7 +142,7 @@ function Company(pure) {
      * console.log(pure.company.bsNoun());
      * //outputs: "web services"
      */
-    self.bsNoun = () => pure.random.arrayElement(pure.definitions.company.bs_noun);
+    this.bsNoun = () => pure.random.arrayElement(pure.definitions.company.bs_noun);
 }
 
 module.exports = Company;

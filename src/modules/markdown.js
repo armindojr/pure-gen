@@ -16,8 +16,8 @@ function Markdown(pure) {
      */
     this.header = (num) => {
         const def = num || 1;
-        const head = new Array(def + 1).join('#');
-        return [head, pure.lorem.word()].join(' ');
+        const head = pure.helpers.repeatString('#', def);
+        return `${head} ${pure.lorem.word()}`;
     };
 
     /**
@@ -89,7 +89,7 @@ function Markdown(pure) {
         const list = [];
 
         words.forEach((word, index) => {
-            list.push([index + 1, '. ', word].join(''));
+            list.push(`${index + 1}. ${word}`);
         });
 
         return list.join('\n');
@@ -128,7 +128,7 @@ function Markdown(pure) {
      * console.log(pure.markdown.inlineCode());
      * //outputs: "`officia`"
      */
-    this.inlineCode = () => ['`', pure.lorem.word(), '`'].join('');
+    this.inlineCode = () => `\` ${pure.lorem.word()} \``;
 
     /**
      * blockCode
@@ -141,9 +141,7 @@ function Markdown(pure) {
      * // "quod"
      * // "```"
      */
-    this.blockCode = () => ['```javascript\n', pure.lorem.word(), '\n```'].join('');
-
-    return this;
+    this.blockCode = () => `\`\`\`javascript\n ${pure.lorem.word()} \n\`\`\``;
 }
 
 module.exports = Markdown;

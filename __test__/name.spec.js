@@ -13,87 +13,79 @@ describe('name.js', () => {
             pure.name.firstName.restore();
         });
         it('returns a random name when first_name is undefined', () => {
-            var stub = sinon.stub(pure.definitions, 'name').get(function getterFn() {
-                return {
-                    first_name: undefined,
-                    male_first_name: [
-                        'test1male',
-                        'test2male'
-                    ],
-                    female_first_name: [
-                        'test1female',
-                        'test2female'
-                    ]
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+                first_name: undefined,
+                male_first_name: [
+                    'test1male',
+                    'test2male',
+                ],
+                female_first_name: [
+                    'test1female',
+                    'test2female',
+                ],
+            }));
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string')
+            assert.ok(typeof firstName === 'string');
 
-            stub.restore()
+            stub.restore();
         });
         it('returns a random name when first_name is undefined and random num 0', () => {
             sinon.stub(pure.random, 'number').returns(0);
-            var stub = sinon.stub(pure.definitions, 'name').get(function getterFn() {
-                return {
-                    first_name: undefined,
-                    male_first_name: [
-                        'test1male',
-                        'test2male'
-                    ],
-                    female_first_name: [
-                        'test1female',
-                        'test2female'
-                    ]
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+                first_name: undefined,
+                male_first_name: [
+                    'test1male',
+                    'test2male',
+                ],
+                female_first_name: [
+                    'test1female',
+                    'test2female',
+                ],
+            }));
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string')
+            assert.ok(typeof firstName === 'string');
 
-            pure.random.number.restore()
-            stub.restore()
+            pure.random.number.restore();
+            stub.restore();
         });
         it('returns a random name when first_name is undefined and random num 1', () => {
             sinon.stub(pure.random, 'number').returns(1);
-            var stub = sinon.stub(pure.definitions, 'name').get(function getterFn() {
-                return {
-                    first_name: undefined,
-                    male_first_name: [
-                        'test1male',
-                        'test2male'
-                    ],
-                    female_first_name: [
-                        'test1female',
-                        'test2female'
-                    ]
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+                first_name: undefined,
+                male_first_name: [
+                    'test1male',
+                    'test2male',
+                ],
+                female_first_name: [
+                    'test1female',
+                    'test2female',
+                ],
+            }));
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string')
+            assert.ok(typeof firstName === 'string');
 
-            pure.random.number.restore()
-            stub.restore()
+            pure.random.number.restore();
+            stub.restore();
         });
         it('returns a random name when female_first_name and male_first_name is undefined', () => {
             sinon.stub(pure.random, 'number').returns(1);
-            var stub = sinon.stub(pure.definitions, 'name').get(function getterFn() {
-                return {
-                    first_name: [
-                        'test1male',
-                        'test2female'
-                    ],
-                    male_first_name: undefined,
-                    female_first_name: undefined
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+                first_name: [
+                    'test1male',
+                    'test2female',
+                ],
+                male_first_name: undefined,
+                female_first_name: undefined,
+            }));
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string')
+            assert.ok(typeof firstName === 'string');
 
-            pure.random.number.restore()
-            stub.restore()
+            pure.random.number.restore();
+            stub.restore();
         });
     });
 
@@ -108,22 +100,20 @@ describe('name.js', () => {
             pure.name.lastName.restore();
         });
         it('returns a male random name', () => {
-            var stub = sinon.stub(pure.definitions, 'name').get(function getterFn() {
-                return {
-                    male_last_name: [
-                        'test1male',
-                        'test2male'
-                    ],
-                    female_last_name: [
-                        'test1female',
-                        'test2female'
-                    ]
-                };
-            })
+            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+                male_last_name: [
+                    'test1male',
+                    'test2male',
+                ],
+                female_last_name: [
+                    'test1female',
+                    'test2female',
+                ],
+            }));
             const lastName = pure.name.lastName(0);
 
-            assert.ok(typeof lastName === 'string')
-            stub.restore()
+            assert.ok(typeof lastName === 'string');
+            stub.restore();
         });
         describe('When using RU locale', () => {
             it('returns localized lastname', () => {

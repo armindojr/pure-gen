@@ -1,4 +1,5 @@
 const { assert, expect } = require('chai');
+const sinon = require('sinon');
 const pure = require('../index');
 
 describe('image.js', () => {
@@ -195,6 +196,7 @@ describe('image.js', () => {
 
     describe('dataUri', () => {
         it('returns a blank data', () => {
+            sinon.stub(pure.commerce, 'color').returns('grey');
             const dataUri = pure.image.dataUri(200, 300);
             assert.equal(dataUri, 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2F'
             + 'www.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20baseProfile%3D%22full%22%20width%3D%2'
@@ -202,6 +204,7 @@ describe('image.js', () => {
             + 'fill%3D%22grey%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22150%22%20font-size%3D%2220%22%20'
             + 'alignment-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3E200'
             + 'x300%3C%2Ftext%3E%3C%2Fsvg%3E');
+            pure.commerce.color.restore();
         });
         it('returns a customed background color data URI', () => {
             const dataUri = pure.image.dataUri(200, 300, 'red');
@@ -213,6 +216,7 @@ describe('image.js', () => {
             + 'x300%3C%2Ftext%3E%3C%2Fsvg%3E');
         });
         it('returns data uri even when parameters is undefined', () => {
+            sinon.stub(pure.commerce, 'color').returns('grey');
             const dataUri = pure.image.dataUri();
             assert.equal(dataUri, 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2F'
             + 'www.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20baseProfile%3D%22full%22%20width%3D%'
@@ -220,6 +224,7 @@ describe('image.js', () => {
             + 'fill%3D%22grey%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%22240%22%20font-size%3D%2220%22%20'
             + 'alignment-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3E640'
             + 'x480%3C%2Ftext%3E%3C%2Fsvg%3E');
-        })
+            pure.commerce.color.restore();
+        });
     });
 });

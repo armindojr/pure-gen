@@ -25,11 +25,7 @@ function System(pure) {
 
         let str = `${pure.random.words()}.${def}`;
         str = pure.helpers.slugify(str);
-        str = str.replace(/ /g, '_');
-        str = str.replace(/,/g, '_');
-        str = str.replace(/-/g, '_');
-        str = str.replace(/\\/g, '_');
-        str = str.replace(/\//g, '_');
+        str = str.replace(/\s\\\/-,/g, '_');
         str = str.toLowerCase();
         return str;
     };
@@ -165,10 +161,7 @@ function System(pure) {
      * console.log(pure.system.directoryPath());
      * //outputs: "/private/tmp"
      */
-    this.directoryPath = () => {
-        const paths = pure.definitions.system.directoryPaths;
-        return pure.random.arrayElement(paths);
-    };
+    this.directoryPath = () => pure.random.arrayElement(pure.definitions.system.directoryPaths);
 
     /**
      * filePath
@@ -190,15 +183,7 @@ function System(pure) {
      * console.log(pure.system.semver());
      * //outputs: "9.8.1"
      */
-    this.semver = () => {
-        const result = [
-            pure.random.number(9),
-            pure.random.number(9),
-            pure.random.number(9),
-        ].join('.');
-
-        return result;
-    };
+    this.semver = () => pure.helpers.replaceSymbolWithNumber('#.#.#');
 }
 
 module.exports = System;
