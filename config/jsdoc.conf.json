@@ -5,11 +5,11 @@
   },
   "source": {
     "include": [
-      "lib",
-      "lib/image_providers"
+      "src",
+      "src/image_providers"
     ],
     "exclude": [
-      "lib/locales"
+      "src/locales"
     ]
   },
   "templates": {
