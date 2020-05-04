@@ -1,9 +1,8 @@
 
 const { assert, expect } = require('chai');
-const lodash = require('lodash');
+const { chain, range, includes } = require('lodash');
 const pure = require('../index');
 const Pure = require('../src');
-const mersenne = require('../vendor/mersenne');
 
 describe('random.js', () => {
     describe('number', () => {
@@ -39,14 +38,14 @@ describe('random.js', () => {
         it('provides numbers with a given precision', () => {
             pure.seed(1);
             const options = { min: 0, max: 1.5, precision: 1 };
-            const results = lodash.chain(lodash.range(50))
+            const results = chain(range(50))
                 .map(() => pure.random.number(options))
                 .uniq()
                 .value()
                 .sort();
 
-            assert.ok(lodash.includes(results, 0.5));
-            assert.ok(lodash.includes(results, 1));
+            assert.ok(includes(results, 0.5));
+            assert.ok(includes(results, 1));
 
             assert.equal(results[0], 0);
         });
@@ -76,19 +75,19 @@ describe('random.js', () => {
         it('should return deterministic results when seeded with integer', () => {
             pure.seed(100);
             const name = pure.name.findName();
-            assert.equal(name, 'Randall Jenkins');
+            assert.equal(name, 'Homer Lesch Sr.');
         });
 
         it('should return deterministic results when seeded with array - one element', () => {
             pure.seed([10]);
             const name = pure.name.findName();
-            assert.equal(name, 'Duane Kshlerin');
+            assert.equal(name, 'Randy Haag PhD');
         });
 
         it('should return deterministic results when seeded with array - multiple elements', () => {
             pure.seed([10, 100, 1000]);
             const name = pure.name.findName();
-            assert.equal(name, 'Ramon Senger');
+            assert.equal(name, 'Jerry Smith');
         });
     });
 
@@ -134,14 +133,14 @@ describe('random.js', () => {
 
         it('provides numbers with a given precision', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
-            const results = lodash.chain(lodash.range(50))
+            const results = chain(range(50))
                 .map(() => pure.random.float(options))
                 .uniq()
                 .value()
                 .sort();
 
-            assert.ok(lodash.includes(results, 0.5));
-            assert.ok(lodash.includes(results, 1.0));
+            assert.ok(includes(results, 0.5));
+            assert.ok(includes(results, 1.0));
 
             assert.equal(results[0], 0);
         });
@@ -318,25 +317,6 @@ describe('random.js', () => {
         it('should generate a random hex string', () => {
             const hex = hexaDecimal(5);
             assert.ok(hex.match(/^[0-9a-f]+$/i));
-        });
-    });
-
-    describe('mersenne twister', () => {
-        it('returns a random number without given min / max arguments', () => {
-            const randomNumber = mersenne.rand();
-            assert.ok(typeof randomNumber === 'number');
-        });
-
-        it('throws an error when attempting to seed() a non-integer', () => {
-            assert.throws(() => {
-                mersenne.seed('abc');
-            }, Error);
-        });
-
-        it('throws an error when attempting to seed() a non-integer', () => {
-            assert.throws(() => {
-                mersenne.seed_array('abc');
-            }, Error);
         });
     });
 

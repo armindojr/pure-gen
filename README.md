@@ -253,7 +253,7 @@ This repo use some codes from other projects and i want to credit them:
 
 * [Random ua gen](https://github.com/picturepan2/modern-random-ua)
 * [Slugify](https://github.com/simov/slugify)
-* [Node mersenne-twister implementation](https://github.com/jwatte/node-mersenne)
+* [lfib PRNG](https://github.com/nquinlan/better-random-numbers-for-javascript-mirror)
 
 ## License
 

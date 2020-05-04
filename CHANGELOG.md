@@ -22,6 +22,23 @@
 * Converted slugify to local package
 * src/modules/finance improved to use local methods and removed src/modules/iban
 * Improved unit tests execution
+* Improved performance over random number generations by changing PRNG from mersenneTwister to LFib
+
+
+Example of improvement:
+
+* Before: ``mersenne: 76.808ms``
+* After: ``lfib: 30.348ms``
+
+Code used to benchmark, generate 1000000 times random number:
+```js
+console.time('lfib')
+for (let index = 0; index < 1000000; index++) {
+    pure.random.number()
+}
+console.timeEnd('lfib')
+```
+_to further comparison of PRNG's see:_ [benchmark](https://jsperf.com/prng-comparison/6)
 
 ## v1.2.1
 

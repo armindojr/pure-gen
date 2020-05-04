@@ -1,11 +1,10 @@
-const mersenne = require('../../vendor/mersenne');
+const lfib = require('../../vendor/lfib');
 
 /**
  *
  * @namespace pure.random
  */
 function Random(pure, seed) {
-    const gen = new mersenne.MersenneTwister19937();
     let num = seed;
 
     // Preserve past behavior and fall back to the default time-based seed if an
@@ -19,34 +18,25 @@ function Random(pure, seed) {
         num = (new Date()).getTime() % 1000000000;
     }
 
-    if (Array.isArray(num)) {
-        gen.init_by_array(num, num.length);
-    } else {
-        gen.init_genrand(num);
-    }
+    const lfibGen = lfib(num);
 
     // Copied from the marsenne package for compatibility.
-    function rand(max, min) {
-        // is never used by this way
-        // if (max === undefined) {
-        //     min = 0;
-        //     max = 32768;
-        // }
-        return Math.floor(gen.genrand_real2() * (max - min) + min);
+    function rand(max = 0, min = 99999) {
+        return Math.floor(lfibGen() * (max - min) + min);
     }
     /**
      * number
      *
      * @description Returns a single random number based on a max number or range
      * @param {object} options
-     * @param {number} [options.min= 0] Minimum number to generate
-     * @param {number} [options.max= Node maximum int] Maximum number to generate
+     * @param {number} [options.min= 0] Minimum number to generate *inclusive*
+     * @param {number} [options.max= 99999] Maximum number to generate *exclusive*
      * @param {number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
      *  this is limited to 10
      * @method pure.random.number
      * @example
      * console.log(pure.random.number());
-     * //outputs: "6632097995292672"
+     * //outputs: "20173"
      */
     this.number = (options) => {
         let def = (typeof options === 'number') ? { max: options } : options;
@@ -73,9 +63,14 @@ function Random(pure, seed) {
         let result = '';
         const randomNumber = rand(def.max, def.min);
 
-        if (def.precision >= 1) {
+        if (def.min === def.max) {
+            result = def.max;
+        } else if (def.precision >= 1) {
             const template = pure.helpers.repeatString('#', def.precision);
             result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber(template)}`);
+            if (result > def.max) {
+                result = parseFloat((result - def.max).toFixed(def.precision));
+            }
         } else {
             result = randomNumber;
         }

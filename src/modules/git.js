@@ -3,8 +3,6 @@
  */
 
 function Git(pure) {
-    const hexChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-
     /**
      * branch
      *
@@ -77,11 +75,8 @@ function Git(pure) {
      * //outputs: "4cadd50bcdde037b924e6614b1d62813ff459fe5"
      */
     this.commitSha = () => {
-        let commit = '';
-
-        for (let i = 0; i < 40; i += 1) {
-            commit += pure.random.arrayElement(hexChars);
-        }
+        const template = pure.helpers.repeatString('#', 40);
+        const commit = pure.helpers.replaceSymbolWithHex(template);
 
         return commit;
     };
@@ -96,11 +91,8 @@ function Git(pure) {
      * //outputs: "f1f9853"
      */
     this.shortSha = () => {
-        let shortSha = '';
-
-        for (let i = 0; i < 7; i += 1) {
-            shortSha += pure.random.arrayElement(hexChars);
-        }
+        const template = pure.helpers.repeatString('#', 7);
+        const shortSha = pure.helpers.replaceSymbolWithHex(template);
 
         return shortSha;
     };

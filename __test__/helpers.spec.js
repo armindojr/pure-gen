@@ -75,7 +75,7 @@ describe('helpers.js', () => {
             const input = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
             pure.seed(100);
             const shuffled = pure.helpers.shuffle(input);
-            assert.deepEqual(shuffled, ['h', 'd', 'a', 'j', 'i', 'g', 'c', 'b', 'f', 'e']);
+            assert.deepEqual(shuffled, ['g', 'h', 'j', 'c', 'f', 'i', 'd', 'e', 'a', 'b']);
         });
     });
 
