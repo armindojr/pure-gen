@@ -84,7 +84,7 @@ function Random(pure, seed) {
      * @description Returns a single random floating-point number based on a max number or range
      * @param {object} options
      * @param {number} [options.min= 0] Minimum number to generate
-     * @param {number} [options.max= Node maximum int] Maximum number to generate
+     * @param {number} [options.max= 99999] Maximum number to generate
      * @param {number} [options.precision= 1] Numbers of digits after floating point
      * @method pure.random.float
      * @example
