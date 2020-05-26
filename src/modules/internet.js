@@ -27,14 +27,14 @@ function Internet(pure) {
      * @method pure.internet.email
      * @example
      * console.log(pure.internet.email());
-     * //outputs: "Lucius_Pfannerstill@yahoo.com"
+     * //outputs: "myrtice.cronin@gmail.com"
      */
     this.email = (firstName, lastName, provider) => {
         let def = provider;
         const first = firstName;
         const last = lastName;
         def = def || pure.random.arrayElement(pure.definitions.internet.free_email);
-        return `${pure.helpers.slugify(pure.internet.userName(first, last))}@${def}`;
+        return `${pure.helpers.slugify(pure.internet.userName(first, last), { lower: true })}@${def}`;
     };
 
     /**
@@ -46,7 +46,7 @@ function Internet(pure) {
      * @method pure.internet.exampleEmail
      * @example
      * console.log(pure.internet.exampleEmail());
-     * //outputs: "Twila_Hettinger@example.net"
+     * //outputs: "golden.prohaska@example.org"
      */
     this.exampleEmail = (firstName, lastName) => {
         const first = firstName;

@@ -10,7 +10,7 @@ describe('internet.js', () => {
             const email = pure.internet.email('Aiden.Harann55');
             let res = email.split('@');
             [res] = res;
-            assert.equal(res, 'Aiden.Harann55');
+            assert.equal(res, 'aiden.harann55');
             pure.internet.userName.restore();
         });
     });
@@ -21,7 +21,7 @@ describe('internet.js', () => {
             const email = pure.internet.email('Aiden.Harann55');
             let res = email.split('@');
             [res] = res;
-            assert.equal(res, 'Aiden.Harann55');
+            assert.equal(res, 'aiden.harann55');
             pure.internet.userName.restore();
         });
 
