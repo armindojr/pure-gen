@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.3.1
+
+### API fixes
+* Fix incorrect capitalized e-mail generation (closes [#5](https://github.com/armindojr/pure-gen/issues/5))
+
+### General fixes
+* Bump lodash version due to security updates
+
 ## v1.3.0
 
 ### New API Methods
