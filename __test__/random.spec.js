@@ -247,6 +247,23 @@ describe('random.js', () => {
         });
     });
 
+    describe('generateObj', () => {
+        it('returns an object of two elements with random keys and values', () => {
+            const object = pure.random.generateObj();
+            const keys = Object.keys(object);
+
+            assert.ok(keys.length === 2);
+        });
+
+        it('returns an object of four elements with random keys and values', () => {
+            const length = 2;
+            const object = pure.random.generateObj(length);
+            const keys = Object.keys(object);
+
+            assert.ok(keys.length === length);
+        });
+    });
+
     describe('UUID', () => {
         it('should generate a valid UUID', () => {
             const UUID = pure.random.uuid();

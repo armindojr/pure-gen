@@ -103,12 +103,19 @@ function Internet(pure) {
      * url
      *
      * @description Generates a random url
+     * @param {string} [protocol= random] What protocol to use.
+     * @param {string} [domainName= random] What domain to use.
      * @method pure.internet.url
      * @example
      * console.log(pure.internet.url());
      * //outputs: "http://harvey.net"
      */
-    this.url = () => `${pure.internet.protocol()}://${pure.internet.domainName()}`;
+    this.url = (protocol, domainName) => {
+        const nProtocol = protocol || pure.internet.protocol();
+        const nDomainName = domainName || pure.internet.domainName();
+
+        return `${nProtocol}://${nDomainName}`;
+    };
 
     /**
      * domainName
@@ -328,6 +335,5 @@ function Internet(pure) {
         return password(nlen, nmemorable, pattern, prefix);
     };
 }
-
 
 module.exports = Internet;

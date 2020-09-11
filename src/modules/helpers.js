@@ -357,7 +357,6 @@ function Helpers(pure) {
         };
     };
 
-
     /**
    * userCard
    *

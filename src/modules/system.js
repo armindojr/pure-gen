@@ -100,7 +100,6 @@ function System(pure) {
         return pure.system.fileExt(pure.random.arrayElement(types));
     };
 
-
     /**
      * fileType
      *

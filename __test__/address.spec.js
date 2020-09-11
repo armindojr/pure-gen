@@ -555,4 +555,14 @@ describe('address.js', () => {
             pure.seed();
         });
     });
+
+    describe('timeZone()', () => {
+        it('returns random timeZone', () => {
+            sinon.spy(pure.address, 'timeZone');
+            const timeZone = pure.address.timeZone();
+            assert.ok(timeZone);
+            assert.ok(pure.address.timeZone.called);
+            pure.address.timeZone.restore();
+        });
+    });
 });

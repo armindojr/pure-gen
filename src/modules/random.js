@@ -174,6 +174,27 @@ function Random(pure, seed) {
     };
 
     /**
+     * generateObj
+     *
+     * @description Generate an object populated with random things
+     * @param {Number} [length= 2] What length object generated will have
+     * @method pure.random.object
+     * @example
+     * console.log(pure.random.generateObj());
+     * //outputs: "{ Isle: '3rd', Soft: 'blue' }"
+     */
+    this.generateObj = (length) => {
+        const nLength = length || 2;
+        const obj = {};
+
+        while (Object.keys(obj).length < nLength) {
+            obj[pure.random.word()] = pure.random.word();
+        }
+
+        return obj;
+    };
+
+    /**
      * uuid
      *
      * @description Generates a random uuid

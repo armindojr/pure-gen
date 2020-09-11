@@ -58,47 +58,26 @@ var headers = [{
     }
 }];
 
+
 function rnd(a, b) {
+    var pure = require('../');
     //calling rnd() with no arguments is identical to rnd(0, 100)
     a = a || 0;
     b = b || 100;
 
     if (typeof b === 'number' && typeof a === 'number') {
         //rnd(int min, int max) returns integer between min, max
-        return (function (min, max) {
-            if (min > max) {
-                throw new RangeError('expected min <= max; got min = ' + min + ', max = ' + max);
-            }
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }(a, b));
+        return pure.random.number({ min: a, max: b })
     }
 
     if (Object.prototype.toString.call(a) === "[object Array]") {
         //returns a random element from array (a), even weighting
-        return a[Math.floor(Math.random() * a.length)];
+        return pure.random.arrayElement(a);
     }
 
     if (a && typeof a === 'object') {
         //returns a random key from the passed object; keys are weighted by the decimal probability in their value
-        return (function (obj) {
-            var rand = rnd(0, 100) / 100,
-                min = 0,
-                max = 0,
-                key, return_val;
-
-            for (key in obj) {
-                if (obj.hasOwnProperty(key)) {
-                    max = obj[key] + min;
-                    return_val = key;
-                    if (rand >= min && rand <= max) {
-                        break;
-                    }
-                    min = min + obj[key];
-                }
-            }
-
-            return return_val;
-        }(a));
+        return pure.random.objectElement(a, 'key')
     }
 
     throw new TypeError('Invalid arguments passed to rnd. (' + (b ? a + ', ' + b : a) + ')');

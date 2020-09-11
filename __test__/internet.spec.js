@@ -174,6 +174,13 @@ describe('internet.js', () => {
             assert.ok(url);
             assert.strictEqual(url, 'http://bar.net');
         });
+
+        it('returns a url with protocol and domainName specified ', () => {
+            const url = pure.internet.url('https', 'foo.com');
+
+            assert.ok(url);
+            assert.strictEqual(url, 'https://foo.com');
+        });
     });
 
     describe('ip()', () => {
@@ -196,6 +203,14 @@ describe('internet.js', () => {
         it('returns a valid user-agent', () => {
             const ua = pure.internet.userAgent();
             assert.ok(ua);
+        });
+
+        it('is deterministic', () => {
+            pure.seed(1);
+            const ua1 = pure.internet.userAgent();
+            pure.seed(1);
+            const ua2 = pure.internet.userAgent();
+            assert.equal(ua1, ua2);
         });
     });
 

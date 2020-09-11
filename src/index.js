@@ -36,6 +36,7 @@ function Pure(opts) {
             'postcode_by_state',
             'direction',
             'direction_abbr',
+            'time_zone',
         ],
         airport: [
             'name',
@@ -174,11 +175,12 @@ function Pure(opts) {
         definitions[d].forEach((p) => {
             Object.defineProperty(self.definitions[d], p, {
                 get() {
-                    const verification1 = (typeof self.locales[self.locale][d] === 'undefined');
-                    if (verification1 || typeof self.locales[self.locale][d][p] === 'undefined') {
+                    if (typeof self.locales[self.locale] === 'undefined'
+                        || typeof self.locales[self.locale][d] === 'undefined'
+                        || typeof self.locales[self.locale][d][p] === 'undefined') {
                         // certain localization sets contain less data then others.
                         // in the case of a missing definition, use the default localeFallback
-                        //  to substitute the missing set data
+                        // to substitute the missing set data
                         // throw new Error('unknown property ' + d + p)
                         return self.locales[self.localeFallback][d][p];
                     }

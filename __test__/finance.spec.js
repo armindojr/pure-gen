@@ -129,14 +129,10 @@ describe('finance.js', () => {
         });
 
         it('should use the defaul decimal location when not passing arguments', () => {
-            const amount = pure.finance.amount();
+            const amount = pure.finance.amount(100, 100, 1);
 
-            const decimal = '.';
-            const expected = amount.length - 3;
-            const actual = amount.indexOf(decimal);
-
-            assert.equal(actual, expected,
-                `The expected location of the decimal is ${expected} but it was ${actual} amount ${amount}`);
+            assert.ok(amount);
+            assert.strictEqual(amount, '100.0', 'the amount should be equal 100.0');
         });
 
         // TODO: add support for more currency and decimal options
@@ -172,7 +168,16 @@ describe('finance.js', () => {
             const amount = pure.finance.amount(100, 100, 0);
 
             assert.ok(amount);
-            assert.equal(amount.length, 3);
+            assert.strictEqual(amount, '100', 'the amount should be equal 100');
+        });
+
+        it('it should return a string', () => {
+            const amount = pure.finance.amount(100, 100, 0);
+
+            const typeOfAmount = typeof amount;
+
+            assert.ok(amount);
+            assert.strictEqual(typeOfAmount, 'string', 'the amount type should be number');
         });
     });
 
@@ -363,9 +368,9 @@ describe('finance.js', () => {
                         country: 'VG',
                         total: 24,
                         bban: [{ type: 'a', count: 4 }],
-                        format: 'VGkk bbbb cccc cccc cccc cccc'
-                    }
-                ]
+                        format: 'VGkk bbbb cccc cccc cccc cccc',
+                    },
+                ],
             }));
 
             const iban = pure.finance.iban();
@@ -379,16 +384,18 @@ describe('finance.js', () => {
     describe('bic()', () => {
         it('returns a random yet formally correct BIC number', () => {
             const bic = pure.finance.bic();
-            const expr = new RegExp(`^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`, 'i');
+            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const reg = new RegExp(exp, 'i');
 
-            assert.ok(bic.match(expr));
+            assert.ok(bic.match(reg));
         });
         it('returns correct BIC number when random number < 10', () => {
             sinon.stub(pure.random, 'number').returns(3);
             const bic = pure.finance.bic();
-            const expr = new RegExp(`^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`, 'i');
+            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const reg = new RegExp(exp, 'i');
 
-            assert.ok(bic.match(expr));
+            assert.ok(bic.match(reg));
             pure.random.number.restore();
         });
         it('returns correct BIC number when random number < 40', () => {

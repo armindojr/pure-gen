@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v1.4.0 WIP
+
+### New API Methods
+* Added pure.address.timeZone #968
+* Added pure.random.object #962
+
+### API Changes
+* adds optional parameters to .url, docs, and tests #995
+
+### General fixes
+* Removed redundant } in nl_BE city names #898
+* Make user agent deterministic #924
+* Add failing test for userAgent #936
+* Fix double BQ in country code for #911 #953
+* Suggestion to change the pt_BR location to make more sense in our country #966
+* Fix typo in name inside manufacturer.js #972
+* Added tests to finance.amount
+* Fix wrong translations for country names - pt-BR locale #997
+* perf(system): improve commonFileName, commonFileExt, fileType, directoryPath performance #985
+
 ## v1.3.1
 
 ### API fixes
@@ -26,7 +46,7 @@
 ### API fixes
 * Memory leak fix when using pure.fake due to JSON.parse with try/catch
 
-## General fixes
+### General fixes
 * Converted slugify to local package
 * src/modules/finance improved to use local methods and removed src/modules/iban
 * Improved unit tests execution
@@ -59,7 +79,7 @@ _to further comparison of PRNG's see:_ [benchmark](https://jsperf.com/prng-compa
 * Added pure.electricalComponents generator
 * Added pure.esport generator
 
-## API fixes
+### API fixes
 * pure.finance.creditCardNumber verification don't break anymore when credit_card is only string
 * pure.name.firstName verification now return random names when first_name is undefined in locale
 

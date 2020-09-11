@@ -1,4 +1,3 @@
-
 /**
  *
  * @namespace pure.lorem
@@ -199,6 +198,5 @@ function Lorem(pure) {
         return pure.lorem.sentences(def, '\n');
     };
 }
-
 
 module.exports = Lorem;

@@ -291,7 +291,6 @@ function Address(pure) {
         ? pure.random.arrayElement(pure.definitions.address.state_abbr)
         : pure.random.arrayElement(pure.definitions.address.state));
 
-
     /**
      * stateAbbr
      *
@@ -474,6 +473,17 @@ function Address(pure) {
         );
         return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
     };
+
+    /**
+     * timeZone
+     *
+     * @description Returns random timezone
+     * @method pure.address.timeZone
+     * @example
+     * console.log(pure.address.timeZone());
+     * //outputs: "Europe/Helsinki"
+     */
+    this.timeZone = () => pure.random.arrayElement(pure.definitions.address.time_zone);
 }
 
 module.exports = Address;
