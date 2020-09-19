@@ -106,7 +106,6 @@ describe('git.js', () => {
         });
     });
 
-
     describe('commitSha()', () => {
         it('returns a random commit SHA', () => {
             const commitSha = pure.git.commitSha();

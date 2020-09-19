@@ -118,7 +118,9 @@ function Random(pure, seed) {
     this.arrayElement = (array) => {
         const def = array || ['a', 'b', 'c'];
         const r = pure.random.number({ max: def.length - 1 });
-        return def[r];
+
+        const result = def[r] ? def[r] : def[0];
+        return result;
     };
 
     /**

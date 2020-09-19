@@ -1,6 +1,4 @@
-
 const { assert, expect } = require('chai');
-const { chain, range, includes } = require('lodash');
 const pure = require('../index');
 const Pure = require('../src');
 
@@ -35,19 +33,31 @@ describe('random.js', () => {
             }
         });
 
-        it('provides numbers with a given precision', () => {
+        it('provides numbers with a given precision and a seed', () => {
             pure.seed(1);
             const options = { min: 0, max: 1.5, precision: 1 };
-            const results = chain(range(50))
-                .map(() => pure.random.number(options))
-                .uniq()
-                .value()
-                .sort();
+            const result = pure.random.number(options);
 
-            assert.ok(includes(results, 0.5));
-            assert.ok(includes(results, 1));
+            assert.ok(result <= 1.5)
+            assert.ok(result >= 0)
+            pure.seed();
+        });
 
-            assert.equal(results[0], 0);
+        it('provides numbers with precision greather than 10', () => {
+            const options = { min: 0, max: 2, precision: 15 };
+            const result = pure.random.number(options);
+
+            expect(result.toString().length).to.be.below(13)
+            assert.ok(result <= 2)
+            assert.ok(result >= 0)
+        });
+
+        it('provides numbers with precision less than 1', () => {
+            const options = { min: 0, max: 2, precision: -1 };
+            const result = pure.random.number(options);
+
+            assert.ok(result <= 2)
+            assert.ok(result >= 0)
         });
 
         it('provides numbers with a with exact precision', () => {
@@ -76,18 +86,21 @@ describe('random.js', () => {
             pure.seed(100);
             const name = pure.name.findName();
             assert.equal(name, 'Homer Lesch Sr.');
+            pure.seed();
         });
 
         it('should return deterministic results when seeded with array - one element', () => {
             pure.seed([10]);
             const name = pure.name.findName();
             assert.equal(name, 'Randy Haag PhD');
+            pure.seed();
         });
 
         it('should return deterministic results when seeded with array - multiple elements', () => {
             pure.seed([10, 100, 1000]);
             const name = pure.name.findName();
             assert.equal(name, 'Jerry Smith');
+            pure.seed();
         });
     });
 
@@ -133,16 +146,10 @@ describe('random.js', () => {
 
         it('provides numbers with a given precision', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
-            const results = chain(range(50))
-                .map(() => pure.random.float(options))
-                .uniq()
-                .value()
-                .sort();
+            const result = pure.random.number(options);
 
-            assert.ok(includes(results, 0.5));
-            assert.ok(includes(results, 1.0));
-
-            assert.equal(results[0], 0);
+            assert.ok(result <= 1.5)
+            assert.ok(result >= 0)
         });
 
         it('provides numbers with a with exact precision', () => {
@@ -368,6 +375,7 @@ describe('random.js', () => {
 
             const name = pure.name.findName();
             expect(name.length).greaterThan(1);
+            pure.seed();
         });
     });
 

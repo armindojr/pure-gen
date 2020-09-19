@@ -533,11 +533,13 @@ describe('address.js', () => {
             pure.seed(5);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const seed = pure.getSeed();
 
             const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
+            assert.equal(seed, 5);
             Math.atan2.restore();
             pure.seed();
         });

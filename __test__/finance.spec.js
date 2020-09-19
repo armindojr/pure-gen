@@ -86,7 +86,6 @@ describe('finance.js', () => {
             assert.equal(actual, expected, `The expected default mask length is ${expected} but it was ${actual}`);
         });
 
-
         it('should by default include parentheses around a partial account number', () => {
             const expected = true;
 
@@ -147,7 +146,6 @@ describe('finance.js', () => {
             assert.equal(actual, expected, 'The expected match should not include a currency symbol');
         });
 
-
         it('it should handle negative amounts', () => {
             const amount = pure.finance.amount(-200, -1);
 
@@ -155,7 +153,6 @@ describe('finance.js', () => {
             assert.equal((amount < 0), true, 'the amount should be greater than 0');
             assert.equal((amount > -201), true, 'the amount should be greater than 0');
         });
-
 
         it('it should handle argument dec', () => {
             const amount = pure.finance.amount(100, 100, 1);
@@ -249,7 +246,6 @@ describe('finance.js', () => {
             const visa = pure.finance.creditCardNumber('visa');
             assert.ok(visa.match(/^4(([0-9]){12}|([0-9]){3}(-([0-9]){4}){3})$/));
             assert.ok(luhnFormula(visa));
-
 
             const mastercard = pure.finance.creditCardNumber('mastercard');
             assert.ok(mastercard.match(/^(5[1-5]\d{2}|6771)(-\d{4}){3}$/));
@@ -379,6 +375,31 @@ describe('finance.js', () => {
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
             stub.restore();
         });
+        
+        it('returns a correct IBAN given specific conditions', () => {
+            sinon.stub(pure.random, 'number').returns(20);
+            sinon.stub(pure.random, 'boolean').returns(true);
+            
+            const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
+                formats: [
+                    {
+                        country: 'VG',
+                        total: 24,
+                        bban: [{ type: 'g', count: 4 }],
+                        format: 'VGkk bbbb cccc cccc cccc cccc',
+                    },
+                ],
+            }));
+
+            const iban = pure.finance.iban(false, 'VG');
+            const bban = iban.substring(4) + iban.substring(0, 4);
+
+            assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
+
+            pure.random.number.restore()
+            pure.random.boolean.restore()
+            stub.restore();
+        })
     });
 
     describe('bic()', () => {

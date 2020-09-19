@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v1.4.0 WIP
+## v1.4.0
 
 ### New API Methods
 * Added pure.address.timeZone #968
@@ -8,6 +8,9 @@
 
 ### API Changes
 * adds optional parameters to .url, docs, and tests #995
+
+### API Fixes
+* fixing bad behavior of pure.random.arrayElement when stubbing specific random number (unit test related)
 
 ### General fixes
 * Removed redundant } in nl_BE city names #898
@@ -19,6 +22,7 @@
 * Added tests to finance.amount
 * Fix wrong translations for country names - pt-BR locale #997
 * perf(system): improve commonFileName, commonFileExt, fileType, directoryPath performance #985
+* Improved tests, removing dependencies
 
 ## v1.3.1
 

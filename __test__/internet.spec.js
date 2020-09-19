@@ -78,6 +78,15 @@ describe('internet.js', () => {
             pure.name.lastName.restore();
             pure.random.arrayElement.restore();
         });
+
+        it('return username with firstname and number when random.number is 2', () => {
+            sinon.stub(pure.random, 'number').returns(2);
+            const username = pure.internet.userName();
+
+            assert.ok(username)
+
+            pure.random.number.restore();
+        });
     });
 
     describe('domainName()', () => {
@@ -211,6 +220,7 @@ describe('internet.js', () => {
             pure.seed(1);
             const ua2 = pure.internet.userAgent();
             assert.equal(ua1, ua2);
+            pure.seed();
         });
     });
 
@@ -218,6 +228,16 @@ describe('internet.js', () => {
         it('returns a valid hex value (like #ffffff)', () => {
             const color = pure.internet.color(100, 100, 100);
             assert.ok(color.match(/^#[a-f0-9]{6}$/));
+        });
+
+        it('returns a valid hex value when stubbing math', () => {
+            sinon.stub(Math, 'floor').returns(1)
+
+            const color = pure.internet.color(0, 0, 0);
+
+            assert.ok(color.match(/^#[a-f0-9]{6}$/));
+
+            Math.floor.restore();
         });
     });
 

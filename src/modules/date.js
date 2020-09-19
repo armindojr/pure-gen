@@ -232,8 +232,8 @@ function pureDate(pure) {
      * birthDay
      *
      * @description Generate random birthDay
-     * @param {boolean} [minAge= 18] Minimum age to generate date
-     * @param {boolean} [maxAge= 60] Maximum age to generate date
+     * @param {Number} [minAge= 18] Minimum age to generate date
+     * @param {Number} [maxAge= 60] Maximum age to generate date
      * @method pure.date.birthDay
      * @example
      * console.log(pure.date.birthDay());

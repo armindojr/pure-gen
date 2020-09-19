@@ -4,7 +4,6 @@ const functionHelpers = {};
 
 module.exports = functionHelpers;
 
-
 const IGNORED_MODULES = ['locales', 'locale', 'localeFallback', 'definitions', 'fake', 'helpers'];
 const IGNORED_METHODS = {};
 

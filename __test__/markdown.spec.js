@@ -1,7 +1,6 @@
 const { assert } = require('chai');
 const pure = require('../index');
 
-
 describe('markdown.js', () => {
     describe('header()', () => {
         describe("when no 'num' param passed in", () => {

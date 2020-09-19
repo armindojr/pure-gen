@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 const luhnCheck = require('./support/luhnCheck');
@@ -76,6 +76,7 @@ describe('helpers.js', () => {
             pure.seed(100);
             const shuffled = pure.helpers.shuffle(input);
             assert.deepEqual(shuffled, ['g', 'h', 'j', 'c', 'f', 'i', 'd', 'e', 'a', 'b']);
+            pure.seed();
         });
     });
 
@@ -208,6 +209,20 @@ describe('helpers.js', () => {
             assert.ok(transaction.name);
             assert.ok(transaction.type);
             assert.ok(transaction.account);
+        });
+    });
+
+    describe('replaceSymbolWithHex', () => {
+        it('replace symbol without passing string', () => {
+            const replace = pure.helpers.replaceSymbolWithHex();
+
+            assert.equal(replace, '');
+        });
+
+        it('replace symbol and don\'t replace number', () => {
+            const replace = pure.helpers.replaceSymbolWithHex('92hd7##');
+
+            expect(replace).to.contain('92hd7')
         });
     });
 });
