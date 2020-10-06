@@ -62,15 +62,15 @@ function Document(pure) {
     this.brazilianCompanyNumber = (opts = {}) => {
         const def = opts || {};
         let doc = pure.helpers.replaceSymbolWithNumber('########');
-
+        
         const mod = (str) => {
             const strlen = str.length;
             const num = str.substring(0, strlen);
             let sum = 0;
-            let pos = strlen - 7;
-            for (let i = strlen; i >= 1; i -= 1) {
-                sum += num.charAt(strlen - i) * (pos -= 1);
-                if (pos < 2) pos = 9;
+            let pos = strlen - 7
+            for (let i = 0; i <= strlen; i += 1) {
+                sum += num.charAt(i) * (pos);
+                pos <= 2 ? pos = 9 : pos -= 1;
             }
             return sum % 11 < 2 ? 0 : 11 - (sum % 11);
         };
