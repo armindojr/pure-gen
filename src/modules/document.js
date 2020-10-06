@@ -67,10 +67,7 @@ function Document(pure) {
             const strlen = str.length;
             const num = str.substring(0, strlen);
             let sum = 0;
-            let pos = 6;
-            if (strlen == 12) {
-                pos = 5
-            }
+            let pos = strlen - 7
             for (let i = 0; i <= strlen; i += 1) {
                 sum += num.charAt(i) * (pos);
                 pos <= 2 ? pos = 9 : pos -= 1;
