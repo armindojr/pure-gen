@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.4.1
+
+### API Fixes
+* Fixed invalid generated number with pure.document.brazilianCompanyNumber
+
 ## v1.4.0
 
 ### New API Methods

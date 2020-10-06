@@ -56,21 +56,21 @@ function Document(pure) {
      * @memberof pure.document
      * @example
      * console.log(pure.document.brazilianCompanyNumber());
-     * //outputs: "19305738000123"
+     * //outputs: "06747662000106"
      * @returns {string} valid document number
      */
     this.brazilianCompanyNumber = (opts = {}) => {
         const def = opts || {};
         let doc = pure.helpers.replaceSymbolWithNumber('########');
-        
+
         const mod = (str) => {
             const strlen = str.length;
             const num = str.substring(0, strlen);
             let sum = 0;
-            let pos = strlen - 7
+            let pos = strlen - 7;
             for (let i = 0; i <= strlen; i += 1) {
                 sum += num.charAt(i) * (pos);
-                pos <= 2 ? pos = 9 : pos -= 1;
+                pos = pos <= 2 ? 9 : pos -= 1;
             }
             return sum % 11 < 2 ? 0 : 11 - (sum % 11);
         };
