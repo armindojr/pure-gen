@@ -3,13 +3,11 @@
  * @namespace pure.lorem
  */
 function Lorem(pure) {
-    const Helpers = pure.helpers;
-
     /**
      * word
      *
      * @description Generates a word of a specified length
-     * @param {number} [length= random] length of the word that should be returned
+     * @param {Number} [length= random] length of the word that should be returned
      * @method pure.lorem.word
      * @example
      * console.log(pure.lorem.word());
@@ -35,7 +33,7 @@ function Lorem(pure) {
      * words
      *
      * @description Generates a space separated list of words
-     * @param {number} [num= 3] number of words
+     * @param {Number} [num= 3] number of words
      * @method pure.lorem.words
      * @example
      * console.log(pure.lorem.words());
@@ -56,7 +54,7 @@ function Lorem(pure) {
      * sentence
      *
      * @description Generates a random sentence
-     * @param {number} [wordCount= random] number of words
+     * @param {Number} [wordCount= random] number of words
      * @method pure.lorem.sentence
      * @example
      * console.log(pure.lorem.sentence());
@@ -80,7 +78,7 @@ function Lorem(pure) {
      * slug
      *
      * @description Generates a random word slugify
-     * @param {number} [wordCount= 3] number of words
+     * @param {Number} [wordCount= 3] number of words
      * @method pure.lorem.slug
      * @example
      * console.log(pure.lorem.slug());
@@ -88,14 +86,14 @@ function Lorem(pure) {
      */
     this.slug = (wordCount) => {
         const words = pure.lorem.words(wordCount);
-        return Helpers.slugify(words);
+        return pure.helpers.slugify(words);
     };
 
     /**
      * sentences
      *
      * @description Generates random sentences
-     * @param {number} [sentenceCount= random] number of sentences
+     * @param {Number} [sentenceCount= random] number of sentences
      * @param {string} [separator= ' '] Separator of sentences
      * @method pure.lorem.sentences
      * @example
@@ -119,7 +117,7 @@ function Lorem(pure) {
      * paragraph
      *
      * @description Generates a random paragraph
-     * @param {number} [sentenceCount= 3] number of sentences
+     * @param {Number} [sentenceCount= 3] number of sentences
      * @method pure.lorem.paragraph
      * @example
      * console.log(pure.lorem.paragraph());
@@ -136,7 +134,7 @@ function Lorem(pure) {
      * paragraphs
      *
      * @description Generates random paragraphs
-     * @param {number} [paragraphCount= 3] number of paragraphs
+     * @param {Number} [paragraphCount= 3] number of paragraphs
      * @param {string} [separator= '\n \r'] Separator of paragraphs
      * @method pure.lorem.paragraphs
      * @example
@@ -186,7 +184,7 @@ function Lorem(pure) {
      * lines
      *
      * @description Returns lines of lorem separated by `'\n'`
-     * @param {number} [lineCount= random] Number of lines
+     * @param {Number} [lineCount= random] Number of lines
      * @method pure.lorem.lines
      * @example
      * console.log(pure.lorem.lines());

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.4.2 WIP
+
+### API Fixes
+* Generate username without diacritic
+
+### General fixes
+* Improved helpers documentation
+
 ## v1.4.1
 
 ### API Fixes

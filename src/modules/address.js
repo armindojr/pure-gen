@@ -308,7 +308,7 @@ function Address(pure) {
      * @description Returns random latitude respecting parameters
      * @param {Double} [max=90] Valid max range of latitude
      * @param {Double} [min=-90] Valid min range of latitude
-     * @param {number} [precision=4] Floating point precision
+     * @param {Number} [precision=4] Floating point precision
      * @method pure.address.latitude
      * @example
      * console.log(pure.address.latitude());
@@ -332,7 +332,7 @@ function Address(pure) {
      * @description Returns random longitude respecting parameters
      * @param {Double} [max=180] Valid max range of longitude
      * @param {Double} [min=-180] Valid min range of longitude
-     * @param {number} [precision=4] Floating point precision
+     * @param {Number} [precision=4] Floating point precision
      * @method pure.address.longitude
      * @example
      * console.log(pure.address.longitude());

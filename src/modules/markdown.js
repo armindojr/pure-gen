@@ -7,7 +7,7 @@ function Markdown(pure) {
      * header
      *
      * @description Generate random markdown header
-     * @param {number} [num= 1] Number of heading tags '#'
+     * @param {Number} [num= 1] Number of heading tags '#'
      * @method pure.markdown.header
      * @example
      * console.log(pure.markdown.header());
@@ -44,7 +44,7 @@ function Markdown(pure) {
      * table
      *
      * @description Generate random markdown table
-     * @param {number} [num= 3] Table rows
+     * @param {Number} [num= 3] Table rows
      * @method pure.markdown.table
      * @example
      * console.log(pure.markdown.table());
@@ -74,7 +74,7 @@ function Markdown(pure) {
      * orderedList
      *
      * @description Generate random markdown ordered list
-     * @param {number} [num= 3] Number of itens in list
+     * @param {Number} [num= 3] Number of itens in list
      * @method pure.markdown.orderedList
      * @example
      * console.log(pure.markdown.orderedList());
@@ -98,7 +98,7 @@ function Markdown(pure) {
      * unorderedList
      *
      * @description Generate random markdown unordered list
-     * @param {number} [num= 3] Number of itens in list
+     * @param {Number} [num= 3] Number of itens in list
      * @method pure.markdown.unorderedList
      * @example
      * console.log(pure.markdown.unorderedList());

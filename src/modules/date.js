@@ -7,7 +7,7 @@ function pureDate(pure) {
      * past
      *
      * @description Generate random past date from today or parameters
-     * @param {number} [years= 1] How many years the date possible be before refDate
+     * @param {Number} [years= 1] How many years the date possible be before refDate
      * @param {date} [refDate= Today] Reference to generate past this time
      * @method pure.date.past
      * @example
@@ -37,7 +37,7 @@ function pureDate(pure) {
      * future
      *
      * @description Generate random future date from today or parameters
-     * @param {number} [years= 1] How many years the date possible be after refDate
+     * @param {Number} [years= 1] How many years the date possible be after refDate
      * @param {date} [refDate= Today] Reference to generate future this time
      * @method pure.date.future
      * @example
@@ -116,7 +116,7 @@ function pureDate(pure) {
      * recent
      *
      * @description Generate random recent date from today or parameters
-     * @param {number} [days= 1] Reference to generate past date
+     * @param {Number} [days= 1] Reference to generate past date
      * @param {date} [refDate= Today] Reference date to use
      * @method pure.date.recent
      * @example
@@ -146,7 +146,7 @@ function pureDate(pure) {
      * soon
      *
      * @description Generate random recent date from today or parameters
-     * @param {number} [days= 1] Reference to generate future date
+     * @param {Number} [days= 1] Reference to generate future date
      * @param {date} [refDate= Today] Reference date to use
      * @method pure.date.soon
      * @example

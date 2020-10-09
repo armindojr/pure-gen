@@ -83,7 +83,7 @@ function Internet(pure) {
         default:
             result = first + pure.random.number(99);
         }
-        result = result.toString().replace(/'/g, '');
+        result = pure.helpers.slugify(result);
         result = result.replace(/ /g, '');
         return result;
     };
@@ -214,9 +214,9 @@ function Internet(pure) {
      * color
      *
      * @description Generates a random color
-     * @param {number} [baseRed255= 0] The red value. Valid values are 0 - 255.
-     * @param {number} [baseGreen255= 0] The green value. Valid values are 0 - 255.
-     * @param {number} [baseBlue255= 0] The blue value. Valid values are 0 - 255.
+     * @param {Number} [baseRed255= 0] The red value. Valid values are 0 - 255.
+     * @param {Number} [baseGreen255= 0] The green value. Valid values are 0 - 255.
+     * @param {Number} [baseBlue255= 0] The blue value. Valid values are 0 - 255.
      * @method pure.internet.color
      * @example
      * console.log(pure.internet.color());
@@ -274,7 +274,7 @@ function Internet(pure) {
      * password
      *
      * @description Generates a random password
-     * @param {number} [len= 15] The number of characters in the password.
+     * @param {Number} [len= 15] The number of characters in the password.
      * @param {boolean} [memorable= false] Whether a password should be easy to remember.
      * @param {string} [pattern= '/\w/'] A regex to match each character of the password against.
      * <br> If memorable is true, then this will be ignored

@@ -22,7 +22,7 @@ function Phone(pure) {
      * phoneNumberFormat
      *
      * @description Return phone number based on random locale format
-     * @param {number} [phoneFormatsArrayIndex= 0] Index to use when retrieving format from locale
+     * @param {Number} [phoneFormatsArrayIndex= 0] Index to use when retrieving format from locale
      * @method pure.phone.phoneNumberFormat
      * @example
      * console.log(pure.phone.phoneNumberFormat());

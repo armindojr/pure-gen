@@ -29,9 +29,9 @@ function Random(pure, seed) {
      *
      * @description Returns a single random number based on a max number or range
      * @param {object} options
-     * @param {number} [options.min= 0] Minimum number to generate *inclusive*
-     * @param {number} [options.max= 99999] Maximum number to generate *exclusive*
-     * @param {number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
+     * @param {Number} [options.min= 0] Minimum number to generate *inclusive*
+     * @param {Number} [options.max= 99999] Maximum number to generate *exclusive*
+     * @param {Number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
      *  this is limited to 10
      * @method pure.random.number
      * @example
@@ -83,9 +83,9 @@ function Random(pure, seed) {
      *
      * @description Returns a single random floating-point number based on a max number or range
      * @param {object} options
-     * @param {number} [options.min= 0] Minimum number to generate
-     * @param {number} [options.max= 99999] Maximum number to generate
-     * @param {number} [options.precision= 1] Numbers of digits after floating point
+     * @param {Number} [options.min= 0] Minimum number to generate
+     * @param {Number} [options.max= 99999] Maximum number to generate
+     * @param {Number} [options.precision= 1] Numbers of digits after floating point
      * @method pure.random.float
      * @example
      * console.log(pure.random.float());
@@ -128,7 +128,7 @@ function Random(pure, seed) {
      *
      * @description Takes an array and returns a subset with random elements of the array
      * @param {array} [array= ['a', 'b', 'c']] Array to randomize
-     * @param {number} [count= random] number of elements to pick
+     * @param {Number} [count= random] number of elements to pick
      * @method pure.random.arrayElements
      * @example
      * console.log(pure.random.arrayElements());
@@ -279,7 +279,7 @@ function Random(pure, seed) {
      * words
      *
      * @description Generates random words
-     * @param {number} [count= random] defaults to a random value between 1 and 3
+     * @param {Number} [count= random] defaults to a random value between 1 and 3
      * @method pure.random.words
      * @example
      * console.log(pure.random.words());
@@ -326,7 +326,7 @@ function Random(pure, seed) {
      *
      * @description Returns lower/upper alpha characters based count and upcase options
      * @param {object} options
-     * @param {number} [options.count= 1] Letters to return
+     * @param {Number} [options.count= 1] Letters to return
      * @param {boolean} [options.upcase= false] Return upcase letters or not
      * @method pure.random.alpha
      * @example
@@ -390,7 +390,7 @@ function Random(pure, seed) {
      * alphaNumeric
      *
      * @description Returns random alphanumeric caracters
-     * @param {number} [count= 1] Caracters to return
+     * @param {Number} [count= 1] Caracters to return
      * @method pure.random.alphaNumeric
      * @example
      * console.log(pure.random.alphaNumeric());
@@ -446,7 +446,7 @@ function Random(pure, seed) {
      * hexaDecimal
      *
      * @description Returns random hexadecimal caracters
-     * @param {number} [count= 1] Caracters to return
+     * @param {Number} [count= 1] Caracters to return
      * @method pure.random.hexaDecimal
      * @example
      * console.log(pure.random.hexaDecimal());

@@ -3,6 +3,10 @@
 
 */
 
+/**
+ *
+ * @namespace pure.fake
+ */
 function Fake(pure) {
     function fakeReplacer(_, module, method, args) {
         const fn = pure[module][method];
@@ -28,8 +32,7 @@ function Fake(pure) {
     const fakeStringRegex = /{{(\w+)\.(\w+)(?:\((.*)\))?}}/g;
 
     /**
-     * Generator method for combining pure methods based on string input
-     *
+     * fake
      *
      * @description
      * This will interpolate the format string with the value of methods

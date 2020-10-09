@@ -14,8 +14,8 @@ class Unsplash {
      * image
      *
      * @description Method to return image url from unsplash
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.unsplash.image
      * @example
@@ -43,8 +43,8 @@ class Unsplash {
      * imageUrl
      *
      * @description Method to return url from imageprovider with given parameters
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {string} [keyword= empty] Category of image
      * @method pure.image.unsplash.imageUrl
      * @example
@@ -73,8 +73,8 @@ class Unsplash {
      * food
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.food
      * @example
      * console.log(pure.image.unsplash.food());
@@ -88,8 +88,8 @@ class Unsplash {
      * people
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.people
      * @example
      * console.log(pure.image.unsplash.people());
@@ -103,8 +103,8 @@ class Unsplash {
      * nature
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.nature
      * @example
      * console.log(pure.image.unsplash.nature());
@@ -118,8 +118,8 @@ class Unsplash {
      * technology
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.technology
      * @example
      * console.log(pure.image.unsplash.technology());
@@ -133,8 +133,8 @@ class Unsplash {
      * objects
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.objects
      * @example
      * console.log(pure.image.unsplash.objects());
@@ -148,8 +148,8 @@ class Unsplash {
      * buildings
      *
      * @description Method to return url from imageprovider with keyword
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @method pure.image.unsplash.buildings
      * @example
      * console.log(pure.image.unsplash.buildings());

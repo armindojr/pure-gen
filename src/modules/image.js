@@ -19,8 +19,8 @@ class Image extends Placeimg {
      * image
      *
      * @description Method to return image url with random category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.image
      * @example
@@ -42,8 +42,8 @@ class Image extends Placeimg {
      * abstract
      *
      * @description Method to return url from imageprovider with abstract category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.abstract
      * @example
@@ -55,8 +55,8 @@ class Image extends Placeimg {
      * animals
      *
      * @description Method to return url from imageprovider with animals category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.animals
      * @example
@@ -68,8 +68,8 @@ class Image extends Placeimg {
      * business
      *
      * @description Method to return url from imageprovider with business category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.business
      * @example
@@ -81,8 +81,8 @@ class Image extends Placeimg {
      * cats
      *
      * @description Method to return url from imageprovider with cats category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.cats
      * @example
@@ -94,8 +94,8 @@ class Image extends Placeimg {
      * city
      *
      * @description Method to return url from imageprovider with city category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.city
      * @example
@@ -107,8 +107,8 @@ class Image extends Placeimg {
      * food
      *
      * @description Method to return url from imageprovider with food category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.food
      * @example
@@ -120,8 +120,8 @@ class Image extends Placeimg {
      * nightlife
      *
      * @description Method to return url from imageprovider with nightlife category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.nightlife
      * @example
@@ -133,8 +133,8 @@ class Image extends Placeimg {
      * fashion
      *
      * @description Method to return url from imageprovider with fashion category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.fashion
      * @example
@@ -146,8 +146,8 @@ class Image extends Placeimg {
      * people
      *
      * @description Method to return url from imageprovider with people category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.people
      * @example
@@ -159,8 +159,8 @@ class Image extends Placeimg {
      * nature
      *
      * @description Method to return url from imageprovider with nature category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.nature
      * @example
@@ -172,8 +172,8 @@ class Image extends Placeimg {
      * sports
      *
      * @description Method to return url from imageprovider with sports category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.sports
      * @example
@@ -185,8 +185,8 @@ class Image extends Placeimg {
      * technics
      *
      * @description Method to return url from imageprovider with technics category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.technics
      * @example
@@ -198,8 +198,8 @@ class Image extends Placeimg {
      * transport
      *
      * @description Method to return url from imageprovider with transport category. Extended from Placeimg lib
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {boolean} [randomize= false] Define if generate random predetermined image
      * @method pure.image.transport
      * @example
@@ -211,8 +211,8 @@ class Image extends Placeimg {
      * dataUri
      *
      * @description Method to return data URI
-     * @param {number} [width= 640] Width of image
-     * @param {number} [height= 480] Height of image
+     * @param {Number} [width= 640] Width of image
+     * @param {Number} [height= 480] Height of image
      * @param {string} [color= random] Color fill
      * @method pure.image.dataUri
      * @example

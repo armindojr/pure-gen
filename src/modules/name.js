@@ -7,7 +7,7 @@ function Name(pure) {
      * firstName
      *
      * @description Generate random first names
-     * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
+     * @param {Number} [gender= random] Defines gendered names by 0 male and 1 female
      * @method pure.name.firstName
      * @example
      * console.log(pure.name.firstName());
@@ -44,7 +44,7 @@ function Name(pure) {
      * lastName
      *
      * @description Generate random last names
-     * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
+     * @param {Number} [gender= random] Defines gendered names by 0 male and 1 female
      * @method pure.name.lastName
      * @example
      * console.log(pure.name.lastName());
@@ -73,7 +73,7 @@ function Name(pure) {
      * findName
      *
      * @description Generate random complete name
-     * @param {number} [gender= random] Defines gendered names by 0 male and 1 female
+     * @param {Number} [gender= random] Defines gendered names by 0 male and 1 female
      * @method pure.name.findName
      * @example
      * console.log(pure.name.findName());

@@ -43,10 +43,10 @@ function Commerce(pure) {
      *
      * @description Generate random product price
      * @param {object} options
-     * @param {number} [options.min= 1] Minimum product price
-     * @param {number} [options.max= 1000] Maximum product price
-     * @param {number} [options.dec= 2] Floating point precision
-     * @param {number} [options.symbol= empty] Price symbol
+     * @param {Number} [options.min= 1] Minimum product price
+     * @param {Number} [options.max= 1000] Maximum product price
+     * @param {Number} [options.dec= 2] Floating point precision
+     * @param {Number} [options.symbol= empty] Price symbol
      * @param {boolean} [options.comma= false] Price separated by comma
      * @method pure.commerce.price
      * @example
@@ -80,7 +80,7 @@ function Commerce(pure) {
      * categories
      *
      * @description Generate random categories
-     * @param {number} num Number of categories to return
+     * @param {Number} num Number of categories to return
      * @method pure.commerce.categories
      * @example
      * console.log(pure.commerce.categories());
@@ -105,17 +105,6 @@ function Commerce(pure) {
 
         return categories;
     };
-
-    /*
-    this.mergeCategories = function(categories) {
-        var separator = pure.definitions.separator || " &";
-        // TODO: find undefined here
-        categories = categories || pure.definitions.commerce.categories;
-        var commaSeparated = categories.slice(0, -1).join(', ');
-
-        return [commaSeparated, categories[categories.length - 1]].join(separator + " ");
-    };
-    */
 
     /**
      * productAdjective

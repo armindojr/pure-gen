@@ -6,7 +6,7 @@ function Finance(pure) {
      * account
      *
      * @description Return random account number
-     * @param {number} [length= Locale] Length of account number
+     * @param {Number} [length= Locale] Length of account number
      * @method pure.finance.account
      * @example
      * console.log(pure.finance.account());
@@ -58,7 +58,7 @@ function Finance(pure) {
      * mask
      *
      * @description Return random mask number
-     * @param {number} [length= 4] Length of mask number
+     * @param {Number} [length= 4] Length of mask number
      * @param {boolean} [parens= false] Format with parentesis
      * @param {boolean} [ellipsis= false] Format with ellipsis
      * @method pure.finance.mask
@@ -89,9 +89,9 @@ function Finance(pure) {
      * amount
      *
      * @description Return random amount value
-     * @param {number} [min= 0] Minimum amount value
-     * @param {number} [max= 1000] Maximum amount value
-     * @param {number} [dec= 2] Floating point precision
+     * @param {Number} [min= 0] Minimum amount value
+     * @param {Number} [max= 1000] Maximum amount value
+     * @param {Number} [dec= 2] Floating point precision
      * @param {string} [symbol= empty] Amount symbol
      * @method pure.finance.amount
      * @example

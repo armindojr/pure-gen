@@ -1,6 +1,3 @@
-/**
- * Global assign
- */
 const imports = require('./imports');
 
 /**
@@ -219,15 +216,41 @@ function Pure(opts) {
     this.electricalComponents = new imports.ElectricalComponents(this);
     this.esport = new imports.Esport(this);
 
+    /**
+     * seed
+     *
+     * @description Method to set specific seed to RNG
+     * @param {Number} value Seed value that RNG will use to generate numbers
+     * @method pure.seed
+     * @example
+     * pure.seed(1)
+     */
     this.seed = function seed(value) {
         this.seedValue = value;
         this.random = new imports.Random(this, this.seedValue);
     };
 
+    /**
+     * setLocale
+     *
+     * @description If user wants to generate localized data, then this method should be used
+     * @param {String} locale Locale to be used when generating data
+     * @method pure.setLocale
+     * @example
+     * pure.setLocale('pt_BR')
+     */
     this.setLocale = function setLocale(locale) {
         this.locale = locale;
     };
 
+    /**
+     * getSeed
+     *
+     * @description This method returns current seed used by RNG
+     * @method pure.getSeed
+     * @example
+     * console.log(pure.getSeed())
+     */
     this.getSeed = function getSeed() {
         return this.random.returnSeed();
     };
