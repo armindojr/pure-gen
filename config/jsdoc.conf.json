@@ -1,6 +1,6 @@
 {
   "opts": {
-    "destination": "./doc/",
+    "destination": "./docs/",
     "template": "./node_modules/minami"
   },
   "source": {
