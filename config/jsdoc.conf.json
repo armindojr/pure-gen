@@ -1,7 +1,7 @@
 {
   "opts": {
     "destination": "./doc/",
-    "template": "./node_modules/ink-docstrap/template"
+    "template": "./node_modules/minami"
   },
   "source": {
     "include": [
@@ -14,18 +14,7 @@
     ]
   },
   "templates": {
-    "systemName": "pure-gen",
-    "linenums": true,
-    "inverseNav": true,
-    "syntaxTheme": "dark",
-    "theme": "flatly",
-    "default": {
-      "staticFiles": {
-        "include": [
-          "static/"
-        ]
-      }
-    }
+    "systemName": "pure-gen"
   },
   "plugins": [
     "plugins/markdown"

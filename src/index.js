@@ -233,11 +233,17 @@ function Pure(opts) {
     /**
      * setLocale
      *
-     * @description If user wants to generate localized data, then this method should be used
+     * @description
+     * If user wants to generate localized data, then this method should be used.
+     * </br>Possible locales:
+     * </br><b>af_ZA, ar, az, cz, de, de_AT, de_CH, el, en, en_AU, en_BORK, en_CA, en_GB, en_IE, en_IND,
+     * en_NG, en_US, en_ZA, en_au_ocker, es, es_MX, fa, fr, fr_CA, fr_CH, ge, id_ID, it, ja, ko,
+     * lv, nb_NO, nep, nl, nl_BE, pl, pt_BR, pt_PT, ro, ru, sk, sv, tr, uk, vi, zh_CN, zh_TW, zu_ZA</b>
      * @param {String} locale Locale to be used when generating data
      * @method pure.setLocale
      * @example
      * pure.setLocale('pt_BR')
+     *
      */
     this.setLocale = function setLocale(locale) {
         this.locale = locale;

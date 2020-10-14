@@ -16,7 +16,6 @@ reports/
 /npm-debug.log
 /coverage
 /.npm
-/doc/
 .nyc_output
 static/README.md
 locale/

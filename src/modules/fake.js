@@ -1,8 +1,3 @@
-/*
-  pure-gen - generator method for combining pure methods based on string input
-
-*/
-
 /**
  *
  * @namespace pure.fake
@@ -35,7 +30,10 @@ function Fake(pure) {
      * fake
      *
      * @description
-     * This will interpolate the format string with the value of methods
+     * Main purpose is to take template string and fill in with generated data using method passed
+     * inside double curly brackets
+     *
+     * In given example this method will interpolate the format string with the value of methods
      * [name.lastName]{@link pure.name.lastName}, [name.firstName]{@link pure.name.firstName},
      * and [name.suffix]{@link pure.name.suffix}
      *

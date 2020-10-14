@@ -39,7 +39,7 @@ function Vehicle(pure) {
     /**
      * type
      *
-     * @description Return random type
+     * @description Return random vehicle type
      * @method pure.vehicle.type
      * @example
      * console.log(pure.vehicle.type());
@@ -50,7 +50,7 @@ function Vehicle(pure) {
     /**
      * fuel
      *
-     * @description Return random fuel
+     * @description Return random vehicle fuel
      * @method pure.vehicle.fuel
      * @example
      * console.log(pure.vehicle.fuel());
@@ -61,7 +61,7 @@ function Vehicle(pure) {
     /**
      * vin
      *
-     * @description Return random vin number
+     * @description Return random vehicle identification number
      * @method pure.vehicle.vin
      * @example
      * console.log(pure.vehicle.vin());

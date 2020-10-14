@@ -41,7 +41,7 @@ function Address(pure) {
      * @param {String} state State used to format zipCode
      * @method pure.address.zipCodeByState
      * @example
-     * pure.locale = 'en_US'
+     * pure.setLocale('en_US')
      * console.log(pure.address.zipCodeByState('CA'))
      * //outputs: "91357"
      */
@@ -115,7 +115,7 @@ function Address(pure) {
      * @description Return a random localized city name
      * @method pure.address.cityName
      * @example
-     * pure.locale = 'pt_PT'
+     * pure.setLocale('pt_PT');
      * console.log(pure.address.cityName());
      * //outputs: "Gafanha da Nazaré"
      */
@@ -201,7 +201,7 @@ function Address(pure) {
      * @description Returns a localized street prefix
      * @method pure.address.streetPrefix
      * @example
-     * pure.locale = 'pt_PT'
+     * pure.setLocale('pt_PT');
      * console.log(pure.address.streetPrefix());
      * //outputs: "Acesso"
      */

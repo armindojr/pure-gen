@@ -25,12 +25,10 @@
 
 This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker.js) and that's why most of that code is here. This fork is created to update some features inside original repo and extends its functionality.
 
-## API Documentation
-
+### API Documentation
+- [Docs](https://armindojr.github.io/pure-gen/)
 
 ## Usage
-
-### Node.js
 
 First, install package with:
 ```
@@ -41,68 +39,7 @@ $ npm i --save pure-gen
 const pure = require('pure-gen');
 
 let randomName = pure.name.findName(); // Rowan Nikolaus
-let randomEmail = pure.internet.email(); // Kassandra.Haley@erich.biz
-let randomCard = pure.helpers.createCard(); // random contact card containing many properties
 ```
-
-## API
-
-
-### pure.fake()
-
-pure-gen contains a super useful generator method `pure.fake` for combining pure API methods using a mustache string format.
-
-**Example:**
-
-``` js
-console.log(pure.fake("{{name.lastName}}, {{name.firstName}} {{name.suffix}}"));
-// outputs: "Marks, Dean Sr."
-```
-
-This will interpolate the format string with the value of methods `name.lastName()`, `name.firstName()`, and `name.suffix()`
-
-If you want to pass parameters to the method you called in `pure.fake`, just pass them in a valid JSON format. That is to say, strings and object keys must be written in double quotes.
-
-**Example:**
-
-``` js
-console.log(pure.fake('{{helpers.randomize(["randomA","randomB"])}}'));
-// outputs "randomA" or "randomB"
-```
-
-### JSDoc API
-- https://armindojr.github.io/pure-gen/
-
-
-### API Methods
-
-* [address](https://armindojr.github.io/pure-gen/pure.address.html)
-* [airport](https://armindojr.github.io/pure-gen/pure.airport.html)
-* [commerce](https://armindojr.github.io/pure-gen/pure.commerce.html)
-* [company](https://armindojr.github.io/pure-gen/pure.company.html)
-* [database](https://armindojr.github.io/pure-gen/pure.database.html)
-* [date](https://armindojr.github.io/pure-gen/pure.date.html)
-* [dessert](https://armindojr.github.io/pure-gen/pure.dessert.html)
-* [document](https://armindojr.github.io/pure-gen/pure.document.html)
-* [electricalComponents](https://armindojr.github.io/pure-gen/pure.electricalComponents.html)
-* [esport](https://armindojr.github.io/pure-gen/pure.esport.html)
-* [fake](https://armindojr.github.io/pure-gen/pure.html)
-* [finance](https://armindojr.github.io/pure-gen/pure.finance.html)
-* [games](https://armindojr.github.io/pure-gen/pure.games.html)
-* [git](https://armindojr.github.io/pure-gen/pure.git.html)
-* [hacker](https://armindojr.github.io/pure-gen/pure.hacker.html)
-* [helpers](https://armindojr.github.io/pure-gen/pure.helpers.html)
-* [image](https://armindojr.github.io/pure-gen/pure.image.html)
-* [internet](https://armindojr.github.io/pure-gen/pure.internet.html)
-* [lorem](https://armindojr.github.io/pure-gen/pure.lorem.html)
-* [markdown](https://armindojr.github.io/pure-gen/pure.markdown.html)
-* [music](https://armindojr.github.io/pure-gen/pure.music.html)
-* [name](https://armindojr.github.io/pure-gen/pure.name.html)
-* [phone](https://armindojr.github.io/pure-gen/pure.phone.html)
-* [random](https://armindojr.github.io/pure-gen/pure.random.html)
-* [system](https://armindojr.github.io/pure-gen/pure.system.html)
-* [vehicle](https://armindojr.github.io/pure-gen/pure.vehicle.html)
-
 
 ## Localization
 
@@ -110,63 +47,7 @@ pure-gen has support for multiple localities.
 
 The default language locale is set to English.
 
-Setting a new locale is simple:
-
-```js
-// sets locale to de
-pure.setLocale("de");
-// or
-pure.locale = "de";
-```
-
- * af_ZA
- * ar
- * az
- * cz
- * de
- * de_AT
- * de_CH
- * el
- * en
- * en_AU
- * en_BORK
- * en_CA
- * en_GB
- * en_IE
- * en_IND
- * en_NG
- * en_US
- * en_ZA
- * en_au_ocker
- * es
- * es_MX
- * fa
- * fr
- * fr_CA
- * fr_CH
- * ge
- * id_ID
- * it
- * ja
- * ko
- * lv
- * nb_NO
- * nep
- * nl
- * nl_BE
- * pl
- * pt_BR
- * pt_PT
- * ro
- * ru
- * sk
- * sv
- * tr
- * uk
- * vi
- * zh_CN
- * zh_TW
- * zu_ZA
+[How to set specific location](https://armindojr.github.io/pure-gen/pure.html#.setLocale)
 
 
 ### Individual Localization Packages
@@ -207,18 +88,6 @@ If you want to known your current seed then you can:
 console.log(pure.getSeed())
 ```
 
-## Tests
-
-```
-$ npm run test
-```
-
-## Building JSDocs
-
-```
-$ npm run doc
-```
-
 ## FAQ
 
 What purpose serve this repository?
@@ -242,6 +111,8 @@ I want to add or modify dictionary for my language, what i do?
 - Run:  ``node bundle.js compress``
 - Commit changes to your branch
 - Create PR of your fork to this repo
+
+**Do not create PR changing /doc/ files, i will not accept!!**
 
 ## Maintainer
 
