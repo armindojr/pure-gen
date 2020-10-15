@@ -75,8 +75,11 @@ function pureDate(pure) {
      * //outputs: "2016-03-17T11:42:53.411Z"
      */
     this.between = (from, to) => {
-        const fromMilli = Date.parse(from);
-        const dateOffset = pure.random.number(Date.parse(to) - fromMilli);
+        const fromDate = from || pure.date.past(5);
+        const toDate = to || new Date();
+
+        const fromMilli = Date.parse(fromDate);
+        const dateOffset = pure.random.number(Date.parse(toDate) - fromMilli);
 
         const newDate = new Date(fromMilli + dateOffset);
 
@@ -96,20 +99,17 @@ function pureDate(pure) {
      * //outputs: "[2017-02-15T11:32:19.373Z,2018-06-16T16:23:39.697Z,2019-10-15T21:14:59.697Z]"
      */
     this.arrayBetween = (from, to, num) => {
-        let def = num;
-        if (typeof def === 'undefined') {
-            def = 3;
+        const def = num || 3;
+        const results = [];
+
+        for (let index = 0; index < def; index += 1) {
+            const newDate = pure.unique(pure.date.between, [from, to]);
+            results.push(newDate);
         }
-        const newDates = [];
-        let fromMilli = Date.parse(from);
-        const dateOffset = (Date.parse(to) - fromMilli) / (def + 1);
-        let lastDate = from;
-        for (let i = 0; i < def; i += 1) {
-            fromMilli = Date.parse(lastDate);
-            lastDate = new Date(fromMilli + dateOffset);
-            newDates.push(lastDate);
-        }
-        return newDates;
+
+        results.sort((a, b) => new Date(a) - new Date(b));
+
+        return results;
     };
 
     /**
