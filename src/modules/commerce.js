@@ -62,16 +62,15 @@ function Commerce(pure) {
         }
 
         def.max = def.max || 1000 * def.min;
-        def.dec = def.dec === undefined ? 2 : def.dec;
+        def.dec = def.dec || 2;
         def.symbol = def.symbol || '';
 
         if (def.min < 0 || def.max < 0) {
             return def.symbol + 0.00;
         }
 
-        const randValue = pure.random.number({ max: def.max, min: def.min });
-        const finalValue = def.symbol + (Math.round(randValue * (10 ** def.dec)) / (10 ** def.dec))
-            .toFixed(def.dec);
+        const randValue = pure.random.number({ max: def.max, min: def.min, precision: def.dec }).toString();
+        const finalValue = def.symbol + randValue;
 
         return (def.comma) ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
     };

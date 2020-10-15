@@ -1,9 +1,12 @@
 # CHANGELOG
 
-## v1.4.2 WIP
+## v1.4.2
 
 ### API Fixes
 * Generate username without diacritic
+* Fix generating array between dates always return same day and month #13
+* Fix random price always output with zero floating point #12
+* Fixed bug when not passing any parameters to pure.date.between
 
 ### General fixes
 * Improved helpers documentation

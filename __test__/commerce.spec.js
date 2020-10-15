@@ -77,10 +77,10 @@ describe('commerce.js', () => {
         });
 
         it('it should handle argument dec', () => {
-            const price = pure.commerce.price({ min: 100, max: 100, dec: 1 });
+            const price = pure.commerce.price({ min: 99, max: 100, dec: 1 });
 
             assert.ok(price);
-            assert.strictEqual(price, '100.0', 'the price should be equal 100.0');
+            assert.strictEqual(price.length, 4);
         });
 
         it('it should handle argument dec = 0', () => {
