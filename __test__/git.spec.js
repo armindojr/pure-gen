@@ -79,7 +79,7 @@ describe('git.js', () => {
             it('returns a commit entry with merge details', () => {
                 pure.git.commitEntry({ merge: true });
 
-                assert.ok(pure.git.shortSha.calledTwice);
+                assert.ok(pure.git.shortSha.calledOnce);
             });
         });
     });

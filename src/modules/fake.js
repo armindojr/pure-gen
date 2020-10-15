@@ -1,30 +1,12 @@
+const mustache = require('mustache');
+
 /**
  *
  * @namespace pure.fake
  */
 function Fake(pure) {
-    function fakeReplacer(_, module, method, args) {
-        const fn = pure[module][method];
-
-        let params = args;
-        if (args) {
-            try {
-                params = JSON.parse(args);
-            } catch (e) {
-                params = args;
-            }
-        }
-
-        try {
-            return fn.call(pure, params);
-        } catch (e) {
-            throw new Error(`Invalid method: ${module}.${method}`);
-        }
-    }
-
-    // Regex to extract module, method, args from a given fake string
-    // e.g. {{foo.bar({min: 42})}} is matched as ["foo", "bar", "{min: 42}"]
-    const fakeStringRegex = /{{(\w+)\.(\w+)(?:\((.*)\))?}}/g;
+    const fakeStringRegex = /(\w+)\.(\w+)(?:\((.*)\))?/g;
+    const paramsRegex = /(?:\((.*)\))/g;
 
     /**
      * fake
@@ -49,7 +31,52 @@ function Fake(pure) {
             throw new Error('string parameter is required!');
         }
 
-        return str.replace(fakeStringRegex, fakeReplacer);
+        const parsed = mustache.parse(str);
+        let result = {};
+
+        parsed.forEach((item) => {
+            if (item[0] === 'name' || item[0] === '&') {
+                let module;
+                let method;
+                let args;
+
+                item[1].replace(fakeStringRegex, (_, a, b, c) => {
+                    module = a;
+                    method = b;
+                    args = c;
+                });
+
+                result = {
+                    ...result,
+                    [module]: {
+                        ...result[module],
+                        [method]: args,
+                    },
+                };
+            }
+        });
+
+        Object.keys(result).forEach((module) => {
+            Object.keys(result[module]).forEach((method) => {
+                const fn = pure[module][method];
+                const params = result[module][method];
+                let args = '';
+
+                if (params) {
+                    try {
+                        args = JSON.parse(params);
+                    } catch (error) {
+                        args = params;
+                    }
+                }
+
+                result[module][method] = fn.call(pure, args);
+            });
+        });
+
+        const strFixed = str.replace(paramsRegex, '');
+
+        return mustache.render(strFixed, result);
     };
 }
 

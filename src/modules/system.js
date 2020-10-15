@@ -171,7 +171,7 @@ function System(pure) {
      * console.log(pure.system.filePath());
      * //outputs: "/usr/src/solutions_virtual.mif"
      */
-    this.filePath = () => pure.fake('{{system.directoryPath}}/{{system.fileName}}');
+    this.filePath = () => pure.fake('{{{system.directoryPath}}}/{{system.fileName}}');
 
     /**
      * semver
