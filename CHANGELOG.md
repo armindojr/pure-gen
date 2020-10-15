@@ -1,7 +1,7 @@
 # CHANGELOG
 
 ## v1.4.2
-
+ 
 ### API Fixes
 * Generate username without diacritic
 * Fix generating array between dates always return same day and month #13
