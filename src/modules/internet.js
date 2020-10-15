@@ -1,3 +1,4 @@
+const RandExp = require('randexp');
 const slugify = require('../../vendor/slugify');
 const randomUa = require('../../vendor/user-agent');
 
@@ -277,7 +278,7 @@ function Internet(pure) {
      * @param {Number} [len= 15] The number of characters in the password.
      * @param {boolean} [memorable= false] Whether a password should be easy to remember.
      * @param {string} [pattern= '/\w/'] A regex to match each character of the password against.
-     * <br> If memorable is true, then this will be ignored
+     * If memorable is true, then this will be ignored. If pattern has limit inside regex, it will be ignored.
      * @param {string} [prefix= ''] A value to prepend to the generated password.
      * @method pure.internet.password
      * @example
@@ -286,53 +287,60 @@ function Internet(pure) {
      */
     this.password = (len, memorable, pattern, prefix) => {
         const nlen = len || 15;
-        let nmemorable = memorable;
-        if (typeof nmemorable === 'undefined') {
-            nmemorable = false;
-        }
+        const nmemorable = memorable || false;
+        const npattern = pattern || /\w/;
+        let generated = prefix || '';
+
         /*
-      * password-generator ( function )
-      * Copyright(c) 2011-2013 Bermi Ferrer <bermi@bermilabs.com>
-      * MIT Licensed
-      */
+         * password-generator ( function )
+         * Copyright(c) 2011-2013 Bermi Ferrer <bermi@bermilabs.com>
+         * MIT Licensed
+         */
         const vowel = /[aeiouAEIOU]$/;
         const consonant = /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]$/;
-        const password = (length, mem, pat, pre) => {
+
+        const password = (length, mem, pre) => {
             let char;
             const nlength = length;
-            let nmem = mem;
-            let npat = pat;
-            let npre = pre;
-            if (nmem == null) {
-                nmem = true;
-            }
-            if (npat == null) {
-                npat = /\w/;
-            }
-            if (npre == null) {
-                npre = '';
-            }
+            const nmem = mem || true;
+            let pat = /\w/;
+            const npre = pre || '';
+
             if (npre.length >= nlength) {
                 return npre;
             }
+
             if (nmem) {
                 if (npre.match(consonant)) {
-                    npat = vowel;
+                    pat = vowel;
                 } else {
-                    npat = consonant;
+                    pat = consonant;
                 }
             }
+
             const n = pure.random.number(94) + 33;
             char = String.fromCharCode(n);
+
             if (nmem) {
                 char = char.toLowerCase();
             }
-            if (!char.match(npat)) {
-                return password(nlength, nmem, npat, npre);
+
+            if (!char.match(pat)) {
+                return password(nlength, nmem, npre);
             }
-            return password(nlength, nmem, npat, `${npre}${char}`);
+
+            return password(nlength, nmem, `${npre}${char}`);
         };
-        return password(nlen, nmemorable, pattern, prefix);
+
+        if (nmemorable) {
+            generated = password(nlen, nmemorable, prefix);
+        } else {
+            while (nlen > generated.length) {
+                generated += new RandExp(npattern).gen();
+            }
+        }
+
+        return generated.substr(0, nlen);
     };
 }
 

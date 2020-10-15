@@ -14,7 +14,10 @@
     ]
   },
   "templates": {
-    "systemName": "pure-gen"
+    "systemName": "pure-gen",
+    "default": {
+      "includeDate": false
+    }
   },
   "plugins": [
     "plugins/markdown"
