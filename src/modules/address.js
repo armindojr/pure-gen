@@ -3,8 +3,6 @@
  * @namespace pure.address
  */
 function Address(pure) {
-    const Helpers = pure.helpers;
-
     /**
      * zipCode
      *
@@ -27,7 +25,7 @@ function Address(pure) {
                 def = pure.random.arrayElement(localeFormat);
             }
         }
-        return Helpers.replaceSymbols(def);
+        return pure.helpers.replaceSymbols(def);
     };
 
     /**
@@ -170,16 +168,16 @@ function Address(pure) {
         let address = '';
         switch (pure.random.number(2)) {
         case 0:
-            address = `${Helpers.replaceSymbolWithNumber('#####')} ${pure.address.streetName()}`;
+            address = `${pure.helpers.replaceSymbolWithNumber('#####')} ${pure.address.streetName()}`;
             break;
         case 1:
-            address = `${Helpers.replaceSymbolWithNumber('####')} ${pure.address.streetName()}`;
+            address = `${pure.helpers.replaceSymbolWithNumber('####')} ${pure.address.streetName()}`;
             break;
         case 2:
-            address = `${Helpers.replaceSymbolWithNumber('###')} ${pure.address.streetName()}`;
+            address = `${pure.helpers.replaceSymbolWithNumber('###')} ${pure.address.streetName()}`;
             break;
         default:
-            address = `${Helpers.replaceSymbolWithNumber('##')} ${pure.address.streetName()}`;
+            address = `${pure.helpers.replaceSymbolWithNumber('##')} ${pure.address.streetName()}`;
         }
         return def ? (`${address} ${pure.address.secondaryAddress()}`) : address;
     };
@@ -216,7 +214,7 @@ function Address(pure) {
      * console.log(pure.address.secondaryAddress());
      * //outputs: "Apt. 110"
      */
-    this.secondaryAddress = () => Helpers.replaceSymbolWithNumber(pure.random.arrayElement(
+    this.secondaryAddress = () => pure.helpers.replaceSymbolWithNumber(pure.random.arrayElement(
         [
             'Apt. ###',
             'Suite ###',
