@@ -1,5 +1,3 @@
-const mustache = require('mustache');
-
 /**
  *
  * @namespace pure.fake
@@ -31,7 +29,7 @@ function Fake(pure) {
             throw new Error('string parameter is required!');
         }
 
-        const parsed = mustache.parse(str);
+        const parsed = pure.helpers.mustacheParse(str);
         let result = {};
 
         parsed.forEach((item) => {
@@ -76,7 +74,7 @@ function Fake(pure) {
 
         const strFixed = str.replace(paramsRegex, '');
 
-        return mustache.render(strFixed, result);
+        return pure.helpers.mustache(strFixed, result);
     };
 }
 

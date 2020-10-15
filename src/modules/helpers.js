@@ -1,4 +1,8 @@
+const mustache = require('mustache');
 const slugify = require('../../vendor/slugify');
+
+mustache.escape = (text) => text;
+
 /**
  *
  * @namespace pure.helpers
@@ -285,16 +289,15 @@ function Helpers(pure) {
      * //outputs: "Creating string to replace: lorem"
      */
     this.mustache = (str, data) => {
-        let def = str || '';
+        const def = str || '';
 
-        if (def !== '') {
-            Object.keys(data).forEach((p) => {
-                const re = new RegExp(`{{${p}}}`, 'g');
-                def = def.replace(re, data[p]);
-            });
-        }
+        return mustache.render(def, data);
+    };
 
-        return def;
+    this.mustacheParse = (str) => {
+        const def = str || '';
+
+        return mustache.parse(def);
     };
 
     /**
