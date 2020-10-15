@@ -69,9 +69,8 @@ function Commerce(pure) {
             return def.symbol + 0.00;
         }
 
-        const randValue = pure.random.number({ max: def.max, min: def.min });
-        const finalValue = def.symbol + (Math.round(randValue * (10 ** def.dec)) / (10 ** def.dec))
-            .toFixed(def.dec);
+        const randValue = pure.random.number({ max: def.max, min: def.min, precision: def.dec }).toFixed(def.dec);
+        const finalValue = def.symbol + randValue.toString();
 
         return (def.comma) ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
     };
