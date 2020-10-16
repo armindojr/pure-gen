@@ -6,6 +6,7 @@
   "source": {
     "include": [
       "src",
+      "src/cli",
       "src/modules",
       "src/image_providers"
     ],

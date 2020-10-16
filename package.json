@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "contributors": [
     "Armindo Junior <armindo.junior05@gmail.com>"
   ],
@@ -33,9 +33,15 @@
     "sinon": "^9.2.0"
   },
   "dependencies": {
+    "colors": "^1.4.0",
+    "commander": "^6.1.0",
     "glob": "^7.1.6",
+    "inquirer": "^7.3.3",
     "mustache": "^4.0.1",
     "randexp": "^0.5.3"
+  },
+  "bin": {
+    "pure": "./bin/pure"
   },
   "license": "MIT",
   "main": "index.js",

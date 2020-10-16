@@ -28,6 +28,24 @@ This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker
 ### API Documentation
 - [Docs](https://armindojr.github.io/pure-gen/)
 
+## CLI
+Now you can use pure from cli after installing. 
+
+Run in your cli:
+```
+$ npx pure repl
+```
+
+This will start repl interface with pure. For more information see [Repl](https://armindojr.github.io/pure-gen/repl.html)
+
+or:
+```
+$ npx pure generate
+```
+
+This will ask some questions and generate fake data based on pre-configured template. You can save in any given format. For more information see [Generator](https://armindojr.github.io/pure-gen/generator.html)
+
+
 ## Usage
 
 First, install package with:

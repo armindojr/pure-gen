@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v2.0.0
+
+## New features
+* Now pure has a CLI built-in to generate random data. Please check documentation for more info
+
+### API Fixes
+* Fix generating random password passing regex throw error #10 using external lib
+
+### General Fixes
+* Refactor on pure.fake and pure.helpers.mustache to use external lib to improve performance
+
 ## v1.4.2
  
 ### API Fixes
