@@ -1,7 +1,9 @@
 /* eslint no-console: "off" */
+/* eslint no-restricted-globals: "off" */
 const colors = require('colors');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
 const pure = require('../../index');
 
 const formats = [
@@ -50,13 +52,25 @@ function generator() {
                 name: 'templateStr',
                 message: 'What template to use to generate',
                 default: template,
+                validate: (answer) => {
+                    if (!/^\s*$/.test(answer)) {
+                        return true;
+                    }
+                    return 'You need to pass a valid string!';
+                },
             }, {
-                type: 'number',
+                type: 'input',
                 name: 'rows',
                 message: 'How many rows to generate',
                 default: 1,
                 when(answers) {
                     return answers.formatType !== 'json';
+                },
+                validate: (answer) => {
+                    if (!isNaN(answer) && answer !== '') {
+                        return true;
+                    }
+                    return 'You need to pass a valid number';
                 },
             }, {
                 type: 'confirm',
@@ -71,6 +85,15 @@ function generator() {
                 when(answers) {
                     return answers.formatType !== 'none';
                 },
+                validate: (answer) => {
+                    if (!/^\s*$/.test(answer)) {
+                        if (fs.existsSync(answer)) {
+                            return true;
+                        }
+                        return 'No such directory. You need to pass a valid path!';
+                    }
+                    return 'You need to pass a valid string!';
+                },
             }, {
                 type: 'input',
                 name: 'saveName',
@@ -79,13 +102,19 @@ function generator() {
                 when(answers) {
                     return answers.formatType !== 'none';
                 },
+                validate: (answer) => {
+                    if (!/^\s*$/.test(answer)) {
+                        return true;
+                    }
+                    return 'You need to pass a valid string!';
+                },
             },
         ])
         .then((answers) => {
             let templateStr = '';
             let generated = '';
 
-            // repeat
+            // Unique rows information
             if (answers.uniqueRows) {
                 for (let index = 0; index < answers.rows; index += 1) {
                     generated += pure.unique(pure.fake, [answers.templateStr]);
@@ -98,15 +127,17 @@ function generator() {
                 generated = pure.fake(templateStr);
             }
 
-            // save output
+            // Save output
             if (answers.formatType !== 'none') {
                 if (answers.savePath === process.cwd()) {
-                    const path = `${answers.savePath}/${answers.saveName}.${answers.formatType}`;
-                    fs.writeFileSync(path, generated);
+                    const filename = `/${answers.saveName}.${answers.formatType}`;
+                    const pathJoin = path.join(answers.savePath, filename);
+                    fs.writeFileSync(pathJoin, generated);
                     console.log(colors.grey('\nGenerated ✔️'));
                 } else {
-                    const path = `${process.cwd()}/${answers.savePath}/${answers.saveName}.${answers.formatType}`;
-                    fs.writeFileSync(path, generated);
+                    const filename = `/${answers.saveName}.${answers.formatType}`;
+                    const pathJoin = path.join(process.cwd(), answers.savePath, filename);
+                    fs.writeFileSync(pathJoin, generated);
                     console.log(colors.grey('\nGenerated ✔'));
                 }
             } else {
