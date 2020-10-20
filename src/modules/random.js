@@ -1,3 +1,4 @@
+const uuid = require('uuid');
 const lfib = require('../../vendor/lfib');
 
 /**
@@ -5,25 +6,16 @@ const lfib = require('../../vendor/lfib');
  * @namespace pure.random
  */
 function Random(pure, seed) {
-    let num = seed;
+    let num = seed || (new Date()).getTime() % 1000000000;
 
     // Preserve past behavior and fall back to the default time-based seed if an
     // empty array is passed.
     if (Array.isArray(num) && !num.length) {
-        num = undefined;
-    }
-
-    if (num === undefined) {
-        // Default seed copied from the marsenne package for compatibility.
         num = (new Date()).getTime() % 1000000000;
     }
 
     const lfibGen = lfib(num);
 
-    // Copied from the marsenne package for compatibility.
-    function rand(max = 0, min = 99999) {
-        return Math.floor(lfibGen() * (max - min) + min);
-    }
     /**
      * number
      *
@@ -38,9 +30,8 @@ function Random(pure, seed) {
      * console.log(pure.random.number());
      * //outputs: "20173"
      */
-    this.number = (options) => {
-        let def = (typeof options === 'number') ? { max: options } : options;
-        def = def || {};
+    this.number = (options = {}) => {
+        const def = (typeof options === 'number') ? { max: options } : options;
 
         if (typeof def.max === 'undefined') {
             def.max = 99999;
@@ -61,7 +52,7 @@ function Random(pure, seed) {
         }
 
         let result = '';
-        const randomNumber = rand(def.max, def.min);
+        const randomNumber = Math.floor(lfibGen() * (def.max - def.min) + def.min);
 
         if (def.min === def.max) {
             result = def.max;
@@ -91,8 +82,8 @@ function Random(pure, seed) {
      * console.log(pure.random.float());
      * //outputs: "397.5"
      */
-    this.float = (options) => {
-        let def = options || {};
+    this.float = (options = {}) => {
+        let def = options;
 
         if (typeof def === 'number') {
             def = {
@@ -115,12 +106,10 @@ function Random(pure, seed) {
      * console.log(pure.random.arrayElement());
      * //outputs: "c"
      */
-    this.arrayElement = (array) => {
-        const def = array || ['a', 'b', 'c'];
-        const r = pure.random.number({ max: def.length - 1 });
+    this.arrayElement = (array = ['a', 'b', 'c']) => {
+        const number = pure.random.number({ max: array.length - 1 });
 
-        const result = def[r] ? def[r] : def[0];
-        return result;
+        return array[number] ? array[number] : array[0];
     };
 
     /**
@@ -134,19 +123,18 @@ function Random(pure, seed) {
      * console.log(pure.random.arrayElements());
      * //outputs: "[ 'b', 'c' ]"
      */
-    this.arrayElements = (array, count) => {
-        const def = array || ['a', 'b', 'c'];
+    this.arrayElements = (array = ['a', 'b', 'c'], count) => {
         let value = count;
 
         if (typeof value !== 'number') {
-            value = pure.random.number({ min: 1, max: def.length });
-        } else if (value > def.length) {
-            value = def.length;
+            value = pure.random.number({ min: 1, max: array.length });
+        } else if (value > array.length) {
+            value = array.length;
         } else if (value < 0) {
             value = 0;
         }
 
-        const arrayCopy = def.slice();
+        const arrayCopy = array.slice();
         const countToRemove = arrayCopy.length - value;
         for (let i = 0; i < countToRemove; i += 1) {
             const indexToRemove = pure.random.number({ max: arrayCopy.length - 1 });
@@ -167,12 +155,11 @@ function Random(pure, seed) {
      * console.log(pure.random.objectElement());
      * //outputs: "car"
      */
-    this.objectElement = (object, field) => {
-        const def = object || { foo: 'bar', too: 'car' };
-        const array = Object.keys(def);
+    this.objectElement = (object = { foo: 'bar', too: 'car' }, field) => {
+        const array = Object.keys(object);
         const key = pure.random.arrayElement(array);
 
-        return field === 'key' ? key : def[key];
+        return field === 'key' ? key : object[key];
     };
 
     /**
@@ -185,11 +172,10 @@ function Random(pure, seed) {
      * console.log(pure.random.generateObj());
      * //outputs: "{ Isle: '3rd', Soft: 'blue' }"
      */
-    this.generateObj = (length) => {
-        const nLength = length || 2;
+    this.generateObj = (length = 2) => {
         const obj = {};
 
-        while (Object.keys(obj).length < nLength) {
+        while (Object.keys(obj).length < length) {
             obj[pure.random.word()] = pure.random.word();
         }
 
@@ -199,20 +185,38 @@ function Random(pure, seed) {
     /**
      * uuid
      *
-     * @description Generates a random uuid
+     * @description Generates a random uuid based on specific version.
+     * </br><b>Attention! If you pass v5 as parameter to this method, and you need a valid RFCv5
+     * (namespace w/ SHA-1) you also need to pass Object as second parameter</b>
+     * @param {String} [version= 'v1'] What version of uuid to generate. Possible values: v1, v4, v5
+     * @param {Object} [opts= {}] Object to pass if you set version to v5
+     * @param {String} [opts.name= 'uuid'] String to use in v5 uuid generation
+     * @param {String} [opts.namespace= 'random v1 uuid'] String with uuid namespace to use in v5 generation
      * @method pure.random.uuid
      * @example
      * console.log(pure.random.uuid());
      * //outputs: "39d601f5-131d-4539-b279-7232d4cec989"
      */
-    this.uuid = () => {
-        const RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
-        const replacePlaceholders = (placeholder) => {
-            const random = pure.random.number({ min: 0, max: 15 });
-            const value = placeholder === 'x' ? random : ((random & 0x3) | 0x8);
-            return value.toString(16);
-        };
-        return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
+    this.uuid = (version = 'v1', opts = {}) => {
+        let generated = '';
+        let def = opts;
+
+        if (version === 'v4') {
+            generated = uuid.v4();
+        } else if (version === 'v5') {
+            if (typeof opts.name === 'undefined' || typeof opts.namespace === 'undefined') {
+                def = {
+                    name: 'uuid',
+                    namespace: uuid.v1(),
+                };
+            }
+
+            generated = uuid.v5(def.name, def.namespace);
+        } else {
+            generated = uuid.v1();
+        }
+
+        return generated;
     };
 
     /**
@@ -286,29 +290,15 @@ function Random(pure, seed) {
      * //outputs: "web-readiness Future-proofed"
      */
     this.words = (count) => {
-        let def;
+        const def = count || pure.random.number({ min: 1, max: 3 });
         const words = [];
-        if (typeof count === 'undefined') {
-            def = pure.random.number({ min: 1, max: 3 });
-        } else {
-            def = count;
-        }
+
         for (let i = 0; i < def; i += 1) {
             words.push(pure.random.word());
         }
+
         return words.join(' ');
     };
-
-    /**
-     * image
-     *
-     * @description Generates random image url
-     * @method pure.random.image
-     * @example
-     * console.log(pure.random.image());
-     * //outputs: "http://placeimg.com/640/480/sports"
-     */
-    this.image = () => pure.image.image();
 
     /**
      * locale

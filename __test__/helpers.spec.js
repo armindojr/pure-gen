@@ -130,16 +130,6 @@ describe('helpers.js', () => {
         });
     });
 
-    // Make sure we keep this function for backward-compatibility.
-    describe('randomize()', () => {
-        it('returns a random element from an array', () => {
-            const arr = ['a', 'b', 'c'];
-            const elem = pure.helpers.randomize(arr);
-            assert.ok(elem);
-            assert.ok(arr.indexOf(elem) !== -1);
-        });
-    });
-
     describe('replaceCreditCardSymbols()', () => {
         it('returns a credit card number given a schema', () => {
             const number = pure.helpers.replaceCreditCardSymbols('6453-####-####-####-###L');

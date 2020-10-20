@@ -28,7 +28,7 @@ function Finance(pure) {
      * console.log(pure.finance.accountName());
      * //outputs: "Personal Loan Account"
      */
-    this.accountName = () => [pure.helpers.randomize(pure.definitions.finance.account_type), 'Account'].join(' ');
+    this.accountName = () => [pure.random.arrayElement(pure.definitions.finance.account_type), 'Account'].join(' ');
 
     /**
      * routingNumber
@@ -117,7 +117,7 @@ function Finance(pure) {
      * console.log(pure.finance.transactionType());
      * //outputs: "deposit"
      */
-    this.transactionType = () => pure.helpers.randomize(pure.definitions.finance.transaction_type);
+    this.transactionType = () => pure.random.arrayElement(pure.definitions.finance.transaction_type);
 
     /**
      * currencyCode

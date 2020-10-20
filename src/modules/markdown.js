@@ -13,9 +13,8 @@ function Markdown(pure) {
      * console.log(pure.markdown.header());
      * //outputs: "# quia"
      */
-    this.header = (num) => {
-        const def = num || 1;
-        const head = pure.helpers.repeatString('#', def);
+    this.header = (num = 1) => {
+        const head = pure.helpers.repeatString('#', num);
         return `${head} ${pure.lorem.word()}`;
     };
 
@@ -54,15 +53,13 @@ function Markdown(pure) {
      * // "|necessitatibus|quia|natus|"
      * // "|omnis|corporis|repudiandae|"
      */
-    this.table = (num) => {
-        const def = num || 3;
-
+    this.table = (num = 3) => {
         const table = [
             '| head1 | head2 | head3 |',
             '|:-----:|:-----:|:-----:|',
         ];
 
-        for (let i = 0; def > i; i += 1) {
+        for (let i = 0; num > i; i += 1) {
             const line = ['|', pure.lorem.words(3).split(' ').join('|'), '|'].join('');
             table.push(line);
         }
@@ -82,9 +79,8 @@ function Markdown(pure) {
      * // "2. iste"
      * // "3. provident"
      */
-    this.orderedList = (num) => {
-        const def = num || 3;
-        const words = pure.lorem.words(def).split(' ');
+    this.orderedList = (num = 3) => {
+        const words = pure.lorem.words(num).split(' ');
         const list = [];
 
         words.forEach((word, index) => {
@@ -106,9 +102,8 @@ function Markdown(pure) {
      * // "* nemo"
      * // "* iusto"
      */
-    this.unorderedList = (num) => {
-        const def = num || 3;
-        const words = pure.lorem.words(def).split(' ');
+    this.unorderedList = (num = 3) => {
+        const words = pure.lorem.words(num).split(' ');
         const list = [];
 
         words.forEach((word) => {

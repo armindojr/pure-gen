@@ -39,11 +39,10 @@ function Lorem(pure) {
      * console.log(pure.lorem.words());
      * //outputs: "et id voluptatem"
      */
-    this.words = (num) => {
-        const def = num || 3;
+    this.words = (num = 3) => {
         const words = [];
 
-        for (let i = 0; i < def; i += 1) {
+        for (let i = 0; i < num; i += 1) {
             words.push(pure.lorem.word());
         }
 
@@ -124,11 +123,7 @@ function Lorem(pure) {
      * //outputs: "Odit voluptas laudantium illo sit animi ut. Atque doloribus suscipit.
      * // Ut dolore iusto modi corrupti facere."
      */
-    this.paragraph = (sentenceCount) => {
-        const def = sentenceCount || 3;
-
-        return pure.lorem.sentences(def);
-    };
+    this.paragraph = (sentenceCount = 3) => pure.lorem.sentences(sentenceCount);
 
     /**
      * paragraphs

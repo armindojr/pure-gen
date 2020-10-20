@@ -23,7 +23,7 @@ function Fake(pure) {
      * console.log(pure.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}'));
      * //outputs: "Marks, Dean Sr."
      */
-    this.fake = function fake(str) {
+    this.fake = (str) => {
         // if incoming str parameter is not provided, return error message
         if (typeof str !== 'string' || str.length === 0) {
             throw new Error('string parameter is required!');
@@ -56,6 +56,11 @@ function Fake(pure) {
 
         Object.keys(result).forEach((module) => {
             Object.keys(result[module]).forEach((method) => {
+                if (typeof pure[module] === 'undefined'
+                 || typeof pure[module][method] === 'undefined') {
+                    throw new Error(`${module}.${method} doesn't exist inside pure scope`);
+                }
+
                 const fn = pure[module][method];
                 const params = result[module][method];
                 let args = '';
@@ -66,6 +71,8 @@ function Fake(pure) {
                     } catch (error) {
                         args = params;
                     }
+                } else {
+                    args = params;
                 }
 
                 result[module][method] = fn.call(pure, args);

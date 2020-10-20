@@ -10,7 +10,7 @@ describe('fake.js', () => {
         });
 
         it('replaces multiple tokens with random values for methods with no parameters', () => {
-            const name = pure.fake('{{helpers.randomize}}{{helpers.randomize}}{{helpers.randomize}}');
+            const name = pure.fake('{{random.arrayElement}}{{random.arrayElement}}{{random.arrayElement}}');
             assert.ok(name.match(/[abc]{3}/));
         });
 
@@ -21,7 +21,7 @@ describe('fake.js', () => {
 
         it('replaces a token with a random value for a method with an array parameter', () => {
             const arr = ['one', 'two', 'three'];
-            const random = pure.fake('{{helpers.randomize(["one", "two", "three"])}}');
+            const random = pure.fake('{{random.arrayElement(["one", "two", "three"])}}');
             assert.ok(arr.indexOf(random) > -1);
         });
 

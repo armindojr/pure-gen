@@ -32,10 +32,8 @@ function Internet(pure) {
      */
     this.email = (firstName, lastName, provider) => {
         let def = provider;
-        const first = firstName;
-        const last = lastName;
         def = def || pure.random.arrayElement(pure.definitions.internet.free_email);
-        return `${pure.helpers.slugify(pure.internet.userName(first, last), { lower: true })}@${def}`;
+        return `${pure.helpers.slugify(pure.internet.userName(firstName, lastName), { lower: true })}@${def}`;
     };
 
     /**
@@ -50,10 +48,8 @@ function Internet(pure) {
      * //outputs: "golden.prohaska@example.org"
      */
     this.exampleEmail = (firstName, lastName) => {
-        const first = firstName;
-        const last = lastName;
         const provider = pure.random.arrayElement(pure.definitions.internet.example_email);
-        return this.email(first, last, provider);
+        return this.email(firstName, lastName, provider);
     };
 
     /**
@@ -223,15 +219,12 @@ function Internet(pure) {
      * console.log(pure.internet.color());
      * //outputs: "#06267f"
      */
-    this.color = (baseRed255, baseGreen255, baseBlue255) => {
-        const baseRed = baseRed255 || 0;
-        const baseGreen = baseGreen255 || 0;
-        const baseBlue = baseBlue255 || 0;
+    this.color = (baseRed255 = 0, baseGreen255 = 0, baseBlue255 = 0) => {
         // based on awesome response : http://stackoverflow.com/questions/43044/
         // algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
-        const red = Math.floor((pure.random.number(256) + baseRed) / 2);
-        const green = Math.floor((pure.random.number(256) + baseGreen) / 2);
-        const blue = Math.floor((pure.random.number(256) + baseBlue) / 2);
+        const red = Math.floor((pure.random.number(256) + baseRed255) / 2);
+        const green = Math.floor((pure.random.number(256) + baseGreen255) / 2);
+        const blue = Math.floor((pure.random.number(256) + baseBlue255) / 2);
         const redStr = red.toString(16);
         const greenStr = green.toString(16);
         const blueStr = blue.toString(16);

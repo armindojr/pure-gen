@@ -8,12 +8,6 @@ mustache.escape = (text) => text;
  * @namespace pure.helpers
  */
 function Helpers(pure) {
-    // implement backward compatibility
-    this.randomize = (array) => {
-        const def = array || ['a', 'b', 'c'];
-        return pure.random.arrayElement(def);
-    };
-
     /**
      * slugify
      *
@@ -180,12 +174,7 @@ function Helpers(pure) {
      * console.log(pure.helpers.repeatString('pure-gen ', 5));
      * //outputs: "pure-gen pure-gen pure-gen pure-gen pure-gen "
      */
-    this.repeatString = (string, num) => {
-        const str = string || '';
-        const number = num || 0;
-
-        return str.repeat(number);
-    };
+    this.repeatString = (string = '', num = 0) => string.repeat(num);
 
     /**
      * regexpStyleStringParse
@@ -288,17 +277,9 @@ function Helpers(pure) {
      * console.log(pure.helpers.mustache('Creating string to replace: {{foo}}', { foo: 'lorem' }));
      * //outputs: "Creating string to replace: lorem"
      */
-    this.mustache = (str, data) => {
-        const def = str || '';
+    this.mustache = (str = '', data) => mustache.render(str, data);
 
-        return mustache.render(def, data);
-    };
-
-    this.mustacheParse = (str) => {
-        const def = str || '';
-
-        return mustache.parse(def);
-    };
+    this.mustacheParse = (str = '') => mustache.parse(str);
 
     /**
      * createCard
@@ -445,7 +426,7 @@ function Helpers(pure) {
         date: new Date(pure.date.past(20)),
         business: pure.company.companyName(),
         name: [pure.finance.accountName(), pure.finance.mask()].join(' '),
-        type: this.randomize(pure.definitions.finance.transaction_type),
+        type: pure.random.arrayElement(pure.definitions.finance.transaction_type),
         account: pure.finance.account(),
     });
 

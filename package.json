@@ -38,7 +38,8 @@
     "glob": "^7.1.6",
     "inquirer": "^7.3.3",
     "mustache": "^4.0.1",
-    "randexp": "^0.5.3"
+    "randexp": "^0.5.3",
+    "uuid": "^8.3.1"
   },
   "bin": {
     "pure": "./bin/pure"

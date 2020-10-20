@@ -72,7 +72,7 @@ function Vehicle(pure) {
         result += pure.random.alpha({ count: 1, upcase: true });
         result += pure.random.alphaNumeric(1);
         // return five digit #
-        result += pure.random.number({ min: 10000, max: 100000 });
+        result += pure.random.number({ min: 10000, max: 99999 });
         return result.toUpperCase();
     };
 

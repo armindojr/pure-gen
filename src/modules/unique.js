@@ -5,14 +5,6 @@ const uniqueExec = require('../../vendor/unique');
  * @namespace pure.unique
  */
 function Unique() {
-    // initialize unique module class variables
-
-    // maximum time unique.exec will attempt to run before aborting
-    const maxTime = 10;
-
-    // maximum retries unique.exec will recurse before abortings ( max loop depth )
-    const maxRetries = 10;
-
     /**
      * unique
      *
@@ -20,8 +12,9 @@ function Unique() {
      * @param {Function} method Method that will be executed to generate data
      * @param {Array} args Arguments that will be passed to method
      * @param {Object} [opts= empty] Options to be passed to unique function
-     * @param {Number} [opts.maxTime= 3]
-     * @param {Number} [opts.maxRetries= 50]
+     * @param {Number} [opts.maxTime= 3] Maximum time unique.exec will attempt to run before aborting
+     * @param {Number} [opts.maxRetries= 50] Maximum retries unique.exec will recurse before abortings
+     * ( max loop depth )
      * @param {Array} [opts.exclude= empty] Global exclude list of results
      * @param {Function} [opts.compare] Uniqueness compare function, default behavior is to check
      *  value as key against object hash
@@ -43,15 +36,17 @@ function Unique() {
      * //]
      *
      */
-    this.unique = (method, args, opts) => {
-        const options = opts || {};
+    this.unique = (method, args, opts = {}) => {
+        const options = opts;
         options.startTime = new Date().getTime();
+
         if (typeof options.maxTime !== 'number') {
-            options.maxTime = maxTime;
+            options.maxTime = 3;
         }
         if (typeof options.maxRetries !== 'number') {
-            options.maxRetries = maxRetries;
+            options.maxRetries = 50;
         }
+
         options.currentIterations = 0;
         return uniqueExec.exec(method, args, options);
     };

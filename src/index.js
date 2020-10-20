@@ -1,16 +1,15 @@
 const imports = require('./imports');
+const locales = require('./modules/locales');
 
 /**
  *
  * @namespace pure
  */
-function Pure(opts) {
-    const newOpts = opts || {};
-
+function Pure() {
     // assign options
-    this.locales = this.locales || newOpts.locales || {};
-    this.locale = this.locale || newOpts.locale || 'en';
-    this.localeFallback = this.localeFallback || newOpts.localeFallback || 'en';
+    this.locales = this.locales || locales || {};
+    this.locale = this.locale || 'en';
+    this.localeFallback = this.localeFallback || 'en';
 
     this.definitions = {};
 
@@ -158,30 +157,29 @@ function Pure(opts) {
     };
 
     // Create a Getter for all definitions.foo.bar properties
-    Object.keys(definitions).forEach((d) => {
-        if (typeof this.definitions[d] === 'undefined') {
-            this.definitions[d] = {};
+    Object.keys(definitions).forEach((module) => {
+        if (typeof this.definitions[module] === 'undefined') {
+            this.definitions[module] = {};
         }
 
-        if (typeof definitions[d] === 'string') {
-            this.definitions[d] = definitions[d];
+        if (typeof definitions[module] === 'string') {
+            this.definitions[module] = definitions[module];
             return;
         }
 
-        definitions[d].forEach((p) => {
-            Object.defineProperty(this.definitions[d], p, {
+        definitions[module].forEach((method) => {
+            Object.defineProperty(this.definitions[module], method, {
                 get: function data() {
                     if (typeof this.locales[this.locale] === 'undefined'
-                    || typeof this.locales[this.locale][d] === 'undefined'
-                    || typeof this.locales[this.locale][d][p] === 'undefined') {
+                    || typeof this.locales[this.locale][module] === 'undefined'
+                    || typeof this.locales[this.locale][module][method] === 'undefined') {
                         // certain localization sets contain less data then others.
                         // in the case of a missing definition, use the default localeFallback
-                        // to substitute the missing set data
-                        // throw new Error('unknown property ' + d + p)
-                        return this.locales[this.localeFallback][d][p];
+                        // to substitute the missing data
+                        return this.locales[this.localeFallback][module][method];
                     }
                     // return localized data
-                    return this.locales[this.locale][d][p];
+                    return this.locales[this.locale][module][method];
                 }.bind(this),
             });
         });

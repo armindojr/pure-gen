@@ -14,6 +14,7 @@ const formats = [
 ];
 
 const template = '{{random.number}}; {{internet.password}}; {{address.city}};';
+const templatejson = '{ "number": {{random.number}}, "pass": "{{internet.password}}" }';
 
 /**
  * generator
@@ -51,7 +52,12 @@ function generator() {
                 type: 'editor',
                 name: 'templateStr',
                 message: 'What template to use to generate',
-                default: template,
+                default: (answers) => {
+                    if (answers.formatType === 'json') {
+                        return templatejson;
+                    }
+                    return template;
+                },
                 validate: (answer) => {
                     if (!/^\s*$/.test(answer)) {
                         return true;
@@ -63,9 +69,6 @@ function generator() {
                 name: 'rows',
                 message: 'How many rows to generate',
                 default: 1,
-                when(answers) {
-                    return answers.formatType !== 'json';
-                },
                 validate: (answer) => {
                     if (!isNaN(answer) && answer !== '') {
                         return true;
@@ -115,7 +118,23 @@ function generator() {
             let generated = '';
 
             // Unique rows information
-            if (answers.uniqueRows) {
+            if (answers.formatType === 'json' && !answers.uniqueRows) {
+                templateStr = [];
+
+                for (let index = 0; index < answers.rows; index += 1) {
+                    templateStr.push(answers.templateStr.replace(/\n/g, ''));
+                }
+
+                generated = pure.fake(`[${templateStr}]`);
+            } else if (answers.formatType === 'json' && answers.uniqueRows) {
+                generated = [];
+
+                for (let index = 0; index < answers.rows; index += 1) {
+                    generated.push(pure.unique(pure.fake, [answers.templateStr.replace(/\n/g, '')]));
+                }
+
+                generated = `[${generated}]`;
+            } else if (answers.uniqueRows) {
                 for (let index = 0; index < answers.rows; index += 1) {
                     generated += pure.unique(pure.fake, [answers.templateStr]);
                 }
@@ -144,6 +163,9 @@ function generator() {
                 console.log(colors.grey('\nResult 🖨️'));
                 console.log(colors.blue(generated));
             }
+        })
+        .catch((error) => {
+            console.log(colors.red(`\n🛑 The following error has occurred: \n${error}`));
         });
 }
 
