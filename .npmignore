@@ -1,0 +1,7 @@
+docs/
+static/
+examples/
+config/
+__test__/
+CHANGELOG.md
+README.md
