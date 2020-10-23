@@ -212,7 +212,7 @@ describe('helpers.js', () => {
         it('replace symbol and don\'t replace number', () => {
             const replace = pure.helpers.replaceSymbolWithHex('92hd7##');
 
-            expect(replace).to.contain('92hd7')
+            expect(replace).to.contain('92hd7');
         });
     });
 });

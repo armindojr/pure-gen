@@ -4,7 +4,7 @@ const pure = require('../index');
 const luhnFormula = require('./support/luhnCheck.js');
 
 describe('finance.js', () => {
-    describe('account( length )', () => {
+    describe('account()', () => {
         it('should supply a default length if no length is passed', () => {
             const account = pure.finance.account();
 
@@ -51,7 +51,7 @@ describe('finance.js', () => {
         });
     });
 
-    describe('mask( length, parens, ellipsis )', () => {
+    describe('mask()', () => {
         it('should set a default length', () => {
             // default account mask length
             const expected = 4;
@@ -118,7 +118,7 @@ describe('finance.js', () => {
         });
     });
 
-    describe('amount(min, max, dec, symbol)', () => {
+    describe('amount()', () => {
         it('should use the default amounts when not passing arguments', () => {
             const amount = pure.finance.amount();
 
@@ -191,6 +191,14 @@ describe('finance.js', () => {
             const currencyCode = pure.finance.currencyCode();
 
             assert.ok(currencyCode.match(/[A-Z]{3}/));
+        });
+    });
+
+    describe('currencySymbol()', () => {
+        it('return random currency symbol', () => {
+            const symbol = pure.finance.currencySymbol();
+
+            assert.ok(symbol);
         });
     });
 
@@ -375,11 +383,11 @@ describe('finance.js', () => {
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
             stub.restore();
         });
-        
+
         it('returns a correct IBAN given specific conditions', () => {
             sinon.stub(pure.random, 'number').returns(20);
             sinon.stub(pure.random, 'boolean').returns(true);
-            
+
             const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
                 formats: [
                     {
@@ -396,10 +404,10 @@ describe('finance.js', () => {
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
 
-            pure.random.number.restore()
-            pure.random.boolean.restore()
+            pure.random.number.restore();
+            pure.random.boolean.restore();
             stub.restore();
-        })
+        });
     });
 
     describe('bic()', () => {

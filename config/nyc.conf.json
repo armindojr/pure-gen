@@ -1,19 +1,17 @@
 {
-    "all": false,
+    "all": true,
     "include": [
-        "src/**/**/*.js",
-        "vendor/unique.js.js"
+        "src/*.js",
+        "src/modules/*.js",
+        "src/image_providers/*.js"
     ],
     "exclude": [
+        "node_modules",
         "coverage",
-        "locales",
-        "modules",
-        "white",
+        "locale",
         "docs",
-        "docker",
-        "public",
-        "reports",
-        "tests",
-        "node_modules"
-    ]
+        "__test__"
+    ],
+    "check-coverage": true,
+    "statements": 97
 }

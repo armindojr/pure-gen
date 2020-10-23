@@ -17,7 +17,7 @@ function Document(pure) {
      * @returns {string} valid document number
      */
     this.brazilianCitizenNumber = (opts = {}) => {
-        const def = opts || {};
+        const def = opts;
         let doc = pure.helpers.replaceSymbolWithNumber('#########');
 
         const mod = (str, size, val) => {
@@ -60,7 +60,7 @@ function Document(pure) {
      * @returns {string} valid document number
      */
     this.brazilianCompanyNumber = (opts = {}) => {
-        const def = opts || {};
+        const def = opts;
         let doc = pure.helpers.replaceSymbolWithNumber('########');
 
         const mod = (str) => {
@@ -100,7 +100,7 @@ function Document(pure) {
      * @returns {string} document number
      */
     this.brazilianId = (opts = {}) => {
-        const def = opts || {};
+        const def = opts;
         let doc = pure.helpers.replaceSymbolWithNumber('#########');
 
         if (def.format === true) {

@@ -83,7 +83,7 @@ describe('internet.js', () => {
             sinon.stub(pure.random, 'number').returns(2);
             const username = pure.internet.userName();
 
-            assert.ok(username)
+            assert.ok(username);
 
             pure.random.number.restore();
         });
@@ -231,7 +231,7 @@ describe('internet.js', () => {
         });
 
         it('returns a valid hex value when stubbing math', () => {
-            sinon.stub(Math, 'floor').returns(1)
+            sinon.stub(Math, 'floor').returns(1);
 
             const color = pure.internet.color(0, 0, 0);
 

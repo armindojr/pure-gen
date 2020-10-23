@@ -154,6 +154,14 @@ describe('lorem.js', () => {
         });
     });
 
+    describe('text()', () => {
+        it('return random text', () => {
+            const text = pure.lorem.text();
+
+            assert.ok(text);
+        });
+    });
+
     describe('paragraphs()', () => {
         describe("when no 'paragraphCount' param passed in", () => {
             it('returns newline-separated string of three paragraphs', () => {

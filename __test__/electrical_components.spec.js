@@ -5,6 +5,12 @@ const pure = require('../index');
 describe('electrical_components.js', () => {
     describe('active()', () => {
         it('returns active components name', () => {
+            const active = pure.electricalComponents.active();
+
+            assert.ok(active);
+        });
+
+        it('returns exact active components name stubbed', () => {
             sinon.stub(pure.electricalComponents, 'active').returns('Diode');
             const active = pure.electricalComponents.active();
 
@@ -14,6 +20,12 @@ describe('electrical_components.js', () => {
     });
     describe('passive()', () => {
         it('returns passive components name', () => {
+            const passive = pure.electricalComponents.passive();
+
+            assert.ok(passive);
+        });
+
+        it('returns exact passive components name stubbed', () => {
             sinon.stub(pure.electricalComponents, 'passive').returns('Varistor');
             const passive = pure.electricalComponents.passive();
 
@@ -23,6 +35,12 @@ describe('electrical_components.js', () => {
     });
     describe('electromechanical()', () => {
         it('returns electromechanical components name', () => {
+            const electromechanical = pure.electricalComponents.electromechanical();
+
+            assert.ok(electromechanical);
+        });
+
+        it('returns exact electromechanical components name stubbed', () => {
             sinon.stub(pure.electricalComponents, 'electromechanical').returns('crystal');
             const electromechanical = pure.electricalComponents.electromechanical();
 

@@ -220,7 +220,7 @@ describe('name.js', () => {
     });
 
     describe('title()', () => {
-        it('returns a random title', () => {
+        it('returns a random title stubbed', () => {
             sinon.stub(pure.name, 'title').returns('Lead Solutions Supervisor');
 
             const title = pure.name.title();
@@ -228,6 +228,12 @@ describe('name.js', () => {
             assert.equal(title, 'Lead Solutions Supervisor');
 
             pure.name.title.restore();
+        });
+
+        it('returns a random title', () => {
+            const title = pure.name.title();
+
+            assert.ok(title);
         });
     });
 
@@ -249,6 +255,14 @@ describe('name.js', () => {
             pure.name.jobDescriptor.restore();
             pure.name.jobArea.restore();
             pure.name.jobType.restore();
+        });
+    });
+
+    describe('gender()', () => {
+        it('returns random gender', () => {
+            const gender = pure.name.gender();
+
+            assert.ok(gender);
         });
     });
 

@@ -210,25 +210,25 @@ describe('date.js', () => {
         it('return generated birthday', () => {
             const date = pure.date.birthDay();
 
-            assert.ok(date < new Date())
+            assert.ok(date < new Date());
         });
 
         it('return generated birthday given min and max age', () => {
             const date = pure.date.birthDay(10, 12);
-            const actual = (new Date()).getFullYear()
-            const generated = (new Date(date)).getFullYear()
+            const actual = (new Date()).getFullYear();
+            const generated = (new Date(date)).getFullYear();
 
-            assert.ok(10 <= (actual - generated))
-            assert.ok(12 >= (actual - generated))
+            assert.ok((actual - generated) >= 10);
+            assert.ok((actual - generated) <= 12);
         });
 
         it('return generated birthday given min and max age inverted', () => {
             const date = pure.date.birthDay(12, 10);
-            const actual = (new Date()).getFullYear()
-            const generated = (new Date(date)).getFullYear()
+            const actual = (new Date()).getFullYear();
+            const generated = (new Date(date)).getFullYear();
 
-            assert.ok(10 <= (actual - generated))
-            assert.ok(12 >= (actual - generated))
+            assert.ok((actual - generated) >= 10);
+            assert.ok((actual - generated) <= 12);
         });
     });
 });

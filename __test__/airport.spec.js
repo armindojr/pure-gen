@@ -5,6 +5,12 @@ const pure = require('../index');
 describe('airport.js', () => {
     describe('name()', () => {
         it('returns a random international airport', () => {
+            const airport = pure.airport.name();
+
+            assert.ok(airport);
+        });
+
+        it('returns exact international airport stubbed', () => {
             sinon.stub(pure.airport, 'name').returns('Los Angeles International Airport');
             const airport = pure.airport.name();
 
