@@ -112,14 +112,14 @@ describe('lorem.js', () => {
         });
         describe('When using RU locale', () => {
             it('Generate random sentences', () => {
-                pure.locale = 'ru';
+                pure.setLocale('ru');
                 const sentences = pure.lorem.sentence(2);
 
                 assert.ok(typeof sentences === 'string');
                 const words = sentences.split(' ');
                 expect(words.length).greaterThan(1);
 
-                pure.locale = 'en';
+                pure.setLocale('en');
             });
         });
     });

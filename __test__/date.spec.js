@@ -121,88 +121,88 @@ describe('date.js', () => {
     describe('month()', () => {
         it('returns random value from date.month.wide array by default', () => {
             const month = pure.date.month();
-            assert.ok(pure.definitions.date.month.wide.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.wide.indexOf(month) !== -1);
         });
 
         it('returns random value from date.month.wide_context array for context option', () => {
             const month = pure.date.month({ context: true });
-            assert.ok(pure.definitions.date.month.wide_context.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.wide_context.indexOf(month) !== -1);
         });
 
         it('returns random value from date.month.abbr array for abbr option', () => {
             const month = pure.date.month({ abbr: true });
-            assert.ok(pure.definitions.date.month.abbr.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.abbr.indexOf(month) !== -1);
         });
 
         it('returns random value from date.month.abbr_context array for abbr and context option', () => {
             const month = pure.date.month({ abbr: true, context: true });
-            assert.ok(pure.definitions.date.month.abbr_context.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.abbr_context.indexOf(month) !== -1);
         });
 
         it('returns random value from date.month.wide array for context '
         + 'option when date.month.wide_context array is missing', () => {
-            const backupWideContext = pure.definitions.date.month.wide_context;
-            pure.definitions.date.month.wide_context = undefined;
+            const backupWideContext = pure.registeredModules.date.month.wide_context;
+            pure.registeredModules.date.month.wide_context = undefined;
 
             const month = pure.date.month({ context: true });
-            assert.ok(pure.definitions.date.month.wide.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.wide.indexOf(month) !== -1);
 
-            pure.definitions.date.month.wide_context = backupWideContext;
+            pure.registeredModules.date.month.wide_context = backupWideContext;
         });
 
         it('returns random value from date.month.abbr array for abbr and context '
         + 'option when date.month.abbr_context array is missing', () => {
-            const backupAbbrContext = pure.definitions.date.month.abbr_context;
-            pure.definitions.date.month.abbr_context = undefined;
+            const backupAbbrContext = pure.registeredModules.date.month.abbr_context;
+            pure.registeredModules.date.month.abbr_context = undefined;
 
             const month = pure.date.month({ abbr: true, context: true });
-            assert.ok(pure.definitions.date.month.abbr.indexOf(month) !== -1);
+            assert.ok(pure.registeredModules.date.month.abbr.indexOf(month) !== -1);
 
-            pure.definitions.date.month.abbr_context = backupAbbrContext;
+            pure.registeredModules.date.month.abbr_context = backupAbbrContext;
         });
     });
 
     describe('weekday()', () => {
         it('returns random value from date.weekday.wide array by default', () => {
             const weekday = pure.date.weekday();
-            assert.ok(pure.definitions.date.weekday.wide.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.wide.indexOf(weekday) !== -1);
         });
 
         it('returns random value from date.weekday.wide_context array for context option', () => {
             const weekday = pure.date.weekday({ context: true });
-            assert.ok(pure.definitions.date.weekday.wide_context.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.wide_context.indexOf(weekday) !== -1);
         });
 
         it('returns random value from date.weekday.abbr array for abbr option', () => {
             const weekday = pure.date.weekday({ abbr: true });
-            assert.ok(pure.definitions.date.weekday.abbr.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.abbr.indexOf(weekday) !== -1);
         });
 
         it('returns random value from date.weekday.abbr_context array for abbr and context option', () => {
             const weekday = pure.date.weekday({ abbr: true, context: true });
-            assert.ok(pure.definitions.date.weekday.abbr_context.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.abbr_context.indexOf(weekday) !== -1);
         });
 
         it('returns random value from date.weekday.wide array for context option when '
         + 'date.weekday.wide_context array is missing', () => {
-            const backupWideContext = pure.definitions.date.weekday.wide_context;
-            pure.definitions.date.weekday.wide_context = undefined;
+            const backupWideContext = pure.registeredModules.date.weekday.wide_context;
+            pure.registeredModules.date.weekday.wide_context = undefined;
 
             const weekday = pure.date.weekday({ context: true });
-            assert.ok(pure.definitions.date.weekday.wide.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.wide.indexOf(weekday) !== -1);
 
-            pure.definitions.date.weekday.wide_context = backupWideContext;
+            pure.registeredModules.date.weekday.wide_context = backupWideContext;
         });
 
         it('returns random value from date.weekday.abbr array for abbr and context '
         + 'option when date.weekday.abbr_context array is missing', () => {
-            const backupAbbrContext = pure.definitions.date.weekday.abbr_context;
-            pure.definitions.date.weekday.abbr_context = undefined;
+            const backupAbbrContext = pure.registeredModules.date.weekday.abbr_context;
+            pure.registeredModules.date.weekday.abbr_context = undefined;
 
             const weekday = pure.date.weekday({ abbr: true, context: true });
-            assert.ok(pure.definitions.date.weekday.abbr.indexOf(weekday) !== -1);
+            assert.ok(pure.registeredModules.date.weekday.abbr.indexOf(weekday) !== -1);
 
-            pure.definitions.date.weekday.abbr_context = backupAbbrContext;
+            pure.registeredModules.date.weekday.abbr_context = backupAbbrContext;
         });
     });
 

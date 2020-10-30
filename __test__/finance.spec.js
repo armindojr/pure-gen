@@ -289,7 +289,7 @@ describe('finance.js', () => {
             assert.ok(luhnFormula(number));
         });
         it('returns a valid credit card number when locale credit_card provider has only one string', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: {
                     visa: '4###########L',
                 },
@@ -299,7 +299,7 @@ describe('finance.js', () => {
             stub.restore();
         });
         it('returns a valid credit card number when locale credit_card has one string', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: '4###########L',
             }));
             const number = pure.finance.creditCardNumber();
@@ -308,7 +308,7 @@ describe('finance.js', () => {
         });
         it('returns a valid credit card number when locale credit_card provider has only one string '
         + 'and provider is passed as parameter', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: {
                     visa: '4###########L',
                 },
@@ -366,7 +366,7 @@ describe('finance.js', () => {
         });
 
         it('returns a correct IBAN number when ibanLib.formats.type is a', () => {
-            const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'iban').get(() => ({
                 formats: [
                     {
                         country: 'VG',
@@ -388,7 +388,7 @@ describe('finance.js', () => {
             sinon.stub(pure.random, 'number').returns(20);
             sinon.stub(pure.random, 'boolean').returns(true);
 
-            const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'iban').get(() => ({
                 formats: [
                     {
                         country: 'VG',
@@ -413,7 +413,7 @@ describe('finance.js', () => {
     describe('bic()', () => {
         it('returns a random yet formally correct BIC number', () => {
             const bic = pure.finance.bic();
-            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
             const reg = new RegExp(exp, 'i');
 
             assert.ok(bic.match(reg));
@@ -421,7 +421,7 @@ describe('finance.js', () => {
         it('returns correct BIC number when random number < 10', () => {
             sinon.stub(pure.random, 'number').returns(3);
             const bic = pure.finance.bic();
-            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
             const reg = new RegExp(exp, 'i');
 
             assert.ok(bic.match(reg));

@@ -17,7 +17,7 @@ describe('phone_number.js', () => {
 
     describe('phoneNumberFormat()', () => {
         it('returns phone number with requested format (Array index)', () => {
-            pure.locale = 'en';
+            pure.setLocale('en');
             for (let i = 0; i < 10; i += 1) {
                 const phoneNumber = pure.phone.phoneNumberFormat(1);
                 assert.ok(phoneNumber.match(/\(\d\d\d\) \d\d\d-\d\d\d\d/));
@@ -25,7 +25,7 @@ describe('phone_number.js', () => {
         });
 
         it('returns phone number with proper format US (Array index)', () => {
-            pure.locale = 'en';
+            pure.setLocale('en');
             for (let i = 0; i < 25; i += 1) {
                 const phoneNumber = pure.phone.phoneNumberFormat(1);
                 assert.ok(phoneNumber.match(/\([2-9]\d\d\) [2-9]\d\d-\d\d\d\d/));
@@ -33,7 +33,7 @@ describe('phone_number.js', () => {
         });
 
         it('returns phone number with proper format CA (Array index)', () => {
-            pure.locale = 'en_CA';
+            pure.setLocale('en_CA');
             for (let i = 0; i < 25; i += 1) {
                 const phoneNumber = pure.phone.phoneNumberFormat(1);
                 assert.ok(phoneNumber.match(/\([2-9]\d\d\)[2-9]\d\d-\d\d\d\d/));

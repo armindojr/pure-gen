@@ -6,7 +6,7 @@ describe('commerce.js', () => {
     describe('color()', () => {
         it('returns random value from commerce.color array', () => {
             const color = pure.commerce.color();
-            assert.ok(pure.definitions.commerce.color.indexOf(color) !== -1);
+            assert.ok(pure.registeredModules.commerce.color.indexOf(color) !== -1);
         });
     });
 
@@ -127,7 +127,7 @@ describe('commerce.js', () => {
         });
         it('returns all categories when parameter passed in is greater then lenght of categories', () => {
             const categories = pure.commerce.categories(100);
-            const all = pure.definitions.commerce.department.length;
+            const all = pure.registeredModules.commerce.department.length;
 
             assert.equal(categories.length, all);
         });

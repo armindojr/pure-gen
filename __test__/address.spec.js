@@ -304,14 +304,14 @@ describe('address.js', () => {
 
         it('returns zipCode with proper locale format', () => {
             // we'll use the en_CA locale..
-            pure.locale = 'en_CA';
+            pure.setLocale('en_CA');
             const zipCode = pure.address.zipCode();
             assert.ok(zipCode.match(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/));
         });
 
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
-            const stub = sinon.stub(pure.definitions, 'address').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
                 postcode: '#####',
             }));
             const zipCode = pure.address.zipCode();
@@ -325,7 +325,7 @@ describe('address.js', () => {
 
     describe('zipCodeByState()', () => {
         it('returns zipCode valid for specified State', () => {
-            pure.locale = 'en_US';
+            pure.setLocale('en_US');
             const states = ['IL', 'GA', 'WA'];
 
             const zipCode1 = pure.address.zipCodeByState(states[0]);
@@ -349,14 +349,14 @@ describe('address.js', () => {
         });
 
         it('returns undefined if state is valid but localeis invalid', () => {
-            pure.locale = 'zh_CN';
+            pure.setLocale('zh_CN');
             const state = 'IL';
             sinon.spy(pure.address, 'zipCode');
             const zipCode = pure.address.zipCodeByState(state);
             assert.ok(pure.address.zipCode.called);
             assert.ok(typeof zipCode === 'string');
             pure.address.zipCode.restore();
-            pure.locale = 'en';
+            pure.setLocale('en');
         });
     });
 

@@ -13,7 +13,7 @@ describe('name.js', () => {
             pure.name.firstName.restore();
         });
         it('returns a random name when first_name is undefined', () => {
-            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: undefined,
                 male_first_name: [
                     'test1male',
@@ -32,7 +32,7 @@ describe('name.js', () => {
         });
         it('returns a random name when first_name is undefined and random num 0', () => {
             sinon.stub(pure.random, 'number').returns(0);
-            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: undefined,
                 male_first_name: [
                     'test1male',
@@ -52,7 +52,7 @@ describe('name.js', () => {
         });
         it('returns a random name when first_name is undefined and random num 1', () => {
             sinon.stub(pure.random, 'number').returns(1);
-            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: undefined,
                 male_first_name: [
                     'test1male',
@@ -72,7 +72,7 @@ describe('name.js', () => {
         });
         it('returns a random name when female_first_name and male_first_name is undefined', () => {
             sinon.stub(pure.random, 'number').returns(1);
-            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: [
                     'test1male',
                     'test2female',
@@ -100,7 +100,7 @@ describe('name.js', () => {
             pure.name.lastName.restore();
         });
         it('returns a male random name', () => {
-            const stub = sinon.stub(pure.definitions, 'name').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 male_last_name: [
                     'test1male',
                     'test2male',
@@ -117,22 +117,22 @@ describe('name.js', () => {
         });
         describe('When using RU locale', () => {
             it('returns localized lastname', () => {
-                pure.locale = 'ru';
+                pure.setLocale('ru');
                 const lastNameRu = pure.name.lastName();
 
                 assert.ok(typeof lastNameRu === 'string');
                 expect(lastNameRu.length).greaterThan(1);
 
-                pure.locale = 'en';
+                pure.setLocale('en');
             });
             it('and passing "gender" parameter as 1', () => {
-                pure.locale = 'ru';
+                pure.setLocale('ru');
                 const lastNameRu = pure.name.lastName(1);
 
                 assert.ok(typeof lastNameRu === 'string');
                 expect(lastNameRu.length).greaterThan(1);
 
-                pure.locale = 'en';
+                pure.setLocale('en');
             });
         });
     });
@@ -213,7 +213,7 @@ describe('name.js', () => {
         });
 
         it('needs to work with specific locales and respect the fallbacks', () => {
-            pure.locale = 'en_US';
+            pure.setLocale('en_US');
             // this will throw if this is broken
             pure.name.findName();
         });
@@ -270,18 +270,18 @@ describe('name.js', () => {
         describe('when using a locale with gender specific name prefixes', () => {
             beforeEach(function check() {
                 this.oldLocale = pure.locale;
-                pure.locale = 'TEST';
-
                 pure.locales.TEST = {
                     name: {
                         male_prefix: ['Mp'],
                         female_prefix: ['Fp'],
                     },
                 };
+
+                pure.setLocale('TEST');
             });
 
             afterEach(function check() {
-                pure.locale = this.oldLocale;
+                pure.setLocale(this.oldLocale);
                 delete pure.locale.TEST;
             });
 
@@ -305,17 +305,17 @@ describe('name.js', () => {
         describe('when using a locale without gender specific name prefixes', () => {
             beforeEach(function check() {
                 this.oldLocale = pure.locale;
-                pure.locale = 'TEST';
-
                 pure.locales.TEST = {
                     name: {
                         prefix: ['P'],
                     },
                 };
+
+                pure.setLocale('TEST');
             });
 
             afterEach(function check() {
-                pure.locale = this.oldLocale;
+                pure.setLocale(this.oldLocale);
                 delete pure.locale.TEST;
             });
 
