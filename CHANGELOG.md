@@ -2,14 +2,19 @@
 
 ## v2.0.0
 
-## New features
+### New features
 * Now pure has a CLI built-in to generate random data. Please check documentation for more info
 
-### API Fixes
-* Fix generating random password passing regex throw error #10 using external lib
+### API Changes
+* Removed deprecated helpers.randomize. Use random.arrayElement instead
+* Setting locale now uses only setLocale method. Setting as variable will no longer works
 
 ### General Fixes
-* Refactor on pure.fake and pure.helpers.mustache to use external lib to improve performance
+* Locales is not compressed anymore. Installation time will increase but no script will run during installation process. This improve security for user.
+* Locales has been reestructured. Now setting specific locale when requiring pure will no longer work
+* pure.fake now uses [mustache](https://github.com/janl/mustache.js) and this improve performance.
+* pure.internet.password now uses [randexp](https://github.com/fent/randexp.js) and this improve performance and fixes [#10](https://github.com/armindojr/pure-gen/issues/10)
+* pure.random.uuid now uses [uuid](https://github.com/uuidjs/uuid)
 
 ## v1.4.2
  

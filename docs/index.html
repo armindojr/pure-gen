@@ -97,13 +97,6 @@ let randomName = pure.name.findName(); // Rowan Nikolaus
 <p>pure-gen has support for multiple localities.</p>
 <p>The default language locale is set to English.</p>
 <p><a href="https://armindojr.github.io/pure-gen/pure.html#.setLocale">How to set specific location</a></p>
-<h3>Individual Localization Packages</h3>
-<p>pure-gen also supports incremental loading of locales.</p>
-<p>By default, requiring <code>pure</code> will include <em>all</em> locale data.</p>
-<p>In a production environment, you may only want to include the locale data for a specific set of locales.</p>
-<pre class="prettyprint source lang-js"><code>// loads only de locale
-const pure = require('pure-gen/locale/de');
-</code></pre>
 <h2>Setting a randomness seed</h2>
 <p>If you want consistent results, you can set your own seed:</p>
 <pre class="prettyprint source lang-js"><code>pure.seed(123);
@@ -143,10 +136,8 @@ console.log(firstRandom === secondRandom);
 <ul>
 <li>Fork this repo</li>
 <li>Clone your forked repo to your pc</li>
-<li>Run:  <code>node bundle.js decompress</code></li>
-<li>Edit your language pack inside ./locale</li>
-<li>Run:  <code>node bundle.js compress</code></li>
-<li>Commit changes to your branch</li>
+<li>Make modifications</li>
+<li>Commit changes to your fork</li>
 <li>Create PR of your fork to this repo</li>
 </ul>
 <p><strong>Do not create PR changing /doc/ files, i will not accept!!</strong></p>

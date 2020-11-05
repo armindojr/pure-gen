@@ -174,11 +174,11 @@ class Finance {
          */
         this.bitcoinAddress = () => {
             const addressLength = pure.random.number({ min: 25, max: 34 });
-
+            const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
             let address = pure.random.arrayElement(['1', '3']);
 
             for (let i = 0; i < addressLength - 1; i += 1) {
-                address += pure.random.arrayElement('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
+                address += pure.random.arrayElement(alphanum);
             }
 
             return address;
@@ -195,11 +195,11 @@ class Finance {
          */
         this.litecoinAddress = () => {
             const addressLength = pure.random.number({ min: 26, max: 33 });
-
+            const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
             let address = pure.random.arrayElement(['L', 'M', '3']);
 
             for (let i = 0; i < addressLength; i += 1) {
-                address += pure.random.arrayElement('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split(''));
+                address += pure.random.arrayElement(alphanum);
             }
 
             return address;

@@ -18,5 +18,4 @@ reports/
 /.npm
 .nyc_output
 static/README.md
-locale/
 .vscode/

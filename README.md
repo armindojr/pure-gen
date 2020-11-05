@@ -67,20 +67,6 @@ The default language locale is set to English.
 
 [How to set specific location](https://armindojr.github.io/pure-gen/pure.html#.setLocale)
 
-
-### Individual Localization Packages
-
-pure-gen also supports incremental loading of locales.
-
-By default, requiring `pure` will include *all* locale data.
-
-In a production environment, you may only want to include the locale data for a specific set of locales.
-
-```js
-// loads only de locale
-const pure = require('pure-gen/locale/de');
-```
-
 ## Setting a randomness seed
 
 If you want consistent results, you can set your own seed:
@@ -124,10 +110,8 @@ What are the major changes compared to original project?
 I want to add or modify dictionary for my language, what i do?
 - Fork this repo
 - Clone your forked repo to your pc
-- Run:  ``node bundle.js decompress``
-- Edit your language pack inside ./locale
-- Run:  ``node bundle.js compress``
-- Commit changes to your branch
+- Make modifications
+- Commit changes to your fork
 - Create PR of your fork to this repo
 
 **Do not create PR changing /doc/ files, i will not accept!!**

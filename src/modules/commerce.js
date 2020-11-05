@@ -35,7 +35,8 @@ class Commerce {
          * console.log(pure.commerce.productName());
          * //outputs: "Gorgeous Cotton Shirt"
          */
-        this.productName = () => `${pure.commerce.productAdjective()} ${pure.commerce.productMaterial()} ${pure.commerce.product()}`;
+        this.productName = () => `${pure.commerce.productAdjective()}`
+        + ` ${pure.commerce.productMaterial()} ${pure.commerce.product()}`;
 
         /**
          * price

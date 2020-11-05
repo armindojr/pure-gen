@@ -10,13 +10,12 @@
     "url": "https://github.com/armindojr/pure-gen.git"
   },
   "scripts": {
-    "install": "node bundle.js decompress",
-    "lint": "npx eslint -c ./config/.eslintrc ./src",
-    "lint:fix": "npx eslint -c ./config/.eslintrc ./src --fix",
-    "test": "npx mocha --config ./config/mocha.conf.js ./__test__/*.spec.js",
-    "doc": "npx jsdoc -c ./config/jsdoc.conf.json --readme ./README.md",
-    "coverage": "npx nyc --nycrc-path ./config/nyc.conf.json --reporter=lcov npm run test",
-    "coverage:html": "npx nyc --nycrc-path ./config/nyc.conf.json --reporter=html npm run test",
+    "lint": "npx eslint -c ./.eslintrc ./src",
+    "lint:fix": "npx eslint -c ./.eslintrc ./src --fix",
+    "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
+    "doc": "npx jsdoc -c ./jsdoc.conf.json --readme ./README.md",
+    "coverage": "npx nyc --nycrc-path ./nyc.conf.json --reporter=lcov npm run test",
+    "coverage:html": "npx nyc --nycrc-path ./nyc.conf.json --reporter=html npm run test",
     "coverage:report": "codecov"
   },
   "devDependencies": {
@@ -28,7 +27,7 @@
     "ink-docstrap": "1.3.2",
     "jsdoc": "^3.6.6",
     "minami": "^1.2.3",
-    "mocha": "^8.2.0",
+    "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "sinon": "^9.2.1"
   },
@@ -38,7 +37,6 @@
     "inquirer": "^7.3.3",
     "mustache": "^4.0.1",
     "randexp": "^0.5.3",
-    "tar": "^6.0.5",
     "uuid": "^8.3.1"
   },
   "bin": {

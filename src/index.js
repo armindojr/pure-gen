@@ -1,5 +1,5 @@
 const imports = require('./imports');
-const locales = require('./modules/locales');
+const locales = require('./locale');
 
 /**
  *
