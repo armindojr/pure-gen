@@ -1,6 +1,5 @@
 var fs = require('fs');
-
-var pure = require('../../index');
+var pure = require('../index');
 
 
 // generate dataSet as example

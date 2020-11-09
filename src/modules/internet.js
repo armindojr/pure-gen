@@ -1,6 +1,6 @@
 const RandExp = require('randexp');
-const slugify = require('../../vendor/slugify');
-const randomUa = require('../../vendor/user-agent');
+const slugify = require('slugify');
+const randomUa = require('../vendor/user-agent');
 
 /**
  *

@@ -1,5 +1,5 @@
 const mustache = require('mustache');
-const slugify = require('../../vendor/slugify');
+const slugify = require('slugify');
 
 mustache.escape = (text) => text;
 

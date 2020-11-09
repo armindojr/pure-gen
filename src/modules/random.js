@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const lfib = require('../../vendor/lfib');
+const lfib = require('../vendor/lfib');
 
 /**
  *

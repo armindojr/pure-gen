@@ -1,4 +1,4 @@
-var pure = require('../../index');
+var pure = require('../index');
 
 var emails = {};
 var conflicts = 0;

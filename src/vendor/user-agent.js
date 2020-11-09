@@ -60,7 +60,7 @@ var headers = [{
 
 
 function rnd(a, b) {
-    var pure = require('../');
+    var pure = require('../../');
     //calling rnd() with no arguments is identical to rnd(0, 100)
     a = a || 0;
     b = b || 100;

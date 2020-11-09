@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const sinon = require('sinon');
-const slugify = require('../vendor/slugify');
+const slugify = require('slugify');
 const pure = require('../index');
 
 describe('internet.js', () => {

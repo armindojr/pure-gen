@@ -1,17 +1,11 @@
-#!/usr/bin/env node
-
-var pure = require('../../index');
-pure.locale = "en";
-
-//console.log(pure.lorem.sentences())
+const pure = require('../index');
+pure.setLocale('en');
 
 console.log(pure.name.findName())
-return;
-//console.log(pure.address)
 console.log(pure.internet.email())
 console.log(pure.date.recent())
 console.log(pure.helpers.contextualCard());
 
-pure.locale = "uk";
+pure.setLocale('uk');
 
 console.log(pure.helpers.contextualCard());
