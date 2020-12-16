@@ -28,10 +28,13 @@ describe('fake.js', () => {
         it('allows the user to pass multiple parameters to a function', () => {
             sinon.spy(pure.date, 'between');
 
-            pure.fake('{{date.between("2015-01-01", "2015-01-05")}}');
+            let from = new Date('2015-01-01').toISOString();
+            let to = new Date('2015-01-05').toISOString();
+            let result = pure.fake('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
 
             assert.ok(pure.date.between.calledOnce);
-            assert.ok(pure.date.between.withArgs('2015-01-01', '2015-01-05'));
+            assert.ok(from <= result);
+            assert.ok(result <= to);
 
             pure.date.between.restore();
         });
@@ -39,6 +42,12 @@ describe('fake.js', () => {
         it('does not allow undefined parameters', () => {
             assert.throws(() => {
                 pure.fake();
+            }, Error);
+        });
+
+        it('does not allow params as JSON unformatted', () => {
+            assert.throws(() => {
+                pure.fake('{{date.between({ from: "2015-01-01", to: "2015-01-05" })}}');
             }, Error);
         });
 

@@ -50,7 +50,7 @@ class Address {
          *
          * @description Generates random zipcode from format.
          * &lt;br> If format is not specified, the locale's zip format is used.
-         * @param {String} [format=Locale default format] What format to use when generate zipCode
+         * @param {String} [format= Locale default format] What format to use when generate zipCode
          * @method pure.address.zipCode
          * @example
          * console.log(pure.address.zipCode());
@@ -58,6 +58,7 @@ class Address {
          */
         this.zipCode = (format) => {
             let def = format;
+
             // if zip format is not specified, use the zip format defined for the locale
             if (typeof def === 'undefined') {
                 const localeFormat = pure.registeredModules.address.postcode;
@@ -67,6 +68,7 @@ class Address {
                     def = pure.random.arrayElement(localeFormat);
                 }
             }
+
             return pure.helpers.replaceSymbols(def);
         };
 
@@ -87,10 +89,12 @@ class Address {
          */
         this.zipCodeByState = (state) => {
             const zipRange = pure.registeredModules.address.postcode_by_state[state];
+
             if (zipRange) {
                 return pure.random.number(zipRange);
             }
-            return pure.address.zipCode();
+
+            return this.zipCode();
         };
 
         /**
@@ -173,7 +177,8 @@ class Address {
         // TODO: Refactor to use real street names not pure.name.lastName()
         this.streetName = () => {
             let result;
-            let suffix = pure.address.streetSuffix();
+            let suffix = this.streetSuffix();
+
             if (suffix !== '') {
                 suffix = ` ${suffix}`;
             }
@@ -186,8 +191,9 @@ class Address {
                 result = pure.name.firstName() + suffix;
                 break;
             default:
-                result = pure.address.streetSuffix();
+                result = this.streetSuffix();
             }
+
             return result;
         };
 
@@ -203,24 +209,28 @@ class Address {
          */
         this.streetAddress = (useFullAddress) => {
             let def = useFullAddress;
+
             if (def === undefined) {
                 def = false;
             }
+
             let address = '';
+
             switch (pure.random.number(2)) {
             case 0:
-                address = `${pure.helpers.replaceSymbolWithNumber('#####')} ${pure.address.streetName()}`;
+                address = `${pure.helpers.replaceSymbolWithNumber({ string: '#####' })} ${this.streetName()}`;
                 break;
             case 1:
-                address = `${pure.helpers.replaceSymbolWithNumber('####')} ${pure.address.streetName()}`;
+                address = `${pure.helpers.replaceSymbolWithNumber({ string: '####' })} ${this.streetName()}`;
                 break;
             case 2:
-                address = `${pure.helpers.replaceSymbolWithNumber('###')} ${pure.address.streetName()}`;
+                address = `${pure.helpers.replaceSymbolWithNumber({ string: '###' })} ${this.streetName()}`;
                 break;
             default:
-                address = `${pure.helpers.replaceSymbolWithNumber('##')} ${pure.address.streetName()}`;
+                address = `${pure.helpers.replaceSymbolWithNumber({ string: '##' })} ${this.streetName()}`;
             }
-            return def ? (`${address} ${pure.address.secondaryAddress()}`) : address;
+
+            return def ? (`${address} ${this.secondaryAddress()}`) : address;
         };
 
         /**
@@ -255,12 +265,14 @@ class Address {
          * console.log(pure.address.secondaryAddress());
          * //outputs: "Apt. 110"
          */
-        this.secondaryAddress = () => pure.helpers.replaceSymbolWithNumber(pure.random.arrayElement(
-            [
-                'Apt. ###',
-                'Suite ###',
-            ],
-        ));
+        this.secondaryAddress = () => pure.helpers.replaceSymbolWithNumber({
+            string: pure.random.arrayElement(
+                [
+                    'Apt. ###',
+                    'Suite ###',
+                ],
+            ),
+        });
 
         /**
          * county
@@ -345,48 +357,48 @@ class Address {
          * latitude
          *
          * @description Returns random latitude respecting parameters
-         * @param {Double} [max=90] Valid max range of latitude
-         * @param {Double} [min=-90] Valid min range of latitude
-         * @param {Number} [precision=4] Floating point precision
+         * @param {object} [options= {}] Options to be passed
+         * @param {Double} [options.max= 90] Valid max range of latitude
+         * @param {Double} [options.min= -90] Valid min range of latitude
+         * @param {Number} [options.precision= 4] Floating point precision
          * @method pure.address.latitude
          * @example
          * console.log(pure.address.latitude());
          * //outputs: "-24.9689"
          */
-        this.latitude = (max, min, precision) => {
-            const nmax = max || 90;
-            const nmin = min || -90;
-            const nprecision = precision || 4;
+        this.latitude = (options = {}) => {
+            const { max = 90, min = -90, precision = 4 } = options;
 
+            // TODO: review why using parseFloat on precision
             return pure.random.number({
-                max: nmax,
-                min: nmin,
-                precision: parseFloat(`${(0.0).toPrecision(nprecision)}1`),
-            }).toFixed(nprecision);
+                max,
+                min,
+                precision: parseFloat(`${(0.0).toPrecision(precision)}1`),
+            }).toFixed(precision);
         };
 
         /**
          * longitude
          *
          * @description Returns random longitude respecting parameters
-         * @param {Double} [max=180] Valid max range of longitude
-         * @param {Double} [min=-180] Valid min range of longitude
-         * @param {Number} [precision=4] Floating point precision
+         * @param {object} [options= {}] Options to be passed
+         * @param {Double} [options.max= 180] Valid max range of longitude
+         * @param {Double} [options.min= -180] Valid min range of longitude
+         * @param {Number} [options.precision= 4] Floating point precision
          * @method pure.address.longitude
          * @example
          * console.log(pure.address.longitude());
          * //outputs: "-19.0215"
          */
-        this.longitude = (max, min, precision) => {
-            const nmax = max || 180;
-            const nmin = min || -180;
-            const nprecision = precision || 4;
+        this.longitude = (options = {}) => {
+            const { max = 180, min = -180, precision = 4 } = options;
 
+            // TODO: review why using parseFloat on precision
             return pure.random.number({
-                max: nmax,
-                min: nmin,
-                precision: parseFloat(`${(0.0).toPrecision(nprecision)}1`),
-            }).toFixed(nprecision);
+                max,
+                min,
+                precision: parseFloat(`${(0.0).toPrecision(precision)}1`),
+            }).toFixed(precision);
         };
 
         /**
@@ -452,18 +464,20 @@ class Address {
          * nearbyGPSCoordinate
          *
          * @description Returns random nearby GPS coordinate closed to specified point
-         * @param {Array} [coordinate=['random', 'random']] Array with latitude and longitude
-         * @param {Boolean} [radius=10.0]
-         * @param {Boolean} [isMetric=false]
+         * @param {object} [options= {}] Options to be passed
+         * @param {Array} [options.coordinate= ['random', 'random']] Array with latitude and longitude
+         * @param {Boolean} [options.radius= 10.0]
+         * @param {Boolean} [options.isMetric= false]
          * @method pure.address.nearbyGPSCoordinate
          * @example
          * console.log(pure.address.nearbyGPSCoordinate());
          * //outputs: "[ '-87.0506', '-95.7426' ]"
          */
-        this.nearbyGPSCoordinate = (coordinate, radius, isMetric) => {
+        this.nearbyGPSCoordinate = (options = {}) => {
+            const { coordinate, radius = 10.0, isMetric = false } = options;
             // If there is no coordinate, the best we can do is return a random GPS coordinate.
             if (coordinate === undefined) {
-                return [pure.address.latitude(), pure.address.longitude()];
+                return [this.latitude(), this.longitude()];
             }
 
             function degreesToRadians(degrees) {
@@ -503,13 +517,12 @@ class Address {
 
                 return [radiansToDegrees(lat2), radiansToDegrees(lon2)];
             }
-            const nRadius = radius || 10.0;
-            const nIsMetric = isMetric || false;
 
             // This approach will likely result in a higher density of points near the center.
             const randomCoord = coordinateWithOffset(
-                coordinate, degreesToRadians(Math.random() * 360.0), nRadius, nIsMetric,
+                coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric,
             );
+
             return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
         };
 

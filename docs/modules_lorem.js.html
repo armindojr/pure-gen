@@ -85,7 +85,7 @@ class Lorem {
             const words = [];
 
             for (let i = 0; i &lt; num; i += 1) {
-                words.push(pure.lorem.word());
+                words.push(this.word());
             }
 
             return words.join(' ');
@@ -109,7 +109,7 @@ class Lorem {
             if (sentences instanceof Object &amp;&amp; def in sentences) {
                 sentence = pure.random.arrayElement(sentences[def]);
             } else {
-                sentence = pure.lorem.words(def);
+                sentence = this.words(def);
             }
 
             return `${sentence.charAt(0).toUpperCase() + sentence.slice(1)}.`;
@@ -126,7 +126,7 @@ class Lorem {
          * //outputs: "beatae-magni-fugiat"
          */
         this.slug = (wordCount) => {
-            const words = pure.lorem.words(wordCount);
+            const words = this.words(wordCount);
             return pure.helpers.slugify(words);
         };
 
@@ -134,24 +134,25 @@ class Lorem {
          * sentences
          *
          * @description Generates random sentences
-         * @param {Number} [sentenceCount= random] number of sentences
-         * @param {string} [separator= ' '] Separator of sentences
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.sentenceCount= random] number of sentences
+         * @param {string} [options.separator= ' '] Separator of sentences
          * @method pure.lorem.sentences
          * @example
          * console.log(pure.lorem.sentences());
          * //outputs: "Voluptatem eius ab exercitationem sint ut provident
          * // et cupiditate. Et omnis natus qui. Velit qui dolore. Alias sed similique voluptate delectus."
          */
-        this.sentences = (sentenceCount, separator) => {
-            let count = sentenceCount || pure.random.number({ min: 2, max: 6 });
-            const def = separator || ' ';
+        this.sentences = (options = {}) => {
+            let { sentenceCount = pure.random.number({ min: 2, max: 6 }) } = options;
+            const { separator = ' ' } = options;
             const sentences = [];
 
-            for (count; count > 0; count -= 1) {
-                sentences.push(pure.lorem.sentence());
+            for (sentenceCount; sentenceCount > 0; sentenceCount -= 1) {
+                sentences.push(this.sentence());
             }
 
-            return sentences.join(def);
+            return sentences.join(separator);
         };
 
         /**
@@ -165,14 +166,15 @@ class Lorem {
          * //outputs: "Odit voluptas laudantium illo sit animi ut. Atque doloribus suscipit.
          * // Ut dolore iusto modi corrupti facere."
          */
-        this.paragraph = (sentenceCount = 3) => pure.lorem.sentences(sentenceCount);
+        this.paragraph = (sentenceCount = 3) => this.sentences({ sentenceCount });
 
         /**
          * paragraphs
          *
          * @description Generates random paragraphs
-         * @param {Number} [paragraphCount= 3] number of paragraphs
-         * @param {string} [separator= '\n \r'] Separator of paragraphs
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.paragraphCount= 3] number of paragraphs
+         * @param {string} [options.separator= '\n \r'] Separator of paragraphs
          * @method pure.lorem.paragraphs
          * @example
          * console.log(pure.lorem.paragraphs());
@@ -181,16 +183,16 @@ class Lorem {
          * // et quis. Rerum sint ex aliquam. Quis ut voluptatem nostrum odio expedita. Consequuntur illo magnam.
          * // Provident nihil ut est. Exercitationem sed aliquam soluta molestiae fugit."
          */
-        this.paragraphs = (paragraphCount, separator) => {
-            let count = paragraphCount || 3;
-            const def = separator || '\n \r';
+        this.paragraphs = (options = {}) => {
+            let { paragraphCount = 3 } = options;
+            const { separator = '\n \r' } = options;
             const paragraphs = [];
 
-            for (count; count > 0; count -= 1) {
-                paragraphs.push(pure.lorem.paragraph());
+            for (paragraphCount; paragraphCount > 0; paragraphCount -= 1) {
+                paragraphs.push(this.paragraph());
             }
 
-            return paragraphs.join(def);
+            return paragraphs.join(separator);
         };
 
         /**
@@ -230,7 +232,7 @@ class Lorem {
         this.lines = (lineCount) => {
             const def = lineCount || pure.random.number({ min: 1, max: 5 });
 
-            return pure.lorem.sentences(def, '\n');
+            return this.sentences({ sentenceCount: def, separator: '\n' });
         };
     }
 }

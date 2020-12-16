@@ -124,7 +124,7 @@
 
     
 
-    <h4 class="name" id=".arrayBetween"><span class="type-signature">(static) </span>arrayBetween<span class="signature">(from, to, num<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".arrayBetween"><span class="type-signature">(static) </span>arrayBetween<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -167,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line90">line 90</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -215,6 +215,69 @@
 
         <tr>
             
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
                 <td class="name"><code>from</code></td>
             
 
@@ -230,6 +293,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -240,11 +305,13 @@
             
                 <td class="default">
                 
+                    5 years from today
+                
                 </td>
             
 
             <td class="description last">
-                
+                <p>Reference date to use</p>
                 
             </td>
         </tr>
@@ -268,6 +335,8 @@
             
                 <td class="attributes">
                 
+                    &lt;optional><br>
+                
 
                 
 
@@ -278,11 +347,13 @@
             
                 <td class="default">
                 
+                    Today
+                
                 </td>
             
 
             <td class="description last">
-                
+                <p>Reference date to use</p>
                 
             </td>
         </tr>
@@ -333,6 +404,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -351,7 +430,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.date.arrayBetween('2015-10-18T06:40:58.676Z', '2021-02-13T02:06:21.464Z'));
+    <pre class="prettyprint"><code>console.log(pure.date.arrayBetween({ from: '2015-10-18T06:40:58.676Z', to: '2021-02-13T02:06:21.464Z' }));
 //outputs: "[2017-02-15T11:32:19.373Z,2018-06-16T16:23:39.697Z,2019-10-15T21:14:59.697Z]"</code></pre>
 
 </div>
@@ -363,7 +442,7 @@
 
     
 
-    <h4 class="name" id=".between"><span class="type-signature">(static) </span>between<span class="signature">(from, to)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".between"><span class="type-signature">(static) </span>between<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -406,7 +485,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line67">line 67</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line73">line 73</a>
     </li></ul></dd>
     
 
@@ -438,7 +517,74 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -463,11 +609,27 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    5 years from today
+                
+                </td>
             
 
             <td class="description last">
-                
+                <p>Reference date to use</p>
                 
             </td>
         </tr>
@@ -489,11 +651,35 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    Today
+                
+                </td>
             
 
             <td class="description last">
+                <p>Reference date to use</p>
                 
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
                 
             </td>
         </tr>
@@ -520,7 +706,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.date.between('2015-10-18T06:40:58.676Z', '2021-02-13T02:06:21.464Z'));
+    <pre class="prettyprint"><code>console.log(pure.date.between({ from: '2015-10-18T06:40:58.676Z', to: '2021-02-13T02:06:21.464Z' }));
 //outputs: "2016-03-17T11:42:53.411Z"</code></pre>
 
 </div>
@@ -532,7 +718,7 @@
 
     
 
-    <h4 class="name" id=".birthDay"><span class="type-signature">(static) </span>birthDay<span class="signature">(minAge<span class="signature-attributes">opt</span>, maxAge<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".birthDay"><span class="type-signature">(static) </span>birthDay<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -575,7 +761,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line232">line 232</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line244">line 244</a>
     </li></ul></dd>
     
 
@@ -596,6 +782,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -707,6 +956,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -737,7 +994,7 @@
 
     
 
-    <h4 class="name" id=".future"><span class="type-signature">(static) </span>future<span class="signature">(years<span class="signature-attributes">opt</span>, refDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".future"><span class="type-signature">(static) </span>future<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -780,7 +1037,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line37">line 37</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -801,6 +1058,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -912,6 +1232,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -985,7 +1313,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line176">line 176</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line188">line 188</a>
     </li></ul></dd>
     
 
@@ -1020,6 +1348,8 @@
         <th>Attributes</th>
         
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1056,9 +1386,15 @@
             
 
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
 
             <td class="description last">
-                
+                <p>Options to be passed</p>
                 
                     
 
@@ -1210,7 +1546,7 @@
 
     
 
-    <h4 class="name" id=".past"><span class="type-signature">(static) </span>past<span class="signature">(years<span class="signature-attributes">opt</span>, refDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".past"><span class="type-signature">(static) </span>past<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1274,6 +1610,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -1385,6 +1784,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1415,7 +1822,7 @@
 
     
 
-    <h4 class="name" id=".recent"><span class="type-signature">(static) </span>recent<span class="signature">(days<span class="signature-attributes">opt</span>, refDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".recent"><span class="type-signature">(static) </span>recent<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1458,7 +1865,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line116">line 116</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -1479,6 +1886,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -1590,6 +2060,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1620,7 +2098,7 @@
 
     
 
-    <h4 class="name" id=".soon"><span class="type-signature">(static) </span>soon<span class="signature">(days<span class="signature-attributes">opt</span>, refDate<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".soon"><span class="type-signature">(static) </span>soon<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1663,7 +2141,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line146">line 146</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -1684,6 +2162,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -1795,6 +2336,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1868,7 +2417,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line204">line 204</a>
+        <a href="modules_date.js.html">modules/date.js</a>, <a href="modules_date.js.html#line216">line 216</a>
     </li></ul></dd>
     
 
@@ -1903,6 +2452,8 @@
         <th>Attributes</th>
         
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1939,9 +2490,15 @@
             
 
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
 
             <td class="description last">
-                
+                <p>Options to be passed</p>
                 
                     
 

@@ -32,25 +32,25 @@ class Helpers {
          * replaceSymbolWithNumber
          *
          * @description Method to parse a string and replace match symbols with random numbers
-         * @param {string} [string= empty] String to be parsed and replaced
-         * @param {string} [symbol= '#'] What symbol to search and replace
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.string= empty] String to be parsed and replaced
+         * @param {string} [options.symbol= '#'] What symbol to search and replace
          * @method pure.helpers.replaceSymbolWithNumber
          * @example
-         * console.log(pure.helpers.replaceSymbolWithNumber('test@', '@'))
+         * console.log(pure.helpers.replaceSymbolWithNumber({ string: 'test@', symbol: '@' }))
          * //outputs: "test4"
          */
-        this.replaceSymbolWithNumber = (string, symbol) => {
-            const def = string || '';
-            const sym = symbol || '#';
+        this.replaceSymbolWithNumber = (options = {}) => {
+            const { string = '', symbol = '#' } = options;
             let str = '';
 
-            for (let i = 0; i < def.length; i += 1) {
-                if (def.charAt(i) === sym) {
+            for (let i = 0; i < string.length; i += 1) {
+                if (string.charAt(i) === symbol) {
                     str += pure.random.number(9);
-                } else if (def.charAt(i) === '!') {
+                } else if (string.charAt(i) === '!') {
                     str += pure.random.number({ min: 2, max: 9 });
                 } else {
-                    str += def.charAt(i);
+                    str += string.charAt(i);
                 }
             }
 
@@ -61,24 +61,24 @@ class Helpers {
          * replaceSymbolWithHex
          *
          * @description Method to parse a string and replace match symbols with random hex char
-         * @param {string} [string= empty] String to be parsed and replaced
-         * @param {string} [symbol= '#'] What symbol to search and replace
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.string= empty] String to be parsed and replaced
+         * @param {string} [options.symbol= '#'] What symbol to search and replace
          * @method pure.helpers.replaceSymbolWithHex
          * @example
-         * console.log(pure.helpers.replaceSymbolWithHex('test@', '@'))
+         * console.log(pure.helpers.replaceSymbolWithHex({ string: 'test@', symbol: '@' }))
          * //outputs: "testc"
          */
-        this.replaceSymbolWithHex = (string, symbol) => {
+        this.replaceSymbolWithHex = (options = {}) => {
+            const { string = '', symbol = '#' } = options;
             const hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-            const def = string || '';
-            const sym = symbol || '#';
             let str = '';
 
-            for (let i = 0; i < def.length; i += 1) {
-                if (def.charAt(i) === sym) {
+            for (let i = 0; i < string.length; i += 1) {
+                if (string.charAt(i) === symbol) {
                     str += pure.random.arrayElement(hex);
                 } else {
-                    str += def.charAt(i);
+                    str += string.charAt(i);
                 }
             }
 
@@ -125,15 +125,16 @@ class Helpers {
          * replaceCreditCardSymbols
          *
          * @description Replace symbols in a credit card schems including Luhn checksum
-         * @param {string} string String to be parsed and replaced
-         * @param {string} [symbol= '#'] What symbol to search and replace
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} options.string String to be parsed and replaced
+         * @param {string} [options.symbol= '#'] What symbol to search and replace
          * @method pure.helpers.replaceCreditCardSymbols
          * @example
-         * console.log(pure.helpers.replaceCreditCardSymbols('6453-****-****-****-***L', '*'));
+         * console.log(pure.helpers.replaceCreditCardSymbols({ string: '6453-****-****-****-***L', symbol: '*' }));
          * //outputs: "6453-7421-8282-1032-2312"
          */
-        this.replaceCreditCardSymbols = (string, symbol) => {
-            const def = symbol || '#';
+        this.replaceCreditCardSymbols = (options = {}) => {
+            const { string, symbol = '#' } = options;
 
             // Function calculating the Luhn checksum of a number string
             const getCheckBit = (number) => {
@@ -155,9 +156,9 @@ class Helpers {
 
             let str = string || '#';
             // replace [4-9] with a random number in range etc...
-            str = pure.helpers.regexpStyleStringParse(str);
+            str = this.regexpStyleStringParse(str);
             // replace ### with random numbers
-            str = pure.helpers.replaceSymbolWithNumber(str, def);
+            str = this.replaceSymbolWithNumber({ string: str, symbol });
 
             const numberList = str.replace(/\D/g, '').split('').map((num) => parseInt(num, 10));
             const checkNum = getCheckBit(numberList);
@@ -168,14 +169,19 @@ class Helpers {
          * repeatString
          *
          * @description Method to repeat string given times alternative to String.prototype.repeat
-         * @param {string} [string= empty] String to be repeated
-         * @param {Number} [num= 0] Times to repeat given string
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.string= empty] String to be repeated
+         * @param {Number} [options.num= 0] Times to repeat given string
          * @method pure.helpers.repeatString
          * @example
-         * console.log(pure.helpers.repeatString('pure-gen ', 5));
+         * console.log(pure.helpers.repeatString({ string: 'pure-gen ', num: 5 }));
          * //outputs: "pure-gen pure-gen pure-gen pure-gen pure-gen "
          */
-        this.repeatString = (string = '', num = 0) => string.repeat(num);
+        this.repeatString = (options = {}) => {
+            const { string = '', num = 0 } = options;
+
+            return string.repeat(num);
+        };
 
         /**
          * regexpStyleStringParse
@@ -209,7 +215,7 @@ class Helpers {
                 }
                 repetitions = pure.random.number({ min, max });
                 def = def.slice(0, token.index)
-                    + pure.helpers.repeatString(token[1], repetitions)
+                    + this.repeatString({ string: token[1], num: repetitions })
                     + def.slice(token.index + token[0].length);
                 token = def.match(RANGE_REP_REG);
             }
@@ -218,7 +224,7 @@ class Helpers {
             while (token !== null) {
                 repetitions = parseInt(token[2], 10);
                 def = def.slice(0, token.index)
-                    + pure.helpers.repeatString(token[1], repetitions)
+                    + this.repeatString({ string: token[1], num: repetitions })
                     + def.slice(token.index + token[0].length);
                 token = def.match(REP_REG);
             }
@@ -270,14 +276,19 @@ class Helpers {
          * mustache
          *
          * @description Replace value inside string based on specific template (Ex: {{}} )
-         * @param {string} [str= empty] String to replace with template
-         * @param {object} data Object with data that will replace template
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.str= empty] String to replace with template
+         * @param {object} options.data Object with data that will replace template
          * @method pure.helpers.mustache
          * @example
-         * console.log(pure.helpers.mustache('Creating string to replace: {{foo}}', { foo: 'lorem' }));
+         * console.log(pure.helpers.mustache({ str: 'Creating string to replace: {{foo}}', data: { foo: 'lorem' } }));
          * //outputs: "Creating string to replace: lorem"
          */
-        this.mustache = (str = '', data) => mustache.render(str, data);
+        this.mustache = (options = {}) => {
+            const { str = '', data } = options;
+
+            return mustache.render(str, data);
+        };
 
         this.mustacheParse = (str = '') => mustache.parse(str);
 
@@ -336,9 +347,9 @@ class Helpers {
                 },
             ],
             accountHistory: [
-                pure.helpers.createTransaction(),
-                pure.helpers.createTransaction(),
-                pure.helpers.createTransaction(),
+                this.createTransaction(),
+                this.createTransaction(),
+                this.createTransaction(),
             ],
         });
 
@@ -359,7 +370,7 @@ class Helpers {
                 username: userName,
                 avatar: pure.internet.avatar(),
                 email: pure.internet.email(userName),
-                dob: pure.date.past(50, new Date('Sat Sep 20 1992 21:35:02 GMT+0200 (CEST)')),
+                dob: pure.date.past({ years: 50, refDate: new Date('Sat Sep 20 1992 21:35:02 GMT+0200 (CEST)') }),
                 phone: pure.phone.phoneNumber(),
                 address: {
                     street: pure.address.streetName(true),
@@ -423,7 +434,7 @@ class Helpers {
          */
         this.createTransaction = () => ({
             amount: pure.finance.amount(),
-            date: new Date(pure.date.past(20)),
+            date: new Date(pure.date.past({ years: 20 })),
             business: pure.company.companyName(),
             name: [pure.finance.accountName(), pure.finance.mask()].join(' '),
             type: pure.random.arrayElement(pure.registeredModules.finance.transaction_type),

@@ -119,7 +119,7 @@ class Hacker {
             };
 
             const phrase = pure.random.arrayElement(pure.registeredModules.hacker.phrase);
-            return pure.helpers.mustache(phrase, data);
+            return pure.helpers.mustache({ str: phrase, data });
         };
     }
 }

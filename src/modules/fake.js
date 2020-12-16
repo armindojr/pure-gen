@@ -18,6 +18,10 @@ class Fake {
          * [name.lastName]{@link pure.name.lastName}, [name.firstName]{@link pure.name.firstName},
          * and [name.suffix]{@link pure.name.suffix}
          *
+         * Attention: On some methods they require object as parameter, in this case you need to pass
+         * object formatted as json.
+         * For reference: pure.fake('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
+         *
          * @param {string} str Docstring to replace with methods
          * @method pure.fake
          * @example
@@ -70,6 +74,10 @@ class Fake {
                         try {
                             args = JSON.parse(params);
                         } catch (error) {
+                            if (params[0] === '{') {
+                                throw new Error('Params provided doesn\'t match JSON standard type');
+                            }
+
                             args = params;
                         }
                     } else {
@@ -82,7 +90,7 @@ class Fake {
 
             const strFixed = str.replace(paramsRegex, '');
 
-            return pure.helpers.mustache(strFixed, result);
+            return pure.helpers.mustache({ str: strFixed, data: result });
         };
     }
 }

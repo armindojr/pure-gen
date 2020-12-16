@@ -2,6 +2,8 @@
 
 ## v2.0.0
 
+*Attention! breaking changes between v1 and v2*
+
 ### New features
 * Now pure has a CLI built-in to generate random data. Please check documentation for more info
 
@@ -15,6 +17,7 @@
 * pure.fake now uses [mustache](https://github.com/janl/mustache.js) and this improve performance.
 * pure.internet.password now uses [randexp](https://github.com/fent/randexp.js) and this improve performance and fixes [#10](https://github.com/armindojr/pure-gen/issues/10)
 * pure.random.uuid now uses [uuid](https://github.com/uuidjs/uuid)
+* In some methods arg is passed by object now, with this you can opt by passing specific args only and not all
 
 ## v1.4.2
  

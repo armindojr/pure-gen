@@ -132,18 +132,18 @@ class Name {
             if (typeof def !== 'number') {
                 def = pure.random.number(1);
             }
-            const fName = pure.name.firstName(def);
-            const lName = pure.name.lastName(def);
+            const fName = this.firstName(def);
+            const lName = this.lastName(def);
             switch (r) {
             case 0:
-                prefix = pure.name.prefix(def);
+                prefix = this.prefix(def);
                 if (prefix) {
                     result = `${prefix} ${fName} ${lName}`;
                 }
                 break;
 
             case 1:
-                suffix = pure.name.suffix(def);
+                suffix = this.suffix(def);
                 if (suffix) {
                     result = `${fName} ${lName} ${suffix}`;
                 }
@@ -165,7 +165,7 @@ class Name {
          * console.log(pure.name.jobTitle());
          * //outputs: "Regional Infrastructure Consultant"
          */
-        this.jobTitle = () => `${pure.name.jobDescriptor()} ${pure.name.jobArea()} ${pure.name.jobType()}`;
+        this.jobTitle = () => `${this.jobDescriptor()} ${this.jobArea()} ${this.jobType()}`;
 
         /**
          * gender

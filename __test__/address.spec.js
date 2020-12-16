@@ -374,7 +374,7 @@ describe('address.js', () => {
 
         it('returns latitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude(-5, 5);
+            const latitude = pure.address.latitude({ max: -5, min: 5 });
             assert.ok(typeof latitude === 'string');
             assert.equal(latitude.split('.')[1].length, 4);
             const latitudeFloat = parseFloat(latitude);
@@ -386,7 +386,7 @@ describe('address.js', () => {
 
         it('returns random latitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude(undefined, undefined, 7);
+            const latitude = pure.address.latitude({ precision: 7 });
             assert.ok(typeof latitude === 'string');
             assert.equal(latitude.split('.')[1].length, 7);
             const latitudeFloat = parseFloat(latitude);
@@ -411,7 +411,7 @@ describe('address.js', () => {
 
         it('returns random longitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const longitude = pure.address.longitude(100, -30);
+            const longitude = pure.address.longitude({ max: 100, min: -30 });
             assert.ok(typeof longitude === 'string');
             assert.equal(longitude.split('.')[1].length, 4);
             const longitudeFloat = parseFloat(longitude);
@@ -423,7 +423,7 @@ describe('address.js', () => {
 
         it('returns random longitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
-            const longitude = pure.address.longitude(undefined, undefined, 7);
+            const longitude = pure.address.longitude({ precision: 7 });
             assert.ok(typeof longitude === 'string');
             assert.equal(longitude.split('.')[1].length, 7);
             const longitudeFloat = parseFloat(longitude);
@@ -534,10 +534,11 @@ describe('address.js', () => {
         it('returns random gps coordinate within a distance of another one', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            let coord = [latFloat1, lonFloat1];
             const isMetric = (Math.round(Math.random()) === 1);
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, isMetric);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -545,7 +546,7 @@ describe('address.js', () => {
 
         it('returns random gps coordinate when coordinate is undefined', () => {
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate(undefined, undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -554,9 +555,10 @@ describe('address.js', () => {
         it('test coordinateWithOffset when isMetric is true', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            let coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -565,9 +567,10 @@ describe('address.js', () => {
         it('test coordinateWithOffset when isMetric is false', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            let coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, false);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: false });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -578,9 +581,10 @@ describe('address.js', () => {
             pure.seed(5);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            let coord = [latFloat1, lonFloat1];
             const seed = pure.getSeed();
 
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -594,8 +598,9 @@ describe('address.js', () => {
             pure.seed(1);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            let coord = [latFloat1, lonFloat1];
 
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');

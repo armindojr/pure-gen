@@ -35,14 +35,14 @@ class Commerce {
          * console.log(pure.commerce.productName());
          * //outputs: "Gorgeous Cotton Shirt"
          */
-        this.productName = () => `${pure.commerce.productAdjective()}`
-        + ` ${pure.commerce.productMaterial()} ${pure.commerce.product()}`;
+        this.productName = () => `${this.productAdjective()}`
+        + ` ${this.productMaterial()} ${this.product()}`;
 
         /**
          * price
          *
          * @description Generate random product price
-         * @param {object} options
+         * @param {object} options Options to be passed
          * @param {Number} [options.min= 1] Minimum product price
          * @param {Number} [options.max= 1000] Maximum product price
          * @param {Number} [options.dec= 2] Floating point precision

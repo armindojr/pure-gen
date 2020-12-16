@@ -167,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line345">line 345</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line356">line 356</a>
     </li></ul></dd>
     
 
@@ -258,7 +258,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line284">line 284</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line295">line 295</a>
     </li></ul></dd>
     
 
@@ -349,7 +349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line415">line 415</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line426">line 426</a>
     </li></ul></dd>
     
 
@@ -440,7 +440,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line433">line 433</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line444">line 444</a>
     </li></ul></dd>
     
 
@@ -540,7 +540,7 @@
 
     
 
-    <h4 class="name" id=".mustache"><span class="type-signature">(static) </span>mustache<span class="signature">(str<span class="signature-attributes">opt</span>, data)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".mustache"><span class="type-signature">(static) </span>mustache<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -583,7 +583,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line269">line 269</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -604,6 +604,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -711,6 +774,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -729,7 +800,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.helpers.mustache('Creating string to replace: {{foo}}', { foo: 'lorem' }));
+    <pre class="prettyprint"><code>console.log(pure.helpers.mustache({ str: 'Creating string to replace: {{foo}}', data: { foo: 'lorem' } }));
 //outputs: "Creating string to replace: lorem"</code></pre>
 
 </div>
@@ -784,7 +855,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line180">line 180</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -904,7 +975,7 @@
 
     
 
-    <h4 class="name" id=".repeatString"><span class="type-signature">(static) </span>repeatString<span class="signature">(string<span class="signature-attributes">opt</span>, num<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".repeatString"><span class="type-signature">(static) </span>repeatString<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -947,7 +1018,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line167">line 167</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line168">line 168</a>
     </li></ul></dd>
     
 
@@ -968,6 +1039,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -1079,6 +1213,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1097,7 +1239,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.helpers.repeatString('pure-gen ', 5));
+    <pre class="prettyprint"><code>console.log(pure.helpers.repeatString({ string: 'pure-gen ', num: 5 }));
 //outputs: "pure-gen pure-gen pure-gen pure-gen pure-gen "</code></pre>
 
 </div>
@@ -1109,7 +1251,7 @@
 
     
 
-    <h4 class="name" id=".replaceCreditCardSymbols"><span class="type-signature">(static) </span>replaceCreditCardSymbols<span class="signature">(string, symbol<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".replaceCreditCardSymbols"><span class="type-signature">(static) </span>replaceCreditCardSymbols<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1173,6 +1315,69 @@
 
     <h5>Parameters:</h5>
     
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
 
 <table class="params">
     <thead>
@@ -1280,6 +1485,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1298,7 +1511,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.helpers.replaceCreditCardSymbols('6453-****-****-****-***L', '*'));
+    <pre class="prettyprint"><code>console.log(pure.helpers.replaceCreditCardSymbols({ string: '6453-****-****-****-***L', symbol: '*' }));
 //outputs: "6453-7421-8282-1032-2312"</code></pre>
 
 </div>
@@ -1474,7 +1687,7 @@
 
     
 
-    <h4 class="name" id=".replaceSymbolWithHex"><span class="type-signature">(static) </span>replaceSymbolWithHex<span class="signature">(string<span class="signature-attributes">opt</span>, symbol<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".replaceSymbolWithHex"><span class="type-signature">(static) </span>replaceSymbolWithHex<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1565,13 +1778,13 @@
 
         <tr>
             
-                <td class="name"><code>string</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>object</code></span>
 
 
             
@@ -1592,157 +1805,15 @@
             
                 <td class="default">
                 
-                    empty
+                    {}
                 
                 </td>
             
 
             <td class="description last">
-                <p>String to be parsed and replaced</p>
+                <p>Options to be passed</p>
                 
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>symbol</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    '#'
-                
-                </td>
-            
-
-            <td class="description last">
-                <p>What symbol to search and replace</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>console.log(pure.helpers.replaceSymbolWithHex('test@', '@'))
-//outputs: "testc"</code></pre>
-
-</div>
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id=".replaceSymbolWithNumber"><span class="type-signature">(static) </span>replaceSymbolWithNumber<span class="signature">(string<span class="signature-attributes">opt</span>, symbol<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Method to parse a string and replace match symbols with random numbers</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line31">line 31</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
+                    
 
 <table class="params">
     <thead>
@@ -1854,6 +1925,14 @@
     </tbody>
 </table>
 
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -1872,7 +1951,283 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.helpers.replaceSymbolWithNumber('test@', '@'))
+    <pre class="prettyprint"><code>console.log(pure.helpers.replaceSymbolWithHex({ string: 'test@', symbol: '@' }))
+//outputs: "testc"</code></pre>
+
+</div>
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id=".replaceSymbolWithNumber"><span class="type-signature">(static) </span>replaceSymbolWithNumber<span class="signature">(options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Method to parse a string and replace match symbols with random numbers</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed</p>
+                
+                    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>String to be parsed and replaced</p>
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>symbol</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '#'
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>What symbol to search and replace</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-examples">
+<h5>Example</h5>
+
+    <pre class="prettyprint"><code>console.log(pure.helpers.replaceSymbolWithNumber({ string: 'test@', symbol: '@' }))
 //outputs: "test4"</code></pre>
 
 </div>
@@ -1927,7 +2282,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line246">line 246</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line252">line 252</a>
     </li></ul></dd>
     
 
@@ -2274,7 +2629,7 @@ See npm slugify for more</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line451">line 451</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line462">line 462</a>
     </li></ul></dd>
     
 
@@ -2417,7 +2772,7 @@ See npm slugify for more</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line383">line 383</a>
+        <a href="modules_helpers.js.html">modules/helpers.js</a>, <a href="modules_helpers.js.html#line394">line 394</a>
     </li></ul></dd>
     
 

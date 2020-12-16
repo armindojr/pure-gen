@@ -36,12 +36,10 @@ class Git {
          * //     connect redundant pixel
          * //
          */
-        this.commitEntry = (options) => {
-            const opt = options || {};
-
+        this.commitEntry = (options = {}) => {
             let entry = 'commit {{git.commitSha}}\r\n';
 
-            if (opt.merge) {
+            if (options.merge) {
                 entry += 'Merge: {{git.shortSha}} {{git.shortSha}}\r\n';
             }
 
@@ -76,8 +74,8 @@ class Git {
          * //outputs: "4cadd50bcdde037b924e6614b1d62813ff459fe5"
          */
         this.commitSha = () => {
-            const template = pure.helpers.repeatString('#', 40);
-            const commit = pure.helpers.replaceSymbolWithHex(template);
+            const template = pure.helpers.repeatString({ string: '#', num: 40 });
+            const commit = pure.helpers.replaceSymbolWithHex({ string: template });
 
             return commit;
         };
@@ -92,8 +90,8 @@ class Git {
          * //outputs: "f1f9853"
          */
         this.shortSha = () => {
-            const template = pure.helpers.repeatString('#', 7);
-            const shortSha = pure.helpers.replaceSymbolWithHex(template);
+            const template = pure.helpers.repeatString({ string: '#', num: 7 });
+            const shortSha = pure.helpers.replaceSymbolWithHex({ string: template });
 
             return shortSha;
         };

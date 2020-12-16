@@ -19,7 +19,7 @@ class System {
         this.fileName = (ext) => {
             let def = ext;
             if (typeof ext === 'undefined') {
-                def = pure.system.fileExt();
+                def = this.fileExt();
             } else if (ext[0] === '.') {
                 def = ext.substr(1, ext.length);
             }
@@ -44,12 +44,12 @@ class System {
         this.commonFileName = (ext) => {
             let def = ext;
             if (typeof ext === 'undefined') {
-                def = pure.system.commonFileExt();
+                def = this.commonFileExt();
             } else if (ext[0] === '.') {
                 def = ext.substr(1, ext.length);
             }
 
-            return pure.system.fileName(def);
+            return this.fileName(def);
         };
 
         /**
@@ -98,7 +98,7 @@ class System {
                 'video/mpeg',
                 'text/html',
             ];
-            return pure.system.fileExt(pure.random.arrayElement(types));
+            return this.fileExt(pure.random.arrayElement(types));
         };
 
         /**
@@ -184,7 +184,7 @@ class System {
          * console.log(pure.system.semver());
          * //outputs: "9.8.1"
          */
-        this.semver = () => pure.helpers.replaceSymbolWithNumber('#.#.#');
+        this.semver = () => pure.helpers.replaceSymbolWithNumber({ string: '#.#.#' });
     }
 }
 

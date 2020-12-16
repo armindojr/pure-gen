@@ -8,8 +8,8 @@ class Document {
          * brazilianCitizenNumber
          *
          * @description Method to generate random valid document number for Brazillian citizen (CPF)
-         * @param {object} opts Options passed through object
-         * @param {boolean= } [opts.format=false] Define that result is formated or not
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean= } [options.format=false] Define that result is formated or not
          * @method pure.document.brazilianCitizenNumber
          * @memberof pure.document
          * @example
@@ -17,9 +17,9 @@ class Document {
          * //outputs: "76049418500"
          * @returns {string} valid document number
          */
-        this.brazilianCitizenNumber = (opts = {}) => {
-            const def = opts;
-            let doc = pure.helpers.replaceSymbolWithNumber('#########');
+        this.brazilianCitizenNumber = (options = {}) => {
+            const { format = false } = options;
+            let doc = pure.helpers.replaceSymbolWithNumber({ string: '#########' });
 
             const mod = (str, size, val) => {
                 let sum = 0;
@@ -40,7 +40,7 @@ class Document {
             doc += mod(doc, 9, 11);
             doc += mod(doc, 10, 12);
 
-            if (def.format === true) {
+            if (format === true) {
                 doc = doc.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
             }
 
@@ -51,8 +51,8 @@ class Document {
          * brazilianCompanyNumber
          *
          * @description Method to generate random valid document number for Brazillian company (CNPJ)
-         * @param {object} opts Options passed through object
-         * @param {boolean= } [opts.format=false] Define that result is formated or not
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean= } [options.format=false] Define that result is formated or not
          * @method pure.document.brazilianCompanyNumber
          * @memberof pure.document
          * @example
@@ -60,9 +60,9 @@ class Document {
          * //outputs: "06747662000106"
          * @returns {string} valid document number
          */
-        this.brazilianCompanyNumber = (opts = {}) => {
-            const def = opts;
-            let doc = pure.helpers.replaceSymbolWithNumber('########');
+        this.brazilianCompanyNumber = (options = {}) => {
+            const { format = false } = options;
+            let doc = pure.helpers.replaceSymbolWithNumber({ string: '########' });
 
             const mod = (str) => {
                 const strlen = str.length;
@@ -80,7 +80,7 @@ class Document {
             doc += mod(doc);
             doc += mod(doc);
 
-            if (def.format === true) {
+            if (format === true) {
                 doc = doc.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
             }
 
@@ -91,8 +91,8 @@ class Document {
          * brazilianId
          *
          * @description Method to generate random identity number for Brazillian citizen (RG)
-         * @param {object} opts Options passed through object
-         * @param {boolean= } [opts.format=false] Define that result is formated or not
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean= } [options.format=false] Define that result is formated or not
          * @method pure.document.brazilianId
          * @memberof pure.document
          * @example
@@ -100,11 +100,11 @@ class Document {
          * //outputs: "628909720"
          * @returns {string} document number
          */
-        this.brazilianId = (opts = {}) => {
-            const def = opts;
-            let doc = pure.helpers.replaceSymbolWithNumber('#########');
+        this.brazilianId = (options = {}) => {
+            const { format = false } = options;
+            let doc = pure.helpers.replaceSymbolWithNumber({ string: '#########' });
 
-            if (def.format === true) {
+            if (format === true) {
                 doc = doc.replace(/^(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
             }
 

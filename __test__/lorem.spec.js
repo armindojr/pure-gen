@@ -133,7 +133,7 @@ describe('lorem.js', () => {
                 assert.ok(typeof paragraph === 'string');
                 const parts = paragraph.split('. ');
                 assert.equal(parts.length, 3);
-                assert.ok(pure.lorem.sentences.calledWith(3));
+                assert.ok(pure.lorem.sentences.calledWith({ sentenceCount: 3 }));
 
                 pure.lorem.sentences.restore();
             });
@@ -147,7 +147,7 @@ describe('lorem.js', () => {
                 assert.ok(typeof paragraph === 'string');
                 const parts = paragraph.split('. ');
                 assert.equal(parts.length, 5);
-                assert.ok(pure.lorem.sentences.calledWith(5));
+                assert.ok(pure.lorem.sentences.calledWith({ sentenceCount: 5 }));
 
                 pure.lorem.sentences.restore();
             });
@@ -179,7 +179,7 @@ describe('lorem.js', () => {
         describe("when 'paragraphCount' param passed in", () => {
             it('returns newline-separated string of requested number of paragraphs', () => {
                 sinon.spy(pure.lorem, 'paragraph');
-                const paragraphs = pure.lorem.paragraphs(5);
+                const paragraphs = pure.lorem.paragraphs({ paragraphCount: 5 });
 
                 assert.ok(typeof paragraphs === 'string');
                 const parts = paragraphs.split('\n \r');
@@ -191,7 +191,7 @@ describe('lorem.js', () => {
         describe("when 'separator' param passed in", () => {
             it('returns newline-separated </br> string of requested number of paragraphs', () => {
                 sinon.spy(pure.lorem, 'paragraph');
-                const paragraphs = pure.lorem.paragraphs(3, '</br>');
+                const paragraphs = pure.lorem.paragraphs({ paragraphCount: 3, separator: '</br>' });
 
                 assert.ok(typeof paragraphs === 'string');
                 const parts = paragraphs.split('</br>');

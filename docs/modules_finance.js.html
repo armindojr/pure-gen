@@ -56,9 +56,9 @@ class Finance {
          */
         this.account = (length) => {
             const def = length || 8;
-            const template = pure.helpers.repeatString('#', def);
+            const template = pure.helpers.repeatString({ string: '#', num: def });
 
-            return pure.helpers.replaceSymbolWithNumber(template);
+            return pure.helpers.replaceSymbolWithNumber({ string: template });
         };
 
         /**
@@ -85,7 +85,7 @@ class Finance {
          * //outputs: "104791008"
          */
         this.routingNumber = () => {
-            const routingNumber = pure.helpers.replaceSymbolWithNumber('########');
+            const routingNumber = pure.helpers.replaceSymbolWithNumber({ string: '########' });
 
             // Modules 10 straight summation.
             let sum = 0;
@@ -103,21 +103,24 @@ class Finance {
          * mask
          *
          * @description Return random mask number
-         * @param {Number} [length= 4] Length of mask number
-         * @param {boolean} [parens= false] Format with parentesis
-         * @param {boolean} [ellipsis= false] Format with ellipsis
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.length= 4] Length of mask number
+         * @param {boolean} [options.parens= false] Format with parentesis
+         * @param {boolean} [options.ellipsis= false] Format with ellipsis
          * @method pure.finance.mask
          * @example
          * console.log(pure.finance.mask());
          * //outputs: "3085"
          */
-        this.mask = (length, parens, ellipsis) => {
+        this.mask = (options = {}) => {
+            const { length, parens, ellipsis } = options;
+
             // set defaults
             const def = (length === 0 || !length || typeof length === 'undefined') ? 4 : length;
             const nParens = (parens === null) ? true : parens;
             const nEllipsis = (ellipsis === null) ? true : ellipsis;
 
-            let template = pure.helpers.repeatString('#', def);
+            let template = pure.helpers.repeatString({ string: '#', num: def });
 
             // prefix with ellipsis
             template = (nEllipsis) ? ['...', template].join('') : template;
@@ -125,7 +128,7 @@ class Finance {
             template = (nParens) ? ['(', template, ')'].join('') : template;
 
             // generate random numbers
-            template = pure.helpers.replaceSymbolWithNumber(template);
+            template = pure.helpers.replaceSymbolWithNumber({ string: template });
 
             return template;
         };
@@ -134,23 +137,26 @@ class Finance {
          * amount
          *
          * @description Return random amount value
-         * @param {Number} [min= 0] Minimum amount value
-         * @param {Number} [max= 1000] Maximum amount value
-         * @param {Number} [dec= 2] Floating point precision
-         * @param {string} [symbol= empty] Amount symbol
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.min= 0] Minimum amount value
+         * @param {Number} [options.max= 1000] Maximum amount value
+         * @param {Number} [options.dec= 2] Floating point precision
+         * @param {string} [options.symbol= empty] Amount symbol
          * @method pure.finance.amount
          * @example
          * console.log(pure.finance.amount());
          * //outputs: "891.45"
          */
-        this.amount = (min, max, dec, symbol) => {
-            const nMin = min || 0;
-            const nMax = max || 1000;
-            const nDec = dec === undefined ? 2 : dec;
-            const nSymbol = symbol || '';
-            const randValue = pure.random.number({ max: nMax, min: nMin, precision: nDec });
+        this.amount = (options = {}) => {
+            const {
+                min = 0,
+                max = 1000,
+                dec = 2,
+                symbol = '',
+            } = options;
+            const randValue = pure.random.number({ max, min, precision: dec });
 
-            return nSymbol + randValue.toFixed(nDec);
+            return symbol + randValue.toFixed(dec);
         };
 
         /**
@@ -201,6 +207,7 @@ class Finance {
             while (!symbol) {
                 symbol = pure.random.objectElement(pure.registeredModules.finance.currency).symbol;
             }
+
             return symbol;
         };
 
@@ -286,7 +293,7 @@ class Finance {
                 }
             }
             format = format.replace(/\//g, '');
-            return pure.helpers.replaceCreditCardSymbols(format);
+            return pure.helpers.replaceCreditCardSymbols({ string: format });
         };
         /**
          * Credit card CVV
@@ -297,7 +304,7 @@ class Finance {
          * console.log(pure.finance.creditCardCVV());
          * //outputs: "256"
          */
-        this.creditCardCVV = () => pure.helpers.replaceSymbolWithNumber('###');
+        this.creditCardCVV = () => pure.helpers.replaceSymbolWithNumber({ string: '###' });
 
         /**
          * ethereumAddress
@@ -314,15 +321,18 @@ class Finance {
          * iban
          *
          * @description Return random International Bank Account Number
-         * @param {boolean} [formatted= false] If output is formatted or not
-         * @param {string} [country= Random country] Alpha-2 country code
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean} [options.formatted= false] If output is formatted or not
+         * @param {string} [options.country= Random country] Alpha-2 country code
          * @method pure.finance.iban
          * @example
          * console.log(pure.finance.iban());
          * //outputs: "FI2750016855791009"
          */
-        this.iban = (formatted, country) => {
+        this.iban = (options = {}) => {
+            const { formatted = false, country } = options;
             let ibanFormat;
+
             if (typeof country === 'undefined') {
                 ibanFormat = pure.random.arrayElement(pure.registeredModules.iban.formats);
             } else {
@@ -343,6 +353,7 @@ class Finance {
 
             let s = '';
             let count = 0;
+
             for (let b = 0; b &lt; ibanFormat.bban.length; b += 1) {
                 const bban = ibanFormat.bban[b];
                 let c = bban.count;
@@ -371,10 +382,13 @@ class Finance {
                 }
                 s = s.substring(0, count);
             }
+
             let checksum = 98 - pure.helpers.mod97(pure.helpers.toDigitString(`${s + ibanFormat.country}00`));
+
             if (checksum &lt; 10) {
                 checksum = `0${checksum}`;
             }
+
             const iban = ibanFormat.country + checksum + s;
             return formatted ? iban.match(/.{1,4}/g).join(' ') : iban;
         };

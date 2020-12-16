@@ -10,13 +10,13 @@ describe('unique.js', () => {
 
         it('is able to call a function with arguments and return a result', () => {
             // third argument is provider, or domain for email
-            const result = pure.unique(pure.internet.email, ['a', 'b', 'c']);
+            const result = pure.unique(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c'}]);
             assert.ok(result.match(/[@]c/));
         });
 
         it('is able to call same function with arguments and return a result', () => {
             // third argument is provider, or domain for email
-            const result = pure.unique(pure.internet.email, ['a', 'b', 'c']);
+            const result = pure.unique(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c'}]);
             assert.ok(result.match(/[@]c/));
         });
 
@@ -57,7 +57,7 @@ describe('unique.js', () => {
 
         it('is able to call last function with arguments and return a result', () => {
             // third argument is provider, or domain for email
-            const result = pure.unique(pure.internet.email, ['a', 'b', 'c']);
+            const result = pure.unique(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c'}]);
             assert.ok(result.match(/[@]c/));
         });
     });

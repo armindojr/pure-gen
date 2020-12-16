@@ -15,8 +15,8 @@ class Phone {
          * //outputs: "1-273-245-5292 x193"
          */
         this.phoneNumber = (format) => {
-            const def = format || pure.phone.phoneFormats();
-            return pure.helpers.replaceSymbolWithNumber(def);
+            const def = format || this.phoneFormats();
+            return pure.helpers.replaceSymbolWithNumber({ string: def });
         };
 
         /**
@@ -32,7 +32,9 @@ class Phone {
         // TODO: this is strange passing in an array index.
         this.phoneNumberFormat = (phoneFormatsArrayIndex) => {
             const format = phoneFormatsArrayIndex || 0;
-            return pure.helpers.replaceSymbolWithNumber(pure.registeredModules.phone_number.formats[format]);
+            return pure.helpers.replaceSymbolWithNumber({
+                string: pure.registeredModules.phone_number.formats[format],
+            });
         };
 
         /**

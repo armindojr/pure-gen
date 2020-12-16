@@ -7,7 +7,7 @@ describe('internet.js', () => {
     describe('email()', () => {
         it('returns an email', () => {
             sinon.stub(pure.internet, 'userName').returns('Aiden.Harann55');
-            const email = pure.internet.email('Aiden.Harann55');
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
             let res = email.split('@');
             [res] = res;
             assert.equal(res, 'aiden.harann55');
@@ -18,7 +18,7 @@ describe('internet.js', () => {
     describe('exampleEmail', () => {
         it('returns an email with the correct name', () => {
             sinon.stub(pure.internet, 'userName').returns('Aiden.Harann55');
-            const email = pure.internet.email('Aiden.Harann55');
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
             let res = email.split('@');
             [res] = res;
             assert.equal(res, 'aiden.harann55');
@@ -184,8 +184,8 @@ describe('internet.js', () => {
             assert.strictEqual(url, 'http://bar.net');
         });
 
-        it('returns a url with protocol and domainName specified ', () => {
-            const url = pure.internet.url('https', 'foo.com');
+        it('returns a url with protocol and domainName specified', () => {
+            const url = pure.internet.url({ protocol: 'https', domainName: 'foo.com' });
 
             assert.ok(url);
             assert.strictEqual(url, 'https://foo.com');
@@ -268,12 +268,7 @@ describe('internet.js', () => {
 
     describe('password()', () => {
         it('generate password that is memorable with only letters', () => {
-            const password = pure.internet.password(undefined, true, undefined, undefined);
-
-            assert.ok(password.match(/\w/g));
-        });
-        it('generate password that is memorable with only letters when parameter is null', () => {
-            const password = pure.internet.password(null, null, undefined, undefined);
+            const password = pure.internet.password({ memorable: true });
 
             assert.ok(password.match(/\w/g));
         });

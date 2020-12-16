@@ -4,13 +4,13 @@ const pure = require('../index');
 describe('date.js', () => {
     describe('past()', () => {
         it('returns a date N years into the past', () => {
-            const date = pure.date.past(75);
+            const date = pure.date.past({ years: 75 });
             assert.ok(date < new Date());
         });
 
         it('returns a past date when N = 0', () => {
             const refDate = new Date();
-            const date = pure.date.past(0, refDate.toJSON());
+            const date = pure.date.past({ years: 0, refDate: refDate.toJSON() });
 
             // date should be before the date given
             assert.ok(date < refDate);
@@ -20,7 +20,7 @@ describe('date.js', () => {
             // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(2120, 11, 9, 10, 0, 0, 0);
 
-            const date = pure.date.past(75, refDate.toJSON());
+            const date = pure.date.past({ years: 75, refDate: refDate.toJSON() });
 
             // date should be before date given but after the current time
             assert.ok(date < refDate && date > new Date());
@@ -29,14 +29,14 @@ describe('date.js', () => {
 
     describe('future()', () => {
         it('returns a date N years into the future', () => {
-            const date = pure.date.future(75);
+            const date = pure.date.future({ years: 75 });
 
             assert.ok(date > new Date());
         });
 
         it('returns a future date when N = 0', () => {
             const refDate = new Date();
-            const date = pure.date.future(0, refDate.toJSON());
+            const date = pure.date.future({ years: 0, refDate: refDate.toJSON() });
 
             // date should be after the date given
             assert.ok(date > refDate);
@@ -46,7 +46,7 @@ describe('date.js', () => {
             // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(1880, 11, 9, 10, 0, 0, 0);
 
-            const date = pure.date.future(75, refDate.toJSON());
+            const date = pure.date.future({ years: 75, refDate: refDate.toJSON() });
 
             // date should be after the date given, but before the current time
             assert.ok(date > refDate && date < new Date());
@@ -55,7 +55,7 @@ describe('date.js', () => {
 
     describe('recent()', () => {
         it('returns a date N days from the recent past', () => {
-            const date = pure.date.recent(30);
+            const date = pure.date.recent({ days: 30 });
 
             assert.ok(date <= new Date());
         });
@@ -65,7 +65,7 @@ describe('date.js', () => {
             // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(2120, 11, 9, 10, 0, 0, 0);
 
-            const date = pure.date.recent(days, refDate);
+            const date = pure.date.recent({ days, refDate });
 
             const lowerBound = new Date(refDate.getTime() - (days * 24 * 60 * 60 * 1000));
 
@@ -76,7 +76,7 @@ describe('date.js', () => {
 
     describe('soon()', () => {
         it('returns a date N days into the future', () => {
-            const date = pure.date.soon(30);
+            const date = pure.date.soon({ days: 30 });
 
             assert.ok(date >= new Date());
         });
@@ -86,7 +86,7 @@ describe('date.js', () => {
             // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(1880, 11, 9, 10, 0, 0, 0);
 
-            const date = pure.date.soon(days, refDate);
+            const date = pure.date.soon({ days, refDate });
 
             const upperBound = new Date(refDate.getTime() + (days * 24 * 60 * 60 * 1000));
 
@@ -97,10 +97,10 @@ describe('date.js', () => {
 
     describe('between()', () => {
         it('returns a random date between the dates given', () => {
-            const from = new Date(1990, 5, 7, 9, 11, 0, 0);
-            const to = new Date(2000, 6, 8, 10, 12, 0, 0);
+            const from = new Date(1990, 5, 7, 9, 11, 0, 0).toISOString();
+            const to = new Date(2000, 6, 8, 10, 12, 0, 0).toISOString();
 
-            const date = pure.date.between(from, to);
+            const date = pure.date.between({ from, to });
 
             assert.ok(date > from && date < to);
         });
@@ -108,10 +108,10 @@ describe('date.js', () => {
 
     describe('arrayBetween()', () => {
         it('returns an array of 3 dates ( by default ) of sorted randoms dates between the dates given', () => {
-            const from = new Date(1990, 5, 7, 9, 11, 0, 0);
-            const to = new Date(2000, 6, 8, 10, 12, 0, 0);
+            const from = new Date(1990, 5, 7, 9, 11, 0, 0).toISOString();
+            const to = new Date(2000, 6, 8, 10, 12, 0, 0).toISOString();
 
-            const dates = pure.date.arrayBetween(from, to);
+            const dates = pure.date.arrayBetween({ from, to });
 
             assert.ok(dates[0] > from && dates[0] < to);
             assert.ok(dates[1] > dates[0] && dates[2] > dates[1]);
@@ -210,11 +210,11 @@ describe('date.js', () => {
         it('return generated birthday', () => {
             const date = pure.date.birthDay();
 
-            assert.ok(date < new Date());
+            assert.ok(date < new Date().toISOString());
         });
 
         it('return generated birthday given min and max age', () => {
-            const date = pure.date.birthDay(10, 12);
+            const date = pure.date.birthDay({ minAge: 10, maxAge: 12 });
             const actual = (new Date()).getFullYear();
             const generated = (new Date(date)).getFullYear();
 
@@ -223,7 +223,7 @@ describe('date.js', () => {
         });
 
         it('return generated birthday given min and max age inverted', () => {
-            const date = pure.date.birthDay(12, 10);
+            const date = pure.date.birthDay({ minAge: 12, maxAge: 10 });
             const actual = (new Date()).getFullYear();
             const generated = (new Date(date)).getFullYear();
 

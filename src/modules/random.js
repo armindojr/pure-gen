@@ -21,7 +21,7 @@ class Random {
          * number
          *
          * @description Returns a single random number based on a max number or range
-         * @param {object} options
+         * @param {object} [options= {}] Options to be passed
          * @param {Number} [options.min= 0] Minimum number to generate *inclusive*
          * @param {Number} [options.max= 99999] Maximum number to generate *exclusive*
          * @param {Number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
@@ -58,8 +58,8 @@ class Random {
             if (def.min === def.max) {
                 result = def.max;
             } else if (def.precision >= 1) {
-                const template = pure.helpers.repeatString('#', def.precision);
-                result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber(template)}`);
+                const template = pure.helpers.repeatString({ string: '#', num: def.precision });
+                result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber({ string: template })}`);
                 if (result > def.max) {
                     result = parseFloat((result - def.max).toFixed(def.precision));
                 }
@@ -74,7 +74,7 @@ class Random {
          * float
          *
          * @description Returns a single random floating-point number based on a max number or range
-         * @param {object} options
+         * @param {object} [options= {}] Options to be passed
          * @param {Number} [options.min= 0] Minimum number to generate
          * @param {Number} [options.max= 99999] Maximum number to generate
          * @param {Number} [options.precision= 1] Numbers of digits after floating point
@@ -94,7 +94,7 @@ class Random {
 
             def.precision = def.precision || 1;
 
-            return pure.random.number(def);
+            return this.number(def);
         };
 
         /**
@@ -108,7 +108,7 @@ class Random {
          * //outputs: "c"
          */
         this.arrayElement = (array = ['a', 'b', 'c']) => {
-            const number = pure.random.number({ max: array.length - 1 });
+            const number = this.number({ max: array.length - 1 });
 
             return array[number] ? array[number] : array[0];
         };
@@ -128,7 +128,7 @@ class Random {
             let value = count;
 
             if (typeof value !== 'number') {
-                value = pure.random.number({ min: 1, max: array.length });
+                value = this.number({ min: 1, max: array.length });
             } else if (value > array.length) {
                 value = array.length;
             } else if (value < 0) {
@@ -138,7 +138,7 @@ class Random {
             const arrayCopy = array.slice();
             const countToRemove = arrayCopy.length - value;
             for (let i = 0; i < countToRemove; i += 1) {
-                const indexToRemove = pure.random.number({ max: arrayCopy.length - 1 });
+                const indexToRemove = this.number({ max: arrayCopy.length - 1 });
                 arrayCopy.splice(indexToRemove, 1);
             }
 
@@ -158,7 +158,7 @@ class Random {
          */
         this.objectElement = (object = { foo: 'bar', too: 'car' }, field) => {
             const array = Object.keys(object);
-            const key = pure.random.arrayElement(array);
+            const key = this.arrayElement(array);
 
             return field === 'key' ? key : object[key];
         };
@@ -177,7 +177,7 @@ class Random {
             const obj = {};
 
             while (Object.keys(obj).length < length) {
-                obj[pure.random.word()] = pure.random.word();
+                obj[this.word()] = this.word();
             }
 
             return obj;
@@ -229,7 +229,7 @@ class Random {
          * console.log(pure.random.boolean());
          * //outputs: "true"
          */
-        this.boolean = () => !!pure.random.number(1);
+        this.boolean = () => !!this.number(1);
 
         /**
          * word
@@ -276,9 +276,9 @@ class Random {
             ];
 
             // randomly pick from the many pure methods that can generate words
-            const randomWordMethod = pure.random.arrayElement(wordMethods);
+            const randomWordMethod = this.arrayElement(wordMethods);
             const result = pure.fake(`{{${randomWordMethod}}}`);
-            return pure.random.arrayElement(result.split(' '));
+            return this.arrayElement(result.split(' '));
         };
 
         /**
@@ -292,11 +292,11 @@ class Random {
          * //outputs: "web-readiness Future-proofed"
          */
         this.words = (count) => {
-            const def = count || pure.random.number({ min: 1, max: 3 });
+            const def = count || this.number({ min: 1, max: 3 });
             const words = [];
 
             for (let i = 0; i < def; i += 1) {
-                words.push(pure.random.word());
+                words.push(this.word());
             }
 
             return words.join(' ');
@@ -311,7 +311,7 @@ class Random {
          * console.log(pure.random.locale());
          * //outputs: "nb_NO"
          */
-        this.locale = () => pure.random.arrayElement(Object.keys(pure.locales));
+        this.locale = () => this.arrayElement(Object.keys(pure.locales));
 
         /**
          * alpha
@@ -345,7 +345,7 @@ class Random {
 
             let wholeString = '';
             for (let i = 0; i < def.count; i += 1) {
-                wholeString += pure.random.arrayElement([
+                wholeString += this.arrayElement([
                     'a',
                     'b',
                     'c',
@@ -391,7 +391,7 @@ class Random {
         this.alphaNumeric = (count = 1) => {
             let wholeString = '';
             for (let i = 0; i < count; i += 1) {
-                wholeString += pure.random.arrayElement([
+                wholeString += this.arrayElement([
                     '0',
                     '1',
                     '2',
@@ -445,9 +445,9 @@ class Random {
          * //outputs: "0xA"
          */
         this.hexaDecimal = (count = 1) => {
-            const template = pure.helpers.repeatString('#', count);
+            const template = pure.helpers.repeatString({ string: '#', num: count });
 
-            return pure.helpers.replaceSymbolWithHex(template);
+            return pure.helpers.replaceSymbolWithHex({ string: template });
         };
 
         this.returnSeed = () => num;

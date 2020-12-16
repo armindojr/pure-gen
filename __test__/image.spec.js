@@ -11,17 +11,17 @@ describe('image.js', () => {
                 assert.equal(imageUrl, 'https://placeimg.com/640/480');
             });
             it('returns a random image url from placeimg with width and height', () => {
-                const imageUrl = pure.image.placeimg.imageUrl(100, 100);
+                const imageUrl = pure.image.placeimg.imageUrl({ width: 100, height: 100 });
 
                 assert.equal(imageUrl, 'https://placeimg.com/100/100');
             });
             it('returns a random image url for a specified category', () => {
-                const imageUrl = pure.image.placeimg.imageUrl(100, 100, 'abstract');
+                const imageUrl = pure.image.placeimg.imageUrl({ width: 100, height: 100, category: 'abstract' });
 
                 assert.equal(imageUrl, 'https://placeimg.com/100/100/abstract');
             });
             it('returns a random image url from placeimg with random set to true', () => {
-                const imageUrl = pure.image.placeimg.imageUrl(undefined, undefined, undefined, true);
+                const imageUrl = pure.image.placeimg.imageUrl({ randomize: true });
 
                 expect(imageUrl).to.contain('placeimg.com/640/480?');
             });
@@ -131,14 +131,14 @@ describe('image.js', () => {
                 assert.equal(imageUrl, 'https://source.unsplash.com/640x480');
             });
             it('returns a random image url from unsplash with width and height', () => {
-                const imageUrl = pure.image.unsplash.imageUrl(100, 100);
+                const imageUrl = pure.image.unsplash.imageUrl({ width: 100, height: 100 });
 
                 assert.equal(imageUrl, 'https://source.unsplash.com/100x100');
             });
         });
         describe('image()', () => {
             it('returns a searching image url with keyword', () => {
-                const food = pure.image.unsplash.image(100, 200, 'keyword1,keyword2,keyword3');
+                const food = pure.image.unsplash.image({ width: 100, height: 200, keyword: 'keyword1,keyword2,keyword3' });
                 assert.equal(food, 'https://source.unsplash.com/100x200?keyword1,keyword2,keyword3');
             });
         });
@@ -180,24 +180,10 @@ describe('image.js', () => {
         });
     });
 
-    describe('imageUrl()', () => {
-        it('returns a random image url with https set to true', () => {
-            const imageUrl = pure.image.imageUrl(undefined, undefined, undefined, undefined, true);
-
-            expect(imageUrl).to.contain('https://');
-        });
-
-        it('returns a random image url with random set to true', () => {
-            const imageUrl = pure.image.imageUrl(undefined, undefined, undefined, true, undefined);
-
-            expect(imageUrl).to.contain('placeimg.com/640/480?');
-        });
-    });
-
     describe('dataUri', () => {
         it('returns a blank data', () => {
             sinon.stub(pure.commerce, 'color').returns('grey');
-            const dataUri = pure.image.dataUri(200, 300);
+            const dataUri = pure.image.dataUri({ width: 200, height: 300 });
             assert.equal(dataUri, 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2F'
             + 'www.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20baseProfile%3D%22full%22%20width%3D%2'
             + '2200%22%20height%3D%22300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20'
@@ -207,7 +193,7 @@ describe('image.js', () => {
             pure.commerce.color.restore();
         });
         it('returns a customed background color data URI', () => {
-            const dataUri = pure.image.dataUri(200, 300, 'red');
+            const dataUri = pure.image.dataUri({ width: 200, height: 300, color: 'red' });
             assert.equal(dataUri, 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2F'
             + 'www.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20baseProfile%3D%22full%22%20width%3D%'
             + '22200%22%20height%3D%22300%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20'

@@ -23,64 +23,74 @@ class Internet {
          * email
          *
          * @description Generates a random email
-         * @param {string} [firstName= random] First name
-         * @param {string} [lastName= random] Last name
-         * @param {string} [provider= random] Provider to use on email
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
+         * @param {string} [options.provider= random] Provider to use on email
          * @method pure.internet.email
          * @example
          * console.log(pure.internet.email());
          * //outputs: "myrtice.cronin@gmail.com"
          */
-        this.email = (firstName, lastName, provider) => {
-            let def = provider;
-            def = def || pure.random.arrayElement(pure.registeredModules.internet.free_email);
-            return `${pure.helpers.slugify(pure.internet.userName(firstName, lastName), { lower: true })}@${def}`;
+        this.email = (options = {}) => {
+            let { provider } = options;
+            const { firstName, lastName } = options;
+
+            if (provider === 'undefined') {
+                provider = pure.random.arrayElement(pure.registeredModules.internet.free_email);
+            }
+
+            return `${pure.helpers.slugify(this.userName(firstName, lastName), { lower: true })}@${provider}`;
         };
 
         /**
          * exampleEmail
          *
          * @description Generates a random example email
-         * @param {string} [firstName= random] First name
-         * @param {string} [lastName= random] Last name
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
          * @method pure.internet.exampleEmail
          * @example
          * console.log(pure.internet.exampleEmail());
          * //outputs: "golden.prohaska@example.org"
          */
-        this.exampleEmail = (firstName, lastName) => {
+        this.exampleEmail = (options = {}) => {
+            const { firstName, lastName } = options;
             const provider = pure.random.arrayElement(pure.registeredModules.internet.example_email);
-            return this.email(firstName, lastName, provider);
+            return this.email({ firstName, lastName, provider });
         };
 
         /**
          * userName
          *
          * @description Generates a random user name
-         * @param {string} [firstName= random] First name
-         * @param {string} [lastName= random] Last name
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
          * @method pure.internet.userName
          * @example
          * console.log(pure.internet.userName());
          * //outputs: "Kirstin39"
          */
-        this.userName = (firstName, lastName) => {
+        this.userName = (options = {}) => {
+            const { firstName = pure.name.firstName(), lastName = pure.name.lastName() } = options;
             let result;
-            const first = firstName || pure.name.firstName();
-            const last = lastName || pure.name.lastName();
+
             switch (pure.random.number(2)) {
             case 0:
-                result = first + pure.random.number(99);
+                result = firstName + pure.random.number(99);
                 break;
             case 1:
-                result = first + pure.random.arrayElement(['.', '_']) + last;
+                result = firstName + pure.random.arrayElement(['.', '_']) + lastName;
                 break;
             case 2:
-                result = first + pure.random.arrayElement(['.', '_']) + last + pure.random.number(99);
+                result = firstName + pure.random.arrayElement(['.', '_']) + lastName + pure.random.number(99);
                 break;
             default:
-                result = first + pure.random.number(99);
+                result = firstName + pure.random.number(99);
             }
+
             result = pure.helpers.slugify(result);
             result = result.replace(/ /g, '');
             return result;
@@ -101,18 +111,18 @@ class Internet {
          * url
          *
          * @description Generates a random url
-         * @param {string} [protocol= random] What protocol to use.
-         * @param {string} [domainName= random] What domain to use.
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.protocol= random] What protocol to use.
+         * @param {string} [options.domainName= random] What domain to use.
          * @method pure.internet.url
          * @example
          * console.log(pure.internet.url());
          * //outputs: "http://harvey.net"
          */
-        this.url = (protocol, domainName) => {
-            const nProtocol = protocol || pure.internet.protocol();
-            const nDomainName = domainName || pure.internet.domainName();
+        this.url = (options = {}) => {
+            const { protocol = this.protocol(), domainName = this.domainName() } = options;
 
-            return `${nProtocol}://${nDomainName}`;
+            return `${protocol}://${domainName}`;
         };
 
         /**
@@ -124,7 +134,7 @@ class Internet {
          * console.log(pure.internet.domainName());
          * //outputs: "marvin.org"
          */
-        this.domainName = () => `${pure.internet.domainWord()}.${pure.internet.domainSuffix()}`;
+        this.domainName = () => `${this.domainWord()}.${this.domainSuffix()}`;
 
         /**
          * domainSuffix
@@ -185,8 +195,8 @@ class Internet {
          */
         this.ipv6 = () => {
             const randHash = () => {
-                const template = pure.helpers.repeatString('#', 4);
-                return pure.helpers.replaceSymbolWithHex(template);
+                const template = pure.helpers.repeatString({ string: '#', num: 4 });
+                return pure.helpers.replaceSymbolWithHex({ string: template });
             };
 
             const result = [];
@@ -212,15 +222,18 @@ class Internet {
          * color
          *
          * @description Generates a random color
-         * @param {Number} [baseRed255= 0] The red value. Valid values are 0 - 255.
-         * @param {Number} [baseGreen255= 0] The green value. Valid values are 0 - 255.
-         * @param {Number} [baseBlue255= 0] The blue value. Valid values are 0 - 255.
+         * @param {object} [options] Options to be passed
+         * @param {Number} [options.baseRed255= 0] The red value. Valid values are 0 - 255.
+         * @param {Number} [options.baseGreen255= 0] The green value. Valid values are 0 - 255.
+         * @param {Number} [options.baseBlue255= 0] The blue value. Valid values are 0 - 255.
          * @method pure.internet.color
          * @example
          * console.log(pure.internet.color());
          * //outputs: "#06267f"
          */
-        this.color = (baseRed255 = 0, baseGreen255 = 0, baseBlue255 = 0) => {
+        this.color = (options = {}) => {
+            const { baseRed255 = 0, baseGreen255 = 0, baseBlue255 = 0 } = options;
+
             // based on awesome response : http://stackoverflow.com/questions/43044/
             // algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
             const red = Math.floor((pure.random.number(256) + baseRed255) / 2);
@@ -260,6 +273,7 @@ class Internet {
                     mac += validSep;
                 }
             }
+
             return mac;
         };
 
@@ -267,21 +281,24 @@ class Internet {
          * password
          *
          * @description Generates a random password
-         * @param {Number} [len= 15] The number of characters in the password.
-         * @param {boolean} [memorable= false] Whether a password should be easy to remember.
-         * @param {string} [pattern= '/\w/'] A regex to match each character of the password against.
+         * @param {object} [options] Options to be passed
+         * @param {Number} [optionslen= 15] The number of characters in the password.
+         * @param {boolean} [options.memorable= false] Whether a password should be easy to remember.
+         * @param {string} [options.pattern= '/\w/'] A regex to match each character of the password against.
          * If memorable is true, then this will be ignored. If pattern has limit inside regex, it will be ignored.
-         * @param {string} [prefix= ''] A value to prepend to the generated password.
+         * @param {string} [options.prefix= ''] A value to prepend to the generated password.
          * @method pure.internet.password
          * @example
          * console.log(pure.internet.password());
          * //outputs: "AM7zl6Mg"
          */
-        this.password = (len, memorable, pattern, prefix) => {
-            const nlen = len || 15;
-            const nmemorable = memorable || false;
-            const npattern = pattern || /\w/;
-            let generated = prefix || '';
+        this.password = (options = {}) => {
+            let { prefix = '' } = options;
+            const {
+                len = 15,
+                memorable = false,
+                pattern = /\w/,
+            } = options;
 
             /*
              * password-generator ( function )
@@ -324,15 +341,15 @@ class Internet {
                 return password(nlength, nmem, `${npre}${char}`);
             };
 
-            if (nmemorable) {
-                generated = password(nlen, nmemorable, prefix);
+            if (memorable) {
+                prefix = password(len, memorable, prefix);
             } else {
-                while (nlen > generated.length) {
-                    generated += new RandExp(npattern).gen();
+                while (len > prefix.length) {
+                    prefix += new RandExp(pattern).gen();
                 }
             }
 
-            return generated.substr(0, nlen);
+            return prefix.substr(0, len);
         };
     }
 }

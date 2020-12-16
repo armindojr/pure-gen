@@ -15,7 +15,7 @@ class Markdown {
          * //outputs: "# quia"
          */
         this.header = (num = 1) => {
-            const head = pure.helpers.repeatString('#', num);
+            const head = pure.helpers.repeatString({ string: '#', num });
             return `${head} ${pure.lorem.word()}`;
         };
 

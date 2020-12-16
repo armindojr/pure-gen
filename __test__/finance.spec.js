@@ -56,7 +56,7 @@ describe('finance.js', () => {
             // default account mask length
             const expected = 4;
 
-            const mask = pure.finance.mask(null, false, false);
+            const mask = pure.finance.mask({ length: null });
 
             const actual = mask.length;
 
@@ -68,7 +68,7 @@ describe('finance.js', () => {
 
             expected = (expected === 0 || !expected || typeof expected === 'undefined') ? 4 : expected;
 
-            const mask = pure.finance.mask(expected, false, false);
+            const mask = pure.finance.mask({ length: expected });
 
             // picks 4 if the random number generator picks 0
             const actual = mask.length;
@@ -79,7 +79,7 @@ describe('finance.js', () => {
         it('should set a default length of 4 for a zero value', () => {
             const expected = 4;
 
-            const mask = pure.finance.mask(0, false, false);
+            const mask = pure.finance.mask({ length: 0 });
             // picks 4 if the random number generator picks 0
             const actual = mask.length;
 
@@ -89,7 +89,7 @@ describe('finance.js', () => {
         it('should by default include parentheses around a partial account number', () => {
             const expected = true;
 
-            const mask = pure.finance.mask(null, null, false);
+            const mask = pure.finance.mask({ length: null, parens: null });
 
             const regexp = new RegExp(/(\(\d{4}?\))/);
             const actual = regexp.test(mask);
@@ -100,21 +100,12 @@ describe('finance.js', () => {
         it('should by default include an ellipsis', () => {
             const expected = true;
 
-            const mask = pure.finance.mask(null, false, null);
+            const mask = pure.finance.mask({ length: null, ellipsis: null });
 
             const regexp = new RegExp(/(\.\.\.\d{4})/);
             const actual = regexp.test(mask);
 
             assert.equal(actual, expected, `The expected match for parentheses is ${expected} but it was ${actual}`);
-        });
-
-        it('should work when random variables are passed into the arguments', () => {
-            const length = pure.random.number(20);
-            const ellipsis = (length % 2 === 0);
-            const parens = !ellipsis;
-
-            const mask = pure.finance.mask(length, ellipsis, parens);
-            assert.ok(mask);
         });
     });
 
@@ -127,11 +118,11 @@ describe('finance.js', () => {
             assert.equal((amount < 1001), true, 'the amount should be greater than 0');
         });
 
-        it('should use the defaul decimal location when not passing arguments', () => {
-            const amount = pure.finance.amount(100, 100, 1);
+        it('should use the default decimal location when not passing arguments', () => {
+            const amount = pure.finance.amount({ min: 100, max: 100 });
 
             assert.ok(amount);
-            assert.strictEqual(amount, '100.0', 'the amount should be equal 100.0');
+            assert.strictEqual(amount, '100.00', 'the amount should be equal 100.00');
         });
 
         // TODO: add support for more currency and decimal options
@@ -147,7 +138,7 @@ describe('finance.js', () => {
         });
 
         it('it should handle negative amounts', () => {
-            const amount = pure.finance.amount(-200, -1);
+            const amount = pure.finance.amount({ min: -200, max: -1 });
 
             assert.ok(amount);
             assert.equal((amount < 0), true, 'the amount should be greater than 0');
@@ -155,21 +146,21 @@ describe('finance.js', () => {
         });
 
         it('it should handle argument dec', () => {
-            const amount = pure.finance.amount(100, 100, 1);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 1 });
 
             assert.ok(amount);
             assert.equal(amount.length, 5);
         });
 
         it('it should handle argument dec = 0', () => {
-            const amount = pure.finance.amount(100, 100, 0);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 0 });
 
             assert.ok(amount);
             assert.strictEqual(amount, '100', 'the amount should be equal 100');
         });
 
         it('it should return a string', () => {
-            const amount = pure.finance.amount(100, 100, 0);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 0 });
 
             const typeOfAmount = typeof amount;
 
@@ -336,7 +327,7 @@ describe('finance.js', () => {
         });
 
         it('returns a random yet formally correct IBAN number for specific country', () => {
-            const iban = pure.finance.iban(false, 'DE');
+            const iban = pure.finance.iban({ formatted: false, country: 'DE' });
             const bban = iban.substring(4) + iban.substring(0, 4);
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
@@ -344,7 +335,7 @@ describe('finance.js', () => {
         });
 
         it('returns a random and formatted correct IBAN number for specific country', () => {
-            const iban = pure.finance.iban(true, 'DE');
+            const iban = pure.finance.iban({ formatted: true, country: 'DE' });
 
             const result = iban.split(' ');
             assert.equal(result.length, 6);
@@ -352,7 +343,7 @@ describe('finance.js', () => {
         });
 
         it('returns a random and formatted correct IBAN number when country don\'t exists', () => {
-            const iban = pure.finance.iban(true, 'QQ');
+            const iban = pure.finance.iban({ formatted: true, country: 'QQ' });
 
             expect(iban.length).greaterThan(15);
         });
@@ -399,7 +390,7 @@ describe('finance.js', () => {
                 ],
             }));
 
-            const iban = pure.finance.iban(false, 'VG');
+            const iban = pure.finance.iban({ formatted: false, country: 'VG' });
             const bban = iban.substring(4) + iban.substring(0, 4);
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
