@@ -28,9 +28,9 @@ describe('fake.js', () => {
         it('allows the user to pass multiple parameters to a function', () => {
             sinon.spy(pure.date, 'between');
 
-            let from = new Date('2015-01-01').toISOString();
-            let to = new Date('2015-01-05').toISOString();
-            let result = pure.fake('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
+            const from = new Date('2015-01-01').toISOString();
+            const to = new Date('2015-01-05').toISOString();
+            const result = pure.fake('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
 
             assert.ok(pure.date.between.calledOnce);
             assert.ok(from <= result);

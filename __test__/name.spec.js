@@ -268,61 +268,55 @@ describe('name.js', () => {
 
     describe('prefix()', () => {
         describe('when using a locale with gender specific name prefixes', () => {
-            beforeEach(function check() {
-                this.oldLocale = pure.locale;
-                pure.locales.TEST = {
-                    name: {
-                        male_prefix: ['Mp'],
-                        female_prefix: ['Fp'],
-                    },
-                };
-
-                pure.setLocale('TEST');
-            });
-
-            afterEach(function check() {
-                pure.setLocale(this.oldLocale);
-                delete pure.locale.TEST;
-            });
-
             it('returns male prefix', () => {
+                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                    male_prefix: ['Mp'],
+                    female_prefix: ['Fp'],
+                }));
+
                 const prefix = pure.name.prefix(0);
                 assert.equal(prefix, 'Mp');
+
+                stub.restore();
             });
 
             it('returns female prefix', () => {
+                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                    male_prefix: ['Mp'],
+                    female_prefix: ['Fp'],
+                }));
+
                 const prefix = pure.name.prefix(1);
 
                 assert.equal(prefix, 'Fp');
+
+                stub.restore();
             });
 
             it('returns either prefix', () => {
+                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                    male_prefix: ['Mp'],
+                    female_prefix: ['Fp'],
+                }));
+
                 const prefix = pure.name.prefix();
                 assert(['Mp', 'Fp'].indexOf(prefix) >= 0);
+
+                stub.restore();
             });
         });
 
         describe('when using a locale without gender specific name prefixes', () => {
-            beforeEach(function check() {
-                this.oldLocale = pure.locale;
-                pure.locales.TEST = {
-                    name: {
-                        prefix: ['P'],
-                    },
-                };
-
-                pure.setLocale('TEST');
-            });
-
-            afterEach(function check() {
-                pure.setLocale(this.oldLocale);
-                delete pure.locale.TEST;
-            });
-
             it('returns a prefix', () => {
+                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                    prefix: ['P'],
+                }));
+
                 const prefix = pure.name.prefix();
 
                 assert.equal(prefix, 'P');
+
+                stub.restore();
             });
         });
     });

@@ -311,7 +311,7 @@ class Random {
          * console.log(pure.random.locale());
          * //outputs: "nb_NO"
          */
-        this.locale = () => this.arrayElement(Object.keys(pure.locales));
+        this.locale = () => this.arrayElement(pure.possibleLocales);
 
         /**
          * alpha

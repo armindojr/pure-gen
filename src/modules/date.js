@@ -110,7 +110,7 @@ class pureDate {
             const results = [];
 
             for (let index = 0; index < num; index += 1) {
-                const newDate = pure.unique(this.between, [{ from, to }]);
+                const newDate = pure.unique.exec(this.between, [{ from, to }]);
                 results.push(newDate);
             }
 

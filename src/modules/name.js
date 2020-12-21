@@ -63,9 +63,9 @@ class Name {
                     def = pure.random.number(1);
                 }
                 if (def === 0) {
-                    return pure.random.arrayElement(pure.locales[pure.locale].name.male_last_name);
+                    return pure.random.arrayElement(pure.registeredModules.name.male_last_name);
                 }
-                return pure.random.arrayElement(pure.locales[pure.locale].name.female_last_name);
+                return pure.random.arrayElement(pure.registeredModules.name.female_last_name);
             }
             return pure.random.arrayElement(pure.registeredModules.name.last_name);
         };
@@ -156,9 +156,9 @@ class Name {
                     def = pure.random.number(1);
                 }
                 if (def === 0) {
-                    return pure.random.arrayElement(pure.locales[pure.locale].name.male_prefix);
+                    return pure.random.arrayElement(pure.registeredModules.name.male_prefix);
                 }
-                return pure.random.arrayElement(pure.locales[pure.locale].name.female_prefix);
+                return pure.random.arrayElement(pure.registeredModules.name.female_prefix);
             }
             return pure.random.arrayElement(pure.registeredModules.name.prefix);
         };

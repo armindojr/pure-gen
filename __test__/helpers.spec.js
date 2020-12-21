@@ -21,7 +21,7 @@ describe('helpers.js', () => {
 
         describe('when symbol passed in', () => {
             it('replaces that symbol with integers', () => {
-                const num = pure.helpers.replaceSymbolWithNumber({ string: '#AB', symbol: 'A'});
+                const num = pure.helpers.replaceSymbolWithNumber({ string: '#AB', symbol: 'A' });
                 assert.ok(num.match(/#\dB/));
             });
         });

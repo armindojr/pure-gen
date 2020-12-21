@@ -7,7 +7,7 @@ var conflicts = 0;
 for (var i = 0; i < 100000; i++) {
 
   // call function with no arguments
-  var email = pure.unique(pure.internet.email);
+  var email = pure.unique.exec(pure.internet.email);
 
   if (typeof emails[email] === 'undefined') {
     // found a unique new item

@@ -1,4 +1,6 @@
-const imports = require('./imports');
+/* eslint new-cap: "off" */
+
+const modules = require('./modules');
 const locales = require('./locale');
 
 /**
@@ -7,9 +9,18 @@ const locales = require('./locale');
  */
 class Pure {
     constructor() {
-        this.locales = this.locales || locales || {};
         this.locale = this.locale || 'en';
         this.localeFallback = this.localeFallback || 'en';
+        this.possibleLocales = [
+            'af_ZA', 'ar', 'az', 'cz', 'de', 'de_AT', 'de_CH',
+            'el', 'en', 'en_AU', 'en_BORK', 'en_CA', 'en_GB',
+            'en_IE', 'en_IND', 'en_NG', 'en_US', 'en_ZA',
+            'en_au_ocker', 'es', 'es_MX', 'fa', 'fr', 'fr_CA',
+            'fr_CH', 'ge', 'id_ID', 'it', 'ja', 'ko', 'lv',
+            'nb_NO', 'nep', 'nl', 'nl_BE', 'pl', 'pt_BR',
+            'pt_PT', 'ro', 'ru', 'sk', 'sv', 'tr', 'uk',
+            'vi', 'zh_CN', 'zh_TW', 'zu_ZA',
+        ];
 
         this.registeredModules = {
             address: [
@@ -154,33 +165,13 @@ class Pure {
             separator: '',
         };
 
-        this.fake = new imports.Fake(this).fake;
-        this.unique = new imports.Unique(this).unique;
-        this.random = new imports.Random(this);
-        this.helpers = new imports.Helpers(this);
-        this.name = new imports.Name(this);
-        this.address = new imports.Address(this);
-        this.company = new imports.Company(this);
-        this.finance = new imports.Finance(this);
-        this.image = new imports.Image(this);
-        this.lorem = new imports.Lorem(this);
-        this.hacker = new imports.Hacker(this);
-        this.internet = new imports.Internet(this);
-        this.database = new imports.Database(this);
-        this.phone = new imports.Phone(this);
-        this.date = new imports.Date(this);
-        this.commerce = new imports.Commerce(this);
-        this.system = new imports.System(this);
-        this.git = new imports.Git(this);
-        this.markdown = new imports.Markdown(this);
-        this.vehicle = new imports.Vehicle(this);
-        this.airport = new imports.Airport(this);
-        this.music = new imports.Music(this);
-        this.document = new imports.Document(this);
-        this.dessert = new imports.Dessert(this);
-        this.games = new imports.Games(this);
-        this.electricalComponents = new imports.ElectricalComponents(this);
-        this.esport = new imports.Esport(this);
+        Object.keys(modules).forEach((mod) => {
+            if (mod === 'fake') {
+                this[mod] = new modules[mod](this).fake;
+            } else {
+                this[mod] = new modules[mod](this);
+            }
+        });
 
         this.populateLocale();
     }
@@ -196,13 +187,13 @@ class Pure {
             }
 
             this.registeredModules[mod].forEach((meth) => {
-                if (typeof this.locales[this.locale] === 'undefined'
-                    || typeof this.locales[this.locale][mod] === 'undefined'
-                    || typeof this.locales[this.locale][mod][meth] === 'undefined') {
+                if (typeof locales[this.locale] === 'undefined'
+                    || typeof locales[this.locale][mod] === 'undefined'
+                    || typeof locales[this.locale][mod][meth] === 'undefined') {
                     //
-                    this.registeredModules[mod][meth] = this.locales[this.localeFallback][mod][meth];
+                    this.registeredModules[mod][meth] = locales[this.localeFallback][mod][meth];
                 } else {
-                    this.registeredModules[mod][meth] = this.locales[this.locale][mod][meth];
+                    this.registeredModules[mod][meth] = locales[this.locale][mod][meth];
                 }
             });
         });
@@ -219,7 +210,7 @@ class Pure {
      */
     seed(value) {
         this.seedValue = value;
-        this.random = new imports.Random(this, this.seedValue);
+        this.random = new modules.random(this, this.seedValue);
     }
 
     /**

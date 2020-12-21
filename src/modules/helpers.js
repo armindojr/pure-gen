@@ -232,7 +232,7 @@ class Helpers {
             // TODO: implement for letters e.g. [0-9a-zA-Z] etc.
             token = def.match(RANGE_REG);
             while (token !== null) {
-                // This time we are not capturing the char befor `[]`
+                // This time we are not capturing the char before `[]`
                 min = parseInt(token[1], 10);
                 max = parseInt(token[2], 10);
                 // switch min and max

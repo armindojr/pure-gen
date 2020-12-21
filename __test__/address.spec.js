@@ -534,7 +534,7 @@ describe('address.js', () => {
         it('returns random gps coordinate within a distance of another one', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
-            let coord = [latFloat1, lonFloat1];
+            const coord = [latFloat1, lonFloat1];
             const isMetric = (Math.round(Math.random()) === 1);
 
             // test once with undefined radius
@@ -555,7 +555,7 @@ describe('address.js', () => {
         it('test coordinateWithOffset when isMetric is true', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
-            let coord = [latFloat1, lonFloat1];
+            const coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
@@ -567,7 +567,7 @@ describe('address.js', () => {
         it('test coordinateWithOffset when isMetric is false', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
-            let coord = [latFloat1, lonFloat1];
+            const coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: false });
@@ -581,7 +581,7 @@ describe('address.js', () => {
             pure.seed(5);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
-            let coord = [latFloat1, lonFloat1];
+            const coord = [latFloat1, lonFloat1];
             const seed = pure.getSeed();
 
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
@@ -598,7 +598,7 @@ describe('address.js', () => {
             pure.seed(1);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
-            let coord = [latFloat1, lonFloat1];
+            const coord = [latFloat1, lonFloat1];
 
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);

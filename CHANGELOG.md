@@ -10,14 +10,17 @@
 ### API Changes
 * Removed deprecated helpers.randomize. Use random.arrayElement instead
 * Setting locale now uses only setLocale method. Setting as variable will no longer works
+* [Feature] Add Transport namespace [#17](https://github.com/armindojr/pure-gen/issues/17) - This will impact on airport and vehicle namespaces
+* Unique executions now has scope functionality too and added method to clear found itens #1022
 
 ### General Fixes
 * Locales is not compressed anymore. Installation time will increase but no script will run during installation process. This improve security for user.
-* Locales has been reestructured. Now setting specific locale when importing pure will no longer work
+* Locales has been reestructured. Now setting specific locale when importing pure will no longer work, instead use setLocale
 * pure.fake now uses [mustache](https://github.com/janl/mustache.js) and this improve performance.
 * pure.internet.password now uses [randexp](https://github.com/fent/randexp.js) and this improve performance and fixes [#10](https://github.com/armindojr/pure-gen/issues/10)
 * pure.random.uuid now uses [uuid](https://github.com/uuidjs/uuid)
 * In some methods arg is passed by object now, with this you can opt by passing specific args only and not all
+* Removed internal variables that loaded all locales multiple times
 
 ## v1.4.2
  
