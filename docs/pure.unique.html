@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>database - Documentation</title>
+    <title>unique - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">database</h1>
+    <h1 class="page-title">unique</h1>
     
 
     
@@ -44,7 +44,7 @@
         <h2>
             <span class="ancestors"><a href="pure.html">pure</a>.</span>
         
-        database
+        unique
         </h2>
         
     
@@ -87,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_database.js.html">modules/database.js</a>, <a href="modules_database.js.html#line1">line 1</a>
+        <a href="modules_unique.js.html">modules/unique.js</a>, <a href="modules_unique.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -124,14 +124,14 @@
 
     
 
-    <h4 class="name" id=".collation"><span class="type-signature">(static) </span>collation<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".clear"><span class="type-signature">(static) </span>clear<span class="signature">(scope<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Generate random database collation</p>
+    <p>Clear previously generated entries to use inside another scope</p>
 </div>
 
 
@@ -167,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_database.js.html">modules/database.js</a>, <a href="modules_database.js.html#line29">line 29</a>
+        <a href="modules_unique.js.html">modules/unique.js</a>, <a href="modules_unique.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -184,6 +184,79 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Define what scope unique will cleared, if nothing
+is passed then it will consider global scope</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -203,8 +276,21 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.database.collation());
-//outputs: "ascii_general_ci"</code></pre>
+    <pre class="prettyprint"><code>let result = pure.unique.exec(pure.internet.protocol, [], {
+     exclude: ['https'],
+});
+
+console.log(result);
+//outputs: http;
+
+pure.unique.clear();
+
+let result2 = pure.unique.exec(pure.internet.protocol, [], {
+     exclude: ['https'],
+});
+
+console.log(result2);
+//outputs: http;</code></pre>
 
 </div>
 
@@ -215,14 +301,14 @@
 
     
 
-    <h4 class="name" id=".column"><span class="type-signature">(static) </span>column<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".exec"><span class="type-signature">(static) </span>exec<span class="signature">(method, args, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Generate random database column</p>
+    <p>Generate unique entries passing specific method, normally used inside loops</p>
 </div>
 
 
@@ -258,7 +344,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_database.js.html">modules/database.js</a>, <a href="modules_database.js.html#line7">line 7</a>
+        <a href="modules_unique.js.html">modules/unique.js</a>, <a href="modules_unique.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -277,186 +363,392 @@
 
 
 
+    <h5>Parameters:</h5>
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>console.log(pure.database.column());
-//outputs: "createdAt"</code></pre>
-
-</div>
-
-</div>
+<table class="params">
+    <thead>
+    <tr>
         
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id=".engine"><span class="type-signature">(static) </span>engine<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Generate random database engine</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_database.js.html">modules/database.js</a>, <a href="modules_database.js.html#line40">line 40</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-examples">
-<h5>Example</h5>
-
-    <pre class="prettyprint"><code>console.log(pure.database.engine());
-//outputs: "MEMORY"</code></pre>
-
-</div>
-
-</div>
+        <th>Name</th>
         
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<div class="section-method">
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Method that will be executed to generate data</p>
+                
+            </td>
+        </tr>
 
     
 
-    <h4 class="name" id=".type"><span class="type-signature">(static) </span>type<span class="signature">()</span><span class="type-signature"></span></h4>
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Arguments that will be passed to method</p>
+                
+            </td>
+        </tr>
 
     
 
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
 
 
-<div class="description">
-    <p>Generate random database type</p>
-</div>
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Options to be passed to unique function</p>
+                
+                    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
 
 
+            
+            </td>
 
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
 
-<dl class="details">
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Maximum time unique.exec will attempt to run before aborting</p>
+                
+            </td>
+        </tr>
 
     
 
-    
+        <tr>
+            
+                <td class="name"><code>maxRetries</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    50
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Maximum retries unique.exec will recurse before abortings
+( max loop depth )</p>
+                
+            </td>
+        </tr>
 
     
 
-    
+        <tr>
+            
+                <td class="name"><code>exclude</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    empty
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Global exclude list of results</p>
+                
+            </td>
+        </tr>
 
     
 
-    
+        <tr>
+            
+                <td class="name"><code>compare</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Uniqueness compare function, default behavior is to check
+value as key against object hash</p>
+                
+            </td>
+        </tr>
 
     
 
-    
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Define what scope unique will be added, if nothing
+is passed then it will consider global scope</p>
+                
+            </td>
+        </tr>
 
     
+    </tbody>
+</table>
+
+                
+            </td>
+        </tr>
 
     
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="modules_database.js.html">modules/database.js</a>, <a href="modules_database.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
+    </tbody>
+</table>
 
 
 
@@ -476,8 +768,20 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(pure.database.type());
-//outputs: "blob"</code></pre>
+    <pre class="prettyprint"><code>let arr = [];
+
+for (let index = 0; index &lt; 5; index++) {
+    arr.push(pure.unique.exec(pure.internet.email))
+}
+
+console.log(arr);
+//outputs: [
+// 'wilhelm38@yahoo.com',
+// 'bruce.prosacco@gmail.com',
+// 'amari.lindgren@gmail.com',
+// 'maxine21@yahoo.com',
+// 'austen9@yahoo.com'
+//]</code></pre>
 
 </div>
 

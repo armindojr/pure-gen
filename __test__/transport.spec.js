@@ -90,6 +90,16 @@ describe('transport.js', () => {
         });
     });
 
+    describe('vehicleRM()', () => {
+        it('returns a random vrm', () => {
+            sinon.stub(pure.transport, 'vehicleRM').returns('MF59EEW');
+            const vrm = pure.transport.vehicleRM();
+
+            assert.equal(vrm, 'MF59EEW');
+            pure.transport.vehicleRM.restore();
+        });
+    });
+
     describe('airportName()', () => {
         it('returns a random international airport', () => {
             const airport = pure.transport.airportName();

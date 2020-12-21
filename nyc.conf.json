@@ -13,5 +13,5 @@
         "__test__"
     ],
     "check-coverage": true,
-    "statements": 97
+    "statements": 99
 }

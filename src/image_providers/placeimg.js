@@ -26,19 +26,11 @@ class Placeimg {
         const { width, height, randomize } = options;
 
         const categories = [
-            'abstract',
             'animals',
-            'business',
-            'cats',
-            'city',
-            'food',
-            'nightlife',
-            'fashion',
-            'people',
+            'architecture',
             'nature',
-            'sports',
-            'technics',
-            'transport',
+            'people',
+            'tech',
         ];
 
         return this[this.pure.random.arrayElement(categories)](width, height, randomize);
@@ -51,7 +43,7 @@ class Placeimg {
      * @method pure.image.placeimg.avatar
      * @example
      * console.log(pure.image.placeimg.avatar());
-     * //outputs: "https://s3.amazonaws.com/uifaces/faces/twitter/.."
+     * //outputs: "https://i.pravatar.cc/200"
      */
     avatar() {
         return this.pure.internet.avatar();
@@ -89,26 +81,6 @@ class Placeimg {
     }
 
     /**
-     * abstract
-     *
-     * @description Method to return url from imageprovider with abstract category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.abstract
-     * @example
-     * console.log(pure.image.placeimg.abstract());
-     * //outputs: "http://placeimg.com/640/480/abstract"
-     */
-    abstract(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'abstract', randomize,
-        });
-    }
-
-    /**
      * animals
      *
      * @description Method to return url from imageprovider with animals category
@@ -129,142 +101,22 @@ class Placeimg {
     }
 
     /**
-     * business
+     * architecture
      *
-     * @description Method to return url from imageprovider with business category
+     * @description Method to return url from imageprovider with architecture category
      * @param {object} [options= {}] Options to be passed
      * @param {Number} [options.width= 640] Width of image
      * @param {Number} [options.height= 480] Height of image
      * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.business
+     * @method pure.image.placeimg.architecture
      * @example
-     * console.log(pure.image.placeimg.business());
-     * //outputs: "http://placeimg.com/640/480/business"
+     * console.log(pure.image.placeimg.architecture());
+     * //outputs: "http://placeimg.com/640/480/architecture"
      */
-    business(options = {}) {
+    architecture(options = {}) {
         const { width, height, randomize } = options;
         return this.imageUrl({
-            width, height, category: 'business', randomize,
-        });
-    }
-
-    /**
-     * cats
-     *
-     * @description Method to return url from imageprovider with cats category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.cats
-     * @example
-     * console.log(pure.image.placeimg.cats());
-     * //outputs: "http://placeimg.com/640/480/cats"
-     */
-    cats(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'cats', randomize,
-        });
-    }
-
-    /**
-     * city
-     *
-     * @description Method to return url from imageprovider with city category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.city
-     * @example
-     * console.log(pure.image.placeimg.city());
-     * //outputs: "http://placeimg.com/640/480/city"
-     */
-    city(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'city', randomize,
-        });
-    }
-
-    /**
-     * food
-     *
-     * @description Method to return url from imageprovider with food category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.food
-     * @example
-     * console.log(pure.image.placeimg.food());
-     * //outputs: "http://placeimg.com/640/480/food"
-     */
-    food(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'food', randomize,
-        });
-    }
-
-    /**
-     * nightlife
-     *
-     * @description Method to return url from imageprovider with nightlife category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.nightlife
-     * @example
-     * console.log(pure.image.placeimg.nightlife());
-     * //outputs: "http://placeimg.com/640/480/nightlife"
-     */
-    nightlife(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'nightlife', randomize,
-        });
-    }
-
-    /**
-     * fashion
-     *
-     * @description Method to return url from imageprovider with fashion category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.fashion
-     * @example
-     * console.log(pure.image.placeimg.fashion());
-     * //outputs: "http://placeimg.com/640/480/fashion"
-     */
-    fashion(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'fashion', randomize,
-        });
-    }
-
-    /**
-     * people
-     *
-     * @description Method to return url from imageprovider with people category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.people
-     * @example
-     * console.log(pure.image.placeimg.people());
-     * //outputs: "http://placeimg.com/640/480/people"
-     */
-    people(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'people', randomize,
+            width, height, category: 'arch', randomize,
         });
     }
 
@@ -289,62 +141,42 @@ class Placeimg {
     }
 
     /**
-     * sports
+     * people
      *
-     * @description Method to return url from imageprovider with sports category
+     * @description Method to return url from imageprovider with people category
      * @param {object} [options= {}] Options to be passed
      * @param {Number} [options.width= 640] Width of image
      * @param {Number} [options.height= 480] Height of image
      * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.sports
+     * @method pure.image.placeimg.people
      * @example
-     * console.log(pure.image.placeimg.sports());
-     * //outputs: "http://placeimg.com/640/480/sports"
+     * console.log(pure.image.placeimg.people());
+     * //outputs: "http://placeimg.com/640/480/people"
      */
-    sports(options = {}) {
+    people(options = {}) {
         const { width, height, randomize } = options;
         return this.imageUrl({
-            width, height, category: 'sports', randomize,
+            width, height, category: 'people', randomize,
         });
     }
 
     /**
-     * technics
+     * tech
      *
-     * @description Method to return url from imageprovider with technics category
+     * @description Method to return url from imageprovider with tech category
      * @param {object} [options= {}] Options to be passed
      * @param {Number} [options.width= 640] Width of image
      * @param {Number} [options.height= 480] Height of image
      * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.technics
+     * @method pure.image.placeimg.tech
      * @example
-     * console.log(pure.image.placeimg.technics());
-     * //outputs: "http://placeimg.com/640/480/technics"
+     * console.log(pure.image.placeimg.tech());
+     * //outputs: "http://placeimg.com/640/480/tech"
      */
-    technics(options = {}) {
+    tech(options = {}) {
         const { width, height, randomize } = options;
         return this.imageUrl({
-            width, height, category: 'technics', randomize,
-        });
-    }
-
-    /**
-     * transport
-     *
-     * @description Method to return url from imageprovider with transport category
-     * @param {object} [options= {}] Options to be passed
-     * @param {Number} [options.width= 640] Width of image
-     * @param {Number} [options.height= 480] Height of image
-     * @param {boolean} [options.randomize= false] Define if generate random predetermined image
-     * @method pure.image.placeimg.transport
-     * @example
-     * console.log(pure.image.placeimg.transport());
-     * //outputs: "http://placeimg.com/640/480/transport"
-     */
-    transport(options = {}) {
-        const { width, height, randomize } = options;
-        return this.imageUrl({
-            width, height, category: 'transport', randomize,
+            width, height, category: 'tech', randomize,
         });
     }
 }

@@ -89,6 +89,22 @@ class Transport {
         this.vehicleColor = () => pure.commerce.color();
 
         /**
+         * vehicleRM
+         *
+         * @description Return random vehicle registration mark typically found in UK
+         * @method pure.transport.vehicleRM
+         * @example
+         * console.log(pure.transport.vehicleRM());
+         * //outputs: "MF56UPA"
+         */
+        this.vehicleRM = () => (
+            pure.random.alpha({ count: 2, upcase: true })
+                + pure.random.number({ min: 0, max: 9 })
+                + pure.random.number({ min: 0, max: 9 })
+                + pure.random.alpha({ count: 3, upcase: true })
+        ).toUpperCase();
+
+        /**
          * airportName
          *
          * @description Generate random airport name

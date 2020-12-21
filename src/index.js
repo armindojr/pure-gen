@@ -1,6 +1,6 @@
 /* eslint new-cap: "off" */
 
-const modules = require('./modules');
+const imports = require('./imports');
 const locales = require('./locale');
 
 /**
@@ -165,13 +165,32 @@ class Pure {
             separator: '',
         };
 
-        Object.keys(modules).forEach((mod) => {
-            if (mod === 'fake') {
-                this[mod] = new modules[mod](this).fake;
-            } else {
-                this[mod] = new modules[mod](this);
-            }
-        });
+        this.fake = new imports.Fake(this).fake;
+        this.unique = new imports.Unique(this);
+        this.random = new imports.Random(this);
+        this.helpers = new imports.Helpers(this);
+        this.name = new imports.Name(this);
+        this.address = new imports.Address(this);
+        this.company = new imports.Company(this);
+        this.finance = new imports.Finance(this);
+        this.image = new imports.Image(this);
+        this.lorem = new imports.Lorem(this);
+        this.hacker = new imports.Hacker(this);
+        this.internet = new imports.Internet(this);
+        this.database = new imports.Database(this);
+        this.phone = new imports.Phone(this);
+        this.date = new imports.Date(this);
+        this.commerce = new imports.Commerce(this);
+        this.system = new imports.System(this);
+        this.git = new imports.Git(this);
+        this.markdown = new imports.Markdown(this);
+        this.transport = new imports.Transport(this);
+        this.music = new imports.Music(this);
+        this.document = new imports.Document(this);
+        this.dessert = new imports.Dessert(this);
+        this.games = new imports.Games(this);
+        this.electricalComponents = new imports.ElectricalComponents(this);
+        this.esport = new imports.Esport(this);
 
         this.populateLocale();
     }
@@ -210,7 +229,7 @@ class Pure {
      */
     seed(value) {
         this.seedValue = value;
-        this.random = new modules.random(this, this.seedValue);
+        this.random = new imports.Random(this, this.seedValue);
     }
 
     /**

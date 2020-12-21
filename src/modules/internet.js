@@ -15,9 +15,20 @@ class Internet {
          * @method pure.internet.avatar
          * @example
          * console.log(pure.internet.avatar());
-         * //outputs: "https://s3.amazonaws.com/uifaces/faces/twitter/..."
+         * //outputs: "https://i.pravatar.cc/200"
          */
-        this.avatar = () => pure.random.arrayElement(pure.registeredModules.internet.avatar_uri);
+        this.avatar = (width) => {
+            let opt = width;
+            let url = 'https://i.pravatar.cc';
+
+            if (typeof opt === 'undefined') {
+                opt = 200;
+            }
+
+            url += `/${opt}`;
+
+            return url;
+        };
 
         /**
          * email

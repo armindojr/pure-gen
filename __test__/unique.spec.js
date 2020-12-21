@@ -36,7 +36,7 @@ describe('unique.js', () => {
                     ],
                 });
             } catch (err) {
-                assert.equal(err.message.substr(0, 16), 'Exceeded maxTime');
+                assert.include(err.message, 'Exceeded maxTime');
             }
         });
 
@@ -51,7 +51,7 @@ describe('unique.js', () => {
                     ],
                 });
             } catch (err) {
-                assert.equal(err.message.substr(0, 19), 'Exceeded maxRetries');
+                assert.include(err.message, 'Exceeded maxRetries');
             }
         });
 

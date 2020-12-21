@@ -35,7 +35,7 @@ class Unsplash {
      * @method pure.image.unsplash.avatar
      * @example
      * console.log(pure.image.unsplash.avatar());
-     * //outputs: "https://s3.amazonaws.com/uifaces/faces/twitter/.."
+     * //outputs: "https://i.pravatar.cc/200"
      */
     avatar() {
         return this.pure.internet.avatar();

@@ -241,6 +241,9 @@ class Random {
          * //outputs: "Steel"
          */
         this.word = () => {
+            // regex statement used to remove unwanted characters from beginning/end of words
+            const wordSanitizerRegex = /^[\s()[\]{}.,\-'"]+|[\s()[\]{}.,\-'"]+$/g;
+
             const wordMethods = [
                 'commerce.department',
                 'commerce.productName',
@@ -277,8 +280,10 @@ class Random {
 
             // randomly pick from the many pure methods that can generate words
             const randomWordMethod = this.arrayElement(wordMethods);
-            const result = pure.fake(`{{${randomWordMethod}}}`);
-            return this.arrayElement(result.split(' '));
+            let result = pure.fake(`{{${randomWordMethod}}}`);
+            result = this.arrayElement(result.split(' '));
+
+            return result.replace(wordSanitizerRegex, '');
         };
 
         /**

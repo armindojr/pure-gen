@@ -54,6 +54,7 @@ class Unique {
             }
 
             options.currentIterations = 0;
+
             return unique.exec(method, args, options);
         };
 
