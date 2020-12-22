@@ -24,7 +24,7 @@ class Transport {
          * console.log(pure.transport.vehicleManufacturer());
          * //outputs: "Mercedes Benz"
          */
-        this.vehicleManufacturer = () => pure.random.arrayElement(pure.registeredModules.vehicle.manufacturer);
+        this.vehicleManufacturer = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleManufacturer);
 
         /**
          * vehicleModel
@@ -35,7 +35,7 @@ class Transport {
          * console.log(pure.transport.vehicleModel());
          * //outputs: "Civic"
          */
-        this.vehicleModel = () => pure.random.arrayElement(pure.registeredModules.vehicle.model);
+        this.vehicleModel = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleModel);
 
         /**
          * vehicleType
@@ -46,7 +46,7 @@ class Transport {
          * console.log(pure.transport.vehicleType());
          * //outputs: "Coupe"
          */
-        this.vehicleType = () => pure.random.arrayElement(pure.registeredModules.vehicle.type);
+        this.vehicleType = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleType);
 
         /**
          * fuel
@@ -57,7 +57,7 @@ class Transport {
          * console.log(pure.transport.vehicleFuel());
          * //outputs: "Electric"
          */
-        this.vehicleFuel = () => pure.random.arrayElement(pure.registeredModules.vehicle.fuel);
+        this.vehicleFuel = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleFuel);
 
         /**
          * vehicleVin
@@ -113,7 +113,7 @@ class Transport {
          * console.log(pure.transport.airportName());
          * //outputs: "Ram Lala International Airport"
          */
-        this.airportName = () => pure.random.arrayElement(pure.registeredModules.airport.name);
+        this.airportName = () => pure.random.arrayElement(pure.registeredModules.transport.airportName);
 
         /**
          * airportIata

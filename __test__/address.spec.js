@@ -607,6 +607,38 @@ describe('address.js', () => {
             Math.atan2.restore();
             pure.seed();
         });
+
+        it('returns correctly when no argument passed', () => {
+            const coordinate = pure.address.nearbyGPSCoordinate();
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+        });
+
+        it('returns correctly when lon is greather than 180', () => {
+            sinon.stub(Math, 'atan2').returns(2);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, 200] });
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(coordinate[1] === '-45.4084');
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+
+            Math.atan2.restore();
+        });
+
+        it('returns correctly when lon is less than -180', () => {
+            sinon.stub(Math, 'atan2').returns(-2);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, -185] });
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(coordinate[1] === '60.4084');
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+
+            Math.atan2.restore();
+        });
     });
 
     describe('timeZone()', () => {

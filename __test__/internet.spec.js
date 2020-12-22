@@ -13,6 +13,13 @@ describe('internet.js', () => {
             assert.equal(res, 'aiden.harann55');
             pure.internet.userName.restore();
         });
+
+        it('returns an email when provider is undefined', () => {
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
+
+            assert.ok(typeof email === 'string');
+            assert.ok(!email.includes('undefined'));
+        });
     });
 
     describe('exampleEmail', () => {
@@ -226,14 +233,19 @@ describe('internet.js', () => {
 
     describe('color()', () => {
         it('returns a valid hex value (like #ffffff)', () => {
-            const color = pure.internet.color(100, 100, 100);
+            const color = pure.internet.color({ baseRed255: 100, baseGreen255: 100, baseBlue255: 100 });
+            assert.ok(color.match(/^#[a-f0-9]{6}$/));
+        });
+
+        it('returns a valid hex value when no argument passed', () => {
+            const color = pure.internet.color();
             assert.ok(color.match(/^#[a-f0-9]{6}$/));
         });
 
         it('returns a valid hex value when stubbing math', () => {
             sinon.stub(Math, 'floor').returns(1);
 
-            const color = pure.internet.color(0, 0, 0);
+            const color = pure.internet.color({ baseRed255: 0, baseGreen255: 0, baseBlue255: 0 });
 
             assert.ok(color.match(/^#[a-f0-9]{6}$/));
 
@@ -271,6 +283,14 @@ describe('internet.js', () => {
             const password = pure.internet.password({ memorable: true });
 
             assert.ok(password.match(/\w/g));
+        });
+
+        it('generate password without argument passed', () => {
+            const password = pure.internet.password();
+            const regex = /[A-Za-z0-9]+/g;
+
+            assert.ok(typeof password === 'string');
+            assert.ok(regex.test(password));
         });
     });
 });

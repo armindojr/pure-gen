@@ -20,6 +20,7 @@
 
 ### API Fixes
 * Ensure random word doesn't contain unwanted chars #1028
+* Fixed bug on pure.random.number where number is generating incorrectly on specific case
 
 ### General Fixes
 * Locales is not compressed anymore. Installation time will increase but no script will run during installation process. This improve security for user.

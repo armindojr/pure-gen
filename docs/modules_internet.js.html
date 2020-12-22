@@ -88,7 +88,7 @@ class Internet {
             let { provider } = options;
             const { firstName, lastName } = options;
 
-            if (provider === 'undefined') {
+            if (typeof provider === 'undefined') {
                 provider = pure.random.arrayElement(pure.registeredModules.internet.free_email);
             }
 
@@ -363,7 +363,6 @@ class Internet {
             const password = (length, mem, pre) => {
                 let char;
                 const nlength = length;
-                const nmem = mem || true;
                 let pat = /\w/;
                 const npre = pre || '';
 
@@ -371,7 +370,7 @@ class Internet {
                     return npre;
                 }
 
-                if (nmem) {
+                if (mem) {
                     if (npre.match(consonant)) {
                         pat = vowel;
                     } else {
@@ -382,15 +381,15 @@ class Internet {
                 const n = pure.random.number(94) + 33;
                 char = String.fromCharCode(n);
 
-                if (nmem) {
+                if (mem) {
                     char = char.toLowerCase();
                 }
 
                 if (!char.match(pat)) {
-                    return password(nlength, nmem, npre);
+                    return password(nlength, mem, npre);
                 }
 
-                return password(nlength, nmem, `${npre}${char}`);
+                return password(nlength, mem, `${npre}${char}`);
             };
 
             if (memorable) {

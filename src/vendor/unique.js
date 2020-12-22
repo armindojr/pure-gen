@@ -18,11 +18,6 @@ const scopedFound = {};
 const exclude = [];
 
 /**
- * current iteration or retries of unique.exec ( current loop depth )
- */
-const currentIterations = 0;
-
-/**
  * uniqueness compare function
  * default behavior is to check value as key against object hash
  */
@@ -30,20 +25,17 @@ const defaultCompare = (obj, key) => {
     if (typeof obj[key] === 'undefined') {
         return -1;
     }
-
     return 0;
 };
 
 function errorMessage(now, code) {
-    const err = `
+    throw new Error(`
     Started time: ${now}
     
     ${code} for uniqueness check.
     
     May not be able to generate any more unique values with current settings.
-    Try adjusting maxTime or maxRetries parameters for pure.unique()`;
-
-    throw new Error(err);
+    Try adjusting maxTime or maxRetries parameters for pure.unique()`);
 }
 
 function clear(scope) {
@@ -90,10 +82,6 @@ function exec(method, args, opts) {
         opts.exclude = [opts.exclude];
     }
 
-    if (opts.currentIterations > 0) {
-        // log iterations ?
-    }
-
     if (now - startTime >= opts.maxTime) {
         return errorMessage(now, `Exceeded maxTime:${opts.maxTime}`);
     }
@@ -109,6 +97,7 @@ function exec(method, args, opts) {
     if (opts.compare(found, result) === -1 && opts.exclude.indexOf(result) === -1) {
         found[result] = result;
         opts.currentIterations = 0;
+
         return result;
     }
 

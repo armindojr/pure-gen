@@ -2,7 +2,6 @@ const en = {
     title: 'English',
     separator: ' & ',
     address: require('./address'),
-    airport: require('./airport'),
     app: require('./app'),
     business: require('./business'),
     cell_phone: require('./cell_phone'),
@@ -24,6 +23,6 @@ const en = {
     phone_number: require('./phone_number'),
     system: require('./system'),
     team: require('./team'),
-    vehicle: require('./vehicle'),
+    transport: require('./transport'),
 };
 module.exports = en;

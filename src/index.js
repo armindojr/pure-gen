@@ -42,11 +42,6 @@ class Pure {
                 'direction_abbr',
                 'time_zone',
             ],
-            airport: [
-                'name',
-                'iataCode',
-                'icaoCode',
-            ],
             commerce: [
                 'color',
                 'department',
@@ -152,14 +147,12 @@ class Pure {
                 'mimeTypes',
                 'directoryPaths',
             ],
-            vehicle: [
-                'vehicle',
-                'manufacturer',
-                'model',
-                'type',
-                'fuel',
-                'vin',
-                'color',
+            transport: [
+                'vehicleManufacturer',
+                'vehicleModel',
+                'vehicleType',
+                'vehicleFuel',
+                'airportName'
             ],
             title: '',
             separator: '',
@@ -197,10 +190,6 @@ class Pure {
 
     populateLocale() {
         Object.keys(this.registeredModules).forEach((mod) => {
-            if (typeof this.registeredModules[mod] === 'undefined') {
-                this.registeredModules[mod] = {};
-            }
-
             if (typeof this.registeredModules[mod] === 'string') {
                 return;
             }

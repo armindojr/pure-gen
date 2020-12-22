@@ -7,6 +7,6 @@ const ar = {
     name: require('./name'),
     phone_number: require('./phone_number'),
     team: require('./team'),
-    vehicle: require('./vehicle'),
+    transport: require('./transport'),
 };
 module.exports = ar;

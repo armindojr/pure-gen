@@ -91,12 +91,19 @@ describe('transport.js', () => {
     });
 
     describe('vehicleRM()', () => {
-        it('returns a random vrm', () => {
+        it('returns a stubbed vrm', () => {
             sinon.stub(pure.transport, 'vehicleRM').returns('MF59EEW');
             const vrm = pure.transport.vehicleRM();
 
             assert.equal(vrm, 'MF59EEW');
             pure.transport.vehicleRM.restore();
+        });
+
+        it('returns a random vrm', () => {
+            const vrm = pure.transport.vehicleRM();
+            const reg = /[A-Z]{2}[0-9]{2}[A-Z]{3}/g;
+
+            assert.ok(reg.test(vrm));
         });
     });
 

@@ -25,6 +25,12 @@ describe('fake.js', () => {
             assert.ok(arr.indexOf(random) > -1);
         });
 
+        it('allows the user to pass single parameter that isn\'t JSON', () => {
+            const result = pure.fake('{{helpers.replaceSymbols(\'{\')}}');
+
+            assert.ok(/{/g.test(result));
+        });
+
         it('allows the user to pass multiple parameters to a function', () => {
             sinon.spy(pure.date, 'between');
 

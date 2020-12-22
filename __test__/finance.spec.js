@@ -193,6 +193,14 @@ describe('finance.js', () => {
         });
     });
 
+    describe('currencyName()', () => {
+        it('return random currency name', () => {
+            const name = pure.finance.currencyName();
+
+            assert.ok(name);
+        });
+    });
+
     describe('bitcoinAddress()', () => {
         it('returns a random bitcoin address', () => {
             const bitcoinAddress = pure.finance.bitcoinAddress();
@@ -321,6 +329,13 @@ describe('finance.js', () => {
     describe('iban()', () => {
         it('returns a random yet formally correct IBAN number', () => {
             const iban = pure.finance.iban();
+            const bban = iban.substring(4) + iban.substring(0, 4);
+
+            assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
+        });
+
+        it('returns a random yet formally correct IBAN number when country is AL', () => {
+            const iban = pure.finance.iban('AL');
             const bban = iban.substring(4) + iban.substring(0, 4);
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');

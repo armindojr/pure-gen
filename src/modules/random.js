@@ -61,7 +61,7 @@ class Random {
                 const template = pure.helpers.repeatString({ string: '#', num: def.precision });
                 result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber({ string: template })}`);
                 if (result > def.max) {
-                    result = parseFloat((result - def.max).toFixed(def.precision));
+                    result = def.max;
                 }
             } else {
                 result = randomNumber;

@@ -1,4 +1,5 @@
 const { assert, expect } = require('chai');
+const sinon = require('sinon');
 const pure = require('../index');
 const Pure = require('../src');
 
@@ -82,25 +83,13 @@ describe('random.js', () => {
             assert.equal(opts.max, max);
         });
 
-        it('should return deterministic results when seeded with integer', () => {
-            pure.seed(100);
-            const name = pure.name.findName();
-            assert.equal(name, 'Homer Lesch Sr.');
-            pure.seed();
-        });
+        it('should return number less than maximum determined', () => {
+            sinon.stub(Math, 'floor').returns(4);
+            const result = pure.random.number({ min: 2, max: 3, precision: 2 });
 
-        it('should return deterministic results when seeded with array - one element', () => {
-            pure.seed([10]);
-            const name = pure.name.findName();
-            assert.equal(name, 'Randy Haag PhD');
-            pure.seed();
-        });
-
-        it('should return deterministic results when seeded with array - multiple elements', () => {
-            pure.seed([10, 100, 1000]);
-            const name = pure.name.findName();
-            assert.equal(name, 'Jerry Smith');
-            pure.seed();
+            assert.ok(result <= 3);
+            assert.ok(result >= 2);
+            Math.floor.restore();
         });
     });
 
@@ -415,6 +404,27 @@ describe('random.js', () => {
 
             const name = pure.name.findName();
             expect(name.length).greaterThan(1);
+            pure.seed();
+        });
+
+        it('should return deterministic results when seeded with integer', () => {
+            pure.seed(100);
+            const name = pure.name.findName();
+            assert.equal(name, 'Homer Lesch Sr.');
+            pure.seed();
+        });
+
+        it('should return deterministic results when seeded with array - one element', () => {
+            pure.seed([10]);
+            const name = pure.name.findName();
+            assert.equal(name, 'Randy Haag PhD');
+            pure.seed();
+        });
+
+        it('should return deterministic results when seeded with array - multiple elements', () => {
+            pure.seed([10, 100, 1000]);
+            const name = pure.name.findName();
+            assert.equal(name, 'Jerry Smith');
             pure.seed();
         });
     });
