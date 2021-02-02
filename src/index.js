@@ -152,7 +152,7 @@ class Pure {
                 'vehicleModel',
                 'vehicleType',
                 'vehicleFuel',
-                'airportName'
+                'airportName',
             ],
             title: '',
             separator: '',

@@ -2,7 +2,7 @@
 
 const program = require('commander');
 const startRepl = require('../src/cli/repl');
-const generator = require('../src/cli/generator');
+const { generator } = require('../src/cli/generator');
 
 program
     .command('repl')
