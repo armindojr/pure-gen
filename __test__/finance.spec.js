@@ -4,7 +4,7 @@ const pure = require('../index');
 const luhnFormula = require('./support/luhnCheck.js');
 
 describe('finance.js', () => {
-    describe('account( length )', () => {
+    describe('account()', () => {
         it('should supply a default length if no length is passed', () => {
             const account = pure.finance.account();
 
@@ -51,12 +51,12 @@ describe('finance.js', () => {
         });
     });
 
-    describe('mask( length, parens, ellipsis )', () => {
+    describe('mask()', () => {
         it('should set a default length', () => {
             // default account mask length
             const expected = 4;
 
-            const mask = pure.finance.mask(null, false, false);
+            const mask = pure.finance.mask({ length: null });
 
             const actual = mask.length;
 
@@ -68,7 +68,7 @@ describe('finance.js', () => {
 
             expected = (expected === 0 || !expected || typeof expected === 'undefined') ? 4 : expected;
 
-            const mask = pure.finance.mask(expected, false, false);
+            const mask = pure.finance.mask({ length: expected });
 
             // picks 4 if the random number generator picks 0
             const actual = mask.length;
@@ -79,7 +79,7 @@ describe('finance.js', () => {
         it('should set a default length of 4 for a zero value', () => {
             const expected = 4;
 
-            const mask = pure.finance.mask(0, false, false);
+            const mask = pure.finance.mask({ length: 0 });
             // picks 4 if the random number generator picks 0
             const actual = mask.length;
 
@@ -89,7 +89,7 @@ describe('finance.js', () => {
         it('should by default include parentheses around a partial account number', () => {
             const expected = true;
 
-            const mask = pure.finance.mask(null, null, false);
+            const mask = pure.finance.mask({ length: null, parens: null });
 
             const regexp = new RegExp(/(\(\d{4}?\))/);
             const actual = regexp.test(mask);
@@ -100,25 +100,16 @@ describe('finance.js', () => {
         it('should by default include an ellipsis', () => {
             const expected = true;
 
-            const mask = pure.finance.mask(null, false, null);
+            const mask = pure.finance.mask({ length: null, ellipsis: null });
 
             const regexp = new RegExp(/(\.\.\.\d{4})/);
             const actual = regexp.test(mask);
 
             assert.equal(actual, expected, `The expected match for parentheses is ${expected} but it was ${actual}`);
         });
-
-        it('should work when random variables are passed into the arguments', () => {
-            const length = pure.random.number(20);
-            const ellipsis = (length % 2 === 0);
-            const parens = !ellipsis;
-
-            const mask = pure.finance.mask(length, ellipsis, parens);
-            assert.ok(mask);
-        });
     });
 
-    describe('amount(min, max, dec, symbol)', () => {
+    describe('amount()', () => {
         it('should use the default amounts when not passing arguments', () => {
             const amount = pure.finance.amount();
 
@@ -127,11 +118,11 @@ describe('finance.js', () => {
             assert.equal((amount < 1001), true, 'the amount should be greater than 0');
         });
 
-        it('should use the defaul decimal location when not passing arguments', () => {
-            const amount = pure.finance.amount(100, 100, 1);
+        it('should use the default decimal location when not passing arguments', () => {
+            const amount = pure.finance.amount({ min: 100, max: 100 });
 
             assert.ok(amount);
-            assert.strictEqual(amount, '100.0', 'the amount should be equal 100.0');
+            assert.strictEqual(amount, '100.00', 'the amount should be equal 100.00');
         });
 
         // TODO: add support for more currency and decimal options
@@ -147,7 +138,7 @@ describe('finance.js', () => {
         });
 
         it('it should handle negative amounts', () => {
-            const amount = pure.finance.amount(-200, -1);
+            const amount = pure.finance.amount({ min: -200, max: -1 });
 
             assert.ok(amount);
             assert.equal((amount < 0), true, 'the amount should be greater than 0');
@@ -155,21 +146,21 @@ describe('finance.js', () => {
         });
 
         it('it should handle argument dec', () => {
-            const amount = pure.finance.amount(100, 100, 1);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 1 });
 
             assert.ok(amount);
             assert.equal(amount.length, 5);
         });
 
         it('it should handle argument dec = 0', () => {
-            const amount = pure.finance.amount(100, 100, 0);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 0 });
 
             assert.ok(amount);
             assert.strictEqual(amount, '100', 'the amount should be equal 100');
         });
 
         it('it should return a string', () => {
-            const amount = pure.finance.amount(100, 100, 0);
+            const amount = pure.finance.amount({ min: 100, max: 100, dec: 0 });
 
             const typeOfAmount = typeof amount;
 
@@ -191,6 +182,22 @@ describe('finance.js', () => {
             const currencyCode = pure.finance.currencyCode();
 
             assert.ok(currencyCode.match(/[A-Z]{3}/));
+        });
+    });
+
+    describe('currencySymbol()', () => {
+        it('return random currency symbol', () => {
+            const symbol = pure.finance.currencySymbol();
+
+            assert.ok(symbol);
+        });
+    });
+
+    describe('currencyName()', () => {
+        it('return random currency name', () => {
+            const name = pure.finance.currencyName();
+
+            assert.ok(name);
         });
     });
 
@@ -281,7 +288,7 @@ describe('finance.js', () => {
             assert.ok(luhnFormula(number));
         });
         it('returns a valid credit card number when locale credit_card provider has only one string', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: {
                     visa: '4###########L',
                 },
@@ -291,7 +298,7 @@ describe('finance.js', () => {
             stub.restore();
         });
         it('returns a valid credit card number when locale credit_card has one string', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: '4###########L',
             }));
             const number = pure.finance.creditCardNumber();
@@ -300,7 +307,7 @@ describe('finance.js', () => {
         });
         it('returns a valid credit card number when locale credit_card provider has only one string '
         + 'and provider is passed as parameter', () => {
-            const stub = sinon.stub(pure.definitions, 'finance').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
                 credit_card: {
                     visa: '4###########L',
                 },
@@ -327,8 +334,15 @@ describe('finance.js', () => {
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
         });
 
+        it('returns a random yet formally correct IBAN number when country is AL', () => {
+            const iban = pure.finance.iban('AL');
+            const bban = iban.substring(4) + iban.substring(0, 4);
+
+            assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
+        });
+
         it('returns a random yet formally correct IBAN number for specific country', () => {
-            const iban = pure.finance.iban(false, 'DE');
+            const iban = pure.finance.iban({ formatted: false, country: 'DE' });
             const bban = iban.substring(4) + iban.substring(0, 4);
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
@@ -336,7 +350,7 @@ describe('finance.js', () => {
         });
 
         it('returns a random and formatted correct IBAN number for specific country', () => {
-            const iban = pure.finance.iban(true, 'DE');
+            const iban = pure.finance.iban({ formatted: true, country: 'DE' });
 
             const result = iban.split(' ');
             assert.equal(result.length, 6);
@@ -344,7 +358,7 @@ describe('finance.js', () => {
         });
 
         it('returns a random and formatted correct IBAN number when country don\'t exists', () => {
-            const iban = pure.finance.iban(true, 'QQ');
+            const iban = pure.finance.iban({ formatted: true, country: 'QQ' });
 
             expect(iban.length).greaterThan(15);
         });
@@ -358,7 +372,7 @@ describe('finance.js', () => {
         });
 
         it('returns a correct IBAN number when ibanLib.formats.type is a', () => {
-            const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'iban').get(() => ({
                 formats: [
                     {
                         country: 'VG',
@@ -375,12 +389,12 @@ describe('finance.js', () => {
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
             stub.restore();
         });
-        
+
         it('returns a correct IBAN given specific conditions', () => {
             sinon.stub(pure.random, 'number').returns(20);
             sinon.stub(pure.random, 'boolean').returns(true);
-            
-            const stub = sinon.stub(pure.definitions, 'iban').get(() => ({
+
+            const stub = sinon.stub(pure.registeredModules, 'iban').get(() => ({
                 formats: [
                     {
                         country: 'VG',
@@ -391,21 +405,21 @@ describe('finance.js', () => {
                 ],
             }));
 
-            const iban = pure.finance.iban(false, 'VG');
+            const iban = pure.finance.iban({ formatted: false, country: 'VG' });
             const bban = iban.substring(4) + iban.substring(0, 4);
 
             assert.equal(pure.helpers.mod97(pure.helpers.toDigitString(bban)), 1, 'the result should be equal to 1');
 
-            pure.random.number.restore()
-            pure.random.boolean.restore()
+            pure.random.number.restore();
+            pure.random.boolean.restore();
             stub.restore();
-        })
+        });
     });
 
     describe('bic()', () => {
         it('returns a random yet formally correct BIC number', () => {
             const bic = pure.finance.bic();
-            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
             const reg = new RegExp(exp, 'i');
 
             assert.ok(bic.match(reg));
@@ -413,7 +427,7 @@ describe('finance.js', () => {
         it('returns correct BIC number when random number < 10', () => {
             sinon.stub(pure.random, 'number').returns(3);
             const bic = pure.finance.bic();
-            const exp = `^[A-Z]{4}(${pure.definitions.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+            const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
             const reg = new RegExp(exp, 'i');
 
             assert.ok(bic.match(reg));

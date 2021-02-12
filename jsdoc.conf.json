@@ -1,0 +1,26 @@
+{
+  "opts": {
+    "destination": "./docs/",
+    "template": "./node_modules/minami"
+  },
+  "source": {
+    "include": [
+      "src",
+      "src/cli",
+      "src/modules",
+      "src/image_providers"
+    ],
+    "exclude": [
+      "src/locales"
+    ]
+  },
+  "templates": {
+    "systemName": "pure-gen",
+    "default": {
+      "includeDate": false
+    }
+  },
+  "plugins": [
+    "plugins/markdown"
+  ]
+}

@@ -6,7 +6,7 @@ const pure = require('../index');
 describe('locale', () => {
     describe('setLocale()', () => {
         it('setLocale() changes pure.locale', () => {
-            Object.keys(pure.locales).forEach((locale) => {
+            Object.keys(pure.possibleLocales).forEach((locale) => {
                 pure.setLocale(locale);
                 assert.equal(pure.locale, locale);
             });

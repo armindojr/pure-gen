@@ -1,0 +1,18 @@
+{
+    "all": true,
+    "include": [
+        "src/*.js",
+        "src/modules/*.js",
+        "src/image_providers/*.js",
+        "src/cli/*.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "coverage",
+        "locale",
+        "docs",
+        "__test__"
+    ],
+    "check-coverage": true,
+    "statements": 99
+}

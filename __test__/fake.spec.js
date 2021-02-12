@@ -10,7 +10,7 @@ describe('fake.js', () => {
         });
 
         it('replaces multiple tokens with random values for methods with no parameters', () => {
-            const name = pure.fake('{{helpers.randomize}}{{helpers.randomize}}{{helpers.randomize}}');
+            const name = pure.fake('{{random.arrayElement}}{{random.arrayElement}}{{random.arrayElement}}');
             assert.ok(name.match(/[abc]{3}/));
         });
 
@@ -21,17 +21,26 @@ describe('fake.js', () => {
 
         it('replaces a token with a random value for a method with an array parameter', () => {
             const arr = ['one', 'two', 'three'];
-            const random = pure.fake('{{helpers.randomize(["one", "two", "three"])}}');
+            const random = pure.fake('{{random.arrayElement(["one", "two", "three"])}}');
             assert.ok(arr.indexOf(random) > -1);
+        });
+
+        it('allows the user to pass single parameter that isn\'t JSON', () => {
+            const result = pure.fake('{{helpers.replaceSymbols(\'{\')}}');
+
+            assert.ok(/{/g.test(result));
         });
 
         it('allows the user to pass multiple parameters to a function', () => {
             sinon.spy(pure.date, 'between');
 
-            pure.fake('{{date.between("2015-01-01", "2015-01-05")}}');
+            const from = new Date('2015-01-01').toISOString();
+            const to = new Date('2015-01-05').toISOString();
+            const result = pure.fake('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
 
             assert.ok(pure.date.between.calledOnce);
-            assert.ok(pure.date.between.withArgs('2015-01-01', '2015-01-05'));
+            assert.ok(from <= result);
+            assert.ok(result <= to);
 
             pure.date.between.restore();
         });
@@ -39,6 +48,12 @@ describe('fake.js', () => {
         it('does not allow undefined parameters', () => {
             assert.throws(() => {
                 pure.fake();
+            }, Error);
+        });
+
+        it('does not allow params as JSON unformatted', () => {
+            assert.throws(() => {
+                pure.fake('{{date.between({ from: "2015-01-01", to: "2015-01-05" })}}');
             }, Error);
         });
 

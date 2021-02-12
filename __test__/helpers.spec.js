@@ -7,7 +7,7 @@ describe('helpers.js', () => {
     describe('replaceSymbolWithNumber()', () => {
         describe('when no symbol passed in', () => {
             it("uses '#' by default", () => {
-                const num = pure.helpers.replaceSymbolWithNumber('#AB');
+                const num = pure.helpers.replaceSymbolWithNumber({ string: '#AB' });
                 assert.ok(num.match(/\dAB/));
             });
         });
@@ -21,7 +21,7 @@ describe('helpers.js', () => {
 
         describe('when symbol passed in', () => {
             it('replaces that symbol with integers', () => {
-                const num = pure.helpers.replaceSymbolWithNumber('#AB', 'A');
+                const num = pure.helpers.replaceSymbolWithNumber({ string: '#AB', symbol: 'A' });
                 assert.ok(num.match(/#\dB/));
             });
         });
@@ -130,19 +130,9 @@ describe('helpers.js', () => {
         });
     });
 
-    // Make sure we keep this function for backward-compatibility.
-    describe('randomize()', () => {
-        it('returns a random element from an array', () => {
-            const arr = ['a', 'b', 'c'];
-            const elem = pure.helpers.randomize(arr);
-            assert.ok(elem);
-            assert.ok(arr.indexOf(elem) !== -1);
-        });
-    });
-
     describe('replaceCreditCardSymbols()', () => {
         it('returns a credit card number given a schema', () => {
-            const number = pure.helpers.replaceCreditCardSymbols('6453-####-####-####-###L');
+            const number = pure.helpers.replaceCreditCardSymbols({ string: '6453-####-####-####-###L' });
             assert.ok(number.match(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/));
             assert.ok(luhnCheck(number));
         });
@@ -152,15 +142,15 @@ describe('helpers.js', () => {
             assert.equal(number.length, 1);
         });
         it('supports different symbols', () => {
-            const number = pure.helpers.replaceCreditCardSymbols('6453-****-****-****-***L', '*');
+            const number = pure.helpers.replaceCreditCardSymbols({ string: '6453-****-****-****-***L', symbol: '*' });
             assert.ok(number.match(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/));
             assert.ok(luhnCheck(number));
         });
         it('handles regexp style input', () => {
-            let number = pure.helpers.replaceCreditCardSymbols('6453-*{4}-*{4}-*{4}-*{3}L', '*');
+            let number = pure.helpers.replaceCreditCardSymbols({ string: '6453-*{4}-*{4}-*{4}-*{3}L', symbol: '*' });
             assert.ok(number.match(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/));
             assert.ok(luhnCheck(number));
-            number = pure.helpers.replaceCreditCardSymbols('645[5-9]-#{4,6}-#{1,2}-#{4,6}-#{3}L');
+            number = pure.helpers.replaceCreditCardSymbols({ string: '645[5-9]-#{4,6}-#{1,2}-#{4,6}-#{3}L' });
             assert.ok(number.match(/^645[5-9]-([0-9]){4,6}-([0-9]){1,2}-([0-9]){4,6}-([0-9]){4}$/));
             assert.ok(luhnCheck(number));
         });
@@ -181,9 +171,9 @@ describe('helpers.js', () => {
             assert.ok(string.match(/^#{5,10}$/));
         });
         it('repeats string {n} number of times', () => {
-            assert.ok(pure.helpers.regexpStyleStringParse('%{10}') === pure.helpers.repeatString('%', 10));
-            assert.ok(pure.helpers.regexpStyleStringParse('%{30}') === pure.helpers.repeatString('%', 30));
-            assert.ok(pure.helpers.regexpStyleStringParse('%{5}') === pure.helpers.repeatString('%', 5));
+            assert.ok(pure.helpers.regexpStyleStringParse('%{10}') === pure.helpers.repeatString({ string: '%', num: 10 }));
+            assert.ok(pure.helpers.regexpStyleStringParse('%{30}') === pure.helpers.repeatString({ string: '%', num: 30 }));
+            assert.ok(pure.helpers.regexpStyleStringParse('%{5}') === pure.helpers.repeatString({ string: '%', num: 5 }));
         });
         it('creates a numerical range', () => {
             const string = pure.helpers.regexpStyleStringParse('Hello[0-9]');
@@ -220,9 +210,9 @@ describe('helpers.js', () => {
         });
 
         it('replace symbol and don\'t replace number', () => {
-            const replace = pure.helpers.replaceSymbolWithHex('92hd7##');
+            const replace = pure.helpers.replaceSymbolWithHex({ string: '92hd7##' });
 
-            expect(replace).to.contain('92hd7')
+            expect(replace).to.contain('92hd7');
         });
     });
 });

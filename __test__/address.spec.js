@@ -187,6 +187,14 @@ describe('address.js', () => {
         });
     });
 
+    describe('streetPrefix()', () => {
+        it('return random street prefix', () => {
+            const prefix = pure.address.streetPrefix();
+
+            assert.ok(prefix);
+        });
+    });
+
     describe('secondaryAddress()', () => {
         it('randomly chooses an Apt or Suite number', () => {
             sinon.spy(pure.random, 'arrayElement');
@@ -269,6 +277,14 @@ describe('address.js', () => {
         });
     });
 
+    describe('stateAbbr()', () => {
+        it('return random street prefix', () => {
+            const abbr = pure.address.stateAbbr();
+
+            assert.ok(abbr);
+        });
+    });
+
     describe('zipCode()', () => {
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
@@ -288,14 +304,14 @@ describe('address.js', () => {
 
         it('returns zipCode with proper locale format', () => {
             // we'll use the en_CA locale..
-            pure.locale = 'en_CA';
+            pure.setLocale('en_CA');
             const zipCode = pure.address.zipCode();
             assert.ok(zipCode.match(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/));
         });
 
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
-            const stub = sinon.stub(pure.definitions, 'address').get(() => ({
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
                 postcode: '#####',
             }));
             const zipCode = pure.address.zipCode();
@@ -309,7 +325,7 @@ describe('address.js', () => {
 
     describe('zipCodeByState()', () => {
         it('returns zipCode valid for specified State', () => {
-            pure.locale = 'en_US';
+            pure.setLocale('en_US');
             const states = ['IL', 'GA', 'WA'];
 
             const zipCode1 = pure.address.zipCodeByState(states[0]);
@@ -333,14 +349,14 @@ describe('address.js', () => {
         });
 
         it('returns undefined if state is valid but localeis invalid', () => {
-            pure.locale = 'zh_CN';
+            pure.setLocale('zh_CN');
             const state = 'IL';
             sinon.spy(pure.address, 'zipCode');
             const zipCode = pure.address.zipCodeByState(state);
             assert.ok(pure.address.zipCode.called);
             assert.ok(typeof zipCode === 'string');
             pure.address.zipCode.restore();
-            pure.locale = 'en';
+            pure.setLocale('en');
         });
     });
 
@@ -358,7 +374,7 @@ describe('address.js', () => {
 
         it('returns latitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude(-5, 5);
+            const latitude = pure.address.latitude({ max: -5, min: 5 });
             assert.ok(typeof latitude === 'string');
             assert.equal(latitude.split('.')[1].length, 4);
             const latitudeFloat = parseFloat(latitude);
@@ -370,7 +386,7 @@ describe('address.js', () => {
 
         it('returns random latitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude(undefined, undefined, 7);
+            const latitude = pure.address.latitude({ precision: 7 });
             assert.ok(typeof latitude === 'string');
             assert.equal(latitude.split('.')[1].length, 7);
             const latitudeFloat = parseFloat(latitude);
@@ -395,7 +411,7 @@ describe('address.js', () => {
 
         it('returns random longitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const longitude = pure.address.longitude(100, -30);
+            const longitude = pure.address.longitude({ max: 100, min: -30 });
             assert.ok(typeof longitude === 'string');
             assert.equal(longitude.split('.')[1].length, 4);
             const longitudeFloat = parseFloat(longitude);
@@ -407,7 +423,7 @@ describe('address.js', () => {
 
         it('returns random longitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
-            const longitude = pure.address.longitude(undefined, undefined, 7);
+            const longitude = pure.address.longitude({ precision: 7 });
             assert.ok(typeof longitude === 'string');
             assert.equal(longitude.split('.')[1].length, 7);
             const longitudeFloat = parseFloat(longitude);
@@ -428,6 +444,12 @@ describe('address.js', () => {
         });
 
         it('returns abbreviation when useAbbr is false', () => {
+            const direction = pure.address.direction(false);
+
+            assert.equal(typeof direction, 'string');
+        });
+
+        it('returns abbreviation when useAbbr is false stubbed', () => {
             sinon.stub(pure.address, 'direction').returns('N');
             const direction = pure.address.direction(false);
             assert.equal(direction, 'N');
@@ -440,7 +462,7 @@ describe('address.js', () => {
             assert.equal(direction.length <= 2, true);
         });
 
-        it('returns abbreviation when useAbbr is true', () => {
+        it('returns abbreviation when useAbbr is true stubbed', () => {
             sinon.stub(pure.address, 'direction').returns('N');
             const direction = pure.address.direction(true);
             assert.equal(direction, 'N');
@@ -457,7 +479,7 @@ describe('address.js', () => {
             pure.address.ordinalDirection.restore();
         });
 
-        it('returns abbreviation when useAbbr is true', () => {
+        it('returns abbreviation when useAbbr is true stubbed', () => {
             sinon.stub(pure.address, 'ordinalDirection').returns('W');
             const ordinalDirection = pure.address.ordinalDirection(true);
 
@@ -470,6 +492,12 @@ describe('address.js', () => {
             assert.equal(typeof ordinalDirection, 'string');
             assert.equal(ordinalDirection.length <= 2, true);
         });
+
+        it('returns abbreviation when useAbbr is true', () => {
+            const ordinalDirection = pure.address.ordinalDirection(false);
+
+            assert.equal(typeof ordinalDirection, 'string');
+        });
     });
 
     describe('cardinalDirection()', () => {
@@ -481,7 +509,7 @@ describe('address.js', () => {
             pure.address.cardinalDirection.restore();
         });
 
-        it('returns abbreviation when useAbbr is true', () => {
+        it('returns abbreviation when useAbbr is true stubbed', () => {
             sinon.stub(pure.address, 'cardinalDirection').returns('NW');
             const cardinalDirection = pure.address.cardinalDirection(true);
 
@@ -494,48 +522,69 @@ describe('address.js', () => {
             assert.equal(typeof cardinalDirection, 'string');
             assert.equal(cardinalDirection.length <= 2, true);
         });
+
+        it('returns abbreviation when useAbbr is false', () => {
+            const cardinalDirection = pure.address.cardinalDirection(false);
+
+            assert.equal(typeof cardinalDirection, 'string');
+        });
     });
 
     describe('nearbyGPSCoordinate()', () => {
         it('returns random gps coordinate within a distance of another one', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const coord = [latFloat1, lonFloat1];
             const isMetric = (Math.round(Math.random()) === 1);
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, isMetric);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
         });
+
+        it('returns random gps coordinate when coordinate is undefined', () => {
+            // test once with undefined radius
+            const coordinate = pure.address.nearbyGPSCoordinate({ isMetric: true });
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+        });
+
         it('test coordinateWithOffset when isMetric is true', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
         });
+
         it('test coordinateWithOffset when isMetric is false', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const coord = [latFloat1, lonFloat1];
 
             // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, false);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: false });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
         });
+
         it('test coordinateWithOffset when lon2 is lesser than -3.14...', () => {
             sinon.stub(Math, 'atan2').returns(-0.80);
             pure.seed(5);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const coord = [latFloat1, lonFloat1];
             const seed = pure.getSeed();
 
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
@@ -543,18 +592,52 @@ describe('address.js', () => {
             Math.atan2.restore();
             pure.seed();
         });
+
         it('test coordinateWithOffset when lon2 is greater than 3.14...', () => {
             sinon.stub(Math, 'atan2').returns(0.50);
             pure.seed(1);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
+            const coord = [latFloat1, lonFloat1];
 
-            const coordinate = pure.address.nearbyGPSCoordinate([latFloat1, lonFloat1], undefined, true);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
             assert.ok(coordinate.length === 2);
             assert.ok(typeof coordinate[0] === 'string');
             assert.ok(typeof coordinate[1] === 'string');
             Math.atan2.restore();
             pure.seed();
+        });
+
+        it('returns correctly when no argument passed', () => {
+            const coordinate = pure.address.nearbyGPSCoordinate();
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+        });
+
+        it('returns correctly when lon is greather than 180', () => {
+            sinon.stub(Math, 'atan2').returns(2);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, 200] });
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(coordinate[1] === '-45.4084');
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+
+            Math.atan2.restore();
+        });
+
+        it('returns correctly when lon is less than -180', () => {
+            sinon.stub(Math, 'atan2').returns(-2);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, -185] });
+
+            assert.ok(coordinate.length === 2);
+            assert.ok(coordinate[1] === '60.4084');
+            assert.ok(typeof coordinate[0] === 'string');
+            assert.ok(typeof coordinate[1] === 'string');
+
+            Math.atan2.restore();
         });
     });
 

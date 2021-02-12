@@ -1,4 +1,5 @@
 const { assert } = require('chai');
+const sinon = require('sinon');
 const pure = require('../index');
 
 describe('document.js', () => {
@@ -19,6 +20,14 @@ describe('document.js', () => {
             const document = pure.document.brazilianCitizenNumber('ececefesds');
 
             assert.equal(document.length, 11);
+        });
+
+        it('when mod 11 returns 10', () => {
+            sinon.stub(pure.helpers, 'replaceSymbolWithNumber').returns('111119999');
+            const document = pure.document.brazilianCitizenNumber();
+
+            assert.equal(document.length, 11);
+            pure.helpers.replaceSymbolWithNumber.restore();
         });
     });
 

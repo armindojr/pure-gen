@@ -11,7 +11,7 @@ describe('company.js', () => {
             const parts = name.split(' ');
 
             assert.strictEqual(parts.length, 4);
-            assert.ok(pure.name.lastName.calledThrice);
+            assert.ok(pure.name.lastName.calledOnce);
 
             pure.random.number.restore();
             pure.name.lastName.restore();
@@ -24,7 +24,7 @@ describe('company.js', () => {
             const parts = name.split('-');
 
             assert.ok(parts.length >= 2);
-            assert.ok(pure.name.lastName.calledTwice);
+            assert.ok(pure.name.lastName.calledOnce);
 
             pure.random.number.restore();
             pure.name.lastName.restore();
@@ -52,7 +52,7 @@ describe('company.js', () => {
             const parts = name.split(' ');
 
             assert.strictEqual(parts.length, 4);
-            assert.ok(pure.name.lastName.calledThrice);
+            assert.ok(pure.name.lastName.calledOnce);
 
             pure.name.lastName.restore();
         });

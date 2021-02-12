@@ -1,9 +1,10 @@
 const { assert, expect } = require('chai');
+const sinon = require('sinon');
 const pure = require('../index');
 const Pure = require('../src');
 
 describe('random.js', () => {
-    describe('number', () => {
+    describe('number()', () => {
         it('returns a random number given a maximum value as Number', () => {
             const max = 10;
             assert.ok(pure.random.number(max) <= max);
@@ -38,8 +39,8 @@ describe('random.js', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 1.5)
-            assert.ok(result >= 0)
+            assert.ok(result <= 1.5);
+            assert.ok(result >= 0);
             pure.seed();
         });
 
@@ -47,17 +48,17 @@ describe('random.js', () => {
             const options = { min: 0, max: 2, precision: 15 };
             const result = pure.random.number(options);
 
-            expect(result.toString().length).to.be.below(13)
-            assert.ok(result <= 2)
-            assert.ok(result >= 0)
+            expect(result.toString().length).to.be.below(13);
+            assert.ok(result <= 2);
+            assert.ok(result >= 0);
         });
 
         it('provides numbers with precision less than 1', () => {
             const options = { min: 0, max: 2, precision: -1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 2)
-            assert.ok(result >= 0)
+            assert.ok(result <= 2);
+            assert.ok(result >= 0);
         });
 
         it('provides numbers with a with exact precision', () => {
@@ -82,29 +83,17 @@ describe('random.js', () => {
             assert.equal(opts.max, max);
         });
 
-        it('should return deterministic results when seeded with integer', () => {
-            pure.seed(100);
-            const name = pure.name.findName();
-            assert.equal(name, 'Homer Lesch Sr.');
-            pure.seed();
-        });
+        it('should return number less than maximum determined', () => {
+            sinon.stub(Math, 'floor').returns(4);
+            const result = pure.random.number({ min: 2, max: 3, precision: 2 });
 
-        it('should return deterministic results when seeded with array - one element', () => {
-            pure.seed([10]);
-            const name = pure.name.findName();
-            assert.equal(name, 'Randy Haag PhD');
-            pure.seed();
-        });
-
-        it('should return deterministic results when seeded with array - multiple elements', () => {
-            pure.seed([10, 100, 1000]);
-            const name = pure.name.findName();
-            assert.equal(name, 'Jerry Smith');
-            pure.seed();
+            assert.ok(result <= 3);
+            assert.ok(result >= 2);
+            Math.floor.restore();
         });
     });
 
-    describe('float', () => {
+    describe('float()', () => {
         it('returns a random float with a default precision value (0.01)', () => {
             const number = pure.random.float();
             assert.equal(number, Number(number.toFixed(2)));
@@ -148,8 +137,8 @@ describe('random.js', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 1.5)
-            assert.ok(result >= 0)
+            assert.ok(result <= 1.5);
+            assert.ok(result >= 0);
         });
 
         it('provides numbers with a with exact precision', () => {
@@ -175,7 +164,7 @@ describe('random.js', () => {
         });
     });
 
-    describe('arrayElement', () => {
+    describe('arrayElement()', () => {
         it('returns a random element in the array', () => {
             const testArray = ['hello', 'to', 'you', 'my', 'friend'];
             assert.ok(testArray.indexOf(pure.random.arrayElement(testArray)) > -1);
@@ -187,7 +176,13 @@ describe('random.js', () => {
         });
     });
 
-    describe('arrayElements', () => {
+    describe('arrayElements()', () => {
+        it('returns random array element', () => {
+            const elem = pure.random.arrayElements();
+
+            assert.ok(elem);
+        });
+
         it('returns a subset with random elements in the array', () => {
             const testArray = ['hello', 'to', 'you', 'my', 'friend'];
             const subset = pure.random.arrayElements(testArray);
@@ -254,7 +249,15 @@ describe('random.js', () => {
         });
     });
 
-    describe('generateObj', () => {
+    describe('objectElement()', () => {
+        it('return random object element', () => {
+            const elem = pure.random.objectElement();
+
+            assert.ok(elem);
+        });
+    });
+
+    describe('generateObj()', () => {
         it('returns an object of two elements with random keys and values', () => {
             const object = pure.random.generateObj();
             const keys = Object.keys(object);
@@ -271,22 +274,40 @@ describe('random.js', () => {
         });
     });
 
-    describe('UUID', () => {
-        it('should generate a valid UUID', () => {
+    describe('UUID()', () => {
+        it('should generate a valid UUID v1', () => {
             const UUID = pure.random.uuid();
+            const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+            assert.ok(RFC4122.test(UUID));
+        });
+
+        it('should generate a valid UUID v4', () => {
+            const UUID = pure.random.uuid('v4');
+            const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+            assert.ok(RFC4122.test(UUID));
+        });
+
+        it('should generate a valid UUID v5', () => {
+            const UUID = pure.random.uuid('v5', { name: undefined, namespace: undefined });
+            const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+            assert.ok(RFC4122.test(UUID));
+        });
+
+        it('should generate a valid UUID v5 passing name as opt', () => {
+            const UUID = pure.random.uuid('v5', { name: 'uuid', namespace: undefined });
             const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
             assert.ok(RFC4122.test(UUID));
         });
     });
 
-    describe('boolean', () => {
+    describe('boolean()', () => {
         it('should generate a boolean value', () => {
             const bool = pure.random.boolean();
             assert.ok(typeof bool === 'boolean');
         });
     });
 
-    describe('semver', () => {
+    describe('semver()', () => {
         const semver = pure.system.semver();
 
         it('should generate a string', () => {
@@ -298,7 +319,15 @@ describe('random.js', () => {
         });
     });
 
-    describe('alpha', () => {
+    describe('locale()', () => {
+        it('return random locale', () => {
+            const loc = pure.random.locale();
+
+            assert.ok(loc);
+        });
+    });
+
+    describe('alpha()', () => {
         const { alpha } = pure.random;
 
         it('should return single letter when no count provided', () => {
@@ -318,7 +347,7 @@ describe('random.js', () => {
         });
     });
 
-    describe('alphaNumeric', () => {
+    describe('alphaNumeric()', () => {
         const { alphaNumeric } = pure.random;
 
         it('should generate single character when no additional argument was provided', () => {
@@ -330,7 +359,7 @@ describe('random.js', () => {
         });
     });
 
-    describe('hexaDecimal', () => {
+    describe('hexaDecimal()', () => {
         const { hexaDecimal } = pure.random;
 
         it('should generate single hex character when no additional argument was provided', () => {
@@ -344,7 +373,7 @@ describe('random.js', () => {
         });
     });
 
-    describe('independent', () => {
+    describe('independent()', () => {
         it('generates independent sequences', () => {
             const pure1 = new Pure();
             pure1.seed(1);
@@ -369,7 +398,7 @@ describe('random.js', () => {
         });
     });
 
-    describe('seed', () => {
+    describe('seed()', () => {
         it('passing empty array to seed', () => {
             pure.seed([]);
 
@@ -377,9 +406,30 @@ describe('random.js', () => {
             expect(name.length).greaterThan(1);
             pure.seed();
         });
+
+        it('should return deterministic results when seeded with integer', () => {
+            pure.seed(100);
+            const name = pure.name.findName();
+            assert.equal(name, 'Homer Lesch Sr.');
+            pure.seed();
+        });
+
+        it('should return deterministic results when seeded with array - one element', () => {
+            pure.seed([10]);
+            const name = pure.name.findName();
+            assert.equal(name, 'Randy Haag PhD');
+            pure.seed();
+        });
+
+        it('should return deterministic results when seeded with array - multiple elements', () => {
+            pure.seed([10, 100, 1000]);
+            const name = pure.name.findName();
+            assert.equal(name, 'Jerry Smith');
+            pure.seed();
+        });
     });
 
-    describe('words', () => {
+    describe('words()', () => {
         it('passing "count" parameter', () => {
             const words = pure.random.words(5);
 

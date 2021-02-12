@@ -43,6 +43,30 @@ describe('system.js', () => {
         });
     });
 
+    describe('mimeType()', () => {
+        it('returns random mimetype', () => {
+            const mime = pure.system.mimeType();
+
+            assert.ok(mime);
+        });
+    });
+
+    describe('commonFileType()', () => {
+        it('returns random common file type', () => {
+            const file = pure.system.commonFileType();
+
+            assert.ok(file);
+        });
+    });
+
+    describe('fileType()', () => {
+        it('returns random common file type', () => {
+            const file = pure.system.fileType();
+
+            assert.ok(file);
+        });
+    });
+
     describe('commonFileName()', () => {
         it('returns filenames without system path seperators', () => {
             sinon.stub(pure.random, 'words').returns('24/7');

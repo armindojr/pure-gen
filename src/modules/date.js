@@ -2,262 +2,276 @@
  *
  * @namespace pure.date
  */
-function pureDate(pure) {
-    /**
-     * past
-     *
-     * @description Generate random past date from today or parameters
-     * @param {Number} [years= 1] How many years the date possible be before refDate
-     * @param {date} [refDate= Today] Reference to generate past this time
-     * @method pure.date.past
-     * @example
-     * console.log(pure.date.past());
-     * //outputs: "2020-01-20T10:01:25.062Z"
-     */
-    this.past = (years, refDate) => {
-        let date = new Date();
-        if (typeof refDate !== 'undefined') {
-            date = new Date(Date.parse(refDate));
-        }
+class pureDate {
+    constructor(pure) {
+        /**
+         * past
+         *
+         * @description Generate random past date from today or parameters
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.years= 1] How many years the date possible be before refDate
+         * @param {date} [options.refDate= Today] Reference to generate past this time
+         * @method pure.date.past
+         * @example
+         * console.log(pure.date.past());
+         * //outputs: "2020-01-20T10:01:25.062Z"
+         */
+        this.past = (options = {}) => {
+            const { years = 1, refDate } = options;
+            let date = new Date();
 
-        const range = {
-            min: 1000,
-            max: (years || 1) * 365 * 24 * 3600 * 1000,
+            if (typeof refDate !== 'undefined') {
+                date = new Date(Date.parse(refDate));
+            }
+
+            const range = {
+                min: 1000,
+                max: years * 365 * 24 * 3600 * 1000,
+            };
+
+            let past = date.getTime();
+            // some time from now to N years ago, in milliseconds
+            past -= pure.random.number(range);
+            date.setTime(past);
+
+            return date;
         };
 
-        let past = date.getTime();
-        // some time from now to N years ago, in milliseconds
-        past -= pure.random.number(range);
-        date.setTime(past);
+        /**
+         * future
+         *
+         * @description Generate random future date from today or parameters
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.years= 1] How many years the date possible be after refDate
+         * @param {date} [options.refDate= Today] Reference to generate future this time
+         * @method pure.date.future
+         * @example
+         * console.log(pure.date.future());
+         * //outputs: "2021-02-13T02:06:21.464Z"
+         */
+        this.future = (options = {}) => {
+            const { years = 1, refDate } = options;
+            let date = new Date();
 
-        return date;
-    };
+            if (typeof refDate !== 'undefined') {
+                date = new Date(Date.parse(refDate));
+            }
 
-    /**
-     * future
-     *
-     * @description Generate random future date from today or parameters
-     * @param {Number} [years= 1] How many years the date possible be after refDate
-     * @param {date} [refDate= Today] Reference to generate future this time
-     * @method pure.date.future
-     * @example
-     * console.log(pure.date.future());
-     * //outputs: "2021-02-13T02:06:21.464Z"
-     */
-    this.future = (years, refDate) => {
-        let date = new Date();
-        if (typeof refDate !== 'undefined') {
-            date = new Date(Date.parse(refDate));
-        }
+            const range = {
+                min: 1000,
+                max: years * 365 * 24 * 3600 * 1000,
+            };
 
-        const range = {
-            min: 1000,
-            max: (years || 1) * 365 * 24 * 3600 * 1000,
+            let future = date.getTime();
+            // some time from now to N years later, in milliseconds
+            future += pure.random.number(range);
+            date.setTime(future);
+
+            return date;
         };
 
-        let future = date.getTime();
-        // some time from now to N years later, in milliseconds
-        future += pure.random.number(range);
-        date.setTime(future);
+        /**
+         * between
+         *
+         * @description Generate random date between two reference dates
+         * @param {object} [options= {}] Options to be passed
+         * @param {date} [options.from= 5 years from today] Reference date to use
+         * @param {date} [options.to= Today] Reference date to use
+         * @method pure.date.between
+         * @example
+         * console.log(pure.date.between({ from: '2015-10-18T06:40:58.676Z', to: '2021-02-13T02:06:21.464Z' }));
+         * //outputs: "2016-03-17T11:42:53.411Z"
+         */
+        this.between = (options = {}) => {
+            const { from = this.past({ years: 5 }), to = new Date() } = options;
+            // console.log(typeof options)
 
-        return date;
-    };
+            const fromMilli = Date.parse(from);
+            const dateOffset = pure.random.number(Date.parse(to) - fromMilli);
 
-    /**
-     * between
-     *
-     * @description Generate random date between two reference dates
-     * @param {date} from
-     * @param {date} to
-     * @method pure.date.between
-     * @example
-     * console.log(pure.date.between('2015-10-18T06:40:58.676Z', '2021-02-13T02:06:21.464Z'));
-     * //outputs: "2016-03-17T11:42:53.411Z"
-     */
-    this.between = (from, to) => {
-        const fromDate = from || pure.date.past(5);
-        const toDate = to || new Date();
-
-        const fromMilli = Date.parse(fromDate);
-        const dateOffset = pure.random.number(Date.parse(toDate) - fromMilli);
-
-        const newDate = new Date(fromMilli + dateOffset);
-
-        return newDate;
-    };
-
-    /**
-     * arrayBetween
-     *
-     * @description Generate array with random dates between two reference dates
-     * @param {date} from
-     * @param {date} to
-     * @param {num} [num= 3] Number of samples to return in array
-     * @method pure.date.arrayBetween
-     * @example
-     * console.log(pure.date.arrayBetween('2015-10-18T06:40:58.676Z', '2021-02-13T02:06:21.464Z'));
-     * //outputs: "[2017-02-15T11:32:19.373Z,2018-06-16T16:23:39.697Z,2019-10-15T21:14:59.697Z]"
-     */
-    this.arrayBetween = (from, to, num) => {
-        const def = num || 3;
-        const results = [];
-
-        for (let index = 0; index < def; index += 1) {
-            const newDate = pure.unique(pure.date.between, [from, to]);
-            results.push(newDate);
-        }
-
-        results.sort((a, b) => new Date(a) - new Date(b));
-
-        return results;
-    };
-
-    /**
-     * recent
-     *
-     * @description Generate random recent date from today or parameters
-     * @param {Number} [days= 1] Reference to generate past date
-     * @param {date} [refDate= Today] Reference date to use
-     * @method pure.date.recent
-     * @example
-     * console.log(pure.date.recent());
-     * //outputs: "2020-04-05T20:16:55.855Z"
-     */
-    this.recent = (days, refDate) => {
-        let date = new Date();
-        if (typeof refDate !== 'undefined') {
-            date = new Date(Date.parse(refDate));
-        }
-
-        const range = {
-            min: 1000,
-            max: (days || 1) * 24 * 3600 * 1000,
+            return new Date(fromMilli + dateOffset).toISOString();
         };
 
-        let future = date.getTime();
-        // some time from now to N days ago, in milliseconds
-        future -= pure.random.number(range);
-        date.setTime(future);
+        /**
+         * arrayBetween
+         *
+         * @description Generate array with random dates between two reference dates
+         * @param {object} [options= {}] Options to be passed
+         * @param {date} [options.from= 5 years from today] Reference date to use
+         * @param {date} [options.to= Today] Reference date to use
+         * @param {num} [options.num= 3] Number of samples to return in array
+         * @method pure.date.arrayBetween
+         * @example
+         * console.log(pure.date.arrayBetween({ from: '2015-10-18T06:40:58.676Z', to: '2021-02-13T02:06:21.464Z' }));
+         * //outputs: "[2017-02-15T11:32:19.373Z,2018-06-16T16:23:39.697Z,2019-10-15T21:14:59.697Z]"
+         */
+        this.arrayBetween = (options = {}) => {
+            const { from, to, num = 3 } = options;
+            const results = [];
 
-        return date;
-    };
+            for (let index = 0; index < num; index += 1) {
+                const newDate = pure.unique.exec(this.between, [{ from, to }]);
+                results.push(newDate);
+            }
 
-    /**
-     * soon
-     *
-     * @description Generate random recent date from today or parameters
-     * @param {Number} [days= 1] Reference to generate future date
-     * @param {date} [refDate= Today] Reference date to use
-     * @method pure.date.soon
-     * @example
-     * console.log(pure.date.soon());
-     * //outputs: "2020-04-06T08:10:13.362Z"
-     */
-    this.soon = (days, refDate) => {
-        let date = new Date();
-        if (typeof refDate !== 'undefined') {
-            date = new Date(Date.parse(refDate));
-        }
+            results.sort((a, b) => new Date(a) - new Date(b));
 
-        const range = {
-            min: 1000,
-            max: (days || 1) * 24 * 3600 * 1000,
+            return results;
         };
 
-        let future = date.getTime();
-        // some time from now to N days later, in milliseconds
-        future += pure.random.number(range);
-        date.setTime(future);
+        /**
+         * recent
+         *
+         * @description Generate random recent date from today or parameters
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.days= 1] Reference to generate past date
+         * @param {date} [options.refDate= Today] Reference date to use
+         * @method pure.date.recent
+         * @example
+         * console.log(pure.date.recent());
+         * //outputs: "2020-04-05T20:16:55.855Z"
+         */
+        this.recent = (options = {}) => {
+            const { days = 1, refDate } = options;
+            let date = new Date();
 
-        return date;
-    };
+            if (typeof refDate !== 'undefined') {
+                date = new Date(Date.parse(refDate));
+            }
 
-    /**
-     * month
-     *
-     * @description Generate random month
-     * @param {object} [options]
-     * @param {boolean} [options.abbr= false] Abbreviated return
-     * @param {boolean} [options.context= false]
-     * @method pure.date.month
-     * @example
-     * console.log(pure.date.month());
-     * //outputs: "June"
-     */
-    this.month = (options) => {
-        const opt = options || {};
+            const range = {
+                min: 1000,
+                max: days * 24 * 3600 * 1000,
+            };
 
-        let type = 'wide';
-        if (opt.abbr) {
-            type = 'abbr';
-        }
-        if (opt.context && typeof pure.definitions.date.month[`${type}_context`] !== 'undefined') {
-            type += '_context';
-        }
+            let future = date.getTime();
+            // some time from now to N days ago, in milliseconds
+            future -= pure.random.number(range);
+            date.setTime(future);
 
-        const source = pure.definitions.date.month[type];
+            return date;
+        };
 
-        return pure.random.arrayElement(source);
-    };
+        /**
+         * soon
+         *
+         * @description Generate random recent date from today or parameters
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.days= 1] Reference to generate future date
+         * @param {date} [options.refDate= Today] Reference date to use
+         * @method pure.date.soon
+         * @example
+         * console.log(pure.date.soon());
+         * //outputs: "2020-04-06T08:10:13.362Z"
+         */
+        this.soon = (options = {}) => {
+            const { days = 1, refDate } = options;
+            let date = new Date();
 
-    /**
-     * weekday
-     *
-     * @description Generate random weekday
-     * @param {object} [options]
-     * @param {boolean} [options.abbr= false] Abbreviated return
-     * @param {boolean} [options.context= false]
-     * @method pure.date.weekday
-     * @example
-     * console.log(pure.date.weekday());
-     * //outputs: "Wednesday"
-     */
-    this.weekday = (options) => {
-        const opt = options || {};
+            if (typeof refDate !== 'undefined') {
+                date = new Date(Date.parse(refDate));
+            }
 
-        let type = 'wide';
-        if (opt.abbr) {
-            type = 'abbr';
-        }
-        if (opt.context && typeof pure.definitions.date.weekday[`${type}_context`] !== 'undefined') {
-            type += '_context';
-        }
+            const range = {
+                min: 1000,
+                max: days * 24 * 3600 * 1000,
+            };
 
-        const source = pure.definitions.date.weekday[type];
+            let future = date.getTime();
+            // some time from now to N days later, in milliseconds
+            future += pure.random.number(range);
+            date.setTime(future);
 
-        return pure.random.arrayElement(source);
-    };
+            return date;
+        };
 
-    /**
-     * birthDay
-     *
-     * @description Generate random birthDay
-     * @param {Number} [minAge= 18] Minimum age to generate date
-     * @param {Number} [maxAge= 60] Maximum age to generate date
-     * @method pure.date.birthDay
-     * @example
-     * console.log(pure.date.birthDay());
-     * //outputs: "1992-04-25T14:44:34.415Z"
-     */
-    this.birthDay = (minAge, maxAge) => {
-        let min = minAge || 18;
-        let max = maxAge || 60;
+        /**
+         * month
+         *
+         * @description Generate random month
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean} [options.abbr= false] Abbreviated return
+         * @param {boolean} [options.context= false]
+         * @method pure.date.month
+         * @example
+         * console.log(pure.date.month());
+         * //outputs: "June"
+         */
+        this.month = (options = {}) => {
+            let type = 'wide';
 
-        if (min > max) {
-            min = maxAge;
-            max = minAge;
-        }
+            if (options.abbr) {
+                type = 'abbr';
+            }
 
-        const actualYear = (new Date()).getFullYear();
+            if (options.context && typeof pure.registeredModules.date.month[`${type}_context`] !== 'undefined') {
+                type += '_context';
+            }
 
-        const minYear = actualYear - min;
-        const maxYear = actualYear - max;
+            const source = pure.registeredModules.date.month[type];
 
-        const minDateParsed = new Date(`${minYear}-12-31`);
-        const maxDateParsed = new Date(`${maxYear}-01-01`);
+            return pure.random.arrayElement(source);
+        };
 
-        return pure.date.between(minDateParsed, maxDateParsed);
-    };
+        /**
+         * weekday
+         *
+         * @description Generate random weekday
+         * @param {object} [options= {}] Options to be passed
+         * @param {boolean} [options.abbr= false] Abbreviated return
+         * @param {boolean} [options.context= false]
+         * @method pure.date.weekday
+         * @example
+         * console.log(pure.date.weekday());
+         * //outputs: "Wednesday"
+         */
+        this.weekday = (options = {}) => {
+            let type = 'wide';
+
+            if (options.abbr) {
+                type = 'abbr';
+            }
+
+            if (options.context && typeof pure.registeredModules.date.weekday[`${type}_context`] !== 'undefined') {
+                type += '_context';
+            }
+
+            const source = pure.registeredModules.date.weekday[type];
+
+            return pure.random.arrayElement(source);
+        };
+
+        /**
+         * birthDay
+         *
+         * @description Generate random birthDay
+         * @param {object} [options= {}] Options to be passed
+         * @param {Number} [options.minAge= 18] Minimum age to generate date
+         * @param {Number} [options.maxAge= 60] Maximum age to generate date
+         * @method pure.date.birthDay
+         * @example
+         * console.log(pure.date.birthDay());
+         * //outputs: "1992-04-25T14:44:34.415Z"
+         */
+        this.birthDay = (options = {}) => {
+            let { minAge = 18, maxAge = 60 } = options;
+
+            if (minAge > maxAge) {
+                minAge = maxAge;
+                maxAge = minAge;
+            }
+
+            const actualYear = (new Date()).getFullYear();
+
+            const minYear = actualYear - minAge;
+            const maxYear = actualYear - maxAge;
+
+            const minDateParsed = new Date(`${minYear}-12-31`);
+            const maxDateParsed = new Date(`${maxYear}-01-01`);
+
+            return this.between({ from: minDateParsed, to: maxDateParsed });
+        };
+    }
 }
 
 module.exports = pureDate;

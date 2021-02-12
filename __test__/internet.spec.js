@@ -1,24 +1,31 @@
 const { assert } = require('chai');
 const sinon = require('sinon');
-const slugify = require('../vendor/slugify');
+const slugify = require('slugify');
 const pure = require('../index');
 
 describe('internet.js', () => {
     describe('email()', () => {
         it('returns an email', () => {
             sinon.stub(pure.internet, 'userName').returns('Aiden.Harann55');
-            const email = pure.internet.email('Aiden.Harann55');
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
             let res = email.split('@');
             [res] = res;
             assert.equal(res, 'aiden.harann55');
             pure.internet.userName.restore();
+        });
+
+        it('returns an email when provider is undefined', () => {
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
+
+            assert.ok(typeof email === 'string');
+            assert.ok(!email.includes('undefined'));
         });
     });
 
     describe('exampleEmail', () => {
         it('returns an email with the correct name', () => {
             sinon.stub(pure.internet, 'userName').returns('Aiden.Harann55');
-            const email = pure.internet.email('Aiden.Harann55');
+            const email = pure.internet.email({ firstName: 'Aiden', lastName: 'Harann' });
             let res = email.split('@');
             [res] = res;
             assert.equal(res, 'aiden.harann55');
@@ -83,7 +90,7 @@ describe('internet.js', () => {
             sinon.stub(pure.random, 'number').returns(2);
             const username = pure.internet.userName();
 
-            assert.ok(username)
+            assert.ok(username);
 
             pure.random.number.restore();
         });
@@ -184,8 +191,8 @@ describe('internet.js', () => {
             assert.strictEqual(url, 'http://bar.net');
         });
 
-        it('returns a url with protocol and domainName specified ', () => {
-            const url = pure.internet.url('https', 'foo.com');
+        it('returns a url with protocol and domainName specified', () => {
+            const url = pure.internet.url({ protocol: 'https', domainName: 'foo.com' });
 
             assert.ok(url);
             assert.strictEqual(url, 'https://foo.com');
@@ -226,14 +233,19 @@ describe('internet.js', () => {
 
     describe('color()', () => {
         it('returns a valid hex value (like #ffffff)', () => {
-            const color = pure.internet.color(100, 100, 100);
+            const color = pure.internet.color({ baseRed255: 100, baseGreen255: 100, baseBlue255: 100 });
+            assert.ok(color.match(/^#[a-f0-9]{6}$/));
+        });
+
+        it('returns a valid hex value when no argument passed', () => {
+            const color = pure.internet.color();
             assert.ok(color.match(/^#[a-f0-9]{6}$/));
         });
 
         it('returns a valid hex value when stubbing math', () => {
-            sinon.stub(Math, 'floor').returns(1)
+            sinon.stub(Math, 'floor').returns(1);
 
-            const color = pure.internet.color(0, 0, 0);
+            const color = pure.internet.color({ baseRed255: 0, baseGreen255: 0, baseBlue255: 0 });
 
             assert.ok(color.match(/^#[a-f0-9]{6}$/));
 
@@ -268,14 +280,17 @@ describe('internet.js', () => {
 
     describe('password()', () => {
         it('generate password that is memorable with only letters', () => {
-            const password = pure.internet.password(undefined, true, undefined, undefined);
+            const password = pure.internet.password({ memorable: true });
 
             assert.ok(password.match(/\w/g));
         });
-        it('generate password that is memorable with only letters when parameter is null', () => {
-            const password = pure.internet.password(null, null, undefined, undefined);
 
-            assert.ok(password.match(/\w/g));
+        it('generate password without argument passed', () => {
+            const password = pure.internet.password();
+            const regex = /[A-Za-z0-9]+/g;
+
+            assert.ok(typeof password === 'string');
+            assert.ok(regex.test(password));
         });
     });
 });

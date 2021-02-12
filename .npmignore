@@ -1,0 +1,12 @@
+docs/
+static/
+examples/
+__test__/
+CHANGELOG.md
+README.md
+jsdoc.conf.json
+mocha.conf.js
+nyc.conf.json
+.travis.yml
+.eslintignore
+.eslintrc

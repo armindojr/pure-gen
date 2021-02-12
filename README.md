@@ -14,8 +14,8 @@
 
 <div>
     <p align="center">
-      <a href="https://travis-ci.org/armindojr/pure-gen">
-        <img alt="Build Status" src="https://travis-ci.org/armindojr/pure-gen.svg?branch=master">
+      <a href="https://www.travis-ci.com/github/armindojr/pure-gen">
+        <img alt="Build Status" src="https://www.travis-ci.com/armindojr/pure-gen.svg?branch=master">
       </a>
       <a href="https://codecov.io/gh/armindojr/pure-gen">
         <img alt="CodeCov" src="https://codecov.io/gh/armindojr/pure-gen/branch/master/graph/badge.svg">
@@ -27,6 +27,24 @@ This project is derivative (Fork) from [Faker.js](https://github.com/Marak/faker
 
 ### API Documentation
 - [Docs](https://armindojr.github.io/pure-gen/)
+
+## CLI
+Now you can use pure from cli after installing. 
+
+Run in your cli:
+```
+$ npx pure repl
+```
+
+This will start repl interface with pure. For more information see [Repl](https://armindojr.github.io/pure-gen/repl.html)
+
+or:
+```
+$ npx pure generate
+```
+
+This will ask some questions and generate fake data based on pre-configured template. You can save in any given format. For more information see [Generator](https://armindojr.github.io/pure-gen/generator.html)
+
 
 ## Usage
 
@@ -48,20 +66,6 @@ pure-gen has support for multiple localities.
 The default language locale is set to English.
 
 [How to set specific location](https://armindojr.github.io/pure-gen/pure.html#.setLocale)
-
-
-### Individual Localization Packages
-
-pure-gen also supports incremental loading of locales.
-
-By default, requiring `pure` will include *all* locale data.
-
-In a production environment, you may only want to include the locale data for a specific set of locales.
-
-```js
-// loads only de locale
-const pure = require('pure-gen/locale/de');
-```
 
 ## Setting a randomness seed
 
@@ -106,10 +110,8 @@ What are the major changes compared to original project?
 I want to add or modify dictionary for my language, what i do?
 - Fork this repo
 - Clone your forked repo to your pc
-- Run:  ``node bundle.js decompress``
-- Edit your language pack inside ./locale
-- Run:  ``node bundle.js compress``
-- Commit changes to your branch
+- Make modifications
+- Commit changes to your fork
 - Create PR of your fork to this repo
 
 **Do not create PR changing /doc/ files, i will not accept!!**
