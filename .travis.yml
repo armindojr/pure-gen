@@ -1,8 +1,9 @@
 # Run on new travis container (docker) based infrastructure
-sudo: false
 language: node_js
+dist: xenial
+os: linux
 node_js:
-  - "13"
+  - "14"
   - "12"
   - "10"
 
