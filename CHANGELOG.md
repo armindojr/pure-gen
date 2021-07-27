@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v2.0.1
+
+### API Fixes
+* Fixed bug on pure.internet.email where firstName and lastName parameters isn't considered
+
+### General Fixes
+* Fixed vulnerabilities by removing some packages. By this change all docs will have to be recreated, soon this will be fixed.
+
 ## v2.0.0
 
 *Attention! breaking changes between v1 and v2*

@@ -84,7 +84,6 @@ class pureDate {
          */
         this.between = (options = {}) => {
             const { from = this.past({ years: 5 }), to = new Date() } = options;
-            // console.log(typeof options)
 
             const fromMilli = Date.parse(from);
             const dateOffset = pure.random.number(Date.parse(to) - fromMilli);

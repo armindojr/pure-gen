@@ -51,7 +51,7 @@ class Internet {
                 provider = pure.random.arrayElement(pure.registeredModules.internet.free_email);
             }
 
-            return `${pure.helpers.slugify(this.userName(firstName, lastName), { lower: true })}@${provider}`;
+            return `${pure.helpers.slugify(this.userName({ firstName, lastName }), { lower: true })}@${provider}`;
         };
 
         /**
