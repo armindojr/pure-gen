@@ -28,7 +28,6 @@ module.exports = {
       'api/document',
       'api/electricalcomponents',
       'api/esport',
-      'api/fake',
       'api/finance',
       'api/games',
       'api/git',
