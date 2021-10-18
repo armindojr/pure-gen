@@ -5,19 +5,27 @@ sidebar_label: Music
 slug: pure/music
 ---
 
-## music
+# music
 
-### genre
+## genre
 
+#### Description
+Method that generate random music genre
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random music genre
+- **<String\>**
 #### Usage
-```js
-console.log(pure.music.genre());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.music.genre());
+    ```
+    2. **result**
+    ```js
+    'Rock'
+    ```
 
 ------------------------------------------------------------------------------

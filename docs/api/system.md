@@ -5,139 +5,226 @@ sidebar_label: System
 slug: pure/system
 ---
 
-## system
+# system
 
-### fileName
+## fileName
 
+#### Description
+Method that generate random file name with extension
 #### Parameters
-| Name          | Type          | Description                                |
-| ------------- | ------------- | ------------------------------------------ |
+| Name          | Type          | Description                                                                                                    |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
 | ext           | <String\>     | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
-- **<String\>** String containing a random file name with extension
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.fileName());
-```
-```js
-console.log(pure.system.fileName('jpeg'));
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.fileName());
+    ```
+    2. **result**
+    ```js
+    'computer-tools.lua'
+    ```
+
+2. Describing that i want an file name using `jpeg` as extension
+    1. **code**
+    ```js
+    console.log(pure.system.fileName('jpeg'));
+    ```
+    2. **result**
+    ```js
+    'com-facilitator.jpeg'
+    ```
 
 ------------------------------------------------------------------------------
 
-### commonFileName
+## commonFileName
 
+#### Description
+Method that generates random common file name with extension
 #### Parameters
-| Name          | Type          | Description                                |
-| ------------- | ------------- | ------------------------------------------ |
+| Name          | Type          | Description                                                                                                    |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
 | ext           | <String\>     | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
-- **<String\>** String containing a random file name with extension
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.commonFileName());
-```
-```js
-console.log(pure.system.commonFileName('jpeg'));
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.commonFileName());
+    ```
+    2. **result**
+    ```js
+    'initiative-networks-research.wav'
+    ```
+
+2. Describing that i want an file name using `jpeg` as extension
+    1. **code**
+    ```js
+    console.log(pure.system.commonFileName('jpeg'));
+    ```
+    2. **result**
+    ```js
+    'fault-tolerant.jpeg'
+    ```
 
 ------------------------------------------------------------------------------
 
-### mimeType
+## mimeType
 
+#### Description
+Method that generate random internet media type
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random internet media type
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.mimeType());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.mimeType());
+    ```
+    2. **result**
+    ```js
+    'application/vnd.paos.xml'
+    ```
 
 ------------------------------------------------------------------------------
 
-### commonFileType
+## commonFileType
 
+#### Description
+Method that generate random common file type
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random common file type
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.commonFileType());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.commonFileType());
+    ```
+    2. **result**
+    ```js
+    'video'
+    ```
 
 ------------------------------------------------------------------------------
 
-### commonFileExt
+## commonFileExt
 
+#### Description
+Method that generate random common file extension
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random common file extension
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.commonFileExt());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.commonFileExt());
+    ```
+    2. **result**
+    ```js
+    'png'
+    ```
 
 ------------------------------------------------------------------------------
 
-### fileType
+## fileType
 
+#### Description
+Method that generate random file type
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random file type available as mime-type
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.fileType());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.fileType());
+    ```
+    2. **result**
+    ```js
+    'x-shader'
+    ```
 
 ------------------------------------------------------------------------------
 
-### fileExt
+## fileExt
 
+#### Description
+Method that generate random file extension
 #### Parameters
-| Name          | Type          | Description                                |
-| ------------- | ------------- | ------------------------------------------ |
+| Name          | Type          | Description                                                                                                   |
+| ------------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
 | mimeType      | <String\>     | Define what internet media type to use. If the string passed isn't valid it will randomize from internal list |
 #### Returns
-- **<String\>** String containing a random file name with extension
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.fileExt());
-```
-```js
-console.log(pure.system.fileExt('video/x-msvideo'));
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.fileExt());
+    ```
+    2. **result**
+    ```js
+    'cdmic'
+    ```
+
+2. Describing that i want an file extension using `video/x-msvideo` as mime-type
+    1. **code**
+    ```js
+    console.log(pure.system.fileExt('video/x-msvideo'));
+    ```
+    2. **result**
+    ```js
+    'avi'
+    ```
 
 ------------------------------------------------------------------------------
 
-### directoryPath
+## directoryPath
 
+#### Description
+Method that generate random fake directory path
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random fake directory path
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.directoryPath());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.directoryPath());
+    ```
+    2. **result**
+    ```js
+    '/Applications'
+    ```
 
 ------------------------------------------------------------------------------
 
-### filePath
+## filePath
 
+#### Description
+Method that generate random fake file path
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
@@ -145,23 +232,37 @@ console.log(pure.system.directoryPath());
 #### Returns
 - **<String\>** String containing a random fake file path
 #### Usage
-```js
-console.log(pure.system.filePath());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.filePath());
+    ```
+    2. **result**
+    ```js
+    '/opt/include/card.xap'
+    ```
 
 ------------------------------------------------------------------------------
 
-### semver
+## semver
 
+#### Description
+Method that generate random semantic versioning number
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random semantic versioning
+- **<String\>**
 #### Usage
-```js
-console.log(pure.system.semver());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.system.semver());
+    ```
+    2. **result**
+    ```js
+    '9.0.2'
+    ```
 
 ------------------------------------------------------------------------------

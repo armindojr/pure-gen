@@ -5,31 +5,39 @@ sidebar_label: Games
 slug: pure/games
 ---
 
-## games
+# games
 
-### title
+## title
 
+#### Description
+Method that generate random game title
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random game title
+- **<String\>**
 #### Usage
-```js
-console.log(pure.games.title());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.games.title());
+    ```
+    2. **result**
+    ```js
+    '# aut'
+    ```
 
 ------------------------------------------------------------------------------
 
-### genre
+## genre
 
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random game genre
+- **<String\>**
 #### Usage
 ```js
 console.log(pure.games.genre());
@@ -37,14 +45,14 @@ console.log(pure.games.genre());
 
 ------------------------------------------------------------------------------
 
-### platform
+## platform
 
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random platform
+- **<String\>**
 #### Usage
 ```js
 console.log(pure.games.platform());

@@ -5,49 +5,73 @@ sidebar_label: Dessert
 slug: pure/dessert
 ---
 
-## dessert
+# dessert
 
-### flavor
+## flavor
 
+#### Description
+Method that generate a random dessert flavor.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random flavor name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.dessert.flavor());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.dessert.flavor());
+    ```
+    2. **result**
+    ```js
+    'Cake'
+    ```
 
 ------------------------------------------------------------------------------
 
-### topping
+## topping
 
+#### Description
+Method that generate a random dessert topping.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random topping name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.dessert.topping());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.dessert.topping());
+    ```
+    2. **result**
+    ```js
+    'Toffee Bits'
+    ```
 
 ------------------------------------------------------------------------------
 
-### variety
+## variety
 
+#### Description
+Method that generate a random dessert variety.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random variety name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.dessert.variety());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.dessert.variety());
+    ```
+    2. **result**
+    ```js
+    'Chocolate Chip Cookie Dough'
+    ```
 
 ------------------------------------------------------------------------------

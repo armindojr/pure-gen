@@ -5,79 +5,119 @@ sidebar_label: E-sports
 slug: pure/esport
 ---
 
-## esport
+# esport
 
-### players
+## players
 
+#### Description
+Method that generate random esport player name
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random player name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.esport.players());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.esport.players());
+    ```
+    2. **result**
+    ```js
+    'KennyS'
+    ```
 
 ------------------------------------------------------------------------------
 
-### teams
+## teams
 
+#### Description
+Method that generate random esport team name
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random team name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.esport.teams());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.esport.teams());
+    ```
+    2. **result**
+    ```js
+    'EnVyUs'
+    ```
 
 ------------------------------------------------------------------------------
 
-### events
+## events
 
+#### Description
+Method that generate random esport event name
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random event name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.esport.events());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.esport.events());
+    ```
+    2. **result**
+    ```js
+    'ESL Cologne'
+    ```
 
 ------------------------------------------------------------------------------
 
-### leagues
+## leagues
 
+#### Description
+Method that generate random esport league name
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random league name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.esport.leagues());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.esport.leagues());
+    ```
+    2. **result**
+    ```js
+    'IEM'
+    ```
 
 ------------------------------------------------------------------------------
 
-### games
+## games
 
+#### Description
+Method that generate random esport game name
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random e-sport game name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.esport.games());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.esport.games());
+    ```
+    2. **result**
+    ```js
+    'StarCraft II'
+    ```
 
 ------------------------------------------------------------------------------

@@ -5,94 +5,141 @@ sidebar_label: Hacker
 slug: pure/hacker
 ---
 
-## hacker
+# hacker
 
-### abbreviation
+## abbreviation
 
+#### Description
+Method that generate random abbreviation
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random abbreviation
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.abbreviation());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.abbreviation());
+    ```
+    2. **result**
+    ```js
+    'TCP'
+    ```
 
 ------------------------------------------------------------------------------
 
-### adjective
+## adjective
 
+#### Description
+Method that generate random adjective
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random adjective
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.adjective());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.adjective());
+    ```
+    2. **result**
+    ```js
+    'multi-byte'
+    ```
 
 ------------------------------------------------------------------------------
 
-### noun
+## noun
 
+#### Description
+Method that generate random noun
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random noun
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.noun());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.noun());
+    ```
+    2. **result**
+    ```js
+    'protocol'
+    ```
 
 ------------------------------------------------------------------------------
 
-### verb
+## verb
 
+#### Description
+Method that generate random verb
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random verb
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.verb());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.verb());
+    ```
+    2. **result**
+    ```js
+    'override'
+    ```
 
 ------------------------------------------------------------------------------
 
-### ingverb
+## ingverb
 
+#### Description
+Method that generate random ing terminated verb
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random ingverb
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.ingverb());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.ingverb());
+    ```
+    2. **result**
+    ```js
+    'programming'
+    ```
 
 ------------------------------------------------------------------------------
 
-### phrase
+## phrase
 
+#### Description
+Method that generate random hacker phrase
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random phrase
+- **<String\>**
 #### Usage
-```js
-console.log(pure.hacker.phrase());
-```
-
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.hacker.phrase());
+    ```
+    2. **result**
+    ```js
+    'You can\'t generate the interface without generating the primary EXE array!'
+    ```
 ------------------------------------------------------------------------------

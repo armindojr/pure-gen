@@ -20,7 +20,7 @@ This method can slugify any string and remove non standard chars and spaces. It 
 | opts.name      | <String\> | String to use in v5 uuid generation. Default value is 'uuid'                          |
 | opts.namespace | <String\> | String with uuid namespace to use in v5 generation. Default value is a random v1 uuid |
 #### Returns
-- **<String\>** String parsed and with specified symbol replaced by a random number
+- **<String\>**
 
 #### Usage
 1. Passing string without slug to be standardized
@@ -47,7 +47,7 @@ This method replaces all symbol inside a string with number
 | options.string | <String\> | String that will be parsed and replaced. Default value is empty |
 | options.symbol | <String\> | What symbol to search and replace. Default value is '#'         |
 #### Returns
-- **<String\>** String parsed and with specified symbol replaced by a random number
+- **<String\>**
 
 #### Usage
 1. Passing string with specific symbol to be replaced and specifying the symbol to be searched
@@ -74,7 +74,7 @@ This method replaces all symbol inside a string with hexadecimal chars
 | options.string | <String\> | String that will be parsed and replaced. Default value is empty |
 | options.symbol | <String\> | What symbol to search and replace. Default value is '#'         |
 #### Returns
-- **<String\>** String parsed and with specified symbol replaced by a random hexadecimal
+- **<String\>**
 
 #### Usage
 1. Passing string with specific symbol to be replaced and specifying the symbol to be searched
@@ -99,7 +99,7 @@ Method that parses a string for symbols and replaces them appropriately. '#' wil
 | ------ | --------- | --------------------------------------------------------------- |
 | string | <String\> | String that will be parsed and replaced. Default value is empty |
 #### Returns
-- **<String\>** String parsed and with specified symbol replaced
+- **<String\>**
 
 #### Usage
 1. Passing string with specific symbol to be replaced
@@ -126,7 +126,7 @@ Method that replace symbols in a credit card schema and can add a Luhn checksum
 | options.string | <String\> | String that will be parsed and replaced. Default value is empty |
 | options.symbol | <String\> | What symbol to search and replace. Default value is '#'         |
 #### Returns
-- **<String\>** String parsed and with specified symbol replaced by random numbers
+- **<String\>**
 #### Usage
 1. Passing string with credit card format with symbol to be replaced and specifying the symbol to be searched
     1. **code**
@@ -152,7 +152,7 @@ Method to repeat string by given times. It is a internal alternative to String.p
 | options.string | <String\> | String that will be parsed and repeated. Default value is empty |
 | options.num    | <Number\> | Times to repeat given string. Default value is 0                |
 #### Returns
-- **<String\>** String repeated by given option
+- **<String\>**
 
 #### Usage
 1. Passing string to be repeated and specifying that it has to be repeated 7 times
@@ -177,7 +177,7 @@ Method that parses a Regex pattern and generate a string based on that.
 | ------ | --------- | -------------------------------------------------- |
 | string | <String\> | String that will be parsed. Default value is empty |
 #### Returns
-- **<String\>** String generated based on regex provided
+- **<String\>**
 #### Usage
 1. Passing string with Regex pattern to generate new random string
     1. **code**
@@ -201,7 +201,7 @@ Method that shuffle items in a given array randomly.
 | ------ | --------- | ---------------------------------------------------------------- |
 | data   | <Array\>  | Array with items that will be randomized. Default value is empty |
 #### Returns
-- **<Array\>** Array with items shuffled
+- **<Array\>**
 #### Usage
 1. Passing an array to be shuffled randomly
     1. **code**
@@ -227,7 +227,7 @@ This method can parse a string and replace template tags with given data. It is 
 | options.str  | <String\> | String with template tags that will be replaced. Default value is empty                                  |
 | options.data | <Object\> | Object with data that will replace template. This parameter is required so it doesn't have default value |
 #### Returns
-- **<String\>** String parsed with given data
+- **<String\>**
 #### Usage
 1. Passing a string with template tags and providing an object with data
     1. **code**
@@ -251,7 +251,7 @@ This method create a person card with multiple faked info.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<Object\>** Object containing multiple info generated at once
+- **<Object\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -284,48 +284,48 @@ This method create a person card with multiple faked info.
         },
         posts: [
             {
-            words: 'eaque omnis quo',
-            sentence: 'Soluta et quam voluptatem quidem nihil.',
-            sentences: 'Autem recusandae aut assumenda aperiam modi tenetur. Et in voluptatem quas. Et voluptas optio aut totam.',
-            paragraph: 'Ab consequatur recusandae voluptatem magnam consectetur placeat et quidem. Distinctio enim tempora sunt suscipit labore. Consequatur est quia unde nemo.'
+                words: 'eaque omnis quo',
+                sentence: 'Soluta et quam voluptatem quidem nihil.',
+                sentences: 'Autem recusandae aut assumenda aperiam modi tenetur. Et in voluptatem quas. Et voluptas optio aut totam.',
+                paragraph: 'Ab consequatur recusandae voluptatem magnam consectetur placeat et quidem. Distinctio enim tempora sunt suscipit labore. Consequatur est quia unde nemo.'
             },
             {
-            words: 'omnis quia deleniti',
-            sentence: 'Dolorem ipsam facilis voluptate et.',
-            sentences: 'Autem sit dolor quia dolores. Rerum animi ut consequuntur deserunt. Atque ut mollitia eius reiciendis qui exercitationem perferendis. Ad quis est corporis aliquam aliquid tempora in aut.',
-            paragraph: 'Sequi culpa sit minima. Dolores facere est. Totam quibusdam molestias alias.'
+                words: 'omnis quia deleniti',
+                sentence: 'Dolorem ipsam facilis voluptate et.',
+                sentences: 'Autem sit dolor quia dolores. Rerum animi ut consequuntur deserunt. Atque ut mollitia eius reiciendis qui exercitationem perferendis. Ad quis est corporis aliquam aliquid tempora in aut.',
+                paragraph: 'Sequi culpa sit minima. Dolores facere est. Totam quibusdam molestias alias.'
             },
             {
-            words: 'quia autem molestiae',
-            sentence: 'Totam repudiandae excepturi numquam dolorem.',
-            sentences: 'Quibusdam quae quos ut. Et omnis necessitatibus.',
-            paragraph: 'Blanditiis ipsam accusantium amet quo. Debitis qui dolorem aliquid aperiam. Autem quae quo rerum.'
+                words: 'quia autem molestiae',
+                sentence: 'Totam repudiandae excepturi numquam dolorem.',
+                sentences: 'Quibusdam quae quos ut. Et omnis necessitatibus.',
+                paragraph: 'Blanditiis ipsam accusantium amet quo. Debitis qui dolorem aliquid aperiam. Autem quae quo rerum.'
             }
         ],
         accountHistory: [
             {
-            amount: '318.24',
-            date: 2003-06-04T03:12:22.965Z,
-            business: 'Serfontein - Serfontein',
-            name: 'Personal Loan Account 8625',
-            type: 'invoice',
-            account: '69876381'
+                amount: '318.24',
+                date: 2003-06-04T03:12:22.965Z,
+                business: 'Serfontein - Serfontein',
+                name: 'Personal Loan Account 8625',
+                type: 'invoice',
+                account: '69876381'
             },
             {
-            amount: '50.58',
-            date: 2006-03-31T13:49:08.029Z,
-            business: 'van de Heefer - van de Heefer',
-            name: 'Personal Loan Account 8164',
-            type: 'withdrawal',
-            account: '55067780'
+                amount: '50.58',
+                date: 2006-03-31T13:49:08.029Z,
+                business: 'van de Heefer - van de Heefer',
+                name: 'Personal Loan Account 8164',
+                type: 'withdrawal',
+                account: '55067780'
             },
             {
-            amount: '719.19',
-            date: 2005-06-10T20:46:20.838Z,
-            business: 'Els Pty Ltd',
-            name: 'Personal Loan Account 5526',
-            type: 'deposit',
-            account: '03186670'
+                amount: '719.19',
+                date: 2005-06-10T20:46:20.838Z,
+                business: 'Els Pty Ltd',
+                name: 'Personal Loan Account 5526',
+                type: 'deposit',
+                account: '03186670'
             }
         ]
     }
@@ -343,7 +343,7 @@ This method create a person card with multiple contextual faked info.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<Object\>** Object containing multiple info generated at once
+- **<Object\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -387,7 +387,7 @@ This method create a user card with multiple faked info.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<Object\>** Object containing multiple info generated at once
+- **<Object\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -429,7 +429,7 @@ This method create a object containing multiple items about a bank transaction.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<Object\>** Object containing multiple info generated at once
+- **<Object\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -460,7 +460,7 @@ Method that calculate mod 97 of given string.
 | ------ | --------- | --------------------- |
 | string | <String\> | String to apply mod97 |
 #### Returns
-- **<Number\>** Number with a result of a mod97 operation
+- **<Number\>**
 #### Usage
 1. Passing number `111` as a string to calculate mod97
     1. **code**
@@ -470,6 +470,33 @@ Method that calculate mod 97 of given string.
     2. **result**
     ```js
     14
+    ```
+
+------------------------------------------------------------------------------
+
+
+## mod
+
+#### Description
+Method that calculate any mod of given string.
+
+#### Parameters
+| Name             | Type      | Description                                                  |
+| ---------------- | --------- | ------------------------------------------------------------ |
+| options          | <Object\> | You can pass parameters as this object properties            |
+| options.digitStr | <String\> | String to be dividend of the operation. Default value is '1' |
+| options.modValue | <Number\> | Number to be divisor of the operation. Default value is 1    |
+#### Returns
+- **<Number\>**
+#### Usage
+1. Passing number `238` as a string to calculate mod 6
+    1. **code**
+    ```js
+    console.log(pure.helpers.mod({ digitStr: '238', modValue: 6 }));
+    ```
+    2. **result**
+    ```js
+    4
     ```
 
 ------------------------------------------------------------------------------
@@ -484,7 +511,7 @@ Method that parses string and convert letters to numbers
 | ------ | --------- | --------------------- |
 | string | <String\> | String to be replaced |
 #### Returns
-- **<String\>** String with letters replaced by numbers
+- **<String\>**
 #### Usage
 1. Passing string `ABC123` to convert all chars and replace them by number
     1. **code**

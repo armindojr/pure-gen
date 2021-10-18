@@ -16,7 +16,7 @@ Method that generate a markdown header randomly.
 | ------- | --------- | ----------------------------------------------------------- |
 | num     | <Number\> | How many heading tags will be generated. Default value is 1 |
 #### Returns
-- **<String\>** String containing a random header
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -50,7 +50,7 @@ Method that generate random text with markdown emphasis.
 | ------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
 | types   | <String\> | String containing what emphasis generated text will use. Default value is randomized from this types: '_','~','*','**' |
 #### Returns
-- **<String\>** String containing a random emphasis
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -84,7 +84,7 @@ Method that generate a markdown table randomly.
 | ------- | --------- | --------------------------------------------------------- |
 | num     | <Number\> | How many table rows will be generated. Default value is 3 |
 #### Returns
-- **<String\>** String containing a random table
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -125,7 +125,7 @@ Method that generate a markdown ordered list randomly.
 | ------- | --------- | ------------------------------------------------------------ |
 | num     | <Number\> | How many items in list will be generated. Default value is 3 |
 #### Returns
-- **<String\>** String containing a random ordered list
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -166,7 +166,7 @@ Method that generate a markdown unordered list randomly.
 | ------- | --------- | ------------------------------------------------------------ |
 | num     | <Number\> | How many items in list will be generated. Default value is 3 |
 #### Returns
-- **<String\>** String containing a random unordered list
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -207,7 +207,7 @@ Method that generate random text with markdown inline code.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random word with inline code
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -231,7 +231,7 @@ Method that generate random text with markdown block code.
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random word with block code
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**

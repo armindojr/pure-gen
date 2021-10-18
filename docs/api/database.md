@@ -5,64 +5,96 @@ sidebar_label: Database
 slug: pure/database
 ---
 
-## database
+# database
 
-### column
+## column
 
+#### Description
+Method that generates random database column.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random database column
+- **<String\>**
 #### Usage
-```js
-console.log(pure.database.column());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.database.column());
+    ```
+    2. **result**
+    ```js
+    'password'
+    ```
 
 ------------------------------------------------------------------------------
 
-### type
+## type
 
+#### Description
+Method that generates random database type.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random database type
+- **<String\>**
 #### Usage
-```js
-console.log(pure.database.type());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.database.type());
+    ```
+    2. **result**
+    ```js
+    'mediumint'
+    ```
 
 ------------------------------------------------------------------------------
 
-### collation
+## collation
 
+#### Description
+Method that generates random database collation.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random database collation
+- **<String\>**
 #### Usage
-```js
-console.log(pure.database.collation());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.database.collation());
+    ```
+    2. **result**
+    ```js
+    'utf8_unicode_ci'
+    ```
 
 ------------------------------------------------------------------------------
 
-### engine
+## engine
 
+#### Description
+Method that generates random database engine.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random database engine
+- **<String\>**
 #### Usage
-```js
-console.log(pure.database.engine());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.database.engine());
+    ```
+    2. **result**
+    ```js
+    'InnoDB'
+    ```
 
 ------------------------------------------------------------------------------

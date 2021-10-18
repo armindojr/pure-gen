@@ -5,172 +5,267 @@ sidebar_label: Company
 slug: pure/company
 ---
 
-## company
+# company
 
-### suffixes
+## suffixes
 
+#### Description
+Method that generates random company suffixes
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random suffixes
+- **<Array\>**
 #### Usage
-```js
-console.log(pure.company.suffixes());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.suffixes());
+    ```
+    2. **result**
+    ```js
+    [ 'Pty Ltd', 'Ltd', 'CC' ]
+    ```
 
 ------------------------------------------------------------------------------
 
-### companyName
+## companyName
 
+#### Description
+Method that generates random company name. If you want a specific format you can pass as a parameter considering mustache templates like [Fake](./fake).
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | format        | <String\>     | You can define what format to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
-- **<String\>** String containing a random company name
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.companyName());
-```
-```js
-console.log(pure.company.companyName('{{name.lastName}} {{company.companySuffix}}'));
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.companyName());
+    ```
+    2. **result**
+    ```js
+    'Streich LLC'
+    ```
+
+2. Describing that i want the company name to respect this template `{{name.lastName}}-{{random.number}} {{company.companySuffix}}`
+    1. **code**
+    ```js
+    console.log(pure.company.companyName('{{name.lastName}}-{{random.number}} {{company.companySuffix}}'));
+    ```
+    2. **result**
+    ```js
+    'Grimes-20458 LLC'
+    ```
 
 ------------------------------------------------------------------------------
 
-### companySuffix
+## companySuffix
 
+#### Description
+Method that generates random company suffix
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company suffix
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.companySuffix());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.companySuffix());
+    ```
+    2. **result**
+    ```js
+    'Group'
+    ```
 
 ------------------------------------------------------------------------------
 
-### catchPhrase
+## catchPhrase
 
+#### Description
+Method that generates random company suffix
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company catch phrase
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.catchPhrase());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.catchPhrase());
+    ```
+    2. **result**
+    ```js
+    'Reduced discrete core'
+    ```
 
 ------------------------------------------------------------------------------
 
-### bs
+## catchPhraseAdjective
 
+#### Description
+Method that generates random catch phrase adjectives.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company bs
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.bs());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.catchPhraseAdjective());
+    ```
+    2. **result**
+    ```js
+    'Intuitive'
+    ```
 
 ------------------------------------------------------------------------------
 
-### catchPhraseAdjective
+## catchPhraseDescriptor
 
+#### Description
+Method that generates random catch phrase descriptor.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company catch phrase adjective
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.catchPhraseAdjective());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.catchPhraseDescriptor());
+    ```
+    2. **result**
+    ```js
+    'next generation'
+    ```
 
 ------------------------------------------------------------------------------
 
-### catchPhraseDescriptor
+## catchPhraseNoun
 
+#### Description
+Method that generates random catch phrase noun.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company catch phrase descriptor
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.catchPhraseDescriptor());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.catchPhraseNoun());
+    ```
+    2. **result**
+    ```js
+    'benchmark'
+    ```
 
 ------------------------------------------------------------------------------
 
-### catchPhraseNoun
+## bs
 
+#### Description
+Method that generates random company BS.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company catch phrase noun
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.catchPhraseNoun());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.bs());
+    ```
+    2. **result**
+    ```js
+    'enable front-end methodologies'
+    ```
 
 ------------------------------------------------------------------------------
 
-### bsAdjective
+## bsAdjective
 
+#### Description
+Method that generates random BS adjective.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company bs adjective
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.bsAdjective());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.bsAdjective());
+    ```
+    2. **result**
+    ```js
+    'extensible'
+    ```
 
 ------------------------------------------------------------------------------
 
-### bsBuzz
+## bsBuzz
 
+#### Description
+Method that generates random BS buzz.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company bs buzz
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.bsBuzz());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.bsBuzz());
+    ```
+    2. **result**
+    ```js
+    'repurpose'
+    ```
 
 ------------------------------------------------------------------------------
 
-### bsNoun
+## bsNoun
 
+#### Description
+Method that generates random BS noun.
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random company bs noun
+- **<String\>**
 #### Usage
-```js
-console.log(pure.company.bsNoun());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.company.bsNoun());
+    ```
+    2. **result**
+    ```js
+    'deliverables'
+    ```
 
 ------------------------------------------------------------------------------
