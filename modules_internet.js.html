@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>modules/internet.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="generator.html">generator</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.html">pure</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.html#.fake">fake</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.html#.getSeed">getSeed</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.html#.seed">seed</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.html#.setLocale">setLocale</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.address.html">address</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.cardinalDirection">cardinalDirection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.city">city</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.cityName">cityName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.cityPrefix">cityPrefix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.citySuffix">citySuffix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.country">country</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.countryCode">countryCode</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.county">county</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.defaultCountry">defaultCountry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.direction">direction</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.latitude">latitude</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.longitude">longitude</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.nearbyGPSCoordinate">nearbyGPSCoordinate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.ordinalDirection">ordinalDirection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.secondaryAddress">secondaryAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.state">state</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.stateAbbr">stateAbbr</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.streetAddress">streetAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.streetName">streetName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.streetPrefix">streetPrefix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.streetSuffix">streetSuffix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.timeZone">timeZone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.zipCode">zipCode</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.address.html#.zipCodeByState">zipCodeByState</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.commerce.html">commerce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.categories">categories</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.color">color</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.department">department</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.price">price</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.product">product</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.productAdjective">productAdjective</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.productDescription">productDescription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.productMaterial">productMaterial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.commerce.html#.productName">productName</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.company.html">company</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.bs">bs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.bsAdjective">bsAdjective</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.bsBuzz">bsBuzz</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.bsNoun">bsNoun</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.catchPhrase">catchPhrase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.catchPhraseAdjective">catchPhraseAdjective</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.catchPhraseDescriptor">catchPhraseDescriptor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.catchPhraseNoun">catchPhraseNoun</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.companyName">companyName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.companySuffix">companySuffix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.company.html#.suffixes">suffixes</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.database.html">database</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.database.html#.collation">collation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.database.html#.column">column</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.database.html#.engine">engine</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.database.html#.type">type</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.date.html">date</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.arrayBetween">arrayBetween</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.between">between</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.birthDay">birthDay</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.future">future</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.month">month</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.past">past</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.recent">recent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.soon">soon</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.date.html#.weekday">weekday</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.dessert.html">dessert</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.dessert.html#.flavor">flavor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.dessert.html#.topping">topping</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.dessert.html#.variety">variety</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.document.html">document</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.document.html#.brazilianCitizenNumber">brazilianCitizenNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.document.html#.brazilianCompanyNumber">brazilianCompanyNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.document.html#.brazilianId">brazilianId</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.electricalComponents.html">electricalComponents</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.electricalComponents.html#.active">active</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.electricalComponents.html#.electromechanical">electromechanical</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.electricalComponents.html#.passive">passive</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.esport.html">esport</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.esport.html#.events">events</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.esport.html#.games">games</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.esport.html#.leagues">leagues</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.esport.html#.players">players</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.esport.html#.teams">teams</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.html#.fake">fake</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.finance.html">finance</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.account">account</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.accountName">accountName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.amount">amount</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.bic">bic</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.bitcoinAddress">bitcoinAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.creditCardCVV">creditCardCVV</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.creditCardNumber">creditCardNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.currencyCode">currencyCode</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.currencyName">currencyName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.currencySymbol">currencySymbol</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.ethereumAddress">ethereumAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.iban">iban</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.litecoinAddress">litecoinAddress</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.mask">mask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.routingNumber">routingNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.finance.html#.transactionType">transactionType</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.games.html">games</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.games.html#.genre">genre</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.games.html#.platform">platform</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.games.html#.title">title</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.git.html">git</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.git.html#.branch">branch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.git.html#.commitEntry">commitEntry</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.git.html#.commitMessage">commitMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.git.html#.commitSha">commitSha</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.git.html#.shortSha">shortSha</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.hacker.html">hacker</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.abbreviation">abbreviation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.adjective">adjective</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.ingverb">ingverb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.noun">noun</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.phrase">phrase</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.hacker.html#.verb">verb</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.helpers.html">helpers</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.contextualCard">contextualCard</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.createCard">createCard</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.createTransaction">createTransaction</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.mod97">mod97</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.mustache">mustache</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.regexpStyleStringParse">regexpStyleStringParse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.repeatString">repeatString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.replaceCreditCardSymbols">replaceCreditCardSymbols</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.replaceSymbols">replaceSymbols</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.replaceSymbolWithHex">replaceSymbolWithHex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.replaceSymbolWithNumber">replaceSymbolWithNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.shuffle">shuffle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.slugify">slugify</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.toDigitString">toDigitString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.helpers.html#.userCard">userCard</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.image.html">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.animals">animals</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.architecture">architecture</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.avatar">avatar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.dataUri">dataUri</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.image">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.nature">nature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.people">people</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.html#.tech">tech</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.image.placeimg.html">placeimg</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.animals">animals</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.architecture">architecture</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.avatar">avatar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.image">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.imageUrl">imageUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.nature">nature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.people">people</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.placeimg.html#.tech">tech</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.image.unsplash.html">unsplash</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.avatar">avatar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.buildings">buildings</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.food">food</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.image">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.imageUrl">imageUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.nature">nature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.objects">objects</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.people">people</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.image.unsplash.html#.technology">technology</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.internet.html">internet</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.avatar">avatar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.color">color</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.domainName">domainName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.domainSuffix">domainSuffix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.domainWord">domainWord</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.email">email</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.exampleEmail">exampleEmail</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.ip">ip</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.ipv6">ipv6</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.mac">mac</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.password">password</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.protocol">protocol</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.url">url</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.userAgent">userAgent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.internet.html#.userName">userName</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.lorem.html">lorem</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.lines">lines</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.paragraph">paragraph</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.paragraphs">paragraphs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.sentence">sentence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.sentences">sentences</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.slug">slug</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.text">text</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.word">word</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.lorem.html#.words">words</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.markdown.html">markdown</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.blockCode">blockCode</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.emphasis">emphasis</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.header">header</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.inlineCode">inlineCode</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.orderedList">orderedList</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.table">table</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.markdown.html#.unorderedList">unorderedList</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.music.html">music</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.music.html#.genre">genre</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.name.html">name</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.findName">findName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.firstName">firstName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.gender">gender</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.jobArea">jobArea</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.jobDescriptor">jobDescriptor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.jobTitle">jobTitle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.jobType">jobType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.lastName">lastName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.prefix">prefix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.suffix">suffix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.name.html#.title">title</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.phone.html">phone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.phone.html#.phoneFormats">phoneFormats</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.phone.html#.phoneNumber">phoneNumber</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.phone.html#.phoneNumberFormat">phoneNumberFormat</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.random.html">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.alpha">alpha</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.alphaNumeric">alphaNumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.arrayElement">arrayElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.arrayElements">arrayElements</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.boolean">boolean</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.float">float</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.hexaDecimal">hexaDecimal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.locale">locale</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.number">number</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.object">object</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.objectElement">objectElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.uuid">uuid</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.word">word</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.random.html#.words">words</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.system.html">system</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.commonFileExt">commonFileExt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.commonFileName">commonFileName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.commonFileType">commonFileType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.directoryPath">directoryPath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.fileExt">fileExt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.fileName">fileName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.filePath">filePath</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.fileType">fileType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.mimeType">mimeType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.system.html#.semver">semver</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.transport.html">transport</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.airportIata">airportIata</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.airportIcao">airportIcao</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.airportName">airportName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleColor">vehicleColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleFuel">vehicleFuel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleManufacturer">vehicleManufacturer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleModel">vehicleModel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleName">vehicleName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleRM">vehicleRM</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleType">vehicleType</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.transport.html#.vehicleVin">vehicleVin</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="pure.unique.html">unique</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.unique.html#.clear">clear</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="pure.unique.html#.exec">exec</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="repl.html">repl</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">modules/internet.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const RandExp = require('randexp');
+const slugify = require('slugify');
+const randomUa = require('../vendor/user-agent');
+
+/**
+ *
+ * @namespace pure.internet
+ */
+class Internet {
+    constructor(pure) {
+        /**
+         * avatar
+         *
+         * @description Generate a random avatar url
+         * @method pure.internet.avatar
+         * @example
+         * console.log(pure.internet.avatar());
+         * //outputs: "https://i.pravatar.cc/200"
+         */
+        this.avatar = (width) => {
+            let opt = width;
+            let url = 'https://i.pravatar.cc';
+
+            if (typeof opt === 'undefined') {
+                opt = 200;
+            }
+
+            url += `/${opt}`;
+
+            return url;
+        };
+
+        /**
+         * email
+         *
+         * @description Generates a random email
+         * @param {object} [options= {}] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
+         * @param {string} [options.provider= random] Provider to use on email
+         * @method pure.internet.email
+         * @example
+         * console.log(pure.internet.email());
+         * //outputs: "myrtice.cronin@gmail.com"
+         */
+        this.email = (options = {}) => {
+            let { provider } = options;
+            const { firstName, lastName } = options;
+
+            if (typeof provider === 'undefined') {
+                provider = pure.random.arrayElement(pure.registeredModules.internet.free_email);
+            }
+
+            return `${pure.helpers.slugify(this.userName(firstName, lastName), { lower: true })}@${provider}`;
+        };
+
+        /**
+         * exampleEmail
+         *
+         * @description Generates a random example email
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
+         * @method pure.internet.exampleEmail
+         * @example
+         * console.log(pure.internet.exampleEmail());
+         * //outputs: "golden.prohaska@example.org"
+         */
+        this.exampleEmail = (options = {}) => {
+            const { firstName, lastName } = options;
+            const provider = pure.random.arrayElement(pure.registeredModules.internet.example_email);
+            return this.email({ firstName, lastName, provider });
+        };
+
+        /**
+         * userName
+         *
+         * @description Generates a random user name
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.firstName= random] First name
+         * @param {string} [options.lastName= random] Last name
+         * @method pure.internet.userName
+         * @example
+         * console.log(pure.internet.userName());
+         * //outputs: "Kirstin39"
+         */
+        this.userName = (options = {}) => {
+            const { firstName = pure.name.firstName(), lastName = pure.name.lastName() } = options;
+            let result;
+
+            switch (pure.random.number(2)) {
+            case 0:
+                result = firstName + pure.random.number(99);
+                break;
+            case 1:
+                result = firstName + pure.random.arrayElement(['.', '_']) + lastName;
+                break;
+            case 2:
+                result = firstName + pure.random.arrayElement(['.', '_']) + lastName + pure.random.number(99);
+                break;
+            default:
+                result = firstName + pure.random.number(99);
+            }
+
+            result = pure.helpers.slugify(result);
+            result = result.replace(/ /g, '');
+            return result;
+        };
+
+        /**
+         * protocol
+         *
+         * @description Generates a random protocol
+         * @method pure.internet.protocol
+         * @example
+         * console.log(pure.internet.protocol());
+         * //outputs: "https"
+         */
+        this.protocol = () => pure.random.arrayElement(['http', 'https']);
+
+        /**
+         * url
+         *
+         * @description Generates a random url
+         * @param {object} [options] Options to be passed
+         * @param {string} [options.protocol= random] What protocol to use.
+         * @param {string} [options.domainName= random] What domain to use.
+         * @method pure.internet.url
+         * @example
+         * console.log(pure.internet.url());
+         * //outputs: "http://harvey.net"
+         */
+        this.url = (options = {}) => {
+            const { protocol = this.protocol(), domainName = this.domainName() } = options;
+
+            return `${protocol}://${domainName}`;
+        };
+
+        /**
+         * domainName
+         *
+         * @description Generates a random domain name
+         * @method pure.internet.domainName
+         * @example
+         * console.log(pure.internet.domainName());
+         * //outputs: "marvin.org"
+         */
+        this.domainName = () => `${this.domainWord()}.${this.domainSuffix()}`;
+
+        /**
+         * domainSuffix
+         *
+         * @description Generates a random domain suffix
+         * @method pure.internet.domainSuffix
+         * @example
+         * console.log(pure.internet.domainSuffix());
+         * //outputs: "net"
+         */
+        this.domainSuffix = () => pure.random.arrayElement(pure.registeredModules.internet.domain_suffix);
+
+        /**
+         * domainWord
+         *
+         * @description Generates a random domain word
+         * @method pure.internet.domainWord
+         * @example
+         * console.log(pure.internet.domainWord());
+         * //outputs: "alyce"
+         */
+        this.domainWord = () => {
+            let name = pure.helpers.slugify(pure.name.firstName(), { lower: true, strict: true });
+
+            if (name.length === 0) {
+                name = slugify(pure.lorem.word(), { lower: true, strict: true });
+            }
+
+            return name;
+        };
+
+        /**
+         * ip
+         *
+         * @description Generates a random ip
+         * @method pure.internet.ip
+         * @example
+         * console.log(pure.internet.ip());
+         * //outputs: "97.238.241.11"
+         */
+        this.ip = () => {
+            const digit1 = pure.random.number(255);
+            const digit2 = pure.random.number(255);
+            const digit3 = pure.random.number(255);
+            const digit4 = pure.random.number(255);
+
+            return `${digit1}.${digit2}.${digit3}.${digit4}`;
+        };
+
+        /**
+         * ipv6
+         *
+         * @description Generates a random ipv6
+         * @method pure.internet.ipv6
+         * @example
+         * console.log(pure.internet.ipv6());
+         * //outputs: "2001:0db8:6276:b1a7:5213:22f1:25df:c8a0"
+         */
+        this.ipv6 = () => {
+            const randHash = () => {
+                const template = pure.helpers.repeatString({ string: '#', num: 4 });
+                return pure.helpers.replaceSymbolWithHex({ string: template });
+            };
+
+            const result = [];
+            for (let i = 0; i &lt; 8; i += 1) {
+                result[i] = randHash();
+            }
+            return result.join(':');
+        };
+
+        /**
+         * userAgent
+         *
+         * @description Generates a random user agent
+         * @method pure.internet.userAgent
+         * @example
+         * console.log(pure.internet.userAgent());
+         * //outputs: "Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_7_5 rv:6.0; SL) AppleWebKit/532.0.1
+         * // (KHTML, like Gecko) Version/7.1.6 Safari/532.0.1"
+         */
+        this.userAgent = () => randomUa.generate();
+
+        /**
+         * color
+         *
+         * @description Generates a random color
+         * @param {object} [options] Options to be passed
+         * @param {Number} [options.baseRed255= 0] The red value. Valid values are 0 - 255.
+         * @param {Number} [options.baseGreen255= 0] The green value. Valid values are 0 - 255.
+         * @param {Number} [options.baseBlue255= 0] The blue value. Valid values are 0 - 255.
+         * @method pure.internet.color
+         * @example
+         * console.log(pure.internet.color());
+         * //outputs: "#06267f"
+         */
+        this.color = (options = {}) => {
+            const { baseRed255 = 0, baseGreen255 = 0, baseBlue255 = 0 } = options;
+
+            // based on awesome response : http://stackoverflow.com/questions/43044/
+            // algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
+            const red = Math.floor((pure.random.number(256) + baseRed255) / 2);
+            const green = Math.floor((pure.random.number(256) + baseGreen255) / 2);
+            const blue = Math.floor((pure.random.number(256) + baseBlue255) / 2);
+            const redStr = red.toString(16);
+            const greenStr = green.toString(16);
+            const blueStr = blue.toString(16);
+            return `#${redStr.length === 1 ? '0' : ''}${redStr}${greenStr.length === 1 ? '0' : ''}`
+            + `${greenStr}${blueStr.length === 1 ? '0' : ''}${blueStr}`;
+        };
+
+        /**
+         * mac
+         *
+         * @description Generates a random mac address
+         * @param {string} [sep= ':'] Separator to use in mac address. ['-', '', ':']
+         * @method pure.internet.mac
+         * @example
+         * console.log(pure.internet.mac());
+         * //outputs: "78:06:cc:ae:b3:81"
+         */
+        this.mac = (sep) => {
+            let i;
+            let mac = '';
+            let validSep = ':';
+
+            // if the client passed in a different separator than `:`,
+            // we will use it if it is in the list of acceptable separators (dash or no separator)
+            if (['-', ''].indexOf(sep) !== -1) {
+                validSep = sep;
+            }
+
+            for (i = 0; i &lt; 12; i += 1) {
+                mac += pure.random.number(15).toString(16);
+                if (i % 2 === 1 &amp;&amp; i !== 11) {
+                    mac += validSep;
+                }
+            }
+
+            return mac;
+        };
+
+        /**
+         * password
+         *
+         * @description Generates a random password
+         * @param {object} [options] Options to be passed
+         * @param {Number} [optionslen= 15] The number of characters in the password.
+         * @param {boolean} [options.memorable= false] Whether a password should be easy to remember.
+         * @param {string} [options.pattern= '/\w/'] A regex to match each character of the password against.
+         * If memorable is true, then this will be ignored. If pattern has limit inside regex, it will be ignored.
+         * @param {string} [options.prefix= ''] A value to prepend to the generated password.
+         * @method pure.internet.password
+         * @example
+         * console.log(pure.internet.password());
+         * //outputs: "AM7zl6Mg"
+         */
+        this.password = (options = {}) => {
+            let { prefix = '' } = options;
+            const {
+                len = 15,
+                memorable = false,
+                pattern = /\w/,
+            } = options;
+
+            /*
+             * password-generator ( function )
+             * Copyright(c) 2011-2013 Bermi Ferrer &lt;bermi@bermilabs.com>
+             * MIT Licensed
+             */
+            const vowel = /[aeiouAEIOU]$/;
+            const consonant = /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]$/;
+
+            const password = (length, mem, pre) => {
+                let char;
+                const nlength = length;
+                let pat = /\w/;
+                const npre = pre || '';
+
+                if (npre.length >= nlength) {
+                    return npre;
+                }
+
+                if (mem) {
+                    if (npre.match(consonant)) {
+                        pat = vowel;
+                    } else {
+                        pat = consonant;
+                    }
+                }
+
+                const n = pure.random.number(94) + 33;
+                char = String.fromCharCode(n);
+
+                if (mem) {
+                    char = char.toLowerCase();
+                }
+
+                if (!char.match(pat)) {
+                    return password(nlength, mem, npre);
+                }
+
+                return password(nlength, mem, `${npre}${char}`);
+            };
+
+            if (memorable) {
+                prefix = password(len, memorable, prefix);
+            } else {
+                while (len > prefix.length) {
+                    prefix += new RandExp(pattern).gen();
+                }
+            }
+
+            return prefix.substr(0, len);
+        };
+    }
+}
+
+module.exports = Internet;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
