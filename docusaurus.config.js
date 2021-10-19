@@ -11,8 +11,8 @@
 module.exports = {
   title: 'Pure Gen',
   tagline: 'Pure gen',
-  url: 'https://armindojr.github.io/pure-gen/',
-  baseUrl: '/',
+  url: 'https://armindojr.github.io/',
+  baseUrl: '/pure-gen/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo-solo.svg',
