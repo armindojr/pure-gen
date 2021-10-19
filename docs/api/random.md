@@ -20,7 +20,7 @@ Method that generates a random number based on Lagged Fibonacci PRNG implementat
 | options.max       | <Number\> | Max number to be generated. Default value is 99999                                                         |
 | options.precision | <Number\> | Floating point precision to be used, if value is 0 then no floating point is generated. Default value is 0 |
 #### Returns
-- **<Number\>** Return a random number generated
+- **<Number\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -57,7 +57,7 @@ Method that generates a random float number.
 | options.max       | <Number\> | Max number to be generated. Default value is 99999                                                         |
 | options.precision | <Number\> | Floating point precision to be used, if value is 0 then no floating point is generated. Default value is 0 |
 #### Returns
-- **<Number\>** Return a random number generated
+- **<Number\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -126,7 +126,7 @@ Method that will randomly excludes some entries and generate a subset of given l
 | array | <Array\>  | Array list that will be randomized and created a subset. Default value is randomized from this list: 'a', 'b', 'c'  |
 | count | <Number\> | Number of elements that will last in result list. Default value is randomized                                       |
 #### Returns
-- **<Array\>** Array containing a subset from provided list.
+- **<Array\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -195,7 +195,7 @@ Method that can generate an object with random keys and values.
 | ------ | --------- | ---------------------------------------------------------- |
 | length | <Number\> | What length object generated will have. Default value is 2 |
 #### Returns
-- **<Object\>** Returns a random generated object.
+- **<Object\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -242,7 +242,7 @@ Note: if you pass v5 as a version to generate and always give the same name and 
 | opts.name      | <String\> | String to use in v5 uuid generation. Default value is 'uuid'                          |
 | opts.namespace | <String\> | String with uuid namespace to use in v5 generation. Default value is a random v1 uuid |
 #### Returns
-- **<String\>** String containing generated uuid based on what version you specified.
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. code
@@ -276,7 +276,7 @@ Method that generates random boolean
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<Boolean\>** Returns a random boolean
+- **<Boolean\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -327,7 +327,7 @@ Method that generates random word based on multiple pure methods. Possible word 
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** Returns a generated word from random pure methods
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -351,7 +351,7 @@ Method that generates random multiple words. All the possibilities are the same 
 | ----- | --------- | ------------------------------------------------------------------------------------- |
 | count | <Number\> | How many words that will be returned. Default value is a random value between 1 and 3 |
 #### Returns
-- **<String\>** Returns a generated word from random pure methods
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -433,7 +433,7 @@ Method that returns random possible locale to use in pure. All possibilities:
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** Returns a random locale from all possible pure locales
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -459,7 +459,7 @@ Method that generates a string with random letters.
 | options.count  | <Number\>  | How many letters to return. Default value is 1                       |
 | options.upcase | <Boolean\> | If letters returned will be uppercase or not. Default value is false |
 #### Returns
-- **<String\>** Return a random string
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -493,7 +493,7 @@ Method that generates a string with random alpha numeric chars.
 | ----- | --------- | -------------------------------------------------------- |
 | count | <Number\> | How many chars that will be returned. Default value is 1 |
 #### Returns
-- **<String\>** Return a random string
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**
@@ -527,7 +527,7 @@ Method that generates a string with random hexa decimal chars.
 | ----- | --------- | -------------------------------------------------------- |
 | count | <Number\> | How many chars that will be returned. Default value is 1 |
 #### Returns
-- **<String\>** Return a random string
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**

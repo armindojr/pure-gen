@@ -12,9 +12,9 @@ slug: pure/system
 #### Description
 Method that generate random file name with extension
 #### Parameters
-| Name          | Type          | Description                                                                                                    |
-| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
-| ext           | <String\>     | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
+| Name | Type      | Description                                                                                                    |
+| ---- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| ext  | <String\> | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
 - **<String\>**
 #### Usage
@@ -45,9 +45,9 @@ Method that generate random file name with extension
 #### Description
 Method that generates random common file name with extension
 #### Parameters
-| Name          | Type          | Description                                                                                                    |
-| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------- |
-| ext           | <String\>     | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
+| Name | Type      | Description                                                                                                    |
+| ---- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| ext  | <String\> | You can define what extension to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
 - **<String\>**
 #### Usage
@@ -170,9 +170,9 @@ Method that generate random file type
 #### Description
 Method that generate random file extension
 #### Parameters
-| Name          | Type          | Description                                                                                                   |
-| ------------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
-| mimeType      | <String\>     | Define what internet media type to use. If the string passed isn't valid it will randomize from internal list |
+| Name     | Type      | Description                                                                                                   |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------- |
+| mimeType | <String\> | Define what internet media type to use. If the string passed isn't valid it will randomize from internal list |
 #### Returns
 - **<String\>**
 #### Usage
@@ -230,7 +230,7 @@ Method that generate random fake file path
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random fake file path
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**

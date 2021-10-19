@@ -25,7 +25,7 @@ Method that generate random game title
     ```
     2. **result**
     ```js
-    '# aut'
+    'Kirby\'s Adventure'
     ```
 
 ------------------------------------------------------------------------------
@@ -39,9 +39,15 @@ Method that generate random game title
 #### Returns
 - **<String\>**
 #### Usage
-```js
-console.log(pure.games.genre());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.games.genre());
+    ```
+    2. **result**
+    ```js
+    'Simulation'
+    ```
 
 ------------------------------------------------------------------------------
 
@@ -54,8 +60,14 @@ console.log(pure.games.genre());
 #### Returns
 - **<String\>**
 #### Usage
-```js
-console.log(pure.games.platform());
-```
+1. Without passing parameters
+    1. **code**
+    ```js
+    console.log(pure.games.platform());
+    ```
+    2. **result**
+    ```js
+    'Xbox 360'
+    ```
 
 ------------------------------------------------------------------------------

@@ -33,7 +33,7 @@ Method that generates random company suffixes
 ## companyName
 
 #### Description
-Method that generates random company name. If you want a specific format you can pass as a parameter considering mustache templates like [Fake](./fake).
+Method that generates random company name. If you want a specific format you can pass as a parameter considering mustache templates like [Fake](../pure#fake).
 #### Parameters
 | Name          | Type          | Description                                |
 | ------------- | ------------- | ------------------------------------------ |

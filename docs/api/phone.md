@@ -12,9 +12,9 @@ slug: pure/phone
 #### Description
 Method that generate random phone number
 #### Parameters
-| Name          | Type          | Description                                |
-| ------------- | ------------- | ------------------------------------------ |
-| format        | <String\>     | You can define what format to use. If the parameter passed isn't valid it will randomize from internal list |
+| Name   | Type      | Description                                                                                                 |
+| ------ | --------- | ----------------------------------------------------------------------------------------------------------- |
+| format | <String\> | You can define what format to use. If the parameter passed isn't valid it will randomize from internal list |
 #### Returns
 - **<String\>**
 #### Usage
@@ -45,9 +45,9 @@ Method that generate random phone number
 #### Description
 Method that generate random phone number based on localization that you have set. If your locale has more than one phone format you can hard pass what index you want
 #### Parameters
-| Name                          | Type          | Description                                                         |
-| ----------------------------- | ------------- | ------------------------------------------------------------------- |
-| phoneFormatsArrayIndex        | <Number\>     | Index to use when retrieving format from locale. Default value is 0 |
+| Name                   | Type      | Description                                                         |
+| ---------------------- | --------- | ------------------------------------------------------------------- |
+| phoneFormatsArrayIndex | <Number\> | Index to use when retrieving format from locale. Default value is 0 |
 #### Returns
 - **<String\>**
 #### Usage

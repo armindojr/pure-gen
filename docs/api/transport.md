@@ -108,7 +108,7 @@ Method that generate random vehicle fuel
 | ------------- | ------------- | ------------------------------------------ |
 | N/A           | N/A           | This method doesn't receive any parameters |
 #### Returns
-- **<String\>** String containing a random vehicle fuel name
+- **<String\>**
 #### Usage
 1. Without passing parameters
     1. **code**

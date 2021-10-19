@@ -10,7 +10,7 @@ Generator is a built-in CLI tool inside pure-gen that you can use to quick gener
 When running command like example, it will ask some questions to set some data. With that you can set information like: format of file, template, how many rows, unique information, path to save and file name.
 With it, you can quickly generate csv files, or json by given template and populate with fake data.
 
-If you want to know what format to use inside template, it simple uses mustache template parser. You only pass pure "module.method" inside curly brackets and back-end will automatically populate that. [Fake](../api/fake.md)
+If you want to know what format to use inside template, it simple uses mustache template parser. You only pass pure "module.method" inside curly brackets and back-end will automatically populate that. [Fake](../api/pure#fake)
 
 ## Possible templates
 * Json like
