@@ -410,21 +410,21 @@ describe('random.js', () => {
         it('should return deterministic results when seeded with integer', () => {
             pure.seed(100);
             const name = pure.name.findName();
-            assert.equal(name, 'Homer Lesch Sr.');
+            assert.equal(name, 'Gerard Leuschke I');
             pure.seed();
         });
 
         it('should return deterministic results when seeded with array - one element', () => {
             pure.seed([10]);
             const name = pure.name.findName();
-            assert.equal(name, 'Randy Haag PhD');
+            assert.equal(name, 'Rachel Hackett DVM');
             pure.seed();
         });
 
         it('should return deterministic results when seeded with array - multiple elements', () => {
             pure.seed([10, 100, 1000]);
             const name = pure.name.findName();
-            assert.equal(name, 'Jerry Smith');
+            assert.equal(name, 'Jerry Spencer');
             pure.seed();
         });
     });

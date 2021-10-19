@@ -1,21 +1,5 @@
-// generates fake data for many computer systems properties
-
-/**
- *
- * @namespace pure.system
- */
 class System {
     constructor(pure) {
-        /**
-         * fileName
-         *
-         * @description Generates a file name with extension
-         * @param {string} [ext= random] Define what extension to use
-         * @method pure.system.fileName
-         * @example
-         * console.log(pure.system.fileName());
-         * //outputs: "account_home.ipk"
-         */
         this.fileName = (ext) => {
             let def = ext;
             if (typeof ext === 'undefined') {
@@ -31,16 +15,6 @@ class System {
             return str;
         };
 
-        /**
-         * commonFileName
-         *
-         * @description Generates a file name with common extension
-         * @param {string} [ext= random] Define what extension to use
-         * @method pure.system.commonFileName
-         * @example
-         * console.log(pure.system.commonFileName());
-         * //outputs: "thx.gif"
-         */
         this.commonFileName = (ext) => {
             let def = ext;
             if (typeof ext === 'undefined') {
@@ -52,40 +26,13 @@ class System {
             return this.fileName(def);
         };
 
-        /**
-         * mimeType
-         *
-         * @description Generates a random internet media type
-         * @method pure.system.mimeType
-         * @example
-         * console.log(pure.system.mimeType());
-         * //outputs: "application/vnd.picsel"
-         */
         this.mimeType = () => pure.random.arrayElement(Object.keys(pure.registeredModules.system.mimeTypes));
 
-        /**
-         * commonFileType
-         *
-         * @description Returns a commonly used file type
-         * @method pure.system.commonFileType
-         * @example
-         * console.log(pure.system.commonFileType());
-         * //outputs: "video"
-         */
         this.commonFileType = () => {
             const types = ['video', 'audio', 'image', 'text', 'application'];
             return pure.random.arrayElement(types);
         };
 
-        /**
-         * commonFileExt
-         *
-         * @description Returns a commonly used file extension based on optional type
-         * @method pure.system.commonFileExt
-         * @example
-         * console.log(pure.system.commonFileExt());
-         * //outputs: "wav"
-         */
         this.commonFileExt = () => {
             const types = [
                 'application/pdf',
@@ -101,15 +48,6 @@ class System {
             return this.fileExt(pure.random.arrayElement(types));
         };
 
-        /**
-         * fileType
-         *
-         * @description Returns any file type available as mime-type
-         * @method pure.system.fileType
-         * @example
-         * console.log(pure.system.fileType());
-         * //outputs: "x-shader"
-         */
         this.fileType = () => {
             const types = [];
             const mimes = pure.registeredModules.system.mimeTypes;
@@ -122,16 +60,6 @@ class System {
             return pure.random.arrayElement(types);
         };
 
-        /**
-         * fileExt
-         *
-         * @description Returns file extension based on mime type
-         * @param {string} [mimeType= random] Define what internet media type to use
-         * @method pure.system.fileExt
-         * @example
-         * console.log(pure.system.fileExt());
-         * //outputs: "c4u"
-         */
         this.fileExt = (mimeType) => {
             const exts = [];
             const mimes = pure.registeredModules.system.mimeTypes;
@@ -153,37 +81,10 @@ class System {
             return pure.random.arrayElement(exts);
         };
 
-        /**
-         * directoryPath
-         *
-         * @description Returns directory path
-         * @method pure.system.directoryPath
-         * @example
-         * console.log(pure.system.directoryPath());
-         * //outputs: "/private/tmp"
-         */
         this.directoryPath = () => pure.random.arrayElement(pure.registeredModules.system.directoryPaths);
 
-        /**
-         * filePath
-         *
-         * @description Returns file path
-         * @method pure.system.filePath
-         * @example
-         * console.log(pure.system.filePath());
-         * //outputs: "/usr/src/solutions_virtual.mif"
-         */
-        this.filePath = () => pure.fake('{{system.directoryPath}}/{{system.fileName}}');
+        this.filePath = () => `${this.directoryPath()}/${this.fileName()}`;
 
-        /**
-         * semver
-         *
-         * @description Returns random semantic versioning number
-         * @method pure.system.semver
-         * @example
-         * console.log(pure.system.semver());
-         * //outputs: "9.8.1"
-         */
         this.semver = () => pure.helpers.replaceSymbolWithNumber({ string: '#.#.#' });
     }
 }

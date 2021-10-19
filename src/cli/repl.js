@@ -10,24 +10,6 @@ function prettyPrint(message) {
     console.log(message);
 }
 
-/**
- * startRepl
- *
- * @description
- * After you install pure-gen, you can use repl in cli to quick generate fake data.
- * </br> When running command like example, it will start cli repl containing pure instance.
- * With it, you can use any pure method and the result will be printed as well. Efficient and quick.
- * </br> After run, cli will ask what locale you want to use in that instance, this will
- * automatically set locale for you.
- *
- * <b>Attention! some methods won't take any effect inside repl like: seed, setLocale, getSeed</b>
- *
- * To exit repl you can use ctrl+c or simply type ".exit"
- * @namespace repl
- * @example
- * $ npx pure repl
- */
-
 function startRepl() {
     inquirer
         .prompt({

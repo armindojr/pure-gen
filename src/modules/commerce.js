@@ -1,58 +1,12 @@
-/**
- *
- * @namespace pure.commerce
- */
 class Commerce {
     constructor(pure) {
-        /**
-         * color
-         *
-         * @description Generate random color name
-         * @method pure.commerce.color
-         * @example
-         * console.log(pure.commerce.color());
-         * //outputs: "pink"
-         */
         this.color = () => pure.random.arrayElement(pure.registeredModules.commerce.color);
 
-        /**
-         * department
-         *
-         * @description Generate random department name
-         * @method pure.commerce.department
-         * @example
-         * console.log(pure.commerce.department());
-         * //outputs: "Games"
-         */
         this.department = () => pure.random.arrayElement(pure.registeredModules.commerce.department);
 
-        /**
-         * productName
-         *
-         * @description Generate random product name
-         * @method pure.commerce.productName
-         * @example
-         * console.log(pure.commerce.productName());
-         * //outputs: "Gorgeous Cotton Shirt"
-         */
         this.productName = () => `${this.productAdjective()}`
         + ` ${this.productMaterial()} ${this.product()}`;
 
-        /**
-         * price
-         *
-         * @description Generate random product price
-         * @param {object} options Options to be passed
-         * @param {Number} [options.min= 1] Minimum product price
-         * @param {Number} [options.max= 1000] Maximum product price
-         * @param {Number} [options.dec= 2] Floating point precision
-         * @param {Number} [options.symbol= empty] Price symbol
-         * @param {boolean} [options.comma= false] Price separated by comma
-         * @method pure.commerce.price
-         * @example
-         * console.log(pure.commerce.price());
-         * //outputs: "941.00"
-         */
         this.price = (options) => {
             let def = options;
             if (def === undefined) {
@@ -75,16 +29,6 @@ class Commerce {
             return (def.comma) ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
         };
 
-        /**
-         * categories
-         *
-         * @description Generate random categories
-         * @param {Number} num Number of categories to return
-         * @method pure.commerce.categories
-         * @example
-         * console.log(pure.commerce.categories());
-         * //outputs: "[ 'Home', 'Clothing', 'Shoes', 'Toys', 'Tools' ]"
-         */
         this.categories = (num) => {
             let categories = [];
             let def = num;
@@ -105,49 +49,12 @@ class Commerce {
             return categories;
         };
 
-        /**
-         * productAdjective
-         *
-         * @description Generate random product adjective
-         * @method pure.commerce.productAdjective
-         * @example
-         * console.log(pure.commerce.productAdjective());
-         * //outputs: "Tasty"
-         */
         this.productAdjective = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.adjective);
 
-        /**
-         * productMaterial
-         *
-         * @description Generate random product material
-         * @method pure.commerce.productMaterial
-         * @example
-         * console.log(pure.commerce.productMaterial());
-         * //outputs: "Granite"
-         */
         this.productMaterial = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.material);
 
-        /**
-         * product
-         *
-         * @description Generate random product name
-         * @method pure.commerce.product
-         * @example
-         * console.log(pure.commerce.product());
-         * //outputs: "Bike"
-         */
         this.product = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.product);
 
-        /**
-         * productDescription
-         *
-         * @description Generate random product description
-         * @method pure.commerce.productDescription
-         * @example
-         * console.log(pure.commerce.productDescription());
-         * //outputs: "New range of formal shirts are designed keeping you in mind. With fits and
-         * //styling that will make you stand apart"
-         */
         this.productDescription = () => pure.random.arrayElement(pure.registeredModules.commerce.product_description);
     }
 }

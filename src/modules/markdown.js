@@ -1,34 +1,10 @@
-/**
- *
- * @namespace pure.markdown
- */
 class Markdown {
     constructor(pure) {
-        /**
-         * header
-         *
-         * @description Generate random markdown header
-         * @param {Number} [num= 1] Number of heading tags '#'
-         * @method pure.markdown.header
-         * @example
-         * console.log(pure.markdown.header());
-         * //outputs: "# quia"
-         */
         this.header = (num = 1) => {
             const head = pure.helpers.repeatString({ string: '#', num });
             return `${head} ${pure.lorem.word()}`;
         };
 
-        /**
-         * emphasis
-         *
-         * @description Generate random markdown emphasis
-         * @param {string} [type= random] Emphasis to use ['_','~','*','**']
-         * @method pure.markdown.emphasis
-         * @example
-         * console.log(pure.markdown.emphasis());
-         * //outputs: "modi *hic* tenetur"
-         */
         this.emphasis = (type) => {
             const types = ['_', '~', '*', '**'];
             const def = type || types[pure.random.number(types.length - 1)];
@@ -40,20 +16,6 @@ class Markdown {
             return words.join(' ');
         };
 
-        /**
-         * table
-         *
-         * @description Generate random markdown table
-         * @param {Number} [num= 3] Table rows
-         * @method pure.markdown.table
-         * @example
-         * console.log(pure.markdown.table());
-         * //outputs: "| head1 | head2 | head3 |"
-         * // "|:-----:|:-----:|:-----:|"
-         * // "|officiis|autem|excepturi|"
-         * // "|necessitatibus|quia|natus|"
-         * // "|omnis|corporis|repudiandae|"
-         */
         this.table = (num = 3) => {
             const table = [
                 '| head1 | head2 | head3 |',
@@ -68,18 +30,6 @@ class Markdown {
             return table.join('\n');
         };
 
-        /**
-         * orderedList
-         *
-         * @description Generate random markdown ordered list
-         * @param {Number} [num= 3] Number of itens in list
-         * @method pure.markdown.orderedList
-         * @example
-         * console.log(pure.markdown.orderedList());
-         * //outputs: "1. dolor"
-         * // "2. iste"
-         * // "3. provident"
-         */
         this.orderedList = (num = 3) => {
             const words = pure.lorem.words(num).split(' ');
             const list = [];
@@ -91,18 +41,6 @@ class Markdown {
             return list.join('\n');
         };
 
-        /**
-         * unorderedList
-         *
-         * @description Generate random markdown unordered list
-         * @param {Number} [num= 3] Number of itens in list
-         * @method pure.markdown.unorderedList
-         * @example
-         * console.log(pure.markdown.unorderedList());
-         * //outputs: "* eveniet"
-         * // "* nemo"
-         * // "* iusto"
-         */
         this.unorderedList = (num = 3) => {
             const words = pure.lorem.words(num).split(' ');
             const list = [];
@@ -114,28 +52,8 @@ class Markdown {
             return list.join('\n');
         };
 
-        /**
-         * inlineCode
-         *
-         * @description Generate random markdown inline code
-         * @method pure.markdown.inlineCode
-         * @example
-         * console.log(pure.markdown.inlineCode());
-         * //outputs: "`officia`"
-         */
         this.inlineCode = () => `\` ${pure.lorem.word()} \``;
 
-        /**
-         * blockCode
-         *
-         * @description Generate random markdown block code
-         * @method pure.markdown.blockCode
-         * @example
-         * console.log(pure.markdown.blockCode());
-         * //outputs: "```javascript"
-         * // "quod"
-         * // "```"
-         */
         this.blockCode = () => `\`\`\`javascript\n ${pure.lorem.word()} \n\`\`\``;
     }
 }

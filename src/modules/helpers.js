@@ -3,24 +3,8 @@ const slugify = require('slugify');
 
 mustache.escape = (text) => text;
 
-/**
- *
- * @namespace pure.helpers
- */
 class Helpers {
     constructor(pure) {
-        /**
-         * slugify
-         *
-         * @description Method to remove special characters and diacritics of an string
-         * @param {string} [string= empty] String to apply slugify and remove diacritic
-         * @param {object} [opts] Options to be passed to slugify package.
-         * See npm slugify for more
-         * @method pure.helpers.slugify
-         * @example
-         * console.log(pure.helpers.slugify('string to test slugify áéíóúãçù'));
-         * //outputs: "string-to-test-slugify-aeiouacu"
-         */
         this.slugify = (string, opts) => {
             const def = string || '';
             const opt = opts || {};
@@ -28,18 +12,6 @@ class Helpers {
             return slugify.default(def, opt);
         };
 
-        /**
-         * replaceSymbolWithNumber
-         *
-         * @description Method to parse a string and replace match symbols with random numbers
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} [options.string= empty] String to be parsed and replaced
-         * @param {string} [options.symbol= '#'] What symbol to search and replace
-         * @method pure.helpers.replaceSymbolWithNumber
-         * @example
-         * console.log(pure.helpers.replaceSymbolWithNumber({ string: 'test@', symbol: '@' }))
-         * //outputs: "test4"
-         */
         this.replaceSymbolWithNumber = (options = {}) => {
             const { string = '', symbol = '#' } = options;
             let str = '';
@@ -57,18 +29,6 @@ class Helpers {
             return str;
         };
 
-        /**
-         * replaceSymbolWithHex
-         *
-         * @description Method to parse a string and replace match symbols with random hex char
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} [options.string= empty] String to be parsed and replaced
-         * @param {string} [options.symbol= '#'] What symbol to search and replace
-         * @method pure.helpers.replaceSymbolWithHex
-         * @example
-         * console.log(pure.helpers.replaceSymbolWithHex({ string: 'test@', symbol: '@' }))
-         * //outputs: "testc"
-         */
         this.replaceSymbolWithHex = (options = {}) => {
             const { string = '', symbol = '#' } = options;
             const hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -85,17 +45,6 @@ class Helpers {
             return str;
         };
 
-        /**
-         * replaceSymbols
-         *
-         * @description Method that parses a string for symbols (numbers or letters) and replaces them appropriately
-         * (# will be replaced with number,? with letter and * will be replaced with number or letter)
-         * @param {string} [string= empty] String to be parsed and replaced
-         * @method pure.helpers.replaceSymbols
-         * @example
-         * console.log(pure.helpers.replaceSymbols('test#?*'))
-         * //outputs: "test6J4"
-         */
         this.replaceSymbols = (string) => {
             const def = string || '';
             const alpha = [
@@ -121,18 +70,6 @@ class Helpers {
             return str;
         };
 
-        /**
-         * replaceCreditCardSymbols
-         *
-         * @description Replace symbols in a credit card schems including Luhn checksum
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} options.string String to be parsed and replaced
-         * @param {string} [options.symbol= '#'] What symbol to search and replace
-         * @method pure.helpers.replaceCreditCardSymbols
-         * @example
-         * console.log(pure.helpers.replaceCreditCardSymbols({ string: '6453-****-****-****-***L', symbol: '*' }));
-         * //outputs: "6453-7421-8282-1032-2312"
-         */
         this.replaceCreditCardSymbols = (options = {}) => {
             const { string, symbol = '#' } = options;
 
@@ -165,34 +102,12 @@ class Helpers {
             return str.replace('L', checkNum);
         };
 
-        /**
-         * repeatString
-         *
-         * @description Method to repeat string given times alternative to String.prototype.repeat
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} [options.string= empty] String to be repeated
-         * @param {Number} [options.num= 0] Times to repeat given string
-         * @method pure.helpers.repeatString
-         * @example
-         * console.log(pure.helpers.repeatString({ string: 'pure-gen ', num: 5 }));
-         * //outputs: "pure-gen pure-gen pure-gen pure-gen pure-gen "
-         */
         this.repeatString = (options = {}) => {
             const { string = '', num = 0 } = options;
 
             return string.repeat(num);
         };
 
-        /**
-         * regexpStyleStringParse
-         *
-         * @description Parse string paterns in a similar way to RegExp
-         * @param {string} [string= empty] String to be parsed
-         * @method pure.helpers.regexpStyleStringParse
-         * @example
-         * console.log(pure.helpers.regexpStyleStringParse('#{3}test[1-5]'));
-         * //outputs: "###test4"
-         */
         this.regexpStyleStringParse = (string) => {
             let def = string || '';
             // Deal with range repeat `{min,max}`
@@ -249,16 +164,6 @@ class Helpers {
             return def;
         };
 
-        /**
-         * shuffle
-         *
-         * @description Takes an array and randomizes it in place then returns it
-         * @param {array} data Array with items that will be randomized
-         * @method pure.helpers.shuffle
-         * @example
-         * console.log(pure.helpers.shuffle([1,2,3,4]));
-         * //outputs: [ 4, 3, 1, 2 ]
-         */
         this.shuffle = (data) => {
             const def = data || [];
 
@@ -272,18 +177,6 @@ class Helpers {
             return def;
         };
 
-        /**
-         * mustache
-         *
-         * @description Replace value inside string based on specific template (Ex: {{}} )
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} [options.str= empty] String to replace with template
-         * @param {object} options.data Object with data that will replace template
-         * @method pure.helpers.mustache
-         * @example
-         * console.log(pure.helpers.mustache({ str: 'Creating string to replace: {{foo}}', data: { foo: 'lorem' } }));
-         * //outputs: "Creating string to replace: lorem"
-         */
         this.mustache = (options = {}) => {
             const { str = '', data } = options;
 
@@ -292,15 +185,6 @@ class Helpers {
 
         this.mustacheParse = (str = '') => mustache.parse(str);
 
-        /**
-         * createCard
-         *
-         * @description Create person card with multiple faked info
-         * @method pure.helpers.createCard
-         * @example
-         * console.log(pure.helpers.createCard());
-         * //outputs: Object with multiple itens
-         */
         this.createCard = () => ({
             name: pure.name.findName(),
             username: pure.internet.userName(),
@@ -353,23 +237,14 @@ class Helpers {
             ],
         });
 
-        /**
-         * contextualCard
-         *
-         * @description Create person card with multiple contextual faked info
-         * @method pure.helpers.contextualCard
-         * @example
-         * console.log(pure.helpers.contextualCard());
-         * //outputs: Object with multiple itens
-         */
         this.contextualCard = () => {
             const name = pure.name.firstName();
-            const userName = pure.internet.userName(name);
+            const userName = pure.internet.userName({ firstName: name });
             return {
                 name,
                 username: userName,
                 avatar: pure.internet.avatar(),
-                email: pure.internet.email(userName),
+                email: pure.internet.email({ firstName: userName }),
                 dob: pure.date.past({ years: 50, refDate: new Date('Sat Sep 20 1992 21:35:02 GMT+0200 (CEST)') }),
                 phone: pure.phone.phoneNumber(),
                 address: {
@@ -391,15 +266,6 @@ class Helpers {
             };
         };
 
-        /**
-         * userCard
-         *
-         * @description Create user card with multiple faked info
-         * @method pure.helpers.userCard
-         * @example
-         * console.log(pure.helpers.userCard());
-         * //outputs: Object with multiple itens
-         */
         this.userCard = () => ({
             name: pure.name.findName(),
             username: pure.internet.userName(),
@@ -423,15 +289,6 @@ class Helpers {
             },
         });
 
-        /**
-         * createTransaction
-         *
-         * @description Create transaction with multiple contextual faked info
-         * @method pure.helpers.createTransaction
-         * @example
-         * console.log(pure.helpers.createTransaction());
-         * //outputs: Object with multiple itens
-         */
         this.createTransaction = () => ({
             amount: pure.finance.amount(),
             date: new Date(pure.date.past({ years: 20 })),
@@ -441,34 +298,19 @@ class Helpers {
             account: pure.finance.account(),
         });
 
-        /**
-         * mod97
-         *
-         * @description Calculate mod 97 of given string
-         * @param {String} digitStr String to apply mod97
-         * @method pure.helpers.mod97
-         * @example
-         * console.log(pure.helpers.mod97('111'));
-         * //outputs: 14
-         */
-        this.mod97 = (digitStr) => {
+        this.mod97 = (digitStr) => this.mod({ digitStr, modValue: 97 });
+
+        this.mod = (options = {}) => {
+            const { digitStr = '1', modValue = 1 } = options;
             let m = 0;
+
             for (let i = 0; i < digitStr.length; i += 1) {
-                m = ((m * 10) + (digitStr[i] | 0)) % 97;
+                m = ((m * 10) + (digitStr[i] | 0)) % modValue;
             }
+
             return m;
         };
 
-        /**
-         * toDigitString
-         *
-         * @description Method that parses string and convert letters to numbers
-         * @param {String} str String to be replaced
-         * @method pure.helpers.toDigitString
-         * @example
-         * console.log(pure.helpers.toDigitString('ABC123'));
-         * //outputs: 101112123
-         */
         this.toDigitString = (str) => str.replace(/[A-Z]/gi, (match) => match.toUpperCase().charCodeAt(0) - 55);
     }
 }

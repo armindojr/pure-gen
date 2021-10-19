@@ -1,10 +1,6 @@
 const uuid = require('uuid');
 const lfib = require('../vendor/lfib');
 
-/**
- *
- * @namespace pure.random
- */
 class Random {
     constructor(pure, seed) {
         let num = seed || (new Date()).getTime() % 1000000000;
@@ -17,20 +13,6 @@ class Random {
 
         const lfibGen = lfib(num);
 
-        /**
-         * number
-         *
-         * @description Returns a single random number based on a max number or range
-         * @param {object} [options= {}] Options to be passed
-         * @param {Number} [options.min= 0] Minimum number to generate *inclusive*
-         * @param {Number} [options.max= 99999] Maximum number to generate *exclusive*
-         * @param {Number} [options.precision= 1] Numbers of digits after floating point, due to node limitations
-         *  this is limited to 10
-         * @method pure.random.number
-         * @example
-         * console.log(pure.random.number());
-         * //outputs: "20173"
-         */
         this.number = (options = {}) => {
             const def = (typeof options === 'number') ? { max: options } : options;
 
@@ -53,7 +35,7 @@ class Random {
             }
 
             let result = '';
-            const randomNumber = Math.floor(lfibGen() * (def.max - def.min) + def.min);
+            const randomNumber = Math.round(lfibGen() * (def.max - def.min) + def.min);
 
             if (def.min === def.max) {
                 result = def.max;
@@ -70,19 +52,6 @@ class Random {
             return result;
         };
 
-        /**
-         * float
-         *
-         * @description Returns a single random floating-point number based on a max number or range
-         * @param {object} [options= {}] Options to be passed
-         * @param {Number} [options.min= 0] Minimum number to generate
-         * @param {Number} [options.max= 99999] Maximum number to generate
-         * @param {Number} [options.precision= 1] Numbers of digits after floating point
-         * @method pure.random.float
-         * @example
-         * console.log(pure.random.float());
-         * //outputs: "397.5"
-         */
         this.float = (options = {}) => {
             let def = options;
 
@@ -97,33 +66,12 @@ class Random {
             return this.number(def);
         };
 
-        /**
-         * arrayElement
-         *
-         * @description Takes an array and returns a random element of the array
-         * @param {array} [array= ['a', 'b', 'c']] Array to randomize
-         * @method pure.random.arrayElement
-         * @example
-         * console.log(pure.random.arrayElement());
-         * //outputs: "c"
-         */
         this.arrayElement = (array = ['a', 'b', 'c']) => {
-            const number = this.number({ max: array.length - 1 });
+            const number = this.number({ max: array.length });
 
             return array[number] ? array[number] : array[0];
         };
 
-        /**
-         * arrayElements
-         *
-         * @description Takes an array and returns a subset with random elements of the array
-         * @param {array} [array= ['a', 'b', 'c']] Array to randomize
-         * @param {Number} [count= random] number of elements to pick
-         * @method pure.random.arrayElements
-         * @example
-         * console.log(pure.random.arrayElements());
-         * //outputs: "[ 'b', 'c' ]"
-         */
         this.arrayElements = (array = ['a', 'b', 'c'], count) => {
             let value = count;
 
@@ -145,17 +93,6 @@ class Random {
             return arrayCopy;
         };
 
-        /**
-         * objectElement
-         *
-         * @description Takes an object and returns the randomly key or value
-         * @param {object} [object= { foo: 'bar', too: 'car' }] Object to randomize
-         * @param {string} [field= 'value'] What field to return 'value' or 'key'
-         * @method pure.random.objectElement
-         * @example
-         * console.log(pure.random.objectElement());
-         * //outputs: "car"
-         */
         this.objectElement = (object = { foo: 'bar', too: 'car' }, field) => {
             const array = Object.keys(object);
             const key = this.arrayElement(array);
@@ -163,16 +100,6 @@ class Random {
             return field === 'key' ? key : object[key];
         };
 
-        /**
-         * generateObj
-         *
-         * @description Generate an object populated with random things
-         * @param {Number} [length= 2] What length object generated will have
-         * @method pure.random.object
-         * @example
-         * console.log(pure.random.generateObj());
-         * //outputs: "{ Isle: '3rd', Soft: 'blue' }"
-         */
         this.generateObj = (length = 2) => {
             const obj = {};
 
@@ -183,21 +110,6 @@ class Random {
             return obj;
         };
 
-        /**
-         * uuid
-         *
-         * @description Generates a random uuid based on specific version.
-         * </br><b>Attention! If you pass v5 as parameter to this method, and you need a valid RFCv5
-         * (namespace w/ SHA-1) you also need to pass Object as second parameter</b>
-         * @param {String} [version= 'v1'] What version of uuid to generate. Possible values: v1, v4, v5
-         * @param {Object} [opts= {}] Object to pass if you set version to v5
-         * @param {String} [opts.name= 'uuid'] String to use in v5 uuid generation
-         * @param {String} [opts.namespace= 'random v1 uuid'] String with uuid namespace to use in v5 generation
-         * @method pure.random.uuid
-         * @example
-         * console.log(pure.random.uuid());
-         * //outputs: "39d601f5-131d-4539-b279-7232d4cec989"
-         */
         this.uuid = (version = 'v1', opts = {}) => {
             let generated = '';
             let def = opts;
@@ -220,26 +132,8 @@ class Random {
             return generated;
         };
 
-        /**
-         * boolean
-         *
-         * @description Generates a random boolean
-         * @method pure.random.boolean
-         * @example
-         * console.log(pure.random.boolean());
-         * //outputs: "true"
-         */
         this.boolean = () => !!this.number(1);
 
-        /**
-         * word
-         *
-         * @description Generates a random word
-         * @method pure.random.word
-         * @example
-         * console.log(pure.random.word());
-         * //outputs: "Steel"
-         */
         this.word = () => {
             // regex statement used to remove unwanted characters from beginning/end of words
             const wordSanitizerRegex = /^[\s()[\]{}.,\-'"]+|[\s()[\]{}.,\-'"]+$/g;
@@ -286,16 +180,6 @@ class Random {
             return result.replace(wordSanitizerRegex, '');
         };
 
-        /**
-         * words
-         *
-         * @description Generates random words
-         * @param {Number} [count= random] defaults to a random value between 1 and 3
-         * @method pure.random.words
-         * @example
-         * console.log(pure.random.words());
-         * //outputs: "web-readiness Future-proofed"
-         */
         this.words = (count) => {
             const def = count || this.number({ min: 1, max: 3 });
             const words = [];
@@ -307,29 +191,8 @@ class Random {
             return words.join(' ');
         };
 
-        /**
-         * locale
-         *
-         * @description Generates random locale
-         * @method pure.random.locale
-         * @example
-         * console.log(pure.random.locale());
-         * //outputs: "nb_NO"
-         */
         this.locale = () => this.arrayElement(pure.possibleLocales);
 
-        /**
-         * alpha
-         *
-         * @description Returns lower/upper alpha characters based count and upcase options
-         * @param {object} options
-         * @param {Number} [options.count= 1] Letters to return
-         * @param {boolean} [options.upcase= false] Return upcase letters or not
-         * @method pure.random.alpha
-         * @example
-         * console.log(pure.random.alpha());
-         * //outputs: "e"
-         */
         this.alpha = (options) => {
             let def = options;
             if (typeof def === 'undefined') {
@@ -383,16 +246,6 @@ class Random {
             return def.upcase ? wholeString.toUpperCase() : wholeString;
         };
 
-        /**
-         * alphaNumeric
-         *
-         * @description Returns random alphanumeric caracters
-         * @param {Number} [count= 1] Caracters to return
-         * @method pure.random.alphaNumeric
-         * @example
-         * console.log(pure.random.alphaNumeric());
-         * //outputs: "0"
-         */
         this.alphaNumeric = (count = 1) => {
             let wholeString = '';
             for (let i = 0; i < count; i += 1) {
@@ -439,16 +292,6 @@ class Random {
             return wholeString;
         };
 
-        /**
-         * hexaDecimal
-         *
-         * @description Returns random hexadecimal caracters
-         * @param {Number} [count= 1] Caracters to return
-         * @method pure.random.hexaDecimal
-         * @example
-         * console.log(pure.random.hexaDecimal());
-         * //outputs: "0xA"
-         */
         this.hexaDecimal = (count = 1) => {
             const template = pure.helpers.repeatString({ string: '#', num: count });
 

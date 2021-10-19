@@ -207,48 +207,16 @@ class Pure {
         });
     }
 
-    /**
-     * seed
-     *
-     * @description Method to set specific seed to RNG
-     * @param {Number} value Seed value that RNG will use to generate numbers
-     * @method pure.seed
-     * @example
-     * pure.seed(1)
-     */
     seed(value) {
         this.seedValue = value;
         this.random = new imports.Random(this, this.seedValue);
     }
 
-    /**
-     * setLocale
-     *
-     * @description
-     * If user wants to generate localized data, then this method should be used.
-     * </br>Possible locales:
-     * </br><b>af_ZA, ar, az, cz, de, de_AT, de_CH, el, en, en_AU, en_BORK, en_CA, en_GB, en_IE, en_IND,
-     * en_NG, en_US, en_ZA, en_au_ocker, es, es_MX, fa, fr, fr_CA, fr_CH, ge, id_ID, it, ja, ko,
-     * lv, nb_NO, nep, nl, nl_BE, pl, pt_BR, pt_PT, ro, ru, sk, sv, tr, uk, vi, zh_CN, zh_TW, zu_ZA</b>
-     * @param {String} locale Locale to be used when generating data
-     * @method pure.setLocale
-     * @example
-     * pure.setLocale('pt_BR')
-     *
-     */
     setLocale(locale) {
         this.locale = locale;
         this.populateLocale();
     }
 
-    /**
-     * getSeed
-     *
-     * @description This method returns current seed used by RNG
-     * @method pure.getSeed
-     * @example
-     * console.log(pure.getSeed())
-     */
     getSeed() {
         return this.random.returnSeed();
     }

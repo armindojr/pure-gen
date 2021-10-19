@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "contributors": [
     "Armindo Junior <armindo.junior05@gmail.com>"
   ],
@@ -13,30 +13,27 @@
     "lint": "npx eslint -c ./.eslintrc ./src",
     "lint:fix": "npx eslint -c ./.eslintrc ./src --fix",
     "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
-    "doc": "npx jsdoc -c ./jsdoc.conf.json --readme ./README.md",
     "coverage": "npx nyc --nycrc-path ./nyc.conf.json --reporter=lcov npm run test",
     "coverage:html": "npx nyc --nycrc-path ./nyc.conf.json --reporter=html npm run test",
     "coverage:report": "codecov"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.19.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "husky": "^4.3.8",
-    "jsdoc": "^3.6.6",
-    "minami": "^1.2.3",
-    "mocha": "^8.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "husky": "^7.0.2",
+    "mocha": "^9.1.3",
     "nyc": "^15.1.0",
-    "sinon": "^9.2.4"
+    "sinon": "^11.1.2"
   },
   "dependencies": {
     "colors": "^1.4.0",
-    "commander": "^7.0.0",
-    "inquirer": "^7.3.3",
-    "mustache": "^4.1.0",
+    "commander": "^8.2.0",
+    "inquirer": "^8.2.0",
+    "mustache": "^4.2.0",
     "randexp": "^0.5.3",
-    "slugify": "^1.4.6",
+    "slugify": "^1.6.1",
     "uuid": "^8.3.2"
   },
   "bin": {

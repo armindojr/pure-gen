@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v2.1.0
+
+### New API Methods
+* Added pure.helpers.mod to calculate module operation of a given value.
+
+### API Fixes
+* Fixed bug on pure.random.number where the maximum value was never picked
+* Fixed bug on pure.helpers.contextualCard where username is not respected when creating email
+* Fixed bug on pure.company.companyName where you had to pass a number instead a format
+* Fixed pure.document.brazilianId to generate only valid documents
+
 ## v2.0.1
 
 ### API Fixes

@@ -2,21 +2,8 @@ const RandExp = require('randexp');
 const slugify = require('slugify');
 const randomUa = require('../vendor/user-agent');
 
-/**
- *
- * @namespace pure.internet
- */
 class Internet {
     constructor(pure) {
-        /**
-         * avatar
-         *
-         * @description Generate a random avatar url
-         * @method pure.internet.avatar
-         * @example
-         * console.log(pure.internet.avatar());
-         * //outputs: "https://i.pravatar.cc/200"
-         */
         this.avatar = (width) => {
             let opt = width;
             let url = 'https://i.pravatar.cc';
@@ -30,19 +17,6 @@ class Internet {
             return url;
         };
 
-        /**
-         * email
-         *
-         * @description Generates a random email
-         * @param {object} [options= {}] Options to be passed
-         * @param {string} [options.firstName= random] First name
-         * @param {string} [options.lastName= random] Last name
-         * @param {string} [options.provider= random] Provider to use on email
-         * @method pure.internet.email
-         * @example
-         * console.log(pure.internet.email());
-         * //outputs: "myrtice.cronin@gmail.com"
-         */
         this.email = (options = {}) => {
             let { provider } = options;
             const { firstName, lastName } = options;
@@ -54,36 +28,12 @@ class Internet {
             return `${pure.helpers.slugify(this.userName({ firstName, lastName }), { lower: true })}@${provider}`;
         };
 
-        /**
-         * exampleEmail
-         *
-         * @description Generates a random example email
-         * @param {object} [options] Options to be passed
-         * @param {string} [options.firstName= random] First name
-         * @param {string} [options.lastName= random] Last name
-         * @method pure.internet.exampleEmail
-         * @example
-         * console.log(pure.internet.exampleEmail());
-         * //outputs: "golden.prohaska@example.org"
-         */
         this.exampleEmail = (options = {}) => {
             const { firstName, lastName } = options;
             const provider = pure.random.arrayElement(pure.registeredModules.internet.example_email);
             return this.email({ firstName, lastName, provider });
         };
 
-        /**
-         * userName
-         *
-         * @description Generates a random user name
-         * @param {object} [options] Options to be passed
-         * @param {string} [options.firstName= random] First name
-         * @param {string} [options.lastName= random] Last name
-         * @method pure.internet.userName
-         * @example
-         * console.log(pure.internet.userName());
-         * //outputs: "Kirstin39"
-         */
         this.userName = (options = {}) => {
             const { firstName = pure.name.firstName(), lastName = pure.name.lastName() } = options;
             let result;
@@ -107,66 +57,18 @@ class Internet {
             return result;
         };
 
-        /**
-         * protocol
-         *
-         * @description Generates a random protocol
-         * @method pure.internet.protocol
-         * @example
-         * console.log(pure.internet.protocol());
-         * //outputs: "https"
-         */
         this.protocol = () => pure.random.arrayElement(['http', 'https']);
 
-        /**
-         * url
-         *
-         * @description Generates a random url
-         * @param {object} [options] Options to be passed
-         * @param {string} [options.protocol= random] What protocol to use.
-         * @param {string} [options.domainName= random] What domain to use.
-         * @method pure.internet.url
-         * @example
-         * console.log(pure.internet.url());
-         * //outputs: "http://harvey.net"
-         */
         this.url = (options = {}) => {
             const { protocol = this.protocol(), domainName = this.domainName() } = options;
 
             return `${protocol}://${domainName}`;
         };
 
-        /**
-         * domainName
-         *
-         * @description Generates a random domain name
-         * @method pure.internet.domainName
-         * @example
-         * console.log(pure.internet.domainName());
-         * //outputs: "marvin.org"
-         */
         this.domainName = () => `${this.domainWord()}.${this.domainSuffix()}`;
 
-        /**
-         * domainSuffix
-         *
-         * @description Generates a random domain suffix
-         * @method pure.internet.domainSuffix
-         * @example
-         * console.log(pure.internet.domainSuffix());
-         * //outputs: "net"
-         */
         this.domainSuffix = () => pure.random.arrayElement(pure.registeredModules.internet.domain_suffix);
 
-        /**
-         * domainWord
-         *
-         * @description Generates a random domain word
-         * @method pure.internet.domainWord
-         * @example
-         * console.log(pure.internet.domainWord());
-         * //outputs: "alyce"
-         */
         this.domainWord = () => {
             let name = pure.helpers.slugify(pure.name.firstName(), { lower: true, strict: true });
 
@@ -177,15 +79,6 @@ class Internet {
             return name;
         };
 
-        /**
-         * ip
-         *
-         * @description Generates a random ip
-         * @method pure.internet.ip
-         * @example
-         * console.log(pure.internet.ip());
-         * //outputs: "97.238.241.11"
-         */
         this.ip = () => {
             const digit1 = pure.random.number(255);
             const digit2 = pure.random.number(255);
@@ -195,15 +88,6 @@ class Internet {
             return `${digit1}.${digit2}.${digit3}.${digit4}`;
         };
 
-        /**
-         * ipv6
-         *
-         * @description Generates a random ipv6
-         * @method pure.internet.ipv6
-         * @example
-         * console.log(pure.internet.ipv6());
-         * //outputs: "2001:0db8:6276:b1a7:5213:22f1:25df:c8a0"
-         */
         this.ipv6 = () => {
             const randHash = () => {
                 const template = pure.helpers.repeatString({ string: '#', num: 4 });
@@ -217,31 +101,8 @@ class Internet {
             return result.join(':');
         };
 
-        /**
-         * userAgent
-         *
-         * @description Generates a random user agent
-         * @method pure.internet.userAgent
-         * @example
-         * console.log(pure.internet.userAgent());
-         * //outputs: "Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_7_5 rv:6.0; SL) AppleWebKit/532.0.1
-         * // (KHTML, like Gecko) Version/7.1.6 Safari/532.0.1"
-         */
         this.userAgent = () => randomUa.generate();
 
-        /**
-         * color
-         *
-         * @description Generates a random color
-         * @param {object} [options] Options to be passed
-         * @param {Number} [options.baseRed255= 0] The red value. Valid values are 0 - 255.
-         * @param {Number} [options.baseGreen255= 0] The green value. Valid values are 0 - 255.
-         * @param {Number} [options.baseBlue255= 0] The blue value. Valid values are 0 - 255.
-         * @method pure.internet.color
-         * @example
-         * console.log(pure.internet.color());
-         * //outputs: "#06267f"
-         */
         this.color = (options = {}) => {
             const { baseRed255 = 0, baseGreen255 = 0, baseBlue255 = 0 } = options;
 
@@ -257,16 +118,6 @@ class Internet {
             + `${greenStr}${blueStr.length === 1 ? '0' : ''}${blueStr}`;
         };
 
-        /**
-         * mac
-         *
-         * @description Generates a random mac address
-         * @param {string} [sep= ':'] Separator to use in mac address. ['-', '', ':']
-         * @method pure.internet.mac
-         * @example
-         * console.log(pure.internet.mac());
-         * //outputs: "78:06:cc:ae:b3:81"
-         */
         this.mac = (sep) => {
             let i;
             let mac = '';
@@ -288,21 +139,6 @@ class Internet {
             return mac;
         };
 
-        /**
-         * password
-         *
-         * @description Generates a random password
-         * @param {object} [options] Options to be passed
-         * @param {Number} [optionslen= 15] The number of characters in the password.
-         * @param {boolean} [options.memorable= false] Whether a password should be easy to remember.
-         * @param {string} [options.pattern= '/\w/'] A regex to match each character of the password against.
-         * If memorable is true, then this will be ignored. If pattern has limit inside regex, it will be ignored.
-         * @param {string} [options.prefix= ''] A value to prepend to the generated password.
-         * @method pure.internet.password
-         * @example
-         * console.log(pure.internet.password());
-         * //outputs: "AM7zl6Mg"
-         */
         this.password = (options = {}) => {
             let { prefix = '' } = options;
             const {

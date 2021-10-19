@@ -69,5 +69,21 @@ describe('document.js', () => {
 
             assert.equal(document.length, 9);
         });
+
+        it('when verificationNum is 11', () => {
+            sinon.stub(pure.helpers, 'replaceSymbolWithNumber').returns('63475332');
+            const document = pure.document.brazilianId();
+
+            assert.equal(document.length, 9);
+            pure.helpers.replaceSymbolWithNumber.restore();
+        });
+
+        it('when verificationNum is 10', () => {
+            sinon.stub(pure.helpers, 'replaceSymbolWithNumber').returns('00871244');
+            const document = pure.document.brazilianId();
+
+            assert.equal(document.length, 9);
+            pure.helpers.replaceSymbolWithNumber.restore();
+        });
     });
 });

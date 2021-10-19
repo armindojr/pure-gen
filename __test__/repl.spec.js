@@ -27,7 +27,7 @@ describe('repl.js', () => {
         inquirer.prompt.restore();
     });
 
-    it('start repl stubbed', async () => {
+    it('start repl stubbed not passing locale', async () => {
         sinon.stub(inquirer, 'prompt').resolves({
             localeInput: false,
         });

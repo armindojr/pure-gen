@@ -46,9 +46,9 @@ describe('company.js', () => {
             pure.company.companySuffix.restore();
         });
 
-        it('returns three last names when parameter is number', () => {
+        it('returns three last names when parameter is a specific format', () => {
             sinon.spy(pure.name, 'lastName');
-            const name = pure.company.companyName(2);
+            const name = pure.company.companyName('{{name.lastName}}, {{name.lastName}} and {{name.lastName}}');
             const parts = name.split(' ');
 
             assert.strictEqual(parts.length, 4);

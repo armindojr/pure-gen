@@ -1,18 +1,5 @@
-/**
- * @namespace pure.finance
- */
 class Finance {
     constructor(pure) {
-        /**
-         * account
-         *
-         * @description Return random account number
-         * @param {Number} [length= Locale] Length of account number
-         * @method pure.finance.account
-         * @example
-         * console.log(pure.finance.account());
-         * //outputs: "91143029"
-         */
         this.account = (length) => {
             const def = length || 8;
             const template = pure.helpers.repeatString({ string: '#', num: def });
@@ -20,29 +7,11 @@ class Finance {
             return pure.helpers.replaceSymbolWithNumber({ string: template });
         };
 
-        /**
-         * accountName
-         *
-         * @description Return random account name
-         * @method pure.finance.accountName
-         * @example
-         * console.log(pure.finance.accountName());
-         * //outputs: "Personal Loan Account"
-         */
         this.accountName = () => {
             const result = pure.random.arrayElement(pure.registeredModules.finance.account_type);
             return [result, 'Account'].join(' ');
         };
 
-        /**
-         * routingNumber
-         *
-         * @description Return random routing number
-         * @method pure.finance.routingNumber
-         * @example
-         * console.log(pure.finance.routingNumber());
-         * //outputs: "104791008"
-         */
         this.routingNumber = () => {
             const routingNumber = pure.helpers.replaceSymbolWithNumber({ string: '########' });
 
@@ -58,19 +27,6 @@ class Finance {
             return routingNumber + (Math.ceil(sum / 10) * 10 - sum);
         };
 
-        /**
-         * mask
-         *
-         * @description Return random mask number
-         * @param {object} [options= {}] Options to be passed
-         * @param {Number} [options.length= 4] Length of mask number
-         * @param {boolean} [options.parens= false] Format with parentesis
-         * @param {boolean} [options.ellipsis= false] Format with ellipsis
-         * @method pure.finance.mask
-         * @example
-         * console.log(pure.finance.mask());
-         * //outputs: "3085"
-         */
         this.mask = (options = {}) => {
             const { length, parens, ellipsis } = options;
 
@@ -92,20 +48,7 @@ class Finance {
             return template;
         };
 
-        /**
-         * amount
-         *
-         * @description Return random amount value
-         * @param {object} [options= {}] Options to be passed
-         * @param {Number} [options.min= 0] Minimum amount value
-         * @param {Number} [options.max= 1000] Maximum amount value
-         * @param {Number} [options.dec= 2] Floating point precision
-         * @param {string} [options.symbol= empty] Amount symbol
-         * @method pure.finance.amount
-         * @example
-         * console.log(pure.finance.amount());
-         * //outputs: "891.45"
-         */
+        // TODO: rename dec param as precision
         this.amount = (options = {}) => {
             const {
                 min = 0,
@@ -118,48 +61,12 @@ class Finance {
             return symbol + randValue.toFixed(dec);
         };
 
-        /**
-         * transactionType
-         *
-         * @description Return random transaction type
-         * @method pure.finance.transactionType
-         * @example
-         * console.log(pure.finance.transactionType());
-         * //outputs: "deposit"
-         */
         this.transactionType = () => pure.random.arrayElement(pure.registeredModules.finance.transaction_type);
 
-        /**
-         * currencyCode
-         *
-         * @description Return random currency code
-         * @method pure.finance.currencyCode
-         * @example
-         * console.log(pure.finance.currencyCode());
-         * //outputs: "OMR"
-         */
         this.currencyCode = () => pure.random.objectElement(pure.registeredModules.finance.currency).code;
 
-        /**
-         * currencyName
-         *
-         * @description Return random currency name
-         * @method pure.finance.currencyName
-         * @example
-         * console.log(pure.finance.currencyName());
-         * //outputs: "US Dollar"
-         */
         this.currencyName = () => pure.random.objectElement(pure.registeredModules.finance.currency, 'key');
 
-        /**
-         * currencySymbol
-         *
-         * @description Return random currency symbol
-         * @method pure.finance.currencySymbol
-         * @example
-         * console.log(pure.finance.currencySymbol());
-         * //outputs: "₡"
-         */
         this.currencySymbol = () => {
             let symbol;
 
@@ -170,15 +77,6 @@ class Finance {
             return symbol;
         };
 
-        /**
-         * bitcoinAddress
-         *
-         * @description Return random bitcoin address
-         * @method  pure.finance.bitcoinAddress
-         * @example
-         * console.log(pure.finance.bitcoinAddress());
-         * //outputs: "1Xm61sVQkERphwvJ5QHY2UggghKZXuXas"
-         */
         this.bitcoinAddress = () => {
             const addressLength = pure.random.number({ min: 25, max: 34 });
             const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
@@ -191,15 +89,6 @@ class Finance {
             return address;
         };
 
-        /**
-         * litecoinAddress
-         *
-         * @description Return random litecoin address
-         * @method  pure.finance.litecoinAddress
-         * @example
-         * console.log(pure.finance.litecoinAddress());
-         * //outputs: "3jiLj9MZrdXGkBPcmEfX4ka1Yrgm9WQ"
-         */
         this.litecoinAddress = () => {
             const addressLength = pure.random.number({ min: 26, max: 33 });
             const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
@@ -212,16 +101,6 @@ class Finance {
             return address;
         };
 
-        /**
-         * Credit card number
-         *
-         * @description Return random localized credit card number
-         * @param {string} [provider= empty] Provider to generate from schema
-         * @method pure.finance.creditCardNumber
-         * @example
-         * console.log(pure.finance.creditCardNumber());
-         * //outputs: "3677-158240-5783"
-         */
         this.creditCardNumber = (provider) => {
             const prov = provider || '';
             let format;
@@ -254,40 +133,11 @@ class Finance {
             format = format.replace(/\//g, '');
             return pure.helpers.replaceCreditCardSymbols({ string: format });
         };
-        /**
-         * Credit card CVV
-         *
-         * @description Return random CVV
-         * @method pure.finance.creditCardCVV
-         * @example
-         * console.log(pure.finance.creditCardCVV());
-         * //outputs: "256"
-         */
+
         this.creditCardCVV = () => pure.helpers.replaceSymbolWithNumber({ string: '###' });
 
-        /**
-         * ethereumAddress
-         *
-         * @description Return random ethereum address
-         * @method  pure.finance.ethereumAddress
-         * @example
-         * console.log(pure.finance.ethereumAddress());
-         * //outputs: "0x43ea6bb9a79e2e12c18dd0f2d8ff08fd205cf97c"
-         */
         this.ethereumAddress = () => `0x${pure.random.hexaDecimal(40).toLowerCase()}`;
 
-        /**
-         * iban
-         *
-         * @description Return random International Bank Account Number
-         * @param {object} [options= {}] Options to be passed
-         * @param {boolean} [options.formatted= false] If output is formatted or not
-         * @param {string} [options.country= Random country] Alpha-2 country code
-         * @method pure.finance.iban
-         * @example
-         * console.log(pure.finance.iban());
-         * //outputs: "FI2750016855791009"
-         */
         this.iban = (options = {}) => {
             const { formatted = false, country } = options;
             let ibanFormat;
@@ -352,15 +202,6 @@ class Finance {
             return formatted ? iban.match(/.{1,4}/g).join(' ') : iban;
         };
 
-        /**
-         * bic
-         *
-         * @description Return random Bank Identifier Code
-         * @method  pure.finance.bic
-         * @example
-         * console.log(pure.finance.bic());
-         * //outputs: "WMCAAFT1479"
-         */
         this.bic = () => {
             const vowels = ['A', 'E', 'I', 'O', 'U'];
             const prob = pure.random.number(100);

@@ -20,11 +20,6 @@ describe('image.js', () => {
 
                 assert.equal(imageUrl, 'https://placeimg.com/100/100/abstract');
             });
-            it('returns a random image url from placeimg with random set to true', () => {
-                const imageUrl = pure.image.placeimg.imageUrl({ randomize: true });
-
-                expect(imageUrl).to.contain('placeimg.com/640/480?');
-            });
         });
         describe('avatar()', () => {
             it('return a random avatar from UIFaces', () => {
