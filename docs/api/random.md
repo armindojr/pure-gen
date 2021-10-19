@@ -302,7 +302,7 @@ Method that generates random word based on multiple pure methods. Possible word 
 - [Color](./commerce#color)
 - [Catch Phrase Adjective](./company#catchphraseadjective)
 - [Catch Phrase Descriptor](./company#catchphrasedescriptor)
-- [Catch Phrase Noun](./company#catchphraseNoun)
+- [Catch Phrase Noun](./company#catchphrasenoun)
 - [Bs Adjective](./company#bsadjective)
 - [Bs Buzz](./company#bsbuzz)
 - [Bs Noun](./company#bsnoun)

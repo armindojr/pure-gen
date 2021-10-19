@@ -10,8 +10,8 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Pure Gen',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  tagline: 'Pure gen',
+  url: 'https://armindojr.github.io/pure-gen/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -90,7 +90,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/armindojr/pure-gen/edit/master/',
+            'https://github.com/armindojr/pure-gen/edit/new-docs/',
         },
         blog: false,
         theme: {
