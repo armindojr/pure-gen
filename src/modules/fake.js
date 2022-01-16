@@ -1,7 +1,4 @@
-/**
- *
- * @namespace pure.fake
- */
+// TODO: Methods that use mustachestring as parameter don't work
 class Fake {
     constructor(pure) {
         const fakeStringRegex = /(\w+)\.(\w+)(?:\((.*)\))?/g;

@@ -24,10 +24,10 @@ class Pure {
 
         this.registeredModules = {
             address: [
+                'city',
                 'city_prefix',
                 'city_suffix',
                 'street_suffix',
-                'city_name',
                 'county',
                 'country',
                 'default_country',
@@ -52,12 +52,14 @@ class Pure {
             ],
             company: [
                 'adjective',
+                'name',
                 'noun',
                 'descriptor',
                 'bs_adjective',
                 'bs_noun',
                 'bs_verb',
                 'suffix',
+                'prefix',
             ],
             database: [
                 'collation',

@@ -4,12 +4,21 @@
 
 ### New API Methods
 * Added pure.helpers.mod to calculate module operation of a given value.
+* Added pure.company.companyPrefix to generate company prefix based on locale
 
 ### API Fixes
 * Fixed bug on pure.random.number where the maximum value was never picked
 * Fixed bug on pure.helpers.contextualCard where username is not respected when creating email
 * Fixed bug on pure.company.companyName where you had to pass a number instead a format
 * Fixed pure.document.brazilianId to generate only valid documents
+* Fixed pure.address.city to return real localized city names and not fake anymore and fixes [#9](https://github.com/armindojr/pure-gen/issues/9)
+* Fixed pure.random.number returning number below minimum specified value when using precision parameter
+
+### CLI Fixes
+* Generator method now requires to setup locale before generating new data. With this you can generate mocked localized data
+
+### General Fixes
+* Removed colors dependency and replaced by colorette
 
 ## v2.0.1
 

@@ -1,5 +1,5 @@
 module.exports = [
-    '#{Name.last_name} #{suffix}',
-    '#{Name.last_name}-#{Name.last_name}',
-    '#{Name.last_name}, #{Name.last_name} und #{Name.last_name}',
+    '{{name.lastName}} {{company.companySuffix}}',
+    '{{name.lastName}}-{{name.lastName}}',
+    '{{name.lastName}}, {{name.lastName}} und {{name.lastName}}',
 ];

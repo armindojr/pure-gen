@@ -1,7 +1,7 @@
 const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
-const luhnFormula = require('./support/luhnCheck.js');
+const luhnFormula = require('./support/luhnCheck');
 
 describe('finance.js', () => {
     describe('account()', () => {
@@ -91,7 +91,7 @@ describe('finance.js', () => {
 
             const mask = pure.finance.mask({ length: null, parens: null });
 
-            const regexp = new RegExp(/(\(\d{4}?\))/);
+            const regexp = /(\(\d{4}?\))/;
             const actual = regexp.test(mask);
 
             assert.equal(actual, expected, `The expected match for parentheses is ${expected} but it was ${actual}`);
@@ -102,7 +102,7 @@ describe('finance.js', () => {
 
             const mask = pure.finance.mask({ length: null, ellipsis: null });
 
-            const regexp = new RegExp(/(\.\.\.\d{4})/);
+            const regexp = /(\.\.\.\d{4})/;
             const actual = regexp.test(mask);
 
             assert.equal(actual, expected, `The expected match for parentheses is ${expected} but it was ${actual}`);
@@ -129,7 +129,7 @@ describe('finance.js', () => {
         it('should not include a currency symbol by default', () => {
             const amount = pure.finance.amount();
 
-            const regexp = new RegExp(/[0-9.]/);
+            const regexp = /[0-9.]/;
 
             const expected = true;
             const actual = regexp.test(amount);

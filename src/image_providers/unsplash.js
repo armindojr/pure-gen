@@ -21,7 +21,7 @@ class Unsplash {
         url += `/${width}x${height}`;
 
         if (typeof keyword !== 'undefined') {
-            const keywordFormat = new RegExp('^([A-Za-z0-9].+,[A-Za-z0-9]+)$|^([A-Za-z0-9]+)$');
+            const keywordFormat = /^([A-Za-z0-9].+,[A-Za-z0-9]+)$|^([A-Za-z0-9]+)$/;
             if (keywordFormat.test(keyword)) {
                 url += `?${keyword}`;
             }

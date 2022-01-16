@@ -84,12 +84,21 @@ describe('random.js', () => {
         });
 
         it('should return number less than maximum determined', () => {
-            sinon.stub(Math, 'floor').returns(4);
+            sinon.stub(Math, 'round').returns(4);
             const result = pure.random.number({ min: 2, max: 3, precision: 2 });
 
             assert.ok(result <= 3);
             assert.ok(result >= 2);
-            Math.floor.restore();
+            Math.round.restore();
+        });
+
+        it('should not return a value below minimum when using precision', () => {
+            sinon.stub(Math, 'round').returns(-10);
+            const result = pure.random.number({ min: -5, max: 5, precision: 4 });
+
+            assert.ok(result >= -5);
+            assert.ok(result <= 5);
+            Math.round.restore();
         });
     });
 

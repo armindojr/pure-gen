@@ -4,61 +4,121 @@ const pure = require('../index');
 
 describe('address.js', () => {
     describe('city()', () => {
-        beforeEach(() => {
-            sinon.spy(pure.address, 'cityPrefix');
-            sinon.spy(pure.name, 'firstName');
-            sinon.spy(pure.name, 'lastName');
-            sinon.spy(pure.address, 'citySuffix');
-        });
-
-        afterEach(() => {
-            pure.random.number.restore();
-            pure.address.cityPrefix.restore();
-            pure.name.firstName.restore();
-            pure.name.lastName.restore();
-            pure.address.citySuffix.restore();
-        });
-
-        it('occasionally returns prefix + first name + suffix', () => {
-            sinon.stub(pure.random, 'number').returns(0);
+        it('returns random city based on locale', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city: {
+                    default: ['test'],
+                },
+            }));
 
             const city = pure.address.city();
-            assert.ok(city);
 
-            assert.ok(pure.address.cityPrefix.calledOnce);
-            assert.ok(pure.name.firstName.calledOnce);
-            assert.ok(pure.address.citySuffix.calledOnce);
+            assert.ok(city);
+            assert.isString(city);
+
+            stub.restore();
         });
 
-        it('occasionally returns prefix + first name', () => {
-            sinon.stub(pure.random, 'number').returns(1);
+        it('returns random city when filtering by state', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city: {
+                    Foo: ['random'],
+                    Bar: ['test'],
+                },
+            }));
 
-            const city = pure.address.city();
+            const city = pure.address.city('bar');
+
             assert.ok(city);
+            assert.isString(city);
+            expect(city).to.equal('test');
 
-            assert.ok(pure.address.cityPrefix.calledOnce);
-            assert.ok(pure.name.firstName.calledOnce);
+            stub.restore();
         });
 
-        it('occasionally returns first name + suffix', () => {
-            sinon.stub(pure.random, 'number').returns(2);
+        it('returns random city passing index as parameter', () => {
+            sinon.stub(pure.address, 'state').returns('Bar');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city: [
+                    'foo',
+                ],
+            }));
 
-            const city = pure.address.city();
+            const city = pure.address.city(0);
+
             assert.ok(city);
+            assert.isString(city);
+            expect(city).to.equal('foo');
 
-            assert.ok(pure.address.citySuffix.calledOnce);
+            pure.address.state.restore();
+            stub.restore();
         });
 
-        it('occasionally returns last name + suffix', () => {
-            sinon.stub(pure.random, 'number').returns(3);
+        it('returns random city with invalid string', () => {
+            sinon.stub(pure.random, 'objectElement').returns('Bar');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city: {
+                    Foo: ['random'],
+                    Bar: ['test'],
+                },
+            }));
+
+            const city = pure.address.city('');
+
+            assert.ok(city);
+            assert.isString(city);
+            expect(city).to.equal('test');
+
+            pure.random.objectElement.restore();
+            stub.restore();
+        });
+
+        it('returns random city when localized data is mustache string', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city: [
+                    '{{name.lastName}} {{name.firstName}}',
+                ],
+            }));
 
             const city = pure.address.city();
-            assert.ok(city);
 
-            assert.ok(!pure.address.cityPrefix.called);
-            assert.ok(!pure.name.firstName.called);
-            assert.ok(pure.name.lastName.calledOnce);
-            assert.ok(pure.address.citySuffix.calledOnce);
+            assert.ok(city);
+            assert.isString(city);
+            expect(city.split(' ').length).to.equal(2);
+
+            stub.restore();
+        });
+    });
+
+    describe('cityPrefix()', () => {
+        it('return a random city prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city_prefix: ['foo'],
+            }));
+
+            const prefix = pure.address.cityPrefix();
+
+            assert.ok(prefix);
+            assert.isString(prefix);
+            expect(prefix).to.equal('foo');
+
+            stub.restore();
+        });
+    });
+
+    describe('citySuffix()', () => {
+        it('return a random city suffix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                city_suffix: ['foo'],
+            }));
+
+            const suffix = pure.address.citySuffix();
+
+            assert.ok(suffix);
+            assert.isString(suffix);
+            expect(suffix).to.equal('foo');
+
+            stub.restore();
         });
     });
 
@@ -374,7 +434,7 @@ describe('address.js', () => {
 
         it('returns latitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude({ max: -5, min: 5 });
+            const latitude = pure.address.latitude({ min: -5, max: 5 });
             assert.ok(typeof latitude === 'string');
             assert.equal(latitude.split('.')[1].length, 4);
             const latitudeFloat = parseFloat(latitude);

@@ -1,7 +1,7 @@
 module.exports = [
-    '#{prefix} #{Name.first_name}',
-    '#{prefix} #{Name.last_name}',
-    '#{prefix} #{Name.last_name} #{suffix}',
-    '#{prefix} #{Name.first_name} #{suffix}',
-    '#{prefix} #{Name.last_name}-#{Name.last_name}',
+    '{{company.companyPrefix}} {{name.firstName}}',
+    '{{company.companyPrefix}} {{name.lastName}}',
+    '{{company.companyPrefix}} {{name.lastName}} {{company.companySuffix}}',
+    '{{company.companyPrefix}} {{name.firstName}} {{company.companySuffix}}',
+    '{{company.companyPrefix}} {{name.lastName}}-{{name.lastName}}',
 ];

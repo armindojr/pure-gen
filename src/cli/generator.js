@@ -1,6 +1,6 @@
 /* eslint no-console: "off" */
 /* eslint no-restricted-globals: "off" */
-const colors = require('colors');
+const colorette = require('colorette');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
@@ -12,6 +12,8 @@ const formats = [
     'txt',
     'none',
 ];
+
+const localeOpts = pure.possibleLocales;
 
 const template = '{{random.number}}; {{internet.password}}; {{address.city}};';
 const templatejson = '{ "number": {{random.number}}, "pass": "{{internet.password}}" }';
@@ -61,6 +63,12 @@ function generator() {
             .prompt([
                 {
                     type: 'list',
+                    name: 'localeInput',
+                    message: 'Select what locale pure will be set',
+                    choices: localeOpts,
+                },
+                {
+                    type: 'list',
                     name: 'formatType',
                     message: 'What format to use',
                     choices: formats,
@@ -98,6 +106,12 @@ function generator() {
                 },
             ])
             .then((answers) => {
+                if (answers.localeInput) {
+                    pure.setLocale(answers.localeInput);
+                } else {
+                    pure.setLocale('en');
+                }
+
                 let templateStr = '';
                 let generated = '';
 
@@ -137,22 +151,22 @@ function generator() {
                         const filename = `/${answers.saveName}.${answers.formatType}`;
                         pathJoin = path.join(answers.savePath, filename);
                         fs.writeFileSync(pathJoin, generated);
-                        console.log(colors.grey('\nGenerated ✔️'));
+                        console.log(colorette.gray('\nGenerated ✔️'));
                     } else {
                         const filename = `/${answers.saveName}.${answers.formatType}`;
                         pathJoin = path.join(process.cwd(), answers.savePath, filename);
                         fs.writeFileSync(pathJoin, generated);
-                        console.log(colors.grey('\nGenerated ✔️'));
+                        console.log(colorette.gray('\nGenerated ✔️'));
                     }
                 } else {
-                    console.log(colors.grey('\nResult 🖨️'));
-                    console.log(colors.blue(generated));
+                    console.log(colorette.gray('\nResult 🖨️'));
+                    console.log(colorette.blue(generated));
                 }
 
                 resolve({ pathJoin, generated });
             })
             .catch((error) => {
-                reject(new Error(colors.red(`\n🛑 The following error has occurred: \n${error}`)));
+                reject(new Error(colorette.red(`\n🛑 The following error has occurred: \n${error}`)));
             });
     });
 }

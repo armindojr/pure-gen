@@ -44,6 +44,8 @@ class Random {
                 result = parseFloat(`${randomNumber}.${pure.helpers.replaceSymbolWithNumber({ string: template })}`);
                 if (result > def.max) {
                     result = def.max;
+                } else if (result < def.min) {
+                    result = def.min;
                 }
             } else {
                 result = randomNumber;

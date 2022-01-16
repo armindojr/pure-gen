@@ -1,4 +1,3 @@
-const { assert, expect } = require('chai');
 const repl = require('repl');
 const sinon = require('sinon');
 const inquirer = require('inquirer');

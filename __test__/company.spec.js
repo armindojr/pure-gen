@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -62,6 +62,19 @@ describe('company.js', () => {
         it('returns random value from company.suffixes array', () => {
             const suffix = pure.company.companySuffix();
             assert.ok(pure.company.suffixes().indexOf(suffix) !== -1);
+        });
+    });
+
+    describe('companyPrefix()', () => {
+        it('returns random value from company prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'company').get(() => ({
+                prefix: [ 'foo' ],
+            }));
+
+            const prefix = pure.company.companyPrefix();
+            expect(prefix).to.equal('foo')
+
+            stub.restore();
         });
     });
 

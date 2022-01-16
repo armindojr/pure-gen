@@ -1,1 +1,18 @@
-module.exports = ['#{city_prefix}'];
+module.exports = {
+    'default': [
+        'Polokwane',
+        'Johannesburg',
+        'Pretoria',
+        'Tshwane',
+        'Durban',
+        'Pietermaritzburg',
+        'Nelspruit',
+        'Cape Town',
+        'Stellenbosch',
+        'Port Elizabeth',
+        'East London',
+        'Kimberley',
+        'Rustenburg',
+        'Bloemfontein ',
+    ]
+};

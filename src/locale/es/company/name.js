@@ -1,6 +1,6 @@
 module.exports = [
-    '#{Name.last_name} #{suffix}',
-    '#{Name.last_name} y #{Name.last_name}',
-    '#{Name.last_name} #{Name.last_name} #{suffix}',
-    '#{Name.last_name}, #{Name.last_name} y #{Name.last_name} Asociados',
+    '{{name.lastName}} {{company.companySuffix}}',
+    '{{name.lastName}} y {{name.lastName}}',
+    '{{name.lastName}} {{name.lastName}} {{company.companySuffix}}',
+    '{{name.lastName}}, {{name.lastName}} y {{name.lastName}} Asociados',
 ];

@@ -1,6 +1,6 @@
 module.exports = [
-    '#{city_prefix}#{Name.first_name}#{city_suffix}',
-    '#{Name.first_name}#{city_suffix}',
-    '#{city_prefix}#{Name.last_name}#{city_suffix}',
-    '#{Name.last_name}#{city_suffix}',
+    '{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}',
+    '{{address.cityPrefix}}{{name.lastName}}{{address.citySuffix}}',
+    '{{name.firstName}}{{address.citySuffix}}',
+    '{{name.lastName}}{{address.citySuffix}}',
 ];

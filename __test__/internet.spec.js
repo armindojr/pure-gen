@@ -22,14 +22,14 @@ describe('internet.js', () => {
         });
 
         it('returns email passing specific first name, last name and provider', () => {
-            pure.seed(416344349)
+            pure.seed(416344349);
             const email = pure.internet.email({ firstName: 'first', lastName: 'last', provider: 'email' });
 
             assert.ok(email.includes('first'));
             assert.ok(email.includes('last'));
             assert.ok(email.includes('email'));
-            pure.seed()
-        })
+            pure.seed();
+        });
     });
 
     describe('exampleEmail', () => {

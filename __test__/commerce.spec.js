@@ -54,14 +54,17 @@ describe('commerce.js', () => {
             const expected = price.length - 3;
             const actual = price.indexOf(decimal);
 
-            assert.equal(actual, expected,
-                `The expected location of the decimal is ${expected} but it was ${actual} amount ${price}`);
+            assert.equal(
+                actual,
+                expected,
+                `The expected location of the decimal is ${expected} but it was ${actual} amount ${price}`,
+            );
         });
 
         it('should not include a currency symbol by default', () => {
             const amount = pure.commerce.price();
 
-            const regexp = new RegExp(/[0-9.]/);
+            const regexp = /[0-9.]/;
 
             const expected = true;
             const actual = regexp.test(amount);
@@ -94,7 +97,7 @@ describe('commerce.js', () => {
             const amount = pure.commerce.price({ min: 1000 });
             const amountWithCommas = pure.commerce.price({ min: 1000, comma: true });
 
-            const testRegExp = new RegExp(/,/);
+            const testRegExp = /,/;
 
             assert.equal(false, testRegExp.test(amount), 'The amount should not contain commas.');
 

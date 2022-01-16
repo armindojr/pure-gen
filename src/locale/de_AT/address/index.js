@@ -6,7 +6,6 @@ const address = {
     postcode: require('./postcode'),
     state: require('./state'),
     state_abbr: require('./state_abbr'),
-    city_name: require('./city_name'),
     city: require('./city'),
     street_name: require('./street_name'),
     street_address: require('./street_address'),

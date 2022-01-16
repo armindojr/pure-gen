@@ -1,6 +1,6 @@
 /* eslint no-console: "off" */
 const repl = require('repl');
-const colors = require('colors');
+const colorette = require('colorette');
 const inquirer = require('inquirer');
 const pure = require('../../index');
 
@@ -15,7 +15,7 @@ function startRepl() {
         .prompt({
             type: 'list',
             name: 'localeInput',
-            message: 'Select what locale pure will set in Repl',
+            message: 'Select what locale pure will be set',
             choices: localeOpts,
         })
         .then((answers) => {
@@ -26,16 +26,16 @@ function startRepl() {
             }
 
             const sayWelcome = `
-                Hello, ${colors.green(process.env.USER)}! 😁
-                Pure will use locale: ${colors.blue(answers.localeInput)}
+                Hello, ${colorette.green(process.env.USER)}! 😁
+                Pure will use locale: ${colorette.blue(answers.localeInput)}
         
-                ${colors.gray('.exit or ctrl+c to exit Repl')}
-                ${colors.gray('Repl has autocomplete, type any pure method '
+                ${colorette.gray('.exit or ctrl+c to exit Repl')}
+                ${colorette.gray('Repl has autocomplete, type any pure method '
                 + 'then hit <tab> 2x after "." and Repl will suggest')}
-                ${colors.gray('Methods: seed, setLocale, getSeed will not work inside Repl')}
+                ${colorette.gray('Methods: seed, setLocale, getSeed will not work inside Repl')}
             `;
 
-            const sayBye = `\nBye ${colors.green(process.env.USER)}! 👋`;
+            const sayBye = `\nBye ${colorette.green(process.env.USER)}! 👋`;
 
             // Print the welcome message
             prettyPrint(sayWelcome);

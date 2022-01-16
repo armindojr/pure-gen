@@ -1,26 +1,23 @@
 class Company {
     constructor(pure) {
+        // TODO: Remove this method
         this.suffixes = () => pure.registeredModules.company.suffix.slice(0);
 
         this.companyName = (format) => {
-            const def = format;
             let res;
-            const formats = [
-                '{{name.lastName}} {{company.companySuffix}}',
-                '{{name.lastName}} - {{name.lastName}}',
-                '{{name.lastName}}, {{name.lastName}} and {{name.lastName}}',
-            ];
 
-            if (typeof def !== 'string') {
-                res = pure.fake(pure.random.arrayElement(formats));
+            if (typeof format !== 'string') {
+                res = pure.fake(pure.random.arrayElement(pure.registeredModules.company.name));
             } else {
-                res = pure.fake(def);
+                res = pure.fake(format);
             }
 
             return res;
         };
 
-        this.companySuffix = () => pure.random.arrayElement(this.suffixes());
+        this.companySuffix = () => pure.random.arrayElement(pure.registeredModules.company.suffix);
+
+        this.companyPrefix = () => pure.random.arrayElement(pure.registeredModules.company.prefix);
 
         this.catchPhrase = () => `${this.catchPhraseAdjective()} ${this.catchPhraseDescriptor()}`
         + ` ${this.catchPhraseNoun()}`;

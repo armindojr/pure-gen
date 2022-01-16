@@ -1,5 +1,4 @@
 const address = {
-    city_root: require('./city_root'),
     city_suffix: require('./city_suffix'),
     street_prefix: require('./street_prefix'),
     street_root: require('./street_root'),

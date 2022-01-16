@@ -6,7 +6,6 @@ const address = {
     state: require('./state'),
     state_abbr: require('./state_abbr'),
     time_zone: require('./time_zone'),
-    city_name: require('./city_name'),
     city: require('./city'),
     street: require('./street'),
     street_name: require('./street_name'),

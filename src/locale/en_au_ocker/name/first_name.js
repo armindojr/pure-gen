@@ -13,7 +13,7 @@ module.exports = [
     'Isabella',
     'Ruby',
     'Sienna',
-    'Mia+3',
+    'Mia',
     'Grace',
     'Emma',
     'Ivy',

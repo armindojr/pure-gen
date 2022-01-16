@@ -1,1 +1,3 @@
-module.exports = ['#{city_prefix}#{city_suffix}'];
+module.exports = [
+    '{{address.cityPrefix}}{{address.citySuffix}}'
+];

@@ -26,28 +26,35 @@ class Address {
             return this.zipCode();
         };
 
-        // TODO: this is strange passing in an array index.
-        this.city = (format) => {
-            let def = format;
-            const formats = [
-                '{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}',
-                '{{address.cityPrefix}} {{name.firstName}}',
-                '{{name.firstName}}{{address.citySuffix}}',
-                '{{name.lastName}}{{address.citySuffix}}',
-            ];
+        this.city = (state) => {
+            let def = state;
 
-            if (typeof def !== 'number') {
-                def = pure.random.number(formats.length - 1);
+            if (typeof def !== 'string') {
+                if (pure.registeredModules.address.city[def] === undefined) {
+                    def = pure.random.objectElement(pure.registeredModules.address.city, 'key');
+                } else {
+                    def = this.state();
+                }
+            } else if (def.length < 1) {
+                def = pure.random.objectElement(pure.registeredModules.address.city, 'key');
+            } else {
+                def = def.toLowerCase().charAt(0).toUpperCase() + def.slice(1);
             }
 
-            return pure.fake(formats[def]);
+            let result = pure.random.arrayElement(pure.registeredModules.address.city[def]);
+
+            if (result === undefined || result.length <= 1) {
+                result = pure.fake(pure.random.arrayElement(pure.registeredModules.address.city));
+            }
+
+            return result;
         };
 
         this.cityPrefix = () => pure.random.arrayElement(pure.registeredModules.address.city_prefix);
 
         this.citySuffix = () => pure.random.arrayElement(pure.registeredModules.address.city_suffix);
 
-        this.cityName = () => pure.random.arrayElement(pure.registeredModules.address.city_name);
+        this.cityName = () => this.city();
 
         // TODO: Refactor to use real street names not pure.name.lastName()
         this.streetName = () => {
@@ -137,7 +144,6 @@ class Address {
         this.latitude = (options = {}) => {
             const { max = 90, min = -90, precision = 4 } = options;
 
-            // TODO: review why using parseFloat on precision
             return pure.random.number({
                 max,
                 min,
@@ -148,7 +154,6 @@ class Address {
         this.longitude = (options = {}) => {
             const { max = 180, min = -180, precision = 4 } = options;
 
-            // TODO: review why using parseFloat on precision
             return pure.random.number({
                 max,
                 min,
@@ -233,7 +238,10 @@ class Address {
 
             // This approach will likely result in a higher density of points near the center.
             const randomCoord = coordinateWithOffset(
-                coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric,
+                coordinate,
+                degreesToRadians(Math.random() * 360.0),
+                radius,
+                isMetric,
             );
 
             return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];

@@ -47,6 +47,7 @@ describe('generator.js', () => {
         pure.seed(1);
         sinon.stub(fs, 'writeFileSync').returns();
         sinon.stub(inquirer, 'prompt').resolves({
+            localeInput: 'en',
             formatType: 'json',
             templateStr: '{"number":{{random.number}},"zipCode":"{{address.zipCode}}"}',
             rows: 1,
@@ -66,6 +67,7 @@ describe('generator.js', () => {
     it('generate json file with two entries unique', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
+            localeInput: 'en',
             formatType: 'json',
             templateStr: '{"number":{{random.number}},"zipCode":"{{address.zipCode}}"}',
             rows: 2,
@@ -88,6 +90,7 @@ describe('generator.js', () => {
     it('generate txt file with two entries unique', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
+            localeInput: 'en',
             formatType: 'txt',
             templateStr: '{{random.number}}; {{address.zipCode}};\n',
             rows: 2,
@@ -107,6 +110,7 @@ describe('generator.js', () => {
     it('generate txt file with two entries', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
+            localeInput: 'en',
             formatType: 'txt',
             templateStr: '{{random.number}}; {{address.zipCode}};\n',
             rows: 2,
@@ -126,6 +130,7 @@ describe('generator.js', () => {
     it('generate text and don\'t save', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
+            localeInput: 'en',
             formatType: 'none',
             templateStr: '{{random.number}} <-> {{address.zipCode}}',
             rows: 1,
