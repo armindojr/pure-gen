@@ -1,1 +1,14 @@
-module.exports = ['N', 'E', 'S', 'W', 'NE', 'NW', 'SE', 'SW'];
+module.exports = {
+    'cardinal': [
+        'N',
+        'E',
+        'S',
+        'W'
+    ],
+    'ordinal': [
+        'NE',
+        'NW',
+        'SE',
+        'SW'
+    ]
+};

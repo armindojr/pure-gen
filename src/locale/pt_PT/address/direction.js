@@ -1,10 +1,14 @@
-module.exports = [
-    'Norte',
-    'Este',
-    'Sul',
-    'Oeste',
-    'Nordeste',
-    'Noroeste',
-    'Sudeste',
-    'Sodoeste',
-];
+module.exports = {
+    'cardinal': [
+        'Norte',
+        'Leste',
+        'Sul',
+        'Oeste',
+    ],
+    'ordinal': [
+        'Nordeste',
+        'Noroeste',
+        'Sudeste',
+        'Sudoeste',
+    ]
+};

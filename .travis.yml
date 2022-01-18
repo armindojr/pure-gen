@@ -9,10 +9,12 @@ node_js:
   - "10"
 
 install:
-  - npm install -g codecov
   - npm i
 
 script:
   - "npm run coverage"
 
-after_success: npm run coverage:report
+after_success:
+  - curl -Os https://uploader.codecov.io/latest/linux/codecov
+  - chmod +x codecov
+  - ./codecov -t $CODECOV_TOKEN

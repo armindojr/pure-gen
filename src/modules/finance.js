@@ -27,8 +27,9 @@ class Finance {
             return routingNumber + (Math.ceil(sum / 10) * 10 - sum);
         };
 
-        this.mask = (options = {}) => {
-            const { length, parens, ellipsis } = options;
+        this.mask = (options) => {
+            const opt = options || {};
+            const { length, parens, ellipsis } = opt;
 
             // set defaults
             const def = (length === 0 || !length || typeof length === 'undefined') ? 4 : length;
@@ -49,13 +50,14 @@ class Finance {
         };
 
         // TODO: rename dec param as precision
-        this.amount = (options = {}) => {
+        this.amount = (options) => {
+            const def = options || {};
             const {
                 min = 0,
                 max = 1000,
                 dec = 2,
                 symbol = '',
-            } = options;
+            } = def;
             const randValue = pure.random.number({ max, min, precision: dec });
 
             return symbol + randValue.toFixed(dec);
@@ -106,6 +108,7 @@ class Finance {
             let format;
             let formats;
             const localeFormat = pure.registeredModules.finance.credit_card;
+
             if (Object.prototype.hasOwnProperty.call(localeFormat, provider)) {
                 // there chould be multiple formats
                 formats = localeFormat[prov];
@@ -130,7 +133,9 @@ class Finance {
                     format = pure.random.arrayElement(formats);
                 }
             }
+
             format = format.replace(/\//g, '');
+
             return pure.helpers.replaceCreditCardSymbols({ string: format });
         };
 
@@ -138,8 +143,9 @@ class Finance {
 
         this.ethereumAddress = () => `0x${pure.random.hexaDecimal(40).toLowerCase()}`;
 
-        this.iban = (options = {}) => {
-            const { formatted = false, country } = options;
+        this.iban = (options) => {
+            const def = options || {};
+            const { formatted = false, country } = def;
             let ibanFormat;
 
             if (typeof country === 'undefined') {

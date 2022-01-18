@@ -1,4 +1,3 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const inquirer = require('inquirer');
 const fs = require('fs');
@@ -36,9 +35,9 @@ describe('generator.js', () => {
         const generatedResult = await generator();
         const resultFromFile = JSON.parse(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest.json`));
 
-        assert.equal(generatedResult.generated, JSON.stringify(resultFromFile));
-        expect(resultFromFile[0]).to.have.property('number');
-        expect(resultFromFile[0]).to.have.property('zipCode');
+        expect(generatedResult.generated).toEqual(JSON.stringify(resultFromFile));
+        expect(resultFromFile[0]).toHaveProperty('number');
+        expect(resultFromFile[0]).toHaveProperty('zipCode');
 
         inquirer.prompt.restore();
     });
@@ -58,7 +57,7 @@ describe('generator.js', () => {
 
         const generatedResult = await generator();
 
-        expect(generatedResult.pathJoin).to.include(process.cwd());
+        expect(generatedResult.pathJoin).toContain(process.cwd());
 
         inquirer.prompt.restore();
         fs.writeFileSync.restore();
@@ -79,10 +78,10 @@ describe('generator.js', () => {
         const generatedResult = await generator();
         const resultFromFile = JSON.parse(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest1.json`));
 
-        assert.equal(generatedResult.generated, JSON.stringify(resultFromFile));
-        expect(resultFromFile[1]).to.have.property('number');
-        expect(resultFromFile[1]).to.have.property('zipCode');
-        assert.ok(resultFromFile[1].zipCode !== resultFromFile[0].zipCode);
+        expect(generatedResult.generated).toEqual(JSON.stringify(resultFromFile));
+        expect(resultFromFile[1]).toHaveProperty('number');
+        expect(resultFromFile[1]).toHaveProperty('zipCode');
+        expect(resultFromFile[1].zipCode).not.toEqual(resultFromFile[0].zipCode);
 
         inquirer.prompt.restore();
     });
@@ -102,7 +101,7 @@ describe('generator.js', () => {
         const generatedResult = await generator();
         const resultFromFile = String(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest2.txt`));
 
-        assert.equal(generatedResult.generated, resultFromFile);
+        expect(generatedResult.generated).toEqual(resultFromFile);
 
         inquirer.prompt.restore();
     });
@@ -122,7 +121,7 @@ describe('generator.js', () => {
         const generatedResult = await generator();
         const resultFromFile = String(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest3.txt`));
 
-        assert.equal(generatedResult.generated, resultFromFile);
+        expect(generatedResult.generated).toEqual(resultFromFile);
 
         inquirer.prompt.restore();
     });
@@ -140,7 +139,7 @@ describe('generator.js', () => {
         const generatedResult = await generator();
         const splitted = generatedResult.generated.split(' <-> ');
 
-        assert.equal(splitted.length, 2);
+        expect(splitted.length).toEqual(2);
 
         inquirer.prompt.restore();
     });
@@ -149,7 +148,7 @@ describe('generator.js', () => {
         sinon.stub(inquirer, 'prompt').resolves();
 
         await generator().catch((err) => {
-            assert.isDefined(err);
+            expect(err).toBeDefined();
         });
 
         inquirer.prompt.restore();
@@ -159,80 +158,79 @@ describe('generator.js', () => {
         it('defaultTemplate with formatType json', () => {
             const result = defaultTemplate({ formatType: 'json' });
 
-            assert.equal(result, '{ "number": {{random.number}}, "pass": "{{internet.password}}" }');
+            expect(result).toEqual('{ "number": {{random.number}}, "pass": "{{internet.password}}" }');
         });
 
         it('defaultTemplate with formatType csv', () => {
             const result = defaultTemplate({ formatType: 'csv' });
 
-            assert.equal(result, '{{random.number}}; {{internet.password}}; {{address.city}};');
+            expect(result).toEqual('{{random.number}}; {{internet.password}}; {{address.city}};');
         });
 
         it('validateTemplate passing invalid string', () => {
             const result = validateTemplate('');
 
-            assert.equal(result, 'You need to pass a valid string!');
+            expect(result).toEqual('You need to pass a valid string!');
         });
 
         it('validateTemplate passing valid string', () => {
             const result = validateTemplate('test');
 
-            // console.log(result)
-            assert.equal(result, true);
+            expect(result).toEqual(true);
         });
 
         it('validateRows passing invalid number', () => {
             const result = validateRows(NaN);
 
-            assert.equal(result, 'You need to pass a valid number');
+            expect(result).toEqual('You need to pass a valid number');
         });
 
         it('validateRows passing valid number', () => {
             const result = validateRows(1);
 
-            assert.equal(result, true);
+            expect(result).toEqual(true);
         });
 
         it('conditionalPath formatType json', () => {
             const result = conditionalPath({ formatType: 'json' });
 
-            assert.equal(result, true);
+            expect(result).toEqual(true);
         });
 
         it('conditionalPath formatType none', () => {
             const result = conditionalPath({ formatType: 'none' });
 
-            assert.equal(result, false);
+            expect(result).toEqual(false);
         });
 
         it('validatePath invalid string', () => {
             const result = validatePath('');
 
-            assert.equal(result, 'You need to pass a valid string!');
+            expect(result).toEqual('You need to pass a valid string!');
         });
 
         it('validatePath invalid dir', () => {
             const result = validatePath('/ehgdeuyhgfj');
 
-            assert.equal(result, 'No such directory. You need to pass a valid path!');
+            expect(result).toEqual('No such directory. You need to pass a valid path!');
         });
 
         it('validatePath valid dir', () => {
             const result = validatePath('./__test__');
 
-            assert.equal(result, true);
+            expect(result).toEqual(true);
         });
 
         it('conditionalName formatType json', () => {
             const result = conditionalName({ formatType: 'json' });
 
-            assert.equal(result, true);
+            expect(result).toEqual(true);
         });
 
         it('conditionalName formatType none', () => {
             const result = conditionalName({ formatType: 'none' });
 
-            assert.equal(result, false);
+            expect(result).toEqual(false);
         });
     });
 });

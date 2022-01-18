@@ -1,60 +1,59 @@
 {
-    "name": "pure-gen",
-    "description": "Generate fake data to be used in test automation",
-    "version": "2.1.0",
-    "keywords": [
-        "pure",
-        "generator",
-        "mock",
-        "fake",
-        "data",
-        "test",
-        "test automation"
-    ],
-    "contributors": [
-        "Armindo Junior <armindo.junior05@gmail.com>"
-    ],
-    "homepage": "https://armindojr.github.io/pure-gen/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/armindojr/pure-gen.git"
-    },
-    "scripts": {
-        "lint": "npx eslint -c ./.eslintrc ./src",
-        "lint:fix": "npx eslint -c ./.eslintrc ./src --fix",
-        "test": "npx mocha --config ./mocha.conf.js ./__test__/*.spec.js",
-        "coverage": "npx nyc --nycrc-path ./nyc.conf.json --reporter=lcov npm run test",
-        "coverage:html": "npx nyc --nycrc-path ./nyc.conf.json --reporter=html npm run test",
-        "coverage:report": "codecov"
-    },
-    "devDependencies": {
-        "chai": "^4.3.4",
-        "eslint": "^8.6.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-plugin-import": "^2.25.4",
-        "husky": "^7.0.4",
-        "mocha": "^9.1.4",
-        "nyc": "^15.1.0",
-        "sinon": "^12.0.1"
-    },
-    "dependencies": {
-        "colorette": "^2.0.16",
-        "commander": "^8.3.0",
-        "inquirer": "^8.2.0",
-        "mustache": "^4.2.0",
-        "randexp": "^0.5.3",
-        "slugify": "^1.6.5",
-        "uuid": "^8.3.2"
-    },
-    "bin": {
-        "pure": "./bin/pure"
-    },
-    "license": "GPL-3.0-only",
-    "main": "index.js",
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint",
-            "pre-push": "npm run test"
-        }
+  "name": "pure-gen",
+  "description": "Generate fake data to be used in test automation",
+  "version": "2.1.0",
+  "keywords": [
+    "pure",
+    "generator",
+    "mock",
+    "fake",
+    "data",
+    "test",
+    "test automation"
+  ],
+  "contributors": [
+    "Armindo Junior <armindo.junior05@gmail.com>"
+  ],
+  "homepage": "https://armindojr.github.io/pure-gen/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/armindojr/pure-gen.git"
+  },
+  "scripts": {
+    "lint": "npx eslint -c ./.eslintrc ./src",
+    "lint:fix": "npx eslint -c ./.eslintrc ./src --fix",
+    "test": "jest",
+    "test:w": "jest --watch",
+    "coverage": "jest --coverage",
+    "coverage:html": "jest --coverage --coverageReporters html",
+    "coverage:report": "codecov"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "husky": "^7.0.4",
+    "jest": "^27.4.7",
+    "sinon": "^12.0.1"
+  },
+  "dependencies": {
+    "colorette": "^2.0.16",
+    "commander": "^8.3.0",
+    "inquirer": "^8.2.0",
+    "mustache": "^4.2.0",
+    "randexp": "^0.5.3",
+    "slugify": "^1.6.5",
+    "uuid": "^8.3.2"
+  },
+  "bin": {
+    "pure": "./bin/pure"
+  },
+  "license": "GPL-3.0-only",
+  "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
     }
+  }
 }

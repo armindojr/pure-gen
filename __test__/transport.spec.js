@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -7,15 +6,20 @@ describe('transport.js', () => {
         it('returns a random vehicle', () => {
             const vehicle = pure.transport.vehicleName();
 
-            assert.ok(vehicle);
+            expect(vehicle).toBeDefined();
         });
 
         it('returns exact vehicle stubbed', () => {
-            sinon.stub(pure.transport, 'vehicleName').returns('Ford Explorer');
+            const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
+                vehicleManufacturer: [ 'Ford' ],
+                vehicleModel: [ 'Explorer' ],
+            }));
+
             const vehicle = pure.transport.vehicleName();
 
-            assert.equal(vehicle, 'Ford Explorer');
-            pure.transport.vehicleName.restore();
+            expect(vehicle).toEqual('Ford Explorer');
+
+            stub.restore();
         });
     });
 
@@ -23,15 +27,19 @@ describe('transport.js', () => {
         it('returns random manufacturer', () => {
             const manufacturer = pure.transport.vehicleManufacturer();
 
-            assert.ok(manufacturer);
+            expect(manufacturer).toBeDefined();
         });
 
         it('returns exact manufacturer stubbed', () => {
-            sinon.stub(pure.transport, 'vehicleManufacturer').returns('Porsche');
+            const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
+                vehicleManufacturer: [ 'Porsche' ],
+            }));
+
             const manufacturer = pure.transport.vehicleManufacturer();
 
-            assert.equal(manufacturer, 'Porsche');
-            pure.transport.vehicleManufacturer.restore();
+            expect(manufacturer).toEqual('Porsche');
+
+            stub.restore();
         });
     });
 
@@ -39,15 +47,19 @@ describe('transport.js', () => {
         it('returns random vehicle type', () => {
             const type = pure.transport.vehicleType();
 
-            assert.ok(type);
+            expect(type).toBeDefined();
         });
 
         it('returns exact vehicle type stubbed', () => {
-            sinon.stub(pure.transport, 'vehicleType').returns('Minivan');
+            const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
+                vehicleType: [ 'Minivan' ],
+            }));
+
             const type = pure.transport.vehicleType();
 
-            assert.equal(type, 'Minivan');
-            pure.transport.vehicleType.restore();
+            expect(type).toEqual('Minivan');
+
+            stub.restore();
         });
     });
 
@@ -55,22 +67,27 @@ describe('transport.js', () => {
         it('returns a fuel type', () => {
             const fuel = pure.transport.vehicleFuel();
 
-            assert.ok(fuel);
+            expect(fuel).toBeDefined();
         });
 
         it('returns exact fuel type stubbed', () => {
-            sinon.stub(pure.transport, 'vehicleFuel').returns('Hybrid');
+            const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
+                vehicleFuel: [ 'Hybrid' ],
+            }));
+
             const fuel = pure.transport.vehicleFuel();
 
-            assert.equal(fuel, 'Hybrid');
-            pure.transport.vehicleFuel.restore();
+            expect(fuel).toEqual('Hybrid');
+
+            stub.restore();
         });
     });
 
     describe('vehicleVin()', () => {
         it('returns valid vin number', () => {
             const vin = pure.transport.vehicleVin();
-            assert.ok(vin.match(/^[A-Z0-9]{10}[A-Z]{1}[A-Z0-9]{1}\d{5}$/));
+
+            expect(/^[A-Z0-9]{10}[A-Z]{1}[A-Z0-9]{1}\d{5}$/.test(vin)).toEqual(true);
         });
     });
 
@@ -78,32 +95,46 @@ describe('transport.js', () => {
         it('returns a random color', () => {
             const color = pure.transport.vehicleColor();
 
-            assert.ok(color);
+            expect(color).toBeDefined();
         });
 
         it('returns exact color stubbed', () => {
-            sinon.stub(pure.transport, 'vehicleColor').returns('black');
+            sinon.stub(pure.commerce, 'color').returns('black');
+
             const color = pure.transport.vehicleColor();
 
-            assert.equal(color, 'black');
-            pure.transport.vehicleColor.restore();
+            expect(color).toEqual('black');
+
+            pure.commerce.color.restore();
         });
     });
 
     describe('vehicleRM()', () => {
         it('returns a stubbed vrm', () => {
-            sinon.stub(pure.transport, 'vehicleRM').returns('MF59EEW');
+            sinon.stub(pure.random, 'alpha')
+                .onFirstCall()
+                .returns('MF')
+                .onSecondCall()
+                .returns('EEW');
+            sinon.stub(pure.random, 'number')
+                .onFirstCall()
+                .returns(5)
+                .onSecondCall()
+                .returns(9)
+
             const vrm = pure.transport.vehicleRM();
 
-            assert.equal(vrm, 'MF59EEW');
-            pure.transport.vehicleRM.restore();
+            expect(vrm).toEqual('MF59EEW');
+
+            pure.random.alpha.restore();
+            pure.random.number.restore();
         });
 
         it('returns a random vrm', () => {
             const vrm = pure.transport.vehicleRM();
             const reg = /[A-Z]{2}[0-9]{2}[A-Z]{3}/g;
 
-            assert.ok(reg.test(vrm));
+            expect(reg.test(vrm)).toEqual(true);
         });
     });
 
@@ -111,29 +142,35 @@ describe('transport.js', () => {
         it('returns a random international airport', () => {
             const airport = pure.transport.airportName();
 
-            assert.ok(airport);
+            expect(airport).toBeDefined();
         });
 
         it('returns exact international airport stubbed', () => {
-            sinon.stub(pure.transport, 'airportName').returns('Los Angeles International Airport');
+            const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
+                airportName: [ 'Los Angeles International Airport' ],
+            }));
+
             const airport = pure.transport.airportName();
 
-            assert.equal(airport, 'Los Angeles International Airport');
-            pure.transport.airportName.restore();
+            expect(airport).toEqual('Los Angeles International Airport');
+
+            stub.restore();
         });
     });
 
     describe('airportIata()', () => {
         it('returns random IATA code', () => {
             const iataCode = pure.transport.airportIata();
-            assert.ok(iataCode.match(/^[A-Z]{3}$/));
+
+            expect(/^[A-Z]{3}$/.test(iataCode)).toEqual(true);
         });
     });
 
     describe('airportIcao()', () => {
         it('returns random ICAO code', () => {
             const icaoCode = pure.transport.airportIcao();
-            assert.ok(icaoCode.match(/^[A-Z]{2}$/));
+
+            expect(/^[A-Z]{2}$/.test(icaoCode)).toEqual(true);
         });
     });
 });

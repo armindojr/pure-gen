@@ -1,167 +1,269 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
 describe('name.js', () => {
     describe('firstName()', () => {
-        it('returns a random name', () => {
-            sinon.stub(pure.name, 'firstName').returns('foo');
-            const firstName = pure.name.firstName();
-
-            assert.equal(firstName, 'foo');
-
-            pure.name.firstName.restore();
-        });
-        it('returns a random name when first_name is undefined', () => {
+        it('returns a random name when locale doesn\'t have male and female names', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                first_name: undefined,
-                male_first_name: [
-                    'test1male',
-                    'test2male',
-                ],
-                female_first_name: [
-                    'test1female',
-                    'test2female',
-                ],
+                first_name: ['foo'],
+                male_first_name: undefined,
+                female_first_name: undefined,
             }));
+
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string');
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('foo');
 
             stub.restore();
         });
-        it('returns a random name when first_name is undefined and random num 0', () => {
+
+        it('returns a random name when locale have male and female names', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                first_name: ['foo'],
+                male_first_name: [
+                    'bar',
+                ],
+                female_first_name: [
+                    'test',
+                ],
+            }));
+
+            const firstName = pure.name.firstName();
+
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('foo');
+
+            stub.restore();
+        });
+
+        it('returns a random name when first_name is undefined and random number is 0', () => {
             sinon.stub(pure.random, 'number').returns(0);
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: undefined,
                 male_first_name: [
-                    'test1male',
-                    'test2male',
+                    'bar',
                 ],
                 female_first_name: [
-                    'test1female',
-                    'test2female',
+                    'test',
                 ],
             }));
+
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string');
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('bar');
 
             pure.random.number.restore();
             stub.restore();
         });
-        it('returns a random name when first_name is undefined and random num 1', () => {
+
+        it('returns a random name when first_name is undefined and random number is 1', () => {
             sinon.stub(pure.random, 'number').returns(1);
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
                 first_name: undefined,
                 male_first_name: [
-                    'test1male',
-                    'test2male',
+                    'bar',
                 ],
                 female_first_name: [
-                    'test1female',
-                    'test2female',
+                    'test',
                 ],
             }));
+
             const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string');
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('test');
 
             pure.random.number.restore();
             stub.restore();
         });
-        it('returns a random name when female_first_name and male_first_name is undefined', () => {
-            sinon.stub(pure.random, 'number').returns(1);
+
+        it('returns a random name when parameter is 0', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                first_name: [
-                    'test1male',
-                    'test2female',
+                first_name: ['foo'],
+                male_first_name: [
+                    'bar',
                 ],
-                male_first_name: undefined,
-                female_first_name: undefined,
+                female_first_name: [
+                    'test',
+                ],
             }));
-            const firstName = pure.name.firstName();
 
-            assert.ok(typeof firstName === 'string');
+            const firstName = pure.name.firstName(0);
 
-            pure.random.number.restore();
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('bar');
+
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 1', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                first_name: ['foo'],
+                male_first_name: [
+                    'bar',
+                ],
+                female_first_name: [
+                    'test',
+                ],
+            }));
+
+            const firstName = pure.name.firstName(1);
+
+            expect(typeof firstName).toBe('string');
+            expect(firstName).toEqual('test');
+
             stub.restore();
         });
     });
 
     describe('lastName()', () => {
-        it('returns a random name', () => {
-            sinon.stub(pure.name, 'lastName').returns('foo');
+        it('returns a random name when locale doesn\'t have male and female names', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: undefined,
+                female_last_name: undefined,
+            }));
 
             const lastName = pure.name.lastName();
 
-            assert.equal(lastName, 'foo');
+            expect(lastName).toEqual('foo');
 
-            pure.name.lastName.restore();
-        });
-        it('returns a male random name', () => {
-            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                male_last_name: [
-                    'test1male',
-                    'test2male',
-                ],
-                female_last_name: [
-                    'test1female',
-                    'test2female',
-                ],
-            }));
-            const lastName = pure.name.lastName(0);
-
-            assert.ok(typeof lastName === 'string');
             stub.restore();
         });
-        describe('When using RU locale', () => {
-            it('returns localized lastname', () => {
-                pure.setLocale('ru');
-                const lastNameRu = pure.name.lastName();
 
-                assert.ok(typeof lastNameRu === 'string');
-                expect(lastNameRu.length).greaterThan(1);
+        it('returns a random name when random number is 0', () => {
+            sinon.stub(pure.random, 'number').returns(0);
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: [ 'bar' ],
+                female_last_name: [ 'test' ],
+            }));
 
-                pure.setLocale('en');
-            });
-            it('and passing "gender" parameter as 1', () => {
-                pure.setLocale('ru');
-                const lastNameRu = pure.name.lastName(1);
+            const lastName = pure.name.lastName();
 
-                assert.ok(typeof lastNameRu === 'string');
-                expect(lastNameRu.length).greaterThan(1);
+            expect(lastName).toEqual('bar');
 
-                pure.setLocale('en');
-            });
+            pure.random.number.restore();
+            stub.restore();
+        });
+
+        it('returns a random name when random number is 1', () => {
+            sinon.stub(pure.random, 'number').returns(1);
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: [ 'bar' ],
+                female_last_name: [ 'test' ],
+            }));
+
+            const lastName = pure.name.lastName();
+
+            expect(lastName).toEqual('test');
+
+            pure.random.number.restore();
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 0', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: [ 'bar' ],
+                female_last_name: [ 'test' ],
+            }));
+
+            const lastName = pure.name.lastName(0);
+
+            expect(lastName).toEqual('bar');
+
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 0 and male last name is undefined', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: undefined,
+                female_last_name: [ 'test' ],
+            }));
+
+            const lastName = pure.name.lastName(0);
+
+            expect(lastName).toEqual('foo');
+
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 1', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: [ 'bar' ],
+                female_last_name: [ 'test' ],
+            }));
+
+            const lastName = pure.name.lastName(1);
+
+            expect(lastName).toEqual('test');
+
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 1 and female last name is undefined', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: [ 'bar' ],
+                female_last_name: undefined,
+            }));
+
+            const lastName = pure.name.lastName(1);
+
+            expect(lastName).toEqual('foo');
+
+            stub.restore();
+        });
+
+        it('returns a random name when parameter is 0 and locale doesn\'t have gendered names', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                last_name: [ 'foo' ],
+                male_last_name: undefined,
+                female_last_name: undefined,
+            }));
+
+            const lastName = pure.name.lastName(0);
+
+            expect(lastName).toEqual('foo');
+
+            stub.restore();
         });
     });
 
     describe('findName()', () => {
         it('usually returns a first name and last name', () => {
             sinon.stub(pure.random, 'number').returns(5);
+
             const name = pure.name.findName();
-            assert.ok(name);
             const parts = name.split(' ');
 
-            assert.strictEqual(parts.length, 2);
+            expect(name).toBeDefined();
+            expect(parts.length).toEqual(2);
 
             pure.random.number.restore();
         });
 
         it('occasionally returns a first name and last name with a prefix', () => {
             sinon.stub(pure.random, 'number').returns(0);
+
             const name = pure.name.findName();
             const parts = name.split(' ');
 
-            assert.ok(parts.length >= 3);
+            expect(parts.length).toBeGreaterThanOrEqual(3);
 
             pure.random.number.restore();
         });
 
         it('occasionally returns a male full name with a prefix', () => {
             sinon.stub(pure.random, 'number')
-                .withArgs(8).returns(0) // with prefix
+                .withArgs(8)
+                .returns(0) // with prefix
                 .withArgs(1)
                 .returns(0); // gender male
 
@@ -171,7 +273,7 @@ describe('name.js', () => {
 
             const name = pure.name.findName();
 
-            assert.equal(name, 'X Y Z');
+            expect(name).toEqual('X Y Z');
 
             pure.random.number.restore();
             pure.name.prefix.restore();
@@ -181,7 +283,8 @@ describe('name.js', () => {
 
         it('occasionally returns a female full name with a prefix', () => {
             sinon.stub(pure.random, 'number')
-                .withArgs(8).returns(0) // with prefix
+                .withArgs(8)
+                .returns(0) // with prefix
                 .withArgs(1)
                 .returns(1); // gender female
 
@@ -191,7 +294,7 @@ describe('name.js', () => {
 
             const name = pure.name.findName();
 
-            assert.equal(name, 'J K L');
+            expect(name).toEqual('J K L');
 
             pure.random.number.restore();
             pure.name.prefix.restore();
@@ -202,20 +305,15 @@ describe('name.js', () => {
         it('occasionally returns a first name and last name with a suffix', () => {
             sinon.stub(pure.random, 'number').returns(1);
             sinon.stub(pure.name, 'suffix').returns('Jr.');
+
             const name = pure.name.findName();
             const parts = name.split(' ');
 
-            assert.ok(parts.length >= 3);
-            assert.equal(parts[parts.length - 1], 'Jr.');
+            expect(parts.length).toBeGreaterThanOrEqual(3);
+            expect(parts[parts.length - 1]).toEqual('Jr.');
 
             pure.name.suffix.restore();
             pure.random.number.restore();
-        });
-
-        it('needs to work with specific locales and respect the fallbacks', () => {
-            pure.setLocale('en_US');
-            // this will throw if this is broken
-            pure.name.findName();
         });
     });
 
@@ -225,7 +323,7 @@ describe('name.js', () => {
 
             const title = pure.name.title();
 
-            assert.equal(title, 'Lead Solutions Supervisor');
+            expect(title).toEqual('Lead Solutions Supervisor');
 
             pure.name.title.restore();
         });
@@ -233,7 +331,7 @@ describe('name.js', () => {
         it('returns a random title', () => {
             const title = pure.name.title();
 
-            assert.ok(title);
+            expect(title).toBeDefined();
         });
     });
 
@@ -243,13 +341,14 @@ describe('name.js', () => {
             sinon.spy(pure.name, 'jobDescriptor');
             sinon.spy(pure.name, 'jobArea');
             sinon.spy(pure.name, 'jobType');
+
             const jobTitle = pure.name.jobTitle();
 
-            assert.ok(typeof jobTitle === 'string');
-            assert.ok(pure.random.arrayElement.calledThrice);
-            assert.ok(pure.name.jobDescriptor.calledOnce);
-            assert.ok(pure.name.jobArea.calledOnce);
-            assert.ok(pure.name.jobType.calledOnce);
+            expect(typeof jobTitle).toBe('string');
+            expect(pure.random.arrayElement.calledThrice).toEqual(true);
+            expect(pure.name.jobDescriptor.calledOnce).toEqual(true);
+            expect(pure.name.jobArea.calledOnce).toEqual(true);
+            expect(pure.name.jobType.calledOnce).toEqual(true);
 
             pure.random.arrayElement.restore();
             pure.name.jobDescriptor.restore();
@@ -262,62 +361,74 @@ describe('name.js', () => {
         it('returns random gender', () => {
             const gender = pure.name.gender();
 
-            assert.ok(gender);
+            expect(gender).toBeDefined();
         });
     });
 
     describe('prefix()', () => {
-        describe('when using a locale with gender specific name prefixes', () => {
-            it('returns male prefix', () => {
-                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                    male_prefix: ['Mp'],
-                    female_prefix: ['Fp'],
-                }));
+        it('returns male prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                male_prefix: ['Mp'],
+                female_prefix: ['Fp'],
+            }));
 
-                const prefix = pure.name.prefix(0);
-                assert.equal(prefix, 'Mp');
+            const prefix = pure.name.prefix(0);
 
-                stub.restore();
-            });
+            expect(prefix).toEqual('Mp');
 
-            it('returns female prefix', () => {
-                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                    male_prefix: ['Mp'],
-                    female_prefix: ['Fp'],
-                }));
-
-                const prefix = pure.name.prefix(1);
-
-                assert.equal(prefix, 'Fp');
-
-                stub.restore();
-            });
-
-            it('returns either prefix', () => {
-                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                    male_prefix: ['Mp'],
-                    female_prefix: ['Fp'],
-                }));
-
-                const prefix = pure.name.prefix();
-                assert(['Mp', 'Fp'].indexOf(prefix) >= 0);
-
-                stub.restore();
-            });
+            stub.restore();
         });
 
-        describe('when using a locale without gender specific name prefixes', () => {
-            it('returns a prefix', () => {
-                const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                    prefix: ['P'],
-                }));
+        it('returns female prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                male_prefix: ['Mp'],
+                female_prefix: ['Fp'],
+            }));
 
-                const prefix = pure.name.prefix();
+            const prefix = pure.name.prefix(1);
 
-                assert.equal(prefix, 'P');
+            expect(prefix).toEqual('Fp');
 
-                stub.restore();
-            });
+            stub.restore();
+        });
+
+        it('returns either prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                male_prefix: ['Mp'],
+                female_prefix: ['Fp'],
+            }));
+
+            const prefix = pure.name.prefix();
+
+            expect(['Mp', 'Fp'].indexOf(prefix)).toBeGreaterThanOrEqual(0);
+
+            stub.restore();
+        });
+
+        it('returns a prefix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                prefix: ['P'],
+            }));
+
+            const prefix = pure.name.prefix();
+
+            expect(prefix).toEqual('P');
+
+            stub.restore();
         });
     });
+
+    describe('suffix()', () => {
+        it('returns random name suffix', () => {
+            const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
+                suffix: [ 'foo' ]
+            }));
+
+            const suffix = pure.name.suffix();
+
+            expect(suffix).toEqual('foo');
+
+            stub.restore();
+        })
+    })
 });

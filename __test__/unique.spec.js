@@ -1,28 +1,31 @@
-const { assert } = require('chai');
 const pure = require('../index');
 
 describe('unique.js', () => {
     describe('exec()', () => {
         it('is able to call a function with no arguments and return a result', () => {
             const result = pure.unique.exec(pure.internet.email);
-            assert.equal(typeof result, 'string');
+
+            expect(typeof result).toBe('string');
         });
 
         it('is able to call a function with arguments and return a result', () => {
             // third argument is provider, or domain for email
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-            assert.ok(result.match(/[@]c/));
+
+            expect(/[@]c/.test(result)).toEqual(true);
         });
 
         it('is able to call same function with arguments and return a result', () => {
             // third argument is provider, or domain for email
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-            assert.ok(result.match(/[@]c/));
+
+            expect(/[@]c/.test(result)).toEqual(true);
         });
 
         it('is able to exclude results as array', () => {
             const result = pure.unique.exec(pure.internet.protocol, [], { exclude: ['https'] });
-            assert.equal(result, 'http');
+
+            expect(result).toEqual('http');
         });
 
         it('is able to limit unique call by maxTime in ms', () => {
@@ -36,7 +39,7 @@ describe('unique.js', () => {
                     ],
                 });
             } catch (err) {
-                assert.include(err.message, 'Exceeded maxTime');
+                expect(err.message).toContain('Exceeded maxTime');
             }
         });
 
@@ -51,14 +54,15 @@ describe('unique.js', () => {
                     ],
                 });
             } catch (err) {
-                assert.include(err.message, 'Exceeded maxRetries');
+                expect(err.message).toContain('Exceeded maxRetries');
             }
         });
 
         it('is able to call last function with arguments and return a result', () => {
             // third argument is provider, or domain for email
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-            assert.ok(result.match(/[@]c/));
+
+            expect(/[@]c/.test(result)).toEqual(true);
         });
     });
 
@@ -74,7 +78,7 @@ describe('unique.js', () => {
                 exclude: ['https'],
             });
 
-            assert.equal(result, 'http');
+            expect(result).toEqual('http');
         });
 
         it('is able to clear the found items at functional scope', () => {
@@ -89,7 +93,7 @@ describe('unique.js', () => {
                 scope: 'pureInternetProtocol',
             });
 
-            assert.equal(result, 'http');
+            expect(result).toEqual('http');
         });
     });
 });

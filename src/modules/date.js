@@ -1,7 +1,8 @@
 class pureDate {
     constructor(pure) {
-        this.past = (options = {}) => {
-            const { years = 1, refDate } = options;
+        this.past = (options) => {
+            const def = options || {};
+            const { years = 1, refDate } = def;
             let date = new Date();
 
             if (typeof refDate !== 'undefined') {
@@ -21,8 +22,9 @@ class pureDate {
             return date;
         };
 
-        this.future = (options = {}) => {
-            const { years = 1, refDate } = options;
+        this.future = (options) => {
+            const def = options || {};
+            const { years = 1, refDate } = def;
             let date = new Date();
 
             if (typeof refDate !== 'undefined') {
@@ -43,8 +45,9 @@ class pureDate {
         };
 
         // TODO: Review why is returning string and not date object
-        this.between = (options = {}) => {
-            const { from = this.past({ years: 5 }), to = new Date() } = options;
+        this.between = (options) => {
+            const def = options || {};
+            const { from = this.past({ years: 5 }), to = new Date() } = def;
 
             const fromMilli = Date.parse(from);
             const dateOffset = pure.random.number(Date.parse(to) - fromMilli);
@@ -52,8 +55,9 @@ class pureDate {
             return new Date(fromMilli + dateOffset).toISOString();
         };
 
-        this.arrayBetween = (options = {}) => {
-            const { from, to, num = 3 } = options;
+        this.arrayBetween = (options) => {
+            const def = options || {};
+            const { from, to, num = 3 } = def;
             const results = [];
 
             for (let index = 0; index < num; index += 1) {
@@ -66,8 +70,9 @@ class pureDate {
             return results;
         };
 
-        this.recent = (options = {}) => {
-            const { days = 1, refDate } = options;
+        this.recent = (options) => {
+            const def = options || {};
+            const { days = 1, refDate } = def;
             let date = new Date();
 
             if (typeof refDate !== 'undefined') {
@@ -87,8 +92,9 @@ class pureDate {
             return date;
         };
 
-        this.soon = (options = {}) => {
-            const { days = 1, refDate } = options;
+        this.soon = (options) => {
+            const def = options || {};
+            const { days = 1, refDate } = def;
             let date = new Date();
 
             if (typeof refDate !== 'undefined') {
@@ -109,14 +115,15 @@ class pureDate {
         };
 
         // TODO: Review context parameter and write on docs
-        this.month = (options = {}) => {
+        this.month = (options) => {
+            const def = options || {};
             let type = 'wide';
 
-            if (options.abbr) {
+            if (def.abbr) {
                 type = 'abbr';
             }
 
-            if (options.context && typeof pure.registeredModules.date.month[`${type}_context`] !== 'undefined') {
+            if (def.context && typeof pure.registeredModules.date.month[`${type}_context`] !== 'undefined') {
                 type += '_context';
             }
 
@@ -126,14 +133,15 @@ class pureDate {
         };
 
         // TODO: Review context parameter and write on docs
-        this.weekday = (options = {}) => {
+        this.weekday = (options) => {
+            const def = options || {};
             let type = 'wide';
 
-            if (options.abbr) {
+            if (def.abbr) {
                 type = 'abbr';
             }
 
-            if (options.context && typeof pure.registeredModules.date.weekday[`${type}_context`] !== 'undefined') {
+            if (def.context && typeof pure.registeredModules.date.weekday[`${type}_context`] !== 'undefined') {
                 type += '_context';
             }
 
@@ -142,8 +150,9 @@ class pureDate {
             return pure.random.arrayElement(source);
         };
 
-        this.birthDay = (options = {}) => {
-            let { minAge = 18, maxAge = 60 } = options;
+        this.birthDay = (options) => {
+            const def = options || {};
+            let { minAge = 18, maxAge = 60 } = def;
 
             if (minAge > maxAge) {
                 minAge = maxAge;

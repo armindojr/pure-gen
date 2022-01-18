@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -7,45 +6,59 @@ describe('electrical_components.js', () => {
         it('returns active components name', () => {
             const active = pure.electricalComponents.active();
 
-            assert.ok(active);
+            expect(active).toBeDefined();
         });
 
         it('returns exact active components name stubbed', () => {
-            sinon.stub(pure.electricalComponents, 'active').returns('Diode');
+            const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
+                active: [ 'Diode' ],
+            }));
+
             const active = pure.electricalComponents.active();
 
-            assert.equal(active, 'Diode');
-            pure.electricalComponents.active.restore();
+            expect(active).toEqual('Diode');
+
+            stub.restore();
         });
     });
+
     describe('passive()', () => {
         it('returns passive components name', () => {
             const passive = pure.electricalComponents.passive();
 
-            assert.ok(passive);
+            expect(passive).toBeDefined();
         });
 
         it('returns exact passive components name stubbed', () => {
-            sinon.stub(pure.electricalComponents, 'passive').returns('Varistor');
+            const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
+                passive: [ 'Varistor' ],
+            }));
+
             const passive = pure.electricalComponents.passive();
 
-            assert.equal(passive, 'Varistor');
-            pure.electricalComponents.passive.restore();
+            expect(passive).toEqual('Varistor');
+
+            stub.restore();
         });
     });
+
     describe('electromechanical()', () => {
         it('returns electromechanical components name', () => {
             const electromechanical = pure.electricalComponents.electromechanical();
 
-            assert.ok(electromechanical);
+            expect(electromechanical).toBeDefined();
         });
 
         it('returns exact electromechanical components name stubbed', () => {
-            sinon.stub(pure.electricalComponents, 'electromechanical').returns('crystal');
+            const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
+                electromechanical: [ 'crystal' ],
+            }));
+
             const electromechanical = pure.electricalComponents.electromechanical();
 
-            assert.equal(electromechanical, 'crystal');
-            pure.electricalComponents.electromechanical.restore();
+            expect(electromechanical).toEqual('crystal');
+
+            stub.restore();
         });
     });
 });

@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -7,45 +6,59 @@ describe('dessert.js', () => {
         it('returns a dessert flavor', () => {
             const flavor = pure.dessert.flavor();
 
-            assert.ok(flavor);
+            expect(flavor).toBeDefined();
         });
 
         it('returns exact dessert flavor stubbed', () => {
-            sinon.stub(pure.dessert, 'flavor').returns('Cake');
+            const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
+                flavor: [ 'Cake' ],
+            }));
+
             const flavor = pure.dessert.flavor();
 
-            assert.equal(flavor, 'Cake');
-            pure.dessert.flavor.restore();
+            expect(flavor).toEqual('Cake');
+
+            stub.restore();
         });
     });
+
     describe('topping()', () => {
         it('returns a dessert topping', () => {
             const topping = pure.dessert.topping();
 
-            assert.ok(topping);
+            expect(topping).toBeDefined();
         });
 
         it('returns exact dessert topping stubbed', () => {
-            sinon.stub(pure.dessert, 'topping').returns('Gummy Bears');
+            const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
+                topping: [ 'Gummy Bears' ],
+            }));
+
             const topping = pure.dessert.topping();
 
-            assert.equal(topping, 'Gummy Bears');
-            pure.dessert.topping.restore();
+            expect(topping).toEqual('Gummy Bears');
+
+            stub.restore();
         });
     });
+
     describe('variety()', () => {
         it('returns a dessert variety', () => {
             const variety = pure.dessert.variety();
 
-            assert.ok(variety);
+            expect(variety).toBeDefined();
         });
 
         it('returns exact dessert variety stubbed', () => {
-            sinon.stub(pure.dessert, 'variety').returns('Vanilla');
+            const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
+                variety: [ 'Vanilla' ],
+            }));
+
             const variety = pure.dessert.variety();
 
-            assert.equal(variety, 'Vanilla');
-            pure.dessert.variety.restore();
+            expect(variety).toEqual('Vanilla');
+
+            stub.restore();
         });
     });
 });

@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const pure = require('../index');
 
 describe('hacker.js', () => {
@@ -6,42 +5,47 @@ describe('hacker.js', () => {
         it('return random abbreviation', () => {
             const abbreviation = pure.hacker.abbreviation();
 
-            assert.ok(abbreviation);
+            expect(abbreviation).toBeDefined();
         });
     });
+
     describe('adjective()', () => {
         it('return random adjective', () => {
             const adj = pure.hacker.adjective();
 
-            assert.ok(adj);
+            expect(adj).toBeDefined();
         });
     });
+
     describe('noun()', () => {
         it('return random noun', () => {
             const noun = pure.hacker.noun();
 
-            assert.ok(noun);
+            expect(noun).toBeDefined();
         });
     });
+
     describe('verb()', () => {
         it('return random verb', () => {
             const verb = pure.hacker.verb();
 
-            assert.ok(verb);
+            expect(verb).toBeDefined();
         });
     });
+
     describe('ingverb()', () => {
         it('return random ingverb', () => {
             const ing = pure.hacker.ingverb();
 
-            assert.ok(ing);
+            expect(ing).toBeDefined();
         });
     });
+
     describe('phrase()', () => {
         it('return random phrase', () => {
             const phrase = pure.hacker.phrase();
 
-            assert.ok(phrase);
+            expect(phrase).toBeDefined();
         });
     });
 });

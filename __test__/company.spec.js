@@ -1,4 +1,3 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -7,11 +6,12 @@ describe('company.js', () => {
         it('sometimes returns three last names', () => {
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(2);
+
             const name = pure.company.companyName();
             const parts = name.split(' ');
 
-            assert.strictEqual(parts.length, 4);
-            assert.ok(pure.name.lastName.calledOnce);
+            expect(parts.length).toEqual(4);
+            expect(pure.name.lastName.calledOnce).toBe(true);
 
             pure.random.number.restore();
             pure.name.lastName.restore();
@@ -20,11 +20,12 @@ describe('company.js', () => {
         it('sometimes returns two last names separated by a hyphen', () => {
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(1);
+
             const name = pure.company.companyName();
             const parts = name.split('-');
 
-            assert.ok(parts.length >= 2);
-            assert.ok(pure.name.lastName.calledOnce);
+            expect(parts.length).toBeGreaterThanOrEqual(2);
+            expect(pure.name.lastName.calledOnce).toBe(true);
 
             pure.random.number.restore();
             pure.name.lastName.restore();
@@ -34,12 +35,13 @@ describe('company.js', () => {
             sinon.spy(pure.company, 'companySuffix');
             sinon.spy(pure.name, 'lastName');
             sinon.stub(pure.random, 'number').returns(0);
+
             const name = pure.company.companyName();
             const parts = name.split(' ');
 
-            assert.ok(parts.length >= 2);
-            assert.ok(pure.name.lastName.calledOnce);
-            assert.ok(pure.company.companySuffix.calledOnce);
+            expect(parts.length).toBeGreaterThanOrEqual(2);
+            expect(pure.name.lastName.calledOnce).toBe(true);
+            expect(pure.company.companySuffix.calledOnce).toBe(true);
 
             pure.random.number.restore();
             pure.name.lastName.restore();
@@ -51,8 +53,8 @@ describe('company.js', () => {
             const name = pure.company.companyName('{{name.lastName}}, {{name.lastName}} and {{name.lastName}}');
             const parts = name.split(' ');
 
-            assert.strictEqual(parts.length, 4);
-            assert.ok(pure.name.lastName.calledOnce);
+            expect(parts.length).toEqual(4);
+            expect(pure.name.lastName.calledOnce).toBe(true);
 
             pure.name.lastName.restore();
         });
@@ -61,18 +63,20 @@ describe('company.js', () => {
     describe('companySuffix()', () => {
         it('returns random value from company.suffixes array', () => {
             const suffix = pure.company.companySuffix();
-            assert.ok(pure.company.suffixes().indexOf(suffix) !== -1);
+
+            expect(pure.company.suffixes().indexOf(suffix)).toBeGreaterThanOrEqual(0);
         });
     });
 
     describe('companyPrefix()', () => {
         it('returns random value from company prefix', () => {
             const stub = sinon.stub(pure.registeredModules, 'company').get(() => ({
-                prefix: [ 'foo' ],
+                prefix: ['foo'],
             }));
 
             const prefix = pure.company.companyPrefix();
-            expect(prefix).to.equal('foo')
+
+            expect(prefix).toEqual('foo');
 
             stub.restore();
         });
@@ -84,13 +88,14 @@ describe('company.js', () => {
             sinon.spy(pure.company, 'catchPhraseAdjective');
             sinon.spy(pure.company, 'catchPhraseDescriptor');
             sinon.spy(pure.company, 'catchPhraseNoun');
+
             const phrase = pure.company.catchPhrase();
 
-            assert.ok(phrase.split(' ').length >= 3);
-            assert.ok(pure.random.arrayElement.calledThrice);
-            assert.ok(pure.company.catchPhraseAdjective.calledOnce);
-            assert.ok(pure.company.catchPhraseDescriptor.calledOnce);
-            assert.ok(pure.company.catchPhraseNoun.calledOnce);
+            expect(phrase.split(' ').length).toBeGreaterThanOrEqual(3);
+            expect(pure.random.arrayElement.calledThrice).toBe(true);
+            expect(pure.company.catchPhraseAdjective.calledOnce).toBe(true);
+            expect(pure.company.catchPhraseDescriptor.calledOnce).toBe(true);
+            expect(pure.company.catchPhraseNoun.calledOnce).toBe(true);
 
             pure.random.arrayElement.restore();
             pure.company.catchPhraseAdjective.restore();
@@ -105,13 +110,14 @@ describe('company.js', () => {
             sinon.spy(pure.company, 'bsBuzz');
             sinon.spy(pure.company, 'bsAdjective');
             sinon.spy(pure.company, 'bsNoun');
+
             const bs = pure.company.bs();
 
-            assert.ok(typeof bs === 'string');
-            assert.ok(pure.random.arrayElement.calledThrice);
-            assert.ok(pure.company.bsBuzz.calledOnce);
-            assert.ok(pure.company.bsAdjective.calledOnce);
-            assert.ok(pure.company.bsNoun.calledOnce);
+            expect(typeof bs).toBe('string');
+            expect(pure.random.arrayElement.calledThrice).toBe(true);
+            expect(pure.company.bsBuzz.calledOnce).toBe(true);
+            expect(pure.company.bsAdjective.calledOnce).toBe(true);
+            expect(pure.company.bsNoun.calledOnce).toBe(true);
 
             pure.random.arrayElement.restore();
             pure.company.bsBuzz.restore();

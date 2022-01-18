@@ -1,4 +1,3 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -13,8 +12,8 @@ describe('address.js', () => {
 
             const city = pure.address.city();
 
-            assert.ok(city);
-            assert.isString(city);
+            expect(city).toBeDefined();
+            expect(typeof city).toBe('string');
 
             stub.restore();
         });
@@ -29,9 +28,9 @@ describe('address.js', () => {
 
             const city = pure.address.city('bar');
 
-            assert.ok(city);
-            assert.isString(city);
-            expect(city).to.equal('test');
+            expect(city).toBeDefined();
+            expect(typeof city).toBe('string');
+            expect(city).toEqual('test');
 
             stub.restore();
         });
@@ -46,9 +45,9 @@ describe('address.js', () => {
 
             const city = pure.address.city(0);
 
-            assert.ok(city);
-            assert.isString(city);
-            expect(city).to.equal('foo');
+            expect(city).toBeDefined();
+            expect(typeof city).toBe('string');
+            expect(city).toEqual('foo');
 
             pure.address.state.restore();
             stub.restore();
@@ -65,9 +64,9 @@ describe('address.js', () => {
 
             const city = pure.address.city('');
 
-            assert.ok(city);
-            assert.isString(city);
-            expect(city).to.equal('test');
+            expect(city).toBeDefined();
+            expect(typeof city).toBe('string');
+            expect(city).toEqual('test');
 
             pure.random.objectElement.restore();
             stub.restore();
@@ -82,9 +81,9 @@ describe('address.js', () => {
 
             const city = pure.address.city();
 
-            assert.ok(city);
-            assert.isString(city);
-            expect(city.split(' ').length).to.equal(2);
+            expect(city).toBeDefined();
+            expect(typeof city).toBe('string');
+            expect(city.split(' ').length).toEqual(2);
 
             stub.restore();
         });
@@ -98,9 +97,9 @@ describe('address.js', () => {
 
             const prefix = pure.address.cityPrefix();
 
-            assert.ok(prefix);
-            assert.isString(prefix);
-            expect(prefix).to.equal('foo');
+            expect(prefix).toBeDefined();
+            expect(typeof prefix).toBe('string');
+            expect(prefix).toEqual('foo');
 
             stub.restore();
         });
@@ -114,9 +113,9 @@ describe('address.js', () => {
 
             const suffix = pure.address.citySuffix();
 
-            assert.ok(suffix);
-            assert.isString(suffix);
-            expect(suffix).to.equal('foo');
+            expect(suffix).toBeDefined();
+            expect(typeof suffix).toBe('string');
+            expect(suffix).toEqual('foo');
 
             stub.restore();
         });
@@ -125,57 +124,74 @@ describe('address.js', () => {
     describe('cityName()', () => {
         it('returns random cityName', () => {
             sinon.spy(pure.address, 'cityName');
+
             const cityName = pure.address.cityName();
-            assert.ok(cityName);
-            assert.ok(pure.address.cityName.called);
+
+            expect(cityName).toBeDefined();
+            expect(pure.address.cityName.called).toBe(true);
+
             pure.address.cityName.restore();
         });
     });
 
     describe('streetName()', () => {
-        beforeEach(() => {
+        it('occasionally returns last name + suffix', () => {
             sinon.spy(pure.name, 'firstName');
             sinon.spy(pure.name, 'lastName');
             sinon.spy(pure.address, 'streetSuffix');
-        });
+            sinon.stub(pure.random, 'number').returns(0);
 
-        afterEach(() => {
+            const streetName = pure.address.streetName();
+
+            expect(streetName).toBeDefined();
+            expect(!pure.name.firstName.called).toBe(true);
+            expect(pure.name.lastName.calledOnce).toBe(true);
+            expect(pure.address.streetSuffix.calledOnce).toBe(true);
+
+            pure.random.number.restore();
             pure.name.firstName.restore();
             pure.name.lastName.restore();
             pure.address.streetSuffix.restore();
         });
 
-        it('occasionally returns last name + suffix', () => {
-            sinon.stub(pure.random, 'number').returns(0);
-
-            const streetName = pure.address.streetName();
-            assert.ok(streetName);
-            assert.ok(!pure.name.firstName.called);
-            assert.ok(pure.name.lastName.calledOnce);
-            assert.ok(pure.address.streetSuffix.calledOnce);
-
-            pure.random.number.restore();
-        });
-
         it('occasionally returns first name + suffix', () => {
+            sinon.spy(pure.name, 'firstName');
+            sinon.spy(pure.name, 'lastName');
+            sinon.spy(pure.address, 'streetSuffix');
             sinon.stub(pure.random, 'number').returns(1);
 
             const streetName = pure.address.streetName();
-            assert.ok(streetName);
 
-            assert.ok(pure.name.firstName.calledOnce);
-            assert.ok(!pure.name.lastName.called);
-            assert.ok(pure.address.streetSuffix.calledOnce);
+            expect(streetName).toBeDefined();
+            expect(pure.name.firstName.calledOnce).toBe(true);
+            expect(!pure.name.lastName.called).toBe(true);
+            expect(pure.address.streetSuffix.calledOnce).toBe(true);
 
+            pure.random.number.restore();
+            pure.name.firstName.restore();
+            pure.name.lastName.restore();
+            pure.address.streetSuffix.restore();
+        });
+
+        it('returns street suffix because of error', () => {
+            sinon.spy(pure.address, 'streetSuffix');
+            sinon.stub(pure.random, 'number').returns(2);
+
+            const streetName = pure.address.streetName();
+
+            expect(streetName).toBeDefined();
+            expect(pure.address.streetSuffix.called).toBe(true);
+
+            pure.address.streetSuffix.restore();
             pure.random.number.restore();
         });
 
         it('trims trailing whitespace from the name', () => {
-            pure.address.streetSuffix.restore();
-
             sinon.stub(pure.address, 'streetSuffix').returns('');
+
             const streetName = pure.address.streetName();
-            assert.ok(!streetName.match(/ $/));
+
+            expect(!streetName.match(/ $/)).toBe(true);
         });
     });
 
@@ -192,46 +208,50 @@ describe('address.js', () => {
 
         it('occasionally returns a 5-digit street number', () => {
             sinon.stub(pure.random, 'number').returns(0);
+
             const address = pure.address.streetAddress();
             const parts = address.split(' ');
 
-            assert.equal(parts[0].length, 5);
-            assert.ok(pure.address.streetName.called);
+            expect(parts[0].length).toEqual(5);
+            expect(pure.address.streetName.called).toBe(true);
 
             pure.random.number.restore();
         });
 
         it('occasionally returns a 4-digit street number', () => {
             sinon.stub(pure.random, 'number').returns(1);
+
             const address = pure.address.streetAddress();
             const parts = address.split(' ');
 
-            assert.equal(parts[0].length, 4);
-            assert.ok(pure.address.streetName.called);
+            expect(parts[0].length).toEqual(4);
+            expect(pure.address.streetName.called).toBe(true);
 
             pure.random.number.restore();
         });
 
         it('occasionally returns a 3-digit street number', () => {
             sinon.stub(pure.random, 'number').returns(2);
+
             const address = pure.address.streetAddress();
             const parts = address.split(' ');
 
-            assert.equal(parts[0].length, 3);
-            assert.ok(pure.address.streetName.called);
-            assert.ok(!pure.address.secondaryAddress.called);
+            expect(parts[0].length).toEqual(3);
+            expect(pure.address.streetName.called).toBe(true);
+            expect(!pure.address.secondaryAddress.called).toBe(true);
 
             pure.random.number.restore();
         });
 
         it('returns 2-digit street number it random.number is greater than 2', () => {
             sinon.stub(pure.random, 'number').returns(3);
+
             const address = pure.address.streetAddress();
             const parts = address.split(' ');
 
-            assert.equal(parts[0].length, 2);
-            assert.ok(pure.address.streetName.called);
-            assert.ok(!pure.address.secondaryAddress.called);
+            expect(parts[0].length).toEqual(2);
+            expect(pure.address.streetName.called).toBe(true);
+            expect(!pure.address.secondaryAddress.called).toBe(true);
 
             pure.random.number.restore();
         });
@@ -241,8 +261,8 @@ describe('address.js', () => {
                 const address = pure.address.streetAddress(true);
                 const parts = address.split(' ');
 
-                assert.ok(pure.address.secondaryAddress.called);
-                expect(parts.length).to.be.above(3);
+                expect(pure.address.secondaryAddress.called).toBe(true);
+                expect(parts.length).toBeGreaterThan(3);
             });
         });
     });
@@ -251,7 +271,7 @@ describe('address.js', () => {
         it('return random street prefix', () => {
             const prefix = pure.address.streetPrefix();
 
-            assert.ok(prefix);
+            expect(prefix).toBeDefined();
         });
     });
 
@@ -260,14 +280,14 @@ describe('address.js', () => {
             sinon.spy(pure.random, 'arrayElement');
 
             const address = pure.address.secondaryAddress();
-
             const expectedArray = [
                 'Apt. ###',
                 'Suite ###',
             ];
 
-            assert.ok(address);
-            assert.ok(pure.random.arrayElement.calledWith(expectedArray));
+            expect(address).toBeDefined();
+            expect(pure.random.arrayElement.calledWith(expectedArray)).toBe(true);
+
             pure.random.arrayElement.restore();
         });
     });
@@ -275,9 +295,12 @@ describe('address.js', () => {
     describe('county()', () => {
         it('returns random county', () => {
             sinon.spy(pure.address, 'county');
+
             const county = pure.address.county();
-            assert.ok(county);
-            assert.ok(pure.address.county.called);
+
+            expect(county).toBeDefined();
+            expect(pure.address.county.called).toBe(true);
+
             pure.address.county.restore();
         });
     });
@@ -285,9 +308,12 @@ describe('address.js', () => {
     describe('country()', () => {
         it('returns random country', () => {
             sinon.spy(pure.address, 'country');
+
             const country = pure.address.country();
-            assert.ok(country);
-            assert.ok(pure.address.country.called);
+
+            expect(country).toBeDefined();
+            expect(pure.address.country.called).toBe(true);
+
             pure.address.country.restore();
         });
     });
@@ -295,9 +321,12 @@ describe('address.js', () => {
     describe('defaultCountry()', () => {
         it('returns random defaultCountry', () => {
             sinon.spy(pure.address, 'defaultCountry');
+
             const defaultCountry = pure.address.defaultCountry();
-            assert.ok(defaultCountry);
-            assert.ok(pure.address.defaultCountry.called);
+
+            expect(defaultCountry).toBeDefined();
+            expect(pure.address.defaultCountry.called).toBe(true);
+
             pure.address.defaultCountry.restore();
         });
     });
@@ -305,18 +334,24 @@ describe('address.js', () => {
     describe('countryCode()', () => {
         it('returns random countryCode', () => {
             sinon.spy(pure.address, 'countryCode');
+
             const countryCode = pure.address.countryCode();
-            assert.ok(countryCode);
-            assert.ok(pure.address.countryCode.called);
+
+            expect(countryCode).toBeDefined();
+            expect(pure.address.countryCode.called).toBe(true);
+
             pure.address.countryCode.restore();
         });
 
         it('returns random alpha-3 countryCode', () => {
             sinon.spy(pure.address, 'countryCode');
+
             const countryCode = pure.address.countryCode('alpha-3');
-            assert.ok(countryCode);
-            assert.ok(pure.address.countryCode.called);
-            assert.equal(countryCode.length, 3);
+
+            expect(countryCode).toBeDefined();
+            expect(pure.address.countryCode.called).toBe(true);
+            expect(countryCode.length).toBe(3);
+
             pure.address.countryCode.restore();
         });
     });
@@ -324,16 +359,20 @@ describe('address.js', () => {
     describe('state()', () => {
         it('returns random state', () => {
             sinon.spy(pure.address, 'state');
+
             const state = pure.address.state();
-            assert.ok(state);
-            assert.ok(pure.address.state.called);
+
+            expect(state).toBeDefined();
+            expect(pure.address.state.called).toBe(true);
+
             pure.address.state.restore();
         });
 
         it('returns abbreviation when useAbbr is true', () => {
             const state = pure.address.state(true);
-            assert.equal(typeof state, 'string');
-            assert.equal(state.length <= 2, true);
+
+            expect(typeof state).toBe('string');
+            expect(state.length <= 2).toBe(true);
         });
     });
 
@@ -341,43 +380,52 @@ describe('address.js', () => {
         it('return random street prefix', () => {
             const abbr = pure.address.stateAbbr();
 
-            assert.ok(abbr);
+            expect(abbr).toBeDefined();
         });
     });
 
     describe('zipCode()', () => {
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
+
             const zipCode = pure.address.zipCode();
-            assert.ok(zipCode);
-            assert.ok(pure.address.zipCode.called);
+
+            expect(zipCode).toBeDefined();
+            expect(pure.address.zipCode.called).toBe(true);
+
             pure.address.zipCode.restore();
         });
 
         it('returns random zipCode - user specified format', () => {
             let zipCode = pure.address.zipCode('?#? #?#');
-            assert.ok(zipCode.match(/^[A-Za-z]\d[A-Za-z]\s\d[A-Za-z]\d$/));
+
+            expect(/^[A-Za-z]\d[A-Za-z]\s\d[A-Za-z]\d$/.test(zipCode)).toBe(true);
             // try another format
             zipCode = pure.address.zipCode('###-###');
-            assert.ok(zipCode.match(/^\d{3}-\d{3}$/));
+
+            expect(/^\d{3}-\d{3}$/.test(zipCode)).toBe(true);
         });
 
         it('returns zipCode with proper locale format', () => {
             // we'll use the en_CA locale..
             pure.setLocale('en_CA');
+
             const zipCode = pure.address.zipCode();
-            assert.ok(zipCode.match(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/));
+
+            expect(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(zipCode)).toBe(true);
         });
 
         it('returns random zipCode', () => {
             sinon.spy(pure.address, 'zipCode');
+
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
                 postcode: '#####',
             }));
             const zipCode = pure.address.zipCode();
 
-            assert.ok(zipCode);
-            assert.ok(pure.address.zipCode.called);
+            expect(zipCode).toBeDefined();
+            expect(pure.address.zipCode.called).toBe(true);
+
             pure.address.zipCode.restore();
             stub.restore();
         });
@@ -387,34 +435,38 @@ describe('address.js', () => {
         it('returns zipCode valid for specified State', () => {
             pure.setLocale('en_US');
             const states = ['IL', 'GA', 'WA'];
-
             const zipCode1 = pure.address.zipCodeByState(states[0]);
-            assert.ok(zipCode1 >= 60001);
-            assert.ok(zipCode1 <= 62999);
             const zipCode2 = pure.address.zipCodeByState(states[1]);
-            assert.ok(zipCode2 >= 30001);
-            assert.ok(zipCode2 <= 31999);
             const zipCode3 = pure.address.zipCodeByState(states[2]);
-            assert.ok(zipCode3 >= 98001);
-            assert.ok(zipCode3 <= 99403);
+
+            expect(zipCode1).toBeGreaterThanOrEqual(60001);
+            expect(zipCode1).toBeLessThanOrEqual(62999);
+            expect(zipCode2).toBeGreaterThanOrEqual(30001);
+            expect(zipCode2).toBeLessThanOrEqual(31999);
+            expect(zipCode3).toBeGreaterThanOrEqual(98001);
+            expect(zipCode3).toBeLessThanOrEqual(99403);
         });
 
         it('returns undefined if state is invalid', () => {
-            const state = 'XX';
             sinon.spy(pure.address, 'zipCode');
-            const zipCode = pure.address.zipCodeByState(state);
-            assert.ok(typeof zipCode === 'string');
-            assert.ok(pure.address.zipCode.called);
+
+            const zipCode = pure.address.zipCodeByState('XX');
+
+            expect(typeof zipCode).toBe('string');
+            expect(pure.address.zipCode.called).toBe(true);
+
             pure.address.zipCode.restore();
         });
 
         it('returns undefined if state is valid but localeis invalid', () => {
             pure.setLocale('zh_CN');
-            const state = 'IL';
             sinon.spy(pure.address, 'zipCode');
-            const zipCode = pure.address.zipCodeByState(state);
-            assert.ok(pure.address.zipCode.called);
-            assert.ok(typeof zipCode === 'string');
+
+            const zipCode = pure.address.zipCodeByState('IL');
+
+            expect(typeof zipCode).toBe('string');
+            expect(pure.address.zipCode.called).toBe(true);
+
             pure.address.zipCode.restore();
             pure.setLocale('en');
         });
@@ -423,36 +475,45 @@ describe('address.js', () => {
     describe('latitude()', () => {
         it('returns random latitude', () => {
             sinon.spy(pure.random, 'number');
+
             const latitude = pure.address.latitude();
-            assert.ok(typeof latitude === 'string');
             const latitudeFloat = parseFloat(latitude);
-            assert.ok(latitudeFloat >= -90.0);
-            assert.ok(latitudeFloat <= 90.0);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof latitude).toBe('string');
+            expect(latitudeFloat).toBeGreaterThanOrEqual(-90.0);
+            expect(latitudeFloat).toBeLessThanOrEqual(90.0);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
 
         it('returns latitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
-            const latitude = pure.address.latitude({ min: -5, max: 5 });
-            assert.ok(typeof latitude === 'string');
-            assert.equal(latitude.split('.')[1].length, 4);
+
+            const latitude = pure.address.latitude({ min: -5, max: 5, precision: 4 });
             const latitudeFloat = parseFloat(latitude);
-            assert.ok(latitudeFloat >= -5);
-            assert.ok(latitudeFloat <= 5);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof latitude).toBe('string');
+            expect(latitude.split('.')[1].length).toEqual(4);
+            expect(latitudeFloat).toBeGreaterThanOrEqual(-5);
+            expect(latitudeFloat).toBeLessThanOrEqual(5);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
 
         it('returns random latitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
+
             const latitude = pure.address.latitude({ precision: 7 });
-            assert.ok(typeof latitude === 'string');
-            assert.equal(latitude.split('.')[1].length, 7);
             const latitudeFloat = parseFloat(latitude);
-            assert.ok(latitudeFloat >= -180);
-            assert.ok(latitudeFloat <= 180);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof latitude).toBe('string');
+            expect(latitude.split('.')[1].length).toEqual(7);
+            expect(latitudeFloat).toBeGreaterThanOrEqual(-180);
+            expect(latitudeFloat).toBeLessThanOrEqual(180);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
     });
@@ -460,133 +521,163 @@ describe('address.js', () => {
     describe('longitude()', () => {
         it('returns random longitude', () => {
             sinon.spy(pure.random, 'number');
+
             const longitude = pure.address.longitude();
-            assert.ok(typeof longitude === 'string');
             const longitudeFloat = parseFloat(longitude);
-            assert.ok(longitudeFloat >= -180.0);
-            assert.ok(longitudeFloat <= 180.0);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof longitude).toBe('string');
+            expect(longitudeFloat).toBeGreaterThanOrEqual(-180.0);
+            expect(longitudeFloat).toBeLessThanOrEqual(180.0);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
 
         it('returns random longitude with min and max and default precision', () => {
             sinon.spy(pure.random, 'number');
+
             const longitude = pure.address.longitude({ max: 100, min: -30 });
-            assert.ok(typeof longitude === 'string');
-            assert.equal(longitude.split('.')[1].length, 4);
             const longitudeFloat = parseFloat(longitude);
-            assert.ok(longitudeFloat >= -30);
-            assert.ok(longitudeFloat <= 100);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof longitude).toBe('string');
+            expect(longitude.split('.')[1].length).toEqual(4);
+            expect(longitudeFloat).toBeGreaterThanOrEqual(-30);
+            expect(longitudeFloat).toBeLessThanOrEqual(100);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
 
         it('returns random longitude with custom precision', () => {
             sinon.spy(pure.random, 'number');
+
             const longitude = pure.address.longitude({ precision: 7 });
-            assert.ok(typeof longitude === 'string');
-            assert.equal(longitude.split('.')[1].length, 7);
             const longitudeFloat = parseFloat(longitude);
-            assert.ok(longitudeFloat >= -180);
-            assert.ok(longitudeFloat <= 180);
-            assert.ok(pure.random.number.called);
+
+            expect(typeof longitude).toBe('string');
+            expect(longitude.split('.')[1].length).toEqual(7);
+            expect(longitudeFloat).toBeGreaterThanOrEqual(-180);
+            expect(longitudeFloat).toBeLessThanOrEqual(180);
+            expect(pure.random.number.called).toBe(true);
+
             pure.random.number.restore();
         });
     });
 
     describe('direction()', () => {
         it('returns random direction', () => {
-            sinon.stub(pure.address, 'direction').returns('North');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction: {
+                    cardinal: ['North'],
+                },
+            }));
+
             const direction = pure.address.direction();
 
-            assert.equal(direction, 'North');
-            pure.address.direction.restore();
+            expect(direction).toEqual('North');
+
+            stub.restore();
         });
 
         it('returns abbreviation when useAbbr is false', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction: {
+                    cardinal: ['North'],
+                },
+            }));
+
             const direction = pure.address.direction(false);
 
-            assert.equal(typeof direction, 'string');
-        });
+            expect(direction).toEqual('North');
 
-        it('returns abbreviation when useAbbr is false stubbed', () => {
-            sinon.stub(pure.address, 'direction').returns('N');
-            const direction = pure.address.direction(false);
-            assert.equal(direction, 'N');
-            pure.address.direction.restore();
+            stub.restore();
         });
 
         it('returns abbreviation when useAbbr is true', () => {
-            const direction = pure.address.direction(true);
-            assert.equal(typeof direction, 'string');
-            assert.equal(direction.length <= 2, true);
-        });
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction_abbr: {
+                    cardinal: ['N'],
+                },
+            }));
 
-        it('returns abbreviation when useAbbr is true stubbed', () => {
-            sinon.stub(pure.address, 'direction').returns('N');
             const direction = pure.address.direction(true);
-            assert.equal(direction, 'N');
-            pure.address.direction.restore();
+
+            expect(direction).toEqual('N');
+
+            stub.restore();
         });
     });
 
     describe('ordinalDirection()', () => {
         it('returns random ordinal direction', () => {
-            sinon.stub(pure.address, 'ordinalDirection').returns('West');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction: {
+                    ordinal: ['Northeast'],
+                },
+            }));
+
             const ordinalDirection = pure.address.ordinalDirection();
 
-            assert.equal(ordinalDirection, 'West');
-            pure.address.ordinalDirection.restore();
+            expect(ordinalDirection).toEqual('Northeast');
+
+            stub.restore();
         });
 
         it('returns abbreviation when useAbbr is true stubbed', () => {
-            sinon.stub(pure.address, 'ordinalDirection').returns('W');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction_abbr: {
+                    ordinal: ['SE'],
+                },
+            }));
+
             const ordinalDirection = pure.address.ordinalDirection(true);
 
-            assert.equal(ordinalDirection, 'W');
-            pure.address.ordinalDirection.restore();
+            expect(ordinalDirection).toEqual('SE');
+
+            stub.restore();
         });
 
         it('returns abbreviation when useAbbr is true', () => {
             const ordinalDirection = pure.address.ordinalDirection(true);
-            assert.equal(typeof ordinalDirection, 'string');
-            assert.equal(ordinalDirection.length <= 2, true);
+
+            expect(typeof ordinalDirection).toBe('string');
+            expect(ordinalDirection.length).toBeLessThanOrEqual(2);
         });
 
         it('returns abbreviation when useAbbr is true', () => {
             const ordinalDirection = pure.address.ordinalDirection(false);
 
-            assert.equal(typeof ordinalDirection, 'string');
+            expect(typeof ordinalDirection).toBe('string');
         });
     });
 
     describe('cardinalDirection()', () => {
         it('returns random cardinal direction', () => {
-            sinon.stub(pure.address, 'cardinalDirection').returns('Northwest');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction: {
+                    cardinal: ['North'],
+                },
+            }));
+
             const cardinalDirection = pure.address.cardinalDirection();
 
-            assert.equal(cardinalDirection, 'Northwest');
-            pure.address.cardinalDirection.restore();
+            expect(cardinalDirection).toEqual('North');
+
+            stub.restore();
         });
 
         it('returns abbreviation when useAbbr is true stubbed', () => {
-            sinon.stub(pure.address, 'cardinalDirection').returns('NW');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                direction_abbr: {
+                    cardinal: ['N'],
+                },
+            }));
+
             const cardinalDirection = pure.address.cardinalDirection(true);
 
-            assert.equal(cardinalDirection, 'NW');
-            pure.address.cardinalDirection.restore();
-        });
+            expect(cardinalDirection).toEqual('N');
 
-        it('returns abbreviation when useAbbr is true', () => {
-            const cardinalDirection = pure.address.cardinalDirection(true);
-            assert.equal(typeof cardinalDirection, 'string');
-            assert.equal(cardinalDirection.length <= 2, true);
-        });
-
-        it('returns abbreviation when useAbbr is false', () => {
-            const cardinalDirection = pure.address.cardinalDirection(false);
-
-            assert.equal(typeof cardinalDirection, 'string');
+            stub.restore();
         });
     });
 
@@ -595,75 +686,75 @@ describe('address.js', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
             const coord = [latFloat1, lonFloat1];
-            const isMetric = (Math.round(Math.random()) === 1);
+            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
 
-            // test once with undefined radius
-            const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
         });
 
         it('returns random gps coordinate when coordinate is undefined', () => {
-            // test once with undefined radius
             const coordinate = pure.address.nearbyGPSCoordinate({ isMetric: true });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
         });
 
         it('test coordinateWithOffset when isMetric is true', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
             const coord = [latFloat1, lonFloat1];
-
-            // test once with undefined radius
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
         });
 
         it('test coordinateWithOffset when isMetric is false', () => {
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
             const coord = [latFloat1, lonFloat1];
-
-            // test once with undefined radius
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: false });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
         });
 
-        it('test coordinateWithOffset when lon2 is lesser than -3.14...', () => {
+        it('test coordinateWithOffset when lon2 is less than -3.14...', () => {
             sinon.stub(Math, 'atan2').returns(-0.80);
+
             pure.seed(5);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
             const coord = [latFloat1, lonFloat1];
             const seed = pure.getSeed();
-
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
-            assert.equal(seed, 5);
+
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
+            expect(seed).toEqual(5);
+
             Math.atan2.restore();
             pure.seed();
         });
 
         it('test coordinateWithOffset when lon2 is greater than 3.14...', () => {
             sinon.stub(Math, 'atan2').returns(0.50);
+
             pure.seed(1);
             const latFloat1 = parseFloat(pure.address.latitude());
             const lonFloat1 = parseFloat(pure.address.longitude());
             const coord = [latFloat1, lonFloat1];
-
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: coord, isMetric: true });
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
+
             Math.atan2.restore();
             pure.seed();
         });
@@ -671,31 +762,33 @@ describe('address.js', () => {
         it('returns correctly when no argument passed', () => {
             const coordinate = pure.address.nearbyGPSCoordinate();
 
-            assert.ok(coordinate.length === 2);
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
         });
 
         it('returns correctly when lon is greather than 180', () => {
             sinon.stub(Math, 'atan2').returns(2);
+
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, 200] });
 
-            assert.ok(coordinate.length === 2);
-            assert.ok(coordinate[1] === '-45.4084');
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
+            expect(coordinate[1]).toEqual('-45.4084');
 
             Math.atan2.restore();
         });
 
         it('returns correctly when lon is less than -180', () => {
             sinon.stub(Math, 'atan2').returns(-2);
+
             const coordinate = pure.address.nearbyGPSCoordinate({ coordinate: [90, -185] });
 
-            assert.ok(coordinate.length === 2);
-            assert.ok(coordinate[1] === '60.4084');
-            assert.ok(typeof coordinate[0] === 'string');
-            assert.ok(typeof coordinate[1] === 'string');
+            expect(coordinate.length).toEqual(2);
+            expect(typeof coordinate[0]).toBe('string');
+            expect(typeof coordinate[1]).toBe('string');
+            expect(coordinate[1]).toEqual('60.4084');
 
             Math.atan2.restore();
         });
@@ -704,9 +797,12 @@ describe('address.js', () => {
     describe('timeZone()', () => {
         it('returns random timeZone', () => {
             sinon.spy(pure.address, 'timeZone');
+
             const timeZone = pure.address.timeZone();
-            assert.ok(timeZone);
-            assert.ok(pure.address.timeZone.called);
+
+            expect(timeZone).toBeDefined();
+            expect(pure.address.timeZone.called).toBe(true);
+
             pure.address.timeZone.restore();
         });
     });

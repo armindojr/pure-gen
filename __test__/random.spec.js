@@ -1,4 +1,3 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 const Pure = require('../src');
@@ -7,40 +6,48 @@ describe('random.js', () => {
     describe('number()', () => {
         it('returns a random number given a maximum value as Number', () => {
             const max = 10;
-            assert.ok(pure.random.number(max) <= max);
+
+            expect(pure.random.number(max)).toBeLessThanOrEqual(max);
         });
 
         it('returns a random number given a maximum value as Object', () => {
             const options = { max: 10 };
-            assert.ok(pure.random.number(options) <= options.max);
+
+            expect(pure.random.number(options)).toBeLessThanOrEqual(options.max);
         });
 
         it('returns a random number given a maximum value of 0', () => {
             const options = { max: 0 };
-            assert.ok(pure.random.number(options) === 0);
+
+            expect(pure.random.number(options)).toEqual(0);
         });
 
         it('returns a random number given a negative number minimum and maximum value of 0', () => {
             const options = { min: -100, max: 0 };
-            assert.ok(pure.random.number(options) <= options.max);
+
+            expect(pure.random.number(options)).toBeLessThanOrEqual(options.max);
         });
 
         it('returns a random number between a range', () => {
             const options = { min: 22, max: 33 };
+
             for (let i = 0; i < 100; i += 1) {
                 const randomNumber = pure.random.number(options);
-                assert.ok(randomNumber >= options.min);
-                assert.ok(randomNumber <= options.max);
+
+                expect(randomNumber).toBeGreaterThanOrEqual(options.min);
+                expect(randomNumber).toBeLessThanOrEqual(options.max);
             }
         });
 
         it('provides numbers with a given precision and a seed', () => {
             pure.seed(1);
+
             const options = { min: 0, max: 1.5, precision: 1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 1.5);
-            assert.ok(result >= 0);
+            expect(result).toBeGreaterThanOrEqual(0);
+            expect(result).toBeLessThanOrEqual(1.5);
+
             pure.seed();
         });
 
@@ -48,24 +55,26 @@ describe('random.js', () => {
             const options = { min: 0, max: 2, precision: 15 };
             const result = pure.random.number(options);
 
-            expect(result.toString().length).to.be.below(13);
-            assert.ok(result <= 2);
-            assert.ok(result >= 0);
+            expect(result.toString().length).toBeLessThan(13);
+            expect(result).toBeLessThanOrEqual(2);
+            expect(result).toBeGreaterThanOrEqual(0);
         });
 
         it('provides numbers with precision less than 1', () => {
             const options = { min: 0, max: 2, precision: -1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 2);
-            assert.ok(result >= 0);
+            expect(result).toBeLessThanOrEqual(2);
+            expect(result).toBeGreaterThanOrEqual(0);
         });
 
         it('provides numbers with a with exact precision', () => {
             const options = { min: 0.5, max: 0.99, precision: 1 };
+
             for (let i = 0; i < 100; i += 1) {
                 const number = pure.random.number(options);
-                assert.equal(number, Number(number.toFixed(2)));
+
+                expect(number).toEqual(Number(number.toFixed(2)));
             }
         });
 
@@ -79,25 +88,29 @@ describe('random.js', () => {
 
             pure.random.number(opts);
 
-            assert.equal(opts.min, min);
-            assert.equal(opts.max, max);
+            expect(opts.min).toEqual(min);
+            expect(opts.max).toEqual(max);
         });
 
         it('should return number less than maximum determined', () => {
             sinon.stub(Math, 'round').returns(4);
+
             const result = pure.random.number({ min: 2, max: 3, precision: 2 });
 
-            assert.ok(result <= 3);
-            assert.ok(result >= 2);
+            expect(result).toBeLessThanOrEqual(3);
+            expect(result).toBeGreaterThanOrEqual(2);
+
             Math.round.restore();
         });
 
         it('should not return a value below minimum when using precision', () => {
             sinon.stub(Math, 'round').returns(-10);
+
             const result = pure.random.number({ min: -5, max: 5, precision: 4 });
 
-            assert.ok(result >= -5);
-            assert.ok(result <= 5);
+            expect(result).toBeGreaterThanOrEqual(-5);
+            expect(result).toBeLessThanOrEqual(5);
+
             Math.round.restore();
         });
     });
@@ -105,40 +118,48 @@ describe('random.js', () => {
     describe('float()', () => {
         it('returns a random float with a default precision value (0.01)', () => {
             const number = pure.random.float();
-            assert.equal(number, Number(number.toFixed(2)));
+
+            expect(number).toEqual(Number(number.toFixed(2)));
         });
 
         it('returns a random float given a precision value', () => {
             const number = pure.random.float(0.001);
-            assert.equal(number, Number(number.toFixed(3)));
+
+            expect(number).toEqual(Number(number.toFixed(3)));
         });
 
         it('returns a random number given a maximum value as Object', () => {
             const options = { max: 10 };
-            assert.ok(pure.random.float(options) <= options.max);
+
+            expect(pure.random.float(options)).toBeLessThanOrEqual(options.max);
         });
 
         it('returns a random number given a maximum value of 0', () => {
             const options = { max: 0 };
-            assert.ok(pure.random.float(options) === 0);
+
+            expect(pure.random.float(options)).toEqual(0);
         });
 
         it('returns a random number given no minimum and a negative number maximum', () => {
             const options = { max: -10 };
-            assert.ok(pure.random.number(options) <= options.max);
+
+            expect(pure.random.number(options)).toBeLessThanOrEqual(options.max);
         });
 
         it('returns a random number given a negative number minimum and maximum value of 0', () => {
             const options = { min: -100, max: 0 };
-            assert.ok(pure.random.float(options) <= options.max);
+
+            expect(pure.random.float(options)).toBeLessThanOrEqual(options.max);
         });
 
         it('returns a random number between a range', () => {
             const options = { min: 22, max: 33 };
+
             for (let i = 0; i < 5; i += 1) {
                 const randomNumber = pure.random.float(options);
-                assert.ok(randomNumber >= options.min);
-                assert.ok(randomNumber <= options.max);
+
+                expect(randomNumber).toBeGreaterThanOrEqual(options.min);
+                expect(randomNumber).toBeLessThanOrEqual(options.max);
             }
         });
 
@@ -146,15 +167,17 @@ describe('random.js', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
             const result = pure.random.number(options);
 
-            assert.ok(result <= 1.5);
-            assert.ok(result >= 0);
+            expect(result).toBeLessThanOrEqual(1.5);
+            expect(result).toBeGreaterThanOrEqual(0);
         });
 
         it('provides numbers with a with exact precision', () => {
             const options = { min: 0.5, max: 0.99, precision: 1 };
+
             for (let i = 0; i < 100; i += 1) {
                 const number = pure.random.float(options);
-                assert.equal(number, Number(number.toFixed(2)));
+
+                expect(number).toEqual(Number(number.toFixed(2)));
             }
         });
 
@@ -168,20 +191,22 @@ describe('random.js', () => {
 
             pure.random.float(opts);
 
-            assert.equal(opts.min, min);
-            assert.equal(opts.max, max);
+            expect(opts.min).toEqual(min);
+            expect(opts.max).toEqual(max);
         });
     });
 
     describe('arrayElement()', () => {
         it('returns a random element in the array', () => {
             const testArray = ['hello', 'to', 'you', 'my', 'friend'];
-            assert.ok(testArray.indexOf(pure.random.arrayElement(testArray)) > -1);
+
+            expect(testArray.indexOf(pure.random.arrayElement(testArray))).toBeGreaterThan(-1);
         });
 
         it('returns a random element in the array when there is only 1', () => {
             const testArray = ['hello'];
-            assert.ok(testArray.indexOf(pure.random.arrayElement(testArray)) > -1);
+
+            expect(testArray.indexOf(pure.random.arrayElement(testArray))).toBeGreaterThan(-1);
         });
     });
 
@@ -189,7 +214,7 @@ describe('random.js', () => {
         it('returns random array element', () => {
             const elem = pure.random.arrayElements();
 
-            assert.ok(elem);
+            expect(elem).toBeDefined();
         });
 
         it('returns a subset with random elements in the array', () => {
@@ -197,16 +222,17 @@ describe('random.js', () => {
             const subset = pure.random.arrayElements(testArray);
 
             // Check length
-            assert.ok(subset.length >= 1 && subset.length <= testArray.length);
+            expect(subset.length).toBeGreaterThanOrEqual(1);
+            expect(subset.length).toBeLessThanOrEqual(testArray.length);
 
             // Check elements
             subset.forEach((element) => {
-                assert.ok(testArray.indexOf(element) > -1);
+                expect(testArray.indexOf(element)).toBeGreaterThan(-1);
             });
 
             // Check uniqueness
             subset.forEach(function check(element) {
-                assert.ok(!Object.prototype.hasOwnProperty.call(this, element));
+                expect(!Object.prototype.hasOwnProperty.call(this, element)).toEqual(true);
                 this[element] = true;
             }, {});
         });
@@ -216,16 +242,16 @@ describe('random.js', () => {
             const subset = pure.random.arrayElements(testArray, 3);
 
             // Check length
-            assert.ok(subset.length === 3);
+            expect(subset.length).toEqual(3);
 
             // Check elements
             subset.forEach((element) => {
-                assert.ok(testArray.indexOf(element) > -1);
+                expect(testArray.indexOf(element)).toBeGreaterThan(-1);
             });
 
             // Check uniqueness
             subset.forEach(function check(element) {
-                assert.ok(!Object.prototype.hasOwnProperty.call(this, element));
+                expect(!Object.prototype.hasOwnProperty.call(this, element)).toEqual(true);
                 this[element] = true;
             }, {});
         });
@@ -235,16 +261,16 @@ describe('random.js', () => {
             const subset = pure.random.arrayElements(testArray, 8);
 
             // Check length
-            assert.ok(subset.length === testArray.length);
+            expect(subset.length).toEqual(testArray.length);
 
             // Check elements
             subset.forEach((element) => {
-                assert.ok(testArray.indexOf(element) > -1);
+                expect(testArray.indexOf(element)).toBeGreaterThan(-1);
             });
 
             // Check uniqueness
             subset.forEach(function check(element) {
-                assert.ok(!Object.prototype.hasOwnProperty.call(this, element));
+                expect(!Object.prototype.hasOwnProperty.call(this, element)).toEqual(true);
                 this[element] = true;
             }, {});
         });
@@ -254,7 +280,7 @@ describe('random.js', () => {
             const subset = pure.random.arrayElements(testArray, -1);
 
             // Check length
-            assert.ok(subset.length === 0);
+            expect(subset.length).toEqual(0);
         });
     });
 
@@ -262,7 +288,7 @@ describe('random.js', () => {
         it('return random object element', () => {
             const elem = pure.random.objectElement();
 
-            assert.ok(elem);
+            expect(elem).toBeDefined();
         });
     });
 
@@ -271,7 +297,7 @@ describe('random.js', () => {
             const object = pure.random.generateObj();
             const keys = Object.keys(object);
 
-            assert.ok(keys.length === 2);
+            expect(keys.length).toEqual(2);
         });
 
         it('returns an object of four elements with random keys and values', () => {
@@ -279,7 +305,7 @@ describe('random.js', () => {
             const object = pure.random.generateObj(length);
             const keys = Object.keys(object);
 
-            assert.ok(keys.length === length);
+            expect(keys.length).toEqual(length);
         });
     });
 
@@ -287,32 +313,37 @@ describe('random.js', () => {
         it('should generate a valid UUID v1', () => {
             const UUID = pure.random.uuid();
             const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-            assert.ok(RFC4122.test(UUID));
+
+            expect(RFC4122.test(UUID)).toEqual(true);
         });
 
         it('should generate a valid UUID v4', () => {
             const UUID = pure.random.uuid('v4');
             const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-            assert.ok(RFC4122.test(UUID));
+
+            expect(RFC4122.test(UUID)).toEqual(true);
         });
 
         it('should generate a valid UUID v5', () => {
             const UUID = pure.random.uuid('v5', { name: undefined, namespace: undefined });
             const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-            assert.ok(RFC4122.test(UUID));
+
+            expect(RFC4122.test(UUID)).toEqual(true);
         });
 
         it('should generate a valid UUID v5 passing name as opt', () => {
             const UUID = pure.random.uuid('v5', { name: 'uuid', namespace: undefined });
             const RFC4122 = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-            assert.ok(RFC4122.test(UUID));
+
+            expect(RFC4122.test(UUID)).toEqual(true);
         });
     });
 
     describe('boolean()', () => {
         it('should generate a boolean value', () => {
             const bool = pure.random.boolean();
-            assert.ok(typeof bool === 'boolean');
+
+            expect(typeof bool).toEqual('boolean');
         });
     });
 
@@ -320,11 +351,11 @@ describe('random.js', () => {
         const semver = pure.system.semver();
 
         it('should generate a string', () => {
-            assert.ok(typeof semver === 'string');
+            expect(typeof semver).toEqual('string');
         });
 
         it('should generate a valid semver', () => {
-            assert.ok(/^\d+\.\d+\.\d+$/.test(semver));
+            expect(/^\d+\.\d+\.\d+$/.test(semver)).toEqual(true);
         });
     });
 
@@ -332,53 +363,49 @@ describe('random.js', () => {
         it('return random locale', () => {
             const loc = pure.random.locale();
 
-            assert.ok(loc);
+            expect(loc).toBeDefined();
         });
     });
 
     describe('alpha()', () => {
-        const { alpha } = pure.random;
-
         it('should return single letter when no count provided', () => {
-            assert.ok(alpha().length === 1);
+            expect(pure.random.alpha().length).toEqual(1);
         });
 
         it('should return lowercase letter when no upcase option provided', () => {
-            assert.ok(alpha().match(/[a-z]/));
+            expect(/[a-z]/.test(pure.random.alpha())).toEqual(true);
         });
 
         it('should return uppercase when upcase option is true', () => {
-            assert.ok(alpha({ upcase: true }).match(/[A-Z]/));
+            expect(/[A-Z]/.test(pure.random.alpha({ upcase: true }))).toEqual(true);
         });
 
         it('should generate many random letters', () => {
-            assert.ok(alpha(5).length === 5);
+            expect(pure.random.alpha(5).length).toEqual(5);
         });
     });
 
     describe('alphaNumeric()', () => {
-        const { alphaNumeric } = pure.random;
-
         it('should generate single character when no additional argument was provided', () => {
-            assert.ok(alphaNumeric().length === 1);
+            expect(pure.random.alphaNumeric().length).toEqual(1);
         });
 
         it('should generate many random characters', () => {
-            assert.ok(alphaNumeric(5).length === 5);
+            expect(pure.random.alphaNumeric(5).length).toEqual(5);
         });
     });
 
     describe('hexaDecimal()', () => {
-        const { hexaDecimal } = pure.random;
-
         it('should generate single hex character when no additional argument was provided', () => {
-            const hex = hexaDecimal();
-            assert.ok(hex.match(/^[0-9a-f]{1}$/i));
+            const hex = pure.random.hexaDecimal();
+
+            expect(/^[0-9a-f]{1}$/i.test(hex)).toEqual(true);
         });
 
         it('should generate a random hex string', () => {
-            const hex = hexaDecimal(5);
-            assert.ok(hex.match(/^[0-9a-f]+$/i));
+            const hex = pure.random.hexaDecimal(5);
+
+            expect(/^[0-9a-f]+$/i.test(hex)).toEqual(true);
         });
     });
 
@@ -390,7 +417,7 @@ describe('random.js', () => {
             const pure2 = new Pure();
             pure2.seed(1);
 
-            assert.equal(pure1.random.number(), pure2.random.number());
+            expect(pure1.random.number()).toEqual(pure2.random.number());
         });
 
         it('has different default seeds across invocations', (done) => {
@@ -401,7 +428,7 @@ describe('random.js', () => {
             setTimeout(() => {
                 const pure2 = new Pure();
 
-                assert.notEqual(pure1.random.number(), pure2.random.number());
+                expect(pure1.random.number()).not.toEqual(pure2.random.number());
                 done();
             }, 2);
         });
@@ -412,28 +439,39 @@ describe('random.js', () => {
             pure.seed([]);
 
             const name = pure.name.findName();
-            expect(name.length).greaterThan(1);
+
+            expect(name.length).toBeGreaterThan(1);
+
             pure.seed();
         });
 
         it('should return deterministic results when seeded with integer', () => {
             pure.seed(100);
+
             const name = pure.name.findName();
-            assert.equal(name, 'Gerard Leuschke I');
+
+            expect(name).toEqual('Carlos Bernhard V');
+
             pure.seed();
         });
 
         it('should return deterministic results when seeded with array - one element', () => {
             pure.seed([10]);
+
             const name = pure.name.findName();
-            assert.equal(name, 'Rachel Hackett DVM');
+
+            expect(name).toEqual('Jenna Kuhic II');
+
             pure.seed();
         });
 
         it('should return deterministic results when seeded with array - multiple elements', () => {
             pure.seed([10, 100, 1000]);
+
             const name = pure.name.findName();
-            assert.equal(name, 'Jerry Spencer');
+
+            expect(name).toEqual('Roman Cremin');
+
             pure.seed();
         });
     });
@@ -441,9 +479,9 @@ describe('random.js', () => {
     describe('words()', () => {
         it('passing "count" parameter', () => {
             const words = pure.random.words(5);
-
             const result = words.split(' ');
-            assert.equal(result.length, 5);
+
+            expect(result.length).toEqual(5);
         });
     });
 });

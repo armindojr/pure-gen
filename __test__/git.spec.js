@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -17,8 +16,8 @@ describe('git.js', () => {
         it('returns a branch with hacker noun and verb', () => {
             pure.git.branch();
 
-            assert.ok(pure.hacker.noun.calledOnce);
-            assert.ok(pure.hacker.verb.calledOnce);
+            expect(pure.hacker.noun.calledOnce).toEqual(true);
+            expect(pure.hacker.verb.calledOnce).toEqual(true);
         });
     });
 
@@ -44,27 +43,27 @@ describe('git.js', () => {
         it('returns merge entry at random', () => {
             pure.git.commitEntry();
 
-            assert.ok(pure.random.number.called);
+            expect(pure.random.number.called).toEqual(true);
         });
 
         it('returns a commit entry with git commit message and sha', () => {
             pure.git.commitEntry();
 
-            assert.ok(pure.git.commitMessage.calledOnce);
-            assert.ok(pure.git.commitSha.calledOnce);
+            expect(pure.git.commitMessage.calledOnce).toEqual(true);
+            expect(pure.git.commitSha.calledOnce).toEqual(true);
         });
 
         it('returns a commit entry with internet email', () => {
             pure.git.commitEntry();
 
-            assert.ok(pure.internet.email.calledOnce);
+            expect(pure.internet.email.calledOnce).toEqual(true);
         });
 
         it('returns a commit entry with name first and last', () => {
             pure.git.commitEntry();
 
-            assert.ok(pure.name.firstName.calledTwice);
-            assert.ok(pure.name.lastName.calledTwice);
+            expect(pure.name.firstName.calledTwice).toEqual(true);
+            expect(pure.name.lastName.calledTwice).toEqual(true);
         });
 
         describe("with options['merge'] equal to true", () => {
@@ -79,7 +78,7 @@ describe('git.js', () => {
             it('returns a commit entry with merge details', () => {
                 pure.git.commitEntry({ merge: true });
 
-                assert.ok(pure.git.shortSha.calledOnce);
+                expect(pure.git.shortSha.calledOnce).toEqual(true);
             });
         });
     });
@@ -100,23 +99,25 @@ describe('git.js', () => {
         it('returns a commit message with hacker noun, adj and verb', () => {
             pure.git.commitMessage();
 
-            assert.ok(pure.hacker.verb.calledOnce);
-            assert.ok(pure.hacker.adjective.calledOnce);
-            assert.ok(pure.hacker.noun.calledOnce);
+            expect(pure.hacker.verb.calledOnce).toEqual(true);
+            expect(pure.hacker.adjective.calledOnce).toEqual(true);
+            expect(pure.hacker.noun.calledOnce).toEqual(true);
         });
     });
 
     describe('commitSha()', () => {
         it('returns a random commit SHA', () => {
             const commitSha = pure.git.commitSha();
-            assert.ok(commitSha.match(/^[a-f0-9]{40}$/));
+
+            expect(/^[a-f0-9]{40}$/.test(commitSha)).toEqual(true);
         });
     });
 
     describe('shortSha()', () => {
         it('returns a random short SHA', () => {
             const shortSha = pure.git.shortSha();
-            assert.ok(shortSha.match(/^[a-f0-9]{7}$/));
+
+            expect(/^[a-f0-9]{7}$/.test(shortSha)).toEqual(true);
         });
     });
 });

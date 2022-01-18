@@ -1,4 +1,3 @@
-const { assert } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
@@ -7,75 +6,99 @@ describe('esport.js', () => {
         it('returns players name', () => {
             const players = pure.esport.players();
 
-            assert.ok(players);
+            expect(players).toBeDefined();
         });
 
         it('returns exact player name stubbed', () => {
-            sinon.stub(pure.esport, 'players').returns('shroud');
+            const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
+                players: [ 'shroud' ],
+            }));
+
             const players = pure.esport.players();
 
-            assert.equal(players, 'shroud');
-            pure.esport.players.restore();
+            expect(players).toEqual('shroud');
+
+            stub.restore();
         });
     });
+
     describe('teams()', () => {
         it('returns teams name', () => {
             const teams = pure.esport.teams();
 
-            assert.ok(teams);
+            expect(teams).toBeDefined();
         });
 
         it('returns exact teams name stubbed', () => {
-            sinon.stub(pure.esport, 'teams').returns('FaZe');
+            const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
+                teams: [ 'FaZe' ],
+            }));
+
             const teams = pure.esport.teams();
 
-            assert.equal(teams, 'FaZe');
-            pure.esport.teams.restore();
+            expect(teams).toEqual('FaZe');
+
+            stub.restore();
         });
     });
+
     describe('events()', () => {
         it('returns events name', () => {
             const events = pure.esport.events();
 
-            assert.ok(events);
+            expect(events).toBeDefined();
         });
 
         it('returns exact events name stubbed', () => {
-            sinon.stub(pure.esport, 'events').returns('ESL Cologne');
+            const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
+                events: [ 'ESL Cologne' ],
+            }));
+
             const events = pure.esport.events();
 
-            assert.equal(events, 'ESL Cologne');
-            pure.esport.events.restore();
+            expect(events).toEqual('ESL Cologne');
+
+            stub.restore();
         });
     });
+
     describe('leagues()', () => {
         it('returns leagues name', () => {
             const leagues = pure.esport.leagues();
 
-            assert.ok(leagues);
+            expect(leagues).toBeDefined();
         });
 
         it('returns exact leagues name stubbed', () => {
-            sinon.stub(pure.esport, 'leagues').returns('IEM');
+            const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
+                leagues: [ 'IEM' ],
+            }));
+
             const leagues = pure.esport.leagues();
 
-            assert.equal(leagues, 'IEM');
-            pure.esport.leagues.restore();
+            expect(leagues).toEqual('IEM');
+
+            stub.restore();
         });
     });
+
     describe('games()', () => {
         it('returns games name', () => {
             const games = pure.esport.games();
 
-            assert.ok(games);
+            expect(games).toBeDefined();
         });
 
         it('returns exact games name stubbed', () => {
-            sinon.stub(pure.esport, 'games').returns('CS:GO');
+            const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
+                games: [ 'CS:GO' ],
+            }));
+
             const games = pure.esport.games();
 
-            assert.equal(games, 'CS:GO');
-            pure.esport.games.restore();
+            expect(games).toEqual('CS:GO');
+
+            stub.restore();
         });
     });
 });

@@ -19,6 +19,7 @@
 
 ### General Fixes
 * Removed colors dependency and replaced by colorette
+* Reorganized direction files in locales en, pt_PT to meet code changes
 
 ## v2.0.1
 

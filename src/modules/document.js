@@ -1,7 +1,8 @@
 class Document {
     constructor(pure) {
-        this.brazilianCitizenNumber = (options = {}) => {
-            const { format = false } = options;
+        this.brazilianCitizenNumber = (options) => {
+            const def = options || {};
+            const { format = false } = def;
             let doc = pure.helpers.replaceSymbolWithNumber({ string: '#########' });
 
             const dv = (str) => {
@@ -31,8 +32,9 @@ class Document {
             return doc;
         };
 
-        this.brazilianCompanyNumber = (options = {}) => {
-            const { format = false } = options;
+        this.brazilianCompanyNumber = (options) => {
+            const def = options || {};
+            const { format = false } = def;
             let doc = pure.helpers.replaceSymbolWithNumber({ string: '########' });
 
             const mod = (str) => {
@@ -60,8 +62,9 @@ class Document {
             return doc;
         };
 
-        this.brazilianId = (options = {}) => {
-            const { format = false } = options;
+        this.brazilianId = (options) => {
+            const def = options || {};
+            const { format = false } = def;
             let doc = pure.helpers.replaceSymbolWithNumber({ string: '########' });
             let sum = 0;
 

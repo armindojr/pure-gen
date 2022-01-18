@@ -1,30 +1,25 @@
-const { assert, expect } = require('chai');
 const sinon = require('sinon');
 const pure = require('../index');
 
 describe('lorem.js', () => {
     describe('word()', () => {
-        describe("when no 'length' param passed in", () => {
-            it('returns a word with a random length', () => {
-                const str = pure.lorem.word();
-                assert.ok(typeof str === 'string');
-            });
+        it('returns a word with a random length', () => {
+            const str = pure.lorem.word();
+
+            expect(typeof str).toBe('string');
         });
 
-        describe("when 'length' param passed in", () => {
-            it('returns a word with the requested length', () => {
-                const str = pure.lorem.word(5);
-                assert.ok(typeof str === 'string');
-                assert.equal(str.length, 5);
-            });
+        it('returns a word with the requested length', () => {
+            const str = pure.lorem.word(5);
+
+            expect(typeof str).toBe('string');
+            expect(str.length).toEqual(5);
         });
 
-        describe("when 'length' param is bigger than word list", () => {
-            it('returns a word with the biggest lenght', () => {
-                const str = pure.lorem.word(50);
-                assert.ok(typeof str === 'string');
-                assert.ok(typeof str !== 'undefined');
-            });
+        it('returns a word with the biggest lenght', () => {
+            const str = pure.lorem.word(50);
+
+            expect(typeof str).toBe('string');
         });
     });
 
@@ -37,22 +32,20 @@ describe('lorem.js', () => {
             pure.helpers.shuffle.restore();
         });
 
-        describe("when no 'num' param passed in", () => {
-            it('returns three words', () => {
-                const str = pure.lorem.words();
-                const words = str.split(' ');
-                assert.ok(Array.isArray(words));
-                assert.equal(true, words.length >= 3);
-            });
+        it('returns three words', () => {
+            const str = pure.lorem.words();
+            const words = str.split(' ');
+
+            expect(Array.isArray(words)).toEqual(true);
+            expect(words.length).toBeGreaterThanOrEqual(3);
         });
 
-        describe("when 'num' param passed in", () => {
-            it('returns requested number of words', () => {
-                const str = pure.lorem.words(7);
-                const words = str.split(' ');
-                assert.ok(Array.isArray(words));
-                assert.equal(words.length, 7);
-            });
+        it('returns requested number of words', () => {
+            const str = pure.lorem.words(7);
+            const words = str.split(' ');
+
+            expect(Array.isArray(words)).toEqual(true);
+            expect(words.length).toEqual(7);
         });
     });
 
@@ -65,92 +58,84 @@ describe('lorem.js', () => {
             pure.helpers.shuffle.restore();
         });
 
-        const validateSlug = (wordCount, str) => {
-            assert.equal(1, str.match(/^[a-z][a-z-]*[a-z]$/).length);
-            assert.equal(wordCount - 1, str.match(/-/g).length);
-        };
+        it('returns a slug with three words', () => {
+            const str = pure.lorem.slug();
 
-        describe("when no 'wordCount' param passed in", () => {
-            it('returns a slug with three words', () => {
-                const str = pure.lorem.slug();
-                validateSlug(3, str);
-            });
+            expect(1).toEqual(str.match(/^[a-z][a-z-]*[a-z]$/).length);
+            expect(3 - 1).toEqual(str.match(/-/g).length);
         });
 
-        describe("when 'wordCount' param passed in", () => {
-            it('returns a slug with requested number of words', () => {
-                const str = pure.lorem.slug(7);
-                validateSlug(7, str);
-            });
+        it('returns a slug with requested number of words', () => {
+            const str = pure.lorem.slug(7);
+
+            expect(1).toEqual(str.match(/^[a-z][a-z-]*[a-z]$/).length);
+            expect(7 - 1).toEqual(str.match(/-/g).length);
         });
     });
 
     describe('sentences()', () => {
-        describe("when no 'sentenceCount' param passed in", () => {
-            it('returns random sentences from lorem ipsum', () => {
-                sinon.spy(pure.lorem, 'sentence');
-                const sentences = pure.lorem.sentences();
+        it('returns random sentences from lorem ipsum', () => {
+            sinon.spy(pure.lorem, 'sentence');
 
-                assert.ok(typeof sentences === 'string');
-                const words = sentences.split(' ');
-                expect(words.length).greaterThan(0);
+            const sentences = pure.lorem.sentences();
+            const words = sentences.split(' ');
 
-                pure.lorem.sentence.restore();
-            });
+            expect(typeof sentences).toBe('string');
+            expect(words.length).toBeGreaterThan(0);
+
+            pure.lorem.sentence.restore();
         });
-        describe("when 'sentenceCount' param passed in", () => {
-            it('returns random sentences', () => {
-                sinon.spy(pure.lorem, 'sentence');
-                const sentences = pure.lorem.sentences(1);
 
-                assert.ok(typeof sentences === 'string');
-                const words = sentences.split(' ');
-                expect(words.length).greaterThan(0);
+        it('returns random sentences', () => {
+            sinon.spy(pure.lorem, 'sentence');
 
-                pure.lorem.sentence.restore();
-            });
+            const sentences = pure.lorem.sentences(1);
+            const words = sentences.split(' ');
+
+            expect(typeof sentences).toBe('string');
+            expect(words.length).toBeGreaterThan(0);
+
+            pure.lorem.sentence.restore();
         });
-        describe('When using RU locale', () => {
-            it('Generate random sentences', () => {
-                pure.setLocale('ru');
-                const sentences = pure.lorem.sentence(2);
 
-                assert.ok(typeof sentences === 'string');
-                const words = sentences.split(' ');
-                expect(words.length).greaterThan(1);
+        it('Generate random sentences', () => {
+            pure.setLocale('ru');
 
-                pure.setLocale('en');
-            });
+            const sentences = pure.lorem.sentence(2);
+            const words = sentences.split(' ');
+
+            expect(typeof sentences).toBe('string');
+            expect(words.length).toBeGreaterThan(1);
+
+            pure.setLocale('en');
         });
     });
 
     describe('paragraph()', () => {
-        describe("when no 'sentenceCount' param passed in", () => {
-            it('returns a string of at least three sentences', () => {
-                sinon.spy(pure.lorem, 'sentences');
-                const paragraph = pure.lorem.paragraph();
+        it('returns a string of at least three sentences', () => {
+            sinon.spy(pure.lorem, 'sentences');
 
-                assert.ok(typeof paragraph === 'string');
-                const parts = paragraph.split('. ');
-                assert.equal(parts.length, 3);
-                assert.ok(pure.lorem.sentences.calledWith({ sentenceCount: 3 }));
+            const paragraph = pure.lorem.paragraph();
+            const parts = paragraph.split('. ');
 
-                pure.lorem.sentences.restore();
-            });
+            expect(typeof paragraph).toBe('string');
+            expect(parts.length).toEqual(3);
+            expect(pure.lorem.sentences.calledWith({ sentenceCount: 3 })).toEqual(true);
+
+            pure.lorem.sentences.restore();
         });
 
-        describe("when 'sentenceCount' param passed in", () => {
-            it('returns a string of at least the requested number of sentences', () => {
-                sinon.spy(pure.lorem, 'sentences');
-                const paragraph = pure.lorem.paragraph(5);
+        it('returns a string of at least the requested number of sentences', () => {
+            sinon.spy(pure.lorem, 'sentences');
 
-                assert.ok(typeof paragraph === 'string');
-                const parts = paragraph.split('. ');
-                assert.equal(parts.length, 5);
-                assert.ok(pure.lorem.sentences.calledWith({ sentenceCount: 5 }));
+            const paragraph = pure.lorem.paragraph(5);
+            const parts = paragraph.split('. ');
 
-                pure.lorem.sentences.restore();
-            });
+            expect(typeof paragraph).toBe('string');
+            expect(parts.length).toEqual(5);
+            expect(pure.lorem.sentences.calledWith({ sentenceCount: 5 })).toEqual(true);
+
+            pure.lorem.sentences.restore();
         });
     });
 
@@ -158,68 +143,64 @@ describe('lorem.js', () => {
         it('return random text', () => {
             const text = pure.lorem.text();
 
-            assert.ok(text);
+            expect(text).toBeDefined();
         });
     });
 
     describe('paragraphs()', () => {
-        describe("when no 'paragraphCount' param passed in", () => {
-            it('returns newline-separated string of three paragraphs', () => {
-                sinon.spy(pure.lorem, 'paragraph');
-                const paragraphs = pure.lorem.paragraphs();
+        it('returns newline-separated string of three paragraphs', () => {
+            sinon.spy(pure.lorem, 'paragraph');
 
-                assert.ok(typeof paragraphs === 'string');
-                const parts = paragraphs.split('\n \r');
-                assert.equal(parts.length, 3);
-                assert.ok(pure.lorem.paragraph.calledThrice);
+            const paragraphs = pure.lorem.paragraphs();
+            const parts = paragraphs.split('\n \r');
 
-                pure.lorem.paragraph.restore();
-            });
+            expect(typeof paragraphs).toBe('string');
+            expect(parts.length).toEqual(3);
+            expect(pure.lorem.paragraph.calledThrice).toEqual(true);
+
+            pure.lorem.paragraph.restore();
         });
-        describe("when 'paragraphCount' param passed in", () => {
-            it('returns newline-separated string of requested number of paragraphs', () => {
-                sinon.spy(pure.lorem, 'paragraph');
-                const paragraphs = pure.lorem.paragraphs({ paragraphCount: 5 });
 
-                assert.ok(typeof paragraphs === 'string');
-                const parts = paragraphs.split('\n \r');
-                assert.equal(parts.length, 5);
+        it('returns newline-separated string of requested number of paragraphs', () => {
+            sinon.spy(pure.lorem, 'paragraph');
 
-                pure.lorem.paragraph.restore();
-            });
+            const paragraphs = pure.lorem.paragraphs({ paragraphCount: 5 });
+            const parts = paragraphs.split('\n \r');
+
+            expect(typeof paragraphs).toBe('string');
+            expect(parts.length).toEqual(5);
+
+            pure.lorem.paragraph.restore();
         });
-        describe("when 'separator' param passed in", () => {
-            it('returns newline-separated </br> string of requested number of paragraphs', () => {
-                sinon.spy(pure.lorem, 'paragraph');
-                const paragraphs = pure.lorem.paragraphs({ paragraphCount: 3, separator: '</br>' });
 
-                assert.ok(typeof paragraphs === 'string');
-                const parts = paragraphs.split('</br>');
-                assert.equal(parts.length, 3);
+        it('returns newline-separated </br> string of requested number of paragraphs', () => {
+            sinon.spy(pure.lorem, 'paragraph');
 
-                pure.lorem.paragraph.restore();
-            });
+            const paragraphs = pure.lorem.paragraphs({ paragraphCount: 3, separator: '</br>' });
+            const parts = paragraphs.split('</br>');
+
+            expect(typeof paragraphs).toBe('string');
+            expect(parts.length).toEqual(3);
+
+            pure.lorem.paragraph.restore();
         });
     });
 
     describe('lines()', () => {
-        describe("when no 'lineCount' is passed in", () => {
-            it('returns more then 1 lines from lorem', () => {
-                const lines = pure.lorem.lines();
+        it('returns more then 1 lines from lorem', () => {
+            const lines = pure.lorem.lines();
+            const parts = lines.split('\n');
 
-                assert.ok(typeof lines === 'string');
-                const parts = lines.split('\n');
-                expect(parts.length).greaterThan(0);
-            });
+            expect(typeof lines).toBe('string');
+            expect(parts.length).toBeGreaterThan(0);
         });
-        describe("when 'lineCount' is passed in", () => {
-            it('returns 5 lines from lorem', () => {
-                const lines = pure.lorem.lines(5);
 
-                assert.ok(typeof lines === 'string');
-                const parts = lines.split('\n');
-                assert.equal(parts.length, 5);
-            });
+        it('returns 5 lines from lorem', () => {
+            const lines = pure.lorem.lines(5);
+            const parts = lines.split('\n');
+
+            expect(typeof lines).toBe('string');
+            expect(parts.length).toEqual(5);
         });
     });
 });

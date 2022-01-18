@@ -36,24 +36,22 @@ class Internet {
 
         this.userName = (options = {}) => {
             const { firstName = pure.name.firstName(), lastName = pure.name.lastName() } = options;
+            let r = pure.random.number(2);
             let result;
 
-            switch (pure.random.number(2)) {
-            case 0:
+            if (r === 0) {
                 result = firstName + pure.random.number(99);
-                break;
-            case 1:
+            } else if (r === 1) {
                 result = firstName + pure.random.arrayElement(['.', '_']) + lastName;
-                break;
-            case 2:
+            } else if (r === 2) {
                 result = firstName + pure.random.arrayElement(['.', '_']) + lastName + pure.random.number(99);
-                break;
-            default:
+            } else {
                 result = firstName + pure.random.number(99);
             }
 
             result = pure.helpers.slugify(result);
             result = result.replace(/ /g, '');
+
             return result;
         };
 

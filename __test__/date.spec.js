@@ -1,29 +1,35 @@
-const { assert } = require('chai');
+const sinon = require('sinon');
 const pure = require('../index');
 
 describe('date.js', () => {
     describe('past()', () => {
         it('returns a date N years into the past', () => {
             const date = pure.date.past({ years: 75 });
-            assert.ok(date < new Date());
+
+            expect(new Date(`${date}`).getTime()).toBeLessThan(new Date().getTime());
         });
 
         it('returns a past date when N = 0', () => {
             const refDate = new Date();
-            const date = pure.date.past({ years: 0, refDate: refDate.toJSON() });
+            const date = pure.date.past({ years: 0, refDate });
 
             // date should be before the date given
-            assert.ok(date < refDate);
+            expect(new Date(`${date}`).getTime()).toBeLessThan(refDate.getTime());
         });
 
         it('returns a date N years before the date given', () => {
-            // set the date beyond the usual calculation (to make sure this is working correctly)
-            const refDate = new Date(2120, 11, 9, 10, 0, 0, 0);
+            const refDate = new Date('2120-12-09T13:00:00.000Z');
+            const date = pure.date.past({ years: 75, refDate });
 
-            const date = pure.date.past({ years: 75, refDate: refDate.toJSON() });
+            expect(new Date(`${date}`).getTime()).toBeLessThan(refDate.getTime());
+            expect(new Date(`${date}`).getTime()).toBeGreaterThan(new Date().getTime());
+        });
 
-            // date should be before date given but after the current time
-            assert.ok(date < refDate && date > new Date());
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.past();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('object');
         });
     });
 
@@ -31,25 +37,29 @@ describe('date.js', () => {
         it('returns a date N years into the future', () => {
             const date = pure.date.future({ years: 75 });
 
-            assert.ok(date > new Date());
+            expect(new Date(`${date}`).getTime()).toBeGreaterThan(new Date().getTime());
         });
 
         it('returns a future date when N = 0', () => {
             const refDate = new Date();
-            const date = pure.date.future({ years: 0, refDate: refDate.toJSON() });
+            const date = pure.date.future({ years: 0, refDate });
 
-            // date should be after the date given
-            assert.ok(date > refDate);
+            expect(new Date(`${date}`).getTime()).toBeLessThan(refDate.getTime());
         });
 
         it('returns a date N years after the date given', () => {
-            // set the date beyond the usual calculation (to make sure this is working correctly)
-            const refDate = new Date(1880, 11, 9, 10, 0, 0, 0);
+            const refDate = new Date('1880-12-09T13:06:28.000Z');
+            const date = pure.date.future({ years: 75, refDate });
 
-            const date = pure.date.future({ years: 75, refDate: refDate.toJSON() });
+            expect(new Date(`${date}`).getTime()).toBeGreaterThan(refDate.getTime());
+            expect(new Date(`${date}`).getTime()).toBeLessThan(new Date().getTime());
+        });
 
-            // date should be after the date given, but before the current time
-            assert.ok(date > refDate && date < new Date());
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.future();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('object');
         });
     });
 
@@ -57,20 +67,24 @@ describe('date.js', () => {
         it('returns a date N days from the recent past', () => {
             const date = pure.date.recent({ days: 30 });
 
-            assert.ok(date <= new Date());
+            expect(new Date(`${date}`).getTime()).toBeLessThanOrEqual(new Date().getTime());
         });
 
         it('returns a date N days from the recent past, starting from refDate', () => {
             const days = 30;
-            // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(2120, 11, 9, 10, 0, 0, 0);
-
             const date = pure.date.recent({ days, refDate });
-
             const lowerBound = new Date(refDate.getTime() - (days * 24 * 60 * 60 * 1000));
 
-            assert.ok(lowerBound <= date, '`recent()` date should not be further back than `n` days ago');
-            assert.ok(date <= refDate, '`recent()` date should not be ahead of the starting date reference');
+            expect(lowerBound.getTime()).toBeLessThanOrEqual(date.getTime());
+            expect(new Date(`${date}`).getTime()).toBeLessThanOrEqual(refDate.getTime());
+        });
+
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.recent();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('object');
         });
     });
 
@@ -78,131 +92,182 @@ describe('date.js', () => {
         it('returns a date N days into the future', () => {
             const date = pure.date.soon({ days: 30 });
 
-            assert.ok(date >= new Date());
+            expect(date.getTime()).toBeGreaterThanOrEqual(new Date().getTime());
         });
 
         it('returns a date N days from the recent future, starting from refDate', () => {
             const days = 30;
-            // set the date beyond the usual calculation (to make sure this is working correctly)
             const refDate = new Date(1880, 11, 9, 10, 0, 0, 0);
-
             const date = pure.date.soon({ days, refDate });
-
             const upperBound = new Date(refDate.getTime() + (days * 24 * 60 * 60 * 1000));
 
-            assert.ok(date <= upperBound, '`soon()` date should not be further ahead than `n` days ago');
-            assert.ok(refDate <= date, '`soon()` date should not be behind the starting date reference');
+            expect(date.getTime()).toBeLessThanOrEqual(upperBound.getTime());
+            expect(refDate.getTime()).toBeLessThanOrEqual(new Date(`${date}`).getTime());
+        });
+
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.soon();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('object');
         });
     });
 
     describe('between()', () => {
         it('returns a random date between the dates given', () => {
-            const from = new Date(1990, 5, 7, 9, 11, 0, 0).toISOString();
-            const to = new Date(2000, 6, 8, 10, 12, 0, 0).toISOString();
+            const from = new Date('1990-06-07T12:11:00.000Z');
+            const to = new Date('2000-07-08T13:12:00.000Z');
 
             const date = pure.date.between({ from, to });
 
-            assert.ok(date > from && date < to);
+            expect(new Date(`${date}`).getTime()).toBeGreaterThan(from.getTime());
+            expect(new Date(`${date}`).getTime()).toBeLessThan(to.getTime());
+        });
+
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.between();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('string');
         });
     });
 
     describe('arrayBetween()', () => {
         it('returns an array of 3 dates ( by default ) of sorted randoms dates between the dates given', () => {
-            const from = new Date(1990, 5, 7, 9, 11, 0, 0).toISOString();
-            const to = new Date(2000, 6, 8, 10, 12, 0, 0).toISOString();
+            const from = new Date('1990-06-07T12:11:00.000Z');
+            const to = new Date('2000-07-08T13:12:00.000Z');
 
             const dates = pure.date.arrayBetween({ from, to });
 
-            assert.ok(dates[0] > from && dates[0] < to);
-            assert.ok(dates[1] > dates[0] && dates[2] > dates[1]);
+            expect(new Date(`${dates[0]}`).getTime()).toBeGreaterThan(from.getTime());
+            expect(new Date(`${dates[0]}`).getTime()).toBeLessThan(to.getTime());
+            expect(new Date(`${dates[1]}`).getTime()).toBeGreaterThan(new Date(`${dates[0]}`).getTime());
+            expect(new Date(`${dates[2]}`).getTime()).toBeGreaterThan(new Date(`${dates[1]}`).getTime());
+        });
+
+        it('returns a date when no parameter is passed', () => {
+            const date = pure.date.arrayBetween();
+
+            expect(date).toBeDefined();
+            expect(typeof date).toBe('object');
         });
     });
 
     describe('month()', () => {
         it('returns random value from date.month.wide array by default', () => {
             const month = pure.date.month();
-            assert.ok(pure.registeredModules.date.month.wide.indexOf(month) !== -1);
+
+            expect(pure.registeredModules.date.month.wide.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.month.wide_context array for context option', () => {
             const month = pure.date.month({ context: true });
-            assert.ok(pure.registeredModules.date.month.wide_context.indexOf(month) !== -1);
+
+            expect(pure.registeredModules.date.month.wide_context.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.month.abbr array for abbr option', () => {
             const month = pure.date.month({ abbr: true });
-            assert.ok(pure.registeredModules.date.month.abbr.indexOf(month) !== -1);
+
+            expect(pure.registeredModules.date.month.abbr.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.month.abbr_context array for abbr and context option', () => {
             const month = pure.date.month({ abbr: true, context: true });
-            assert.ok(pure.registeredModules.date.month.abbr_context.indexOf(month) !== -1);
+
+            expect(pure.registeredModules.date.month.abbr_context.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value from date.month.wide array for context '
-        + 'option when date.month.wide_context array is missing', () => {
-            const backupWideContext = pure.registeredModules.date.month.wide_context;
-            pure.registeredModules.date.month.wide_context = undefined;
+        it('returns random value when wide_context array is missing', () => {
+            const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
+                month: {
+                    wide: [
+                        'January',
+                    ],
+                    wide_context: undefined,
+                },
+            }));
 
             const month = pure.date.month({ context: true });
-            assert.ok(pure.registeredModules.date.month.wide.indexOf(month) !== -1);
 
-            pure.registeredModules.date.month.wide_context = backupWideContext;
+            expect(pure.registeredModules.date.month.wide.indexOf(month)).toBeGreaterThanOrEqual(0);
+
+            stub.restore();
         });
 
-        it('returns random value from date.month.abbr array for abbr and context '
-        + 'option when date.month.abbr_context array is missing', () => {
-            const backupAbbrContext = pure.registeredModules.date.month.abbr_context;
-            pure.registeredModules.date.month.abbr_context = undefined;
+        it('returns random value when abbr_context array is missing', () => {
+            const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
+                month: {
+                    abbr: [
+                        'Jan',
+                    ],
+                    abbr_context: undefined,
+                },
+            }));
 
             const month = pure.date.month({ abbr: true, context: true });
-            assert.ok(pure.registeredModules.date.month.abbr.indexOf(month) !== -1);
 
-            pure.registeredModules.date.month.abbr_context = backupAbbrContext;
+            expect(pure.registeredModules.date.month.abbr.indexOf(month)).toBeGreaterThanOrEqual(0);
+
+            stub.restore();
         });
     });
 
     describe('weekday()', () => {
         it('returns random value from date.weekday.wide array by default', () => {
             const weekday = pure.date.weekday();
-            assert.ok(pure.registeredModules.date.weekday.wide.indexOf(weekday) !== -1);
+
+            expect(pure.registeredModules.date.weekday.wide.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.weekday.wide_context array for context option', () => {
             const weekday = pure.date.weekday({ context: true });
-            assert.ok(pure.registeredModules.date.weekday.wide_context.indexOf(weekday) !== -1);
+
+            expect(pure.registeredModules.date.weekday.wide_context.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.weekday.abbr array for abbr option', () => {
             const weekday = pure.date.weekday({ abbr: true });
-            assert.ok(pure.registeredModules.date.weekday.abbr.indexOf(weekday) !== -1);
+
+            expect(pure.registeredModules.date.weekday.abbr.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.weekday.abbr_context array for abbr and context option', () => {
             const weekday = pure.date.weekday({ abbr: true, context: true });
-            assert.ok(pure.registeredModules.date.weekday.abbr_context.indexOf(weekday) !== -1);
+
+            expect(pure.registeredModules.date.weekday.abbr_context.indexOf(weekday) !== -1);
         });
 
-        it('returns random value from date.weekday.wide array for context option when '
-        + 'date.weekday.wide_context array is missing', () => {
-            const backupWideContext = pure.registeredModules.date.weekday.wide_context;
-            pure.registeredModules.date.weekday.wide_context = undefined;
+        it('returns random value when wide_context array is missing', () => {
+            const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
+                weekday: {
+                    wide_context: undefined,
+                    wide: [
+                        'January',
+                    ],
+                },
+            }));
 
             const weekday = pure.date.weekday({ context: true });
-            assert.ok(pure.registeredModules.date.weekday.wide.indexOf(weekday) !== -1);
+            expect(pure.registeredModules.date.weekday.wide.indexOf(weekday)).toBeGreaterThanOrEqual(0);
 
-            pure.registeredModules.date.weekday.wide_context = backupWideContext;
+            stub.restore();
         });
 
-        it('returns random value from date.weekday.abbr array for abbr and context '
-        + 'option when date.weekday.abbr_context array is missing', () => {
-            const backupAbbrContext = pure.registeredModules.date.weekday.abbr_context;
-            pure.registeredModules.date.weekday.abbr_context = undefined;
+        it('returns random value when abbr_context array is missing', () => {
+            const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
+                weekday: {
+                    abbr_context: undefined,
+                    abbr: [
+                        'Jan',
+                    ],
+                },
+            }));
 
             const weekday = pure.date.weekday({ abbr: true, context: true });
-            assert.ok(pure.registeredModules.date.weekday.abbr.indexOf(weekday) !== -1);
+            expect(pure.registeredModules.date.weekday.abbr.indexOf(weekday)).toBeGreaterThanOrEqual(0);
 
-            pure.registeredModules.date.weekday.abbr_context = backupAbbrContext;
+            stub.restore();
         });
     });
 
@@ -210,16 +275,16 @@ describe('date.js', () => {
         it('return generated birthday', () => {
             const date = pure.date.birthDay();
 
-            assert.ok(date < new Date().toISOString());
+            expect(new Date(`${date}`).getTime()).toBeLessThan(new Date().getTime());
         });
 
         it('return generated birthday given min and max age', () => {
             const date = pure.date.birthDay({ minAge: 10, maxAge: 12 });
-            const actual = (new Date()).getFullYear();
-            const generated = (new Date(date)).getFullYear();
+            const actual = new Date().getFullYear();
+            const generated = new Date(date).getFullYear();
 
-            assert.ok((actual - generated) >= 10);
-            assert.ok((actual - generated) <= 12);
+            expect((actual - generated)).toBeGreaterThanOrEqual(10);
+            expect((actual - generated)).toBeLessThanOrEqual(12);
         });
 
         it('return generated birthday given min and max age inverted', () => {
@@ -227,8 +292,8 @@ describe('date.js', () => {
             const actual = (new Date()).getFullYear();
             const generated = (new Date(date)).getFullYear();
 
-            assert.ok((actual - generated) >= 10);
-            assert.ok((actual - generated) <= 12);
+            expect((actual - generated)).toBeGreaterThanOrEqual(10);
+            expect((actual - generated)).toBeLessThanOrEqual(12);
         });
     });
 });

@@ -59,20 +59,18 @@ class Address {
         // TODO: Refactor to use real street names not pure.name.lastName()
         this.streetName = () => {
             let result;
+            const random = pure.random.number(1);
             let suffix = this.streetSuffix();
 
             if (suffix !== '') {
                 suffix = ` ${suffix}`;
             }
 
-            switch (pure.random.number(1)) {
-            case 0:
+            if (random === 0) {
                 result = pure.name.lastName() + suffix;
-                break;
-            case 1:
+            } else if (random === 1) {
                 result = pure.name.firstName() + suffix;
-                break;
-            default:
+            } else {
                 result = this.streetSuffix();
             }
 
@@ -81,6 +79,7 @@ class Address {
 
         this.streetAddress = (useFullAddress) => {
             let def = useFullAddress;
+            const random = pure.random.number(2);
 
             if (def === undefined) {
                 def = false;
@@ -88,17 +87,13 @@ class Address {
 
             let address = '';
 
-            switch (pure.random.number(2)) {
-            case 0:
+            if (random === 0) {
                 address = `${pure.helpers.replaceSymbolWithNumber({ string: '#####' })} ${this.streetName()}`;
-                break;
-            case 1:
+            } else if (random === 1) {
                 address = `${pure.helpers.replaceSymbolWithNumber({ string: '####' })} ${this.streetName()}`;
-                break;
-            case 2:
+            } else if (random === 2) {
                 address = `${pure.helpers.replaceSymbolWithNumber({ string: '###' })} ${this.streetName()}`;
-                break;
-            default:
+            } else {
                 address = `${pure.helpers.replaceSymbolWithNumber({ string: '##' })} ${this.streetName()}`;
             }
 
@@ -141,58 +136,60 @@ class Address {
 
         this.stateAbbr = () => pure.random.arrayElement(pure.registeredModules.address.state_abbr);
 
-        this.latitude = (options = {}) => {
-            const { max = 90, min = -90, precision = 4 } = options;
+        this.latitude = (options) => {
+            const def = options || {};
+            const { max = 90, min = -90, precision = 4 } = def;
 
-            return pure.random.number({
-                max,
-                min,
-                precision,
-            }).toFixed(precision);
+            return pure.random.number({ min, max, precision }).toFixed(precision);
         };
 
-        this.longitude = (options = {}) => {
-            const { max = 180, min = -180, precision = 4 } = options;
+        this.longitude = (options) => {
+            const def = options || {};
+            const { max = 180, min = -180, precision = 4 } = def;
 
-            return pure.random.number({
-                max,
-                min,
-                precision,
-            }).toFixed(precision);
+            return pure.random.number({ min, max, precision }).toFixed(precision);
         };
 
         this.direction = (useAbbr) => {
-            if (typeof useAbbr === 'undefined' || useAbbr === false) {
-                return pure.random.arrayElement(pure.registeredModules.address.direction);
+            let direction;
+
+            if (useAbbr) {
+                direction = pure.random.objectElement(pure.registeredModules.address.direction_abbr);
+            } else {
+                direction = pure.random.objectElement(pure.registeredModules.address.direction);
             }
-            return pure.random.arrayElement(pure.registeredModules.address.direction_abbr);
+
+            return pure.random.arrayElement(direction);
         };
 
         this.cardinalDirection = (useAbbr) => {
-            if (typeof useAbbr === 'undefined' || useAbbr === false) {
-                return (
-                    pure.random.arrayElement(pure.registeredModules.address.direction.slice(0, 4))
-                );
+            let result = '';
+
+            if (useAbbr) {
+                result = pure.random.arrayElement(pure.registeredModules.address.direction_abbr.cardinal);
+            } else {
+                result = pure.random.arrayElement(pure.registeredModules.address.direction.cardinal);
             }
-            return (
-                pure.random.arrayElement(pure.registeredModules.address.direction_abbr.slice(0, 4))
-            );
+
+            return result;
         };
 
         this.ordinalDirection = (useAbbr) => {
-            if (typeof useAbbr === 'undefined' || useAbbr === false) {
-                return (
-                    pure.random.arrayElement(pure.registeredModules.address.direction.slice(4, 8))
-                );
+            let result = '';
+
+            if (useAbbr) {
+                result = pure.random.arrayElement(pure.registeredModules.address.direction_abbr.ordinal);
+            } else {
+                result = pure.random.arrayElement(pure.registeredModules.address.direction.ordinal);
             }
-            return (
-                pure.random.arrayElement(pure.registeredModules.address.direction_abbr.slice(4, 8))
-            );
+
+            return result;
         };
 
         // TODO: rename radius param to distance
-        this.nearbyGPSCoordinate = (options = {}) => {
-            const { coordinate, radius = 10.0, isMetric = false } = options;
+        this.nearbyGPSCoordinate = (options) => {
+            const def = options || {};
+            const { coordinate, radius = 10.0, isMetric = false } = def;
             // If there is no coordinate, the best we can do is return a random GPS coordinate.
             if (coordinate === undefined) {
                 return [this.latitude(), this.longitude()];
