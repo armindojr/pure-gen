@@ -86,6 +86,30 @@ Method that generates random company suffix
 
 ------------------------------------------------------------------------------
 
+## companyPrefix
+
+#### Description
+Method that generates random company prefix
+#### Parameters
+| Name          | Type          | Description                                |
+| ------------- | ------------- | ------------------------------------------ |
+| N/A           | N/A           | This method doesn't receive any parameters |
+#### Returns
+- **<String\>**
+#### Usage
+1. Without passing parameters
+    1. **code**
+    ```js
+    pure.setLocale('az')
+    console.log(pure.company.companyPrefix());
+    ```
+    2. **result**
+    ```js
+    'QSC'
+    ```
+
+------------------------------------------------------------------------------
+
 ## catchPhrase
 
 #### Description

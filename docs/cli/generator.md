@@ -30,6 +30,7 @@ npx pure generate
 ```
 
 You will be requested the following questions:
+- Select what locale pure will be set -> You can choose from a list what locale generator will be using to print data.
 - What format to use? -> You can choose between csv, json, txt or none (with none, generated data will print on terminal)
 - What template to use to generate -> This will request you to press your `Enter` key and your terminal text editor will appear. Inside your text editor, you can edit as you like and fill in with wanted data to be generated (it will use the same syntax used on pure.fake method) [troubleshoot](#editor-problem)
 - How many rows to generate? -> You can specify how many rows (for text like format: csv, txt or none) or how many objects (for JSON format only)

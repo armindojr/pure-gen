@@ -77,15 +77,11 @@ Method that generates random zipcode from state abbreviation. If state abbreviat
 ## city
 
 #### Description
-Method that generate a random localized city name. The format string can contain any method provided by pure wrapped in `{{}}`, e.g. `{{name.firstName}}` in order to build the city name. If no format string is provided one of the following is randomly used:
-* `{{address.cityPrefix}} {{name.firstName}}{{address.citySuffix}}`
-* `{{address.cityPrefix}} {{name.firstName}}`
-* `{{name.firstName}}{{address.citySuffix}}`
-* `{{name.lastName}}{{address.citySuffix}}`
+Method that generates a random city name based on locale definitions. If the locale you selected has a list separated by state, you can filter the result by passing what state you want as parameter.
 #### Parameters
-| Name   | Type      | Description                                                                                                 |
-| ------ | --------- | ----------------------------------------------------------------------------------------------------------- |
-| format | <Number\> | You can define what format to use. Index to use when retrieving format from locale. Default value is random |
+| Name  | Type      | Description                                           |
+| ----- | --------- | ----------------------------------------------------- |
+| state | <String\> | You can filter by state name. Default value is random |
 #### Returns
 - **<String\>**
 #### Usage
@@ -96,17 +92,17 @@ Method that generate a random localized city name. The format string can contain
     ```
     2. **result**
     ```js
-    'Ivoryville'
+    'San Rafael'
     ```
 
-2. Describing that i want an city respecting the second item from the list
+2. Describing that i want an city from 'Alabama'
     1. **code**
     ```js
-    console.log(pure.address.city(1));
+    console.log(pure.address.city('Alabama'));
     ```
     2. **result**
     ```js
-    'Port Bonita'
+    'Tuscumbia'
     ```
 
 ------------------------------------------------------------------------------

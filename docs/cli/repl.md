@@ -20,6 +20,6 @@ npx pure repl
 ```
 
 You will be requested the following question:
-- Select what locale pure will set in Repl -> You can choose from a list what locale REPL will be using to print data.
+- Select what locale pure will be set -> You can choose from a list what locale REPL will be using to print data.
 
 After you selected it, an message greeting you will appear and REPL will start. From here you can simply type any pure method you want and press `enter` and an result will be printed.

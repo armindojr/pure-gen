@@ -7,7 +7,7 @@ slug: /
 
 Pure Gen main purpose is to provide fake data for you to be used in automation tests frameworks. It can be used as dataset generator too with CLI tools provided.
 
-This project is derivative from [Faker.js](https://github.com/Marak/faker.js) and that's why most of that code is here. This project was created to update some features inside original repo and extends its functionality.
+This project is derivative from [Faker.js](https://github.com/Marak/faker.js) and that's why most of that code is here. This project is created to update some features inside original repo and extends its functionality.
 
 ### API Documentation
 - [Docs](https://armindojr.github.io/pure-gen/)
@@ -43,10 +43,7 @@ This repo use some codes from other projects and i want to credit them:
 * [lfib PRNG](https://github.com/nquinlan/better-random-numbers-for-javascript-mirror)
 
 ## License
-
-pure-gen - Copyright (c) 2021
-Armindo Junior
-http://github.com/
+pure-gen - Copyright (c) 2022 Armindo Junior
 
 pure-gen was inspired by and has used data definitions from:
 
@@ -54,21 +51,15 @@ pure-gen was inspired by and has used data definitions from:
  * https://github.com/stympy/faker/ - Copyright (c) 2007-2010 by Benjamin Curtis
  * http://search.cpan.org/~jasonk/Data-Faker-0.07/ - Copyright (c) 2004-2005 by Jason Kohles
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
