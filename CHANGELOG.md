@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v2.1.1
+
+### General Fixes
+* Fixing security reports when installing
+
 ## v2.1.0
 
 ### New API Methods

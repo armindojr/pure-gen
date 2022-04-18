@@ -28,14 +28,12 @@ class Name {
                         // Fall back to non-gendered names if they exist and gender wasn't specified
                         result = pure.random.arrayElement(pure.registeredModules.name.first_name);
                     }
+                } else if (def === 0) {
+                    result = pure.random.arrayElement(pure.registeredModules.name.male_first_name);
                 } else {
-                    if (def === 0) {
-                        result = pure.random.arrayElement(pure.registeredModules.name.male_first_name);
-                    } else {
-                        result = pure.random.arrayElement(pure.registeredModules.name.female_first_name);
-                    }
+                    result = pure.random.arrayElement(pure.registeredModules.name.female_first_name);
                 }
-                
+
                 return result;
             }
 
@@ -75,8 +73,8 @@ class Name {
                 def = pure.random.number(1);
             }
 
-            let prefix = this.prefix(def);
-            let suffix = this.suffix(def);
+            const prefix = this.prefix(def);
+            const suffix = this.suffix(def);
             const fName = this.firstName(def);
             const lName = this.lastName(def);
 

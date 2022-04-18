@@ -36,7 +36,7 @@ class Internet {
 
         this.userName = (options = {}) => {
             const { firstName = pure.name.firstName(), lastName = pure.name.lastName() } = options;
-            let r = pure.random.number(2);
+            const r = pure.random.number(2);
             let result;
 
             if (r === 0) {
