@@ -1,62 +1,77 @@
-class Commerce {
+export default class Commerce {
     constructor(pure) {
-        this.color = () => pure.random.arrayElement(pure.registeredModules.commerce.color);
+        this.pure = pure;
+    }
 
-        this.department = () => pure.random.arrayElement(pure.registeredModules.commerce.department);
+    color() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.color);
+    }
 
-        this.productName = () => `${this.productAdjective()}`
-        + ` ${this.productMaterial()} ${this.product()}`;
+    department() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.department);
+    }
 
-        this.price = (options) => {
-            let def = options;
-            if (def === undefined) {
-                def = {
-                    min: 1,
-                };
-            }
+    productName() {
+        return `${this.pure.commerce.productAdjective()}`
+        + ` ${this.pure.commerce.productMaterial()} ${this.pure.commerce.product()}`;
+    }
 
-            def.max = def.max || 1000 * def.min;
-            def.dec = def.dec === undefined ? 2 : def.dec;
-            def.symbol = def.symbol || '';
+    price(options) {
+        let def = options;
 
-            if (def.min < 0 || def.max < 0) {
-                return def.symbol + 0.00;
-            }
+        if (def === undefined) {
+            def = {
+                min: 1,
+            };
+        }
 
-            const randValue = pure.random.number({ max: def.max, min: def.min, precision: def.dec }).toFixed(def.dec);
-            const finalValue = def.symbol + randValue.toString();
+        def.max = def.max || 1000 * def.min;
+        def.dec = def.dec === undefined ? 2 : def.dec;
+        def.symbol = def.symbol || '';
 
-            return (def.comma) ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
-        };
+        if (def.min < 0 || def.max < 0) {
+            return def.symbol + 0.00;
+        }
 
-        this.categories = (num) => {
-            let categories = [];
-            let def = num;
-            if (typeof def === 'undefined') {
-                def = pure.random.number({ min: 1, max: 10 });
-            }
+        const randValue = this.pure.random.number({ max: def.max, min: def.min, precision: def.dec }).toFixed(def.dec);
+        const finalValue = def.symbol + randValue.toString();
 
-            if (def > pure.registeredModules.commerce.department.length) {
-                categories = pure.registeredModules.commerce.department;
-            } else {
-                const shuffledArr = pure.helpers.shuffle(pure.registeredModules.commerce.department);
-                const diff = pure.registeredModules.commerce.department.length - num;
+        return (def.comma) ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
+    }
 
-                shuffledArr.splice(0, diff);
-                categories = shuffledArr;
-            }
+    categories(num) {
+        let categories = [];
+        let def = num;
 
-            return categories;
-        };
+        if (typeof def === 'undefined') {
+            def = this.pure.random.number({ min: 1, max: 10 });
+        }
 
-        this.productAdjective = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.adjective);
+        if (def > this.pure.registeredModules.commerce.department.length) {
+            categories = this.pure.registeredModules.commerce.department;
+        } else {
+            const shuffledArr = this.pure.helpers.shuffle(this.pure.registeredModules.commerce.department);
+            const diff = this.pure.registeredModules.commerce.department.length - num;
+            shuffledArr.splice(0, diff);
+            categories = shuffledArr;
+        }
 
-        this.productMaterial = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.material);
+        return categories;
+    }
 
-        this.product = () => pure.random.arrayElement(pure.registeredModules.commerce.product_name.product);
+    productAdjective() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.productName.adjective);
+    }
 
-        this.productDescription = () => pure.random.arrayElement(pure.registeredModules.commerce.product_description);
+    productMaterial() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.productName.material);
+    }
+
+    product() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.productName.product);
+    }
+
+    productDescription() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.commerce.productDescription);
     }
 }
-
-module.exports = Commerce;

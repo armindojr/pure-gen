@@ -1,16 +1,14 @@
-/* eslint new-cap: "off" */
-
-const imports = require('./imports');
-const locales = require('./locale');
+import * as imports from './imports.js';
+import locales from './locale/index.js';
 
 /**
  *
  * @namespace pure
  */
 class Pure {
-    constructor() {
-        this.locale = this.locale || 'en';
-        this.localeFallback = this.localeFallback || 'en';
+    constructor(locale) {
+        this.registeredModules = locale || locales.en;
+
         this.possibleLocales = [
             'af_ZA', 'ar', 'az', 'cz', 'de', 'de_AT', 'de_CH',
             'el', 'en', 'en_AU', 'en_BORK', 'en_CA', 'en_GB',
@@ -22,147 +20,9 @@ class Pure {
             'vi', 'zh_CN', 'zh_TW', 'zu_ZA',
         ];
 
-        this.registeredModules = {
-            address: [
-                'city',
-                'city_prefix',
-                'city_suffix',
-                'street_suffix',
-                'county',
-                'country',
-                'default_country',
-                'country_code',
-                'country_code_alpha_3',
-                'state',
-                'state_abbr',
-                'street_prefix',
-                'postcode',
-                'postcode_by_state',
-                'direction',
-                'direction_abbr',
-                'time_zone',
-            ],
-            commerce: [
-                'color',
-                'department',
-                'product_name',
-                'price',
-                'categories',
-                'product_description',
-            ],
-            company: [
-                'adjective',
-                'name',
-                'noun',
-                'descriptor',
-                'bs_adjective',
-                'bs_noun',
-                'bs_verb',
-                'suffix',
-                'prefix',
-            ],
-            database: [
-                'collation',
-                'column',
-                'engine',
-                'type',
-            ],
-            date: [
-                'month',
-                'weekday',
-            ],
-            dessert: [
-                'flavor',
-                'topping',
-                'variety',
-            ],
-            electricalComponents: [
-                'active',
-                'passive',
-                'electromechanical',
-            ],
-            esport: [
-                'players',
-                'teams',
-                'events',
-                'leagues',
-                'games',
-            ],
-            finance: [
-                'account_type',
-                'transaction_type',
-                'currency',
-                'iban',
-                'credit_card',
-            ],
-            games: [
-                'title',
-                'genre',
-                'platform',
-            ],
-            hacker: [
-                'abbreviation',
-                'adjective',
-                'noun',
-                'verb',
-                'ingverb',
-                'phrase',
-            ],
-            iban: [
-                'countryCode',
-                'formats',
-            ],
-            internet: [
-                'avatar_uri',
-                'domain_suffix',
-                'free_email',
-                'example_email',
-                'password',
-            ],
-            lorem: [
-                'words',
-                'sentences',
-            ],
-            music: [
-                'genre',
-            ],
-            name: [
-                'first_name',
-                'last_name',
-                'prefix',
-                'suffix',
-                'gender',
-                'title',
-                'male_prefix',
-                'female_prefix',
-                'male_first_name',
-                'female_first_name',
-                'male_middle_name',
-                'female_middle_name',
-                'male_last_name',
-                'female_last_name',
-            ],
-            phone_number: [
-                'formats',
-            ],
-            system: [
-                'mimeTypes',
-                'directoryPaths',
-            ],
-            transport: [
-                'vehicleManufacturer',
-                'vehicleModel',
-                'vehicleType',
-                'vehicleFuel',
-                'airportName',
-            ],
-            title: '',
-            separator: '',
-        };
-
-        this.fake = new imports.Fake(this).fake;
-        this.unique = new imports.Unique(this);
         this.random = new imports.Random(this);
+        this.fake = new imports.Fake(this);
+        this.unique = new imports.Unique(this);
         this.helpers = new imports.Helpers(this);
         this.name = new imports.Name(this);
         this.address = new imports.Address(this);
@@ -186,27 +46,6 @@ class Pure {
         this.games = new imports.Games(this);
         this.electricalComponents = new imports.ElectricalComponents(this);
         this.esport = new imports.Esport(this);
-
-        this.populateLocale();
-    }
-
-    populateLocale() {
-        Object.keys(this.registeredModules).forEach((mod) => {
-            if (typeof this.registeredModules[mod] === 'string') {
-                return;
-            }
-
-            this.registeredModules[mod].forEach((meth) => {
-                if (typeof locales[this.locale] === 'undefined'
-                    || typeof locales[this.locale][mod] === 'undefined'
-                    || typeof locales[this.locale][mod][meth] === 'undefined') {
-                    //
-                    this.registeredModules[mod][meth] = locales[this.localeFallback][mod][meth];
-                } else {
-                    this.registeredModules[mod][meth] = locales[this.locale][mod][meth];
-                }
-            });
-        });
     }
 
     seed(value) {
@@ -215,8 +54,7 @@ class Pure {
     }
 
     setLocale(locale) {
-        this.locale = locale;
-        this.populateLocale();
+        this.registeredModules = locale;
     }
 
     getSeed() {
@@ -224,4 +62,4 @@ class Pure {
     }
 }
 
-module.exports = Pure;
+export default Pure;

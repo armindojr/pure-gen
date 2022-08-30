@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'Vanilla',
     'Chocolate',
     'Strawberry',
@@ -6,7 +6,7 @@ module.exports = [
     'Salted Caramel',
     'Banana',
     'Butter Pecan',
-    "Cookies 'n Cream",
+    'Cookies \'n Cream',
     'Caramel',
     'Apple',
     'Butterscotch',

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'First-person shooter',
     'Puzzle',
     'Platformer',

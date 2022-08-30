@@ -1,15 +1,25 @@
-class Esport {
+export default class Esport {
     constructor(pure) {
-        this.players = () => pure.random.arrayElement(pure.registeredModules.esport.players);
+        this.pure = pure;
+    }
 
-        this.teams = () => pure.random.arrayElement(pure.registeredModules.esport.teams);
+    players() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.esport.players);
+    }
 
-        this.events = () => pure.random.arrayElement(pure.registeredModules.esport.events);
+    teams() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.esport.teams);
+    }
 
-        this.leagues = () => pure.random.arrayElement(pure.registeredModules.esport.leagues);
+    events() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.esport.events);
+    }
 
-        this.games = () => pure.random.arrayElement(pure.registeredModules.esport.games);
+    leagues() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.esport.leagues);
+    }
+
+    games() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.esport.games);
     }
 }
-
-module.exports = Esport;

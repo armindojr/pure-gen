@@ -1,4 +1,4 @@
-module.exports = (number) => {
+export default function (number){
     const nNumber = number.replace(/\D/g, '');
     let split = nNumber.split('');
     split = split.map((num) => parseInt(num, 10));

@@ -1,10 +1,10 @@
 /* eslint no-console: "off" */
-/* eslint no-restricted-globals: "off" */
-const colorette = require('colorette');
-const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
-const pure = require('../../index');
+
+import * as colorette from 'colorette';
+import inquirer from 'inquirer';
+import fs from 'fs';
+import path from 'path';
+import pure from '../../index.js';
 
 const formats = [
     'csv',
@@ -13,9 +13,7 @@ const formats = [
     'none',
 ];
 
-const localeOpts = pure.possibleLocales;
-
-const template = '{{random.number}}; {{internet.password}}; {{address.city}};';
+const template = '{{random.number}}; {{internet.password}}; {{address.city}};\n';
 const templatejson = '{ "number": {{random.number}}, "pass": "{{internet.password}}" }';
 
 function defaultTemplate(answers) {
@@ -33,7 +31,7 @@ function validateTemplate(answer) {
 }
 
 function validateRows(answer) {
-    if (!isNaN(answer) && answer !== '') {
+    if (!Number.isNaN(answer) && answer !== '') {
         return true;
     }
     return 'You need to pass a valid number';
@@ -57,16 +55,18 @@ function conditionalName(answers) {
     return answers.formatType !== 'none';
 }
 
-function generator() {
+function generator(arg) {
     return new Promise((resolve, reject) => {
+        if (arg.locale) {
+            const verifyExtension = arg.locale.split('.');
+
+            if (verifyExtension[verifyExtension.length - 1] === 'json') {
+                pure.setLocale(JSON.parse(fs.readFileSync(arg.locale)));
+            }
+        }
+
         inquirer
             .prompt([
-                {
-                    type: 'list',
-                    name: 'localeInput',
-                    message: 'Select what locale pure will be set',
-                    choices: localeOpts,
-                },
                 {
                     type: 'list',
                     name: 'formatType',
@@ -106,12 +106,6 @@ function generator() {
                 },
             ])
             .then((answers) => {
-                if (answers.localeInput) {
-                    pure.setLocale(answers.localeInput);
-                } else {
-                    pure.setLocale('en');
-                }
-
                 let templateStr = '';
                 let generated = '';
 
@@ -123,25 +117,25 @@ function generator() {
                         templateStr.push(answers.templateStr.replace(/\n/g, ''));
                     }
 
-                    generated = pure.fake(`[${templateStr}]`);
+                    generated = pure.fake.parse(`[${templateStr}]`);
                 } else if (answers.formatType === 'json' && answers.uniqueRows) {
                     generated = [];
 
                     for (let index = 0; index < answers.rows; index += 1) {
-                        generated.push(pure.unique.exec(pure.fake, [answers.templateStr.replace(/\n/g, '')]));
+                        generated.push(pure.unique.exec(pure.fake.parse, [answers.templateStr.replace(/\n/g, '')]));
                     }
 
                     generated = `[${generated}]`;
                 } else if (answers.uniqueRows) {
                     for (let index = 0; index < answers.rows; index += 1) {
-                        generated += pure.unique.exec(pure.fake, [answers.templateStr]);
+                        generated += pure.unique.exec(pure.fake.parse, [answers.templateStr]);
                     }
                 } else {
                     for (let index = 0; index < answers.rows; index += 1) {
                         templateStr += `${answers.templateStr}`;
                     }
 
-                    generated = pure.fake(templateStr);
+                    generated = pure.fake.parse(templateStr);
                 }
 
                 // Save output
@@ -171,7 +165,8 @@ function generator() {
     });
 }
 
-module.exports = {
+export { generator };
+export default {
     defaultTemplate,
     validateTemplate,
     validateRows,

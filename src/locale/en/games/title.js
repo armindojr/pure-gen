@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'Half-Life',
     'Half-Life: Opposing Force',
     'Half-Life: Blue Shift',

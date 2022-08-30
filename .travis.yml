@@ -3,10 +3,9 @@ language: node_js
 dist: xenial
 os: linux
 node_js:
+  - "18"
   - "16"
   - "14"
-  - "12"
-  - "10"
 
 install:
   - npm i

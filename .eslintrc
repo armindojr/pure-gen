@@ -12,7 +12,7 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": 9,
         "sourceType": "module"
     },
     "rules": {
@@ -24,14 +24,10 @@
             "warn",
             120
         ],
-        "no-global-assign": [
-            "warn"
-        ],
-        "no-bitwise": [
-            "off"
-        ],
-        "default-param-last": [
-            "off"
-        ]
+        "no-global-assign": "warn",
+        "no-bitwise": "off",
+        "default-param-last": "off",
+        "import/extensions": "off",
+        "class-methods-use-this": "off"
     }
 }

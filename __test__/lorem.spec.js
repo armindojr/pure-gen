@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('lorem.js', () => {
     describe('word()', () => {
@@ -96,18 +96,6 @@ describe('lorem.js', () => {
             expect(words.length).toBeGreaterThan(0);
 
             pure.lorem.sentence.restore();
-        });
-
-        it('Generate random sentences', () => {
-            pure.setLocale('ru');
-
-            const sentences = pure.lorem.sentence(2);
-            const words = sentences.split(' ');
-
-            expect(typeof sentences).toBe('string');
-            expect(words.length).toBeGreaterThan(1);
-
-            pure.setLocale('en');
         });
     });
 

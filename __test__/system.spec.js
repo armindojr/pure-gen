@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('system.js', () => {
     describe('directoryPath()', () => {
@@ -37,13 +37,13 @@ describe('system.js', () => {
             pure.random.words.restore();
         });
 
-        it('returns filenames passing "ext" as parameter', () => {
+        it('returns filenames passing \'ext\' as parameter', () => {
             const fileName = pure.system.fileName('zip');
 
             expect(/(.*?)\.(zip)+$/g.test(fileName)).toEqual(true);
         });
 
-        it('returns filenames passing "ext" as parameter with dot in begining', () => {
+        it('returns filenames passing \'ext\' as parameter with dot in begining', () => {
             const fileName = pure.system.fileName('.jpg');
 
             expect(/(.*?)\.(jpg)+$/g.test(fileName)).toEqual(true);
@@ -85,13 +85,13 @@ describe('system.js', () => {
             pure.random.words.restore();
         });
 
-        it('returns filenames passing "ext" as parameter', () => {
+        it('returns filenames passing \'ext\' as parameter', () => {
             const fileName = pure.system.commonFileName('zip');
 
             expect(/(.*?)\.(zip)+$/g.test(fileName)).toEqual(true);
         });
 
-        it('returns filenames passing "ext" as parameter with dot in begining', () => {
+        it('returns filenames passing \'ext\' as parameter with dot in begining', () => {
             const fileName = pure.system.commonFileName('.jpg');
 
             expect(/(.*?)\.(jpg)+$/g.test(fileName)).toEqual(true);

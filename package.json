@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "keywords": [
     "pure",
     "generator",
@@ -22,14 +22,15 @@
   "scripts": {
     "lint": "npx eslint -c ./.eslintrc ./src",
     "lint:fix": "npx eslint -c ./.eslintrc ./src --fix",
-    "test": "jest",
-    "test:w": "jest --watch",
-    "coverage": "jest --coverage",
-    "coverage:html": "jest --coverage --coverageReporters html",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:w": "NODE_OPTIONS=--experimental-vm-modules npx jest --watchAll",
+    "coverage": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
+    "coverage:html": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --coverageReporters html",
     "coverage:report": "codecov"
   },
   "devDependencies": {
-    "eslint": "^8.21.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.1",
@@ -39,17 +40,21 @@
   "dependencies": {
     "colorette": "^2.0.19",
     "commander": "^9.4.0",
-    "inquirer": "8.2.3",
+    "inquirer": "^8.2.3",
     "mustache": "^4.2.0",
     "randexp": "^0.5.3",
     "slugify": "^1.6.5",
     "uuid": "^8.3.2"
   },
   "bin": {
-    "pure": "./bin/pure"
+    "pure": "./bin/pure.js"
   },
   "license": "GPL-3.0-only",
   "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",

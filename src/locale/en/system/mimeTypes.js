@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     'application/1d-interleaved-parityfec': { source: 'iana' },
     'application/3gpdash-qoe-report+xml': { source: 'iana' },
     'application/3gpp-ims+xml': { source: 'iana' },

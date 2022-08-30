@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'ESL Cologne',
     'MLG Meadowlands',
     'GFinity London',

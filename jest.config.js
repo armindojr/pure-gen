@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   clearMocks: true,
 
   collectCoverage: false,
@@ -19,7 +19,18 @@ module.exports = {
     "lcov",
   ],
 
+  coverageThreshold: {
+    global: {
+      branches: 96,
+      functions: 96,
+      lines: 96,
+      statements: 96,
+    },
+  },
+
   testMatch: [
     "**/__test__/**.spec.js",
   ],
+
+  transform: {},
 };

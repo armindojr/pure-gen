@@ -1,41 +1,58 @@
-class Company {
+export default class Company {
     constructor(pure) {
-        // TODO: Remove this method
-        this.suffixes = () => pure.registeredModules.company.suffix.slice(0);
+        this.pure = pure;
+    }
 
-        this.companyName = (format) => {
-            let res;
+    companyName(format) {
+        let res;
 
-            if (typeof format !== 'string') {
-                res = pure.fake(pure.random.arrayElement(pure.registeredModules.company.name));
-            } else {
-                res = pure.fake(format);
-            }
+        if (typeof format !== 'string') {
+            res = this.pure.fake.parse(this.pure.random.arrayElement(this.pure.registeredModules.company.name));
+        } else {
+            res = this.pure.fake.parse(format);
+        }
 
-            return res;
-        };
+        return res;
+    }
 
-        this.companySuffix = () => pure.random.arrayElement(pure.registeredModules.company.suffix);
+    companySuffix() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.suffix);
+    }
 
-        this.companyPrefix = () => pure.random.arrayElement(pure.registeredModules.company.prefix);
+    companyPrefix() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.prefix);
+    }
 
-        this.catchPhrase = () => `${this.catchPhraseAdjective()} ${this.catchPhraseDescriptor()}`
-        + ` ${this.catchPhraseNoun()}`;
+    catchPhrase() {
+        return `${this.pure.company.catchPhraseAdjective()} ${this.pure.company.catchPhraseDescriptor()}`
+        + ` ${this.pure.company.catchPhraseNoun()}`;
+    }
 
-        this.catchPhraseAdjective = () => pure.random.arrayElement(pure.registeredModules.company.adjective);
+    catchPhraseAdjective() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.adjective);
+    }
 
-        this.catchPhraseDescriptor = () => pure.random.arrayElement(pure.registeredModules.company.descriptor);
+    catchPhraseDescriptor() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.descriptor);
+    }
 
-        this.catchPhraseNoun = () => pure.random.arrayElement(pure.registeredModules.company.noun);
+    catchPhraseNoun() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.noun);
+    }
 
-        this.bs = () => `${this.bsBuzz()} ${this.bsAdjective()} ${this.bsNoun()}`;
+    bs() {
+        return `${this.pure.company.bsBuzz()} ${this.pure.company.bsAdjective()} ${this.pure.company.bsNoun()}`;
+    }
 
-        this.bsAdjective = () => pure.random.arrayElement(pure.registeredModules.company.bs_adjective);
+    bsAdjective() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.bsAdjective);
+    }
 
-        this.bsBuzz = () => pure.random.arrayElement(pure.registeredModules.company.bs_verb);
+    bsBuzz() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.bsVerb);
+    }
 
-        this.bsNoun = () => pure.random.arrayElement(pure.registeredModules.company.bs_noun);
+    bsNoun() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.company.bsNoun);
     }
 }
-
-module.exports = Company;

@@ -1,14 +1,14 @@
-module.exports = {
-    'cardinal': [
+export default {
+    cardinal: [
         'North',
         'East',
         'South',
         'West',
     ],
-    'ordinal': [
+    ordinal: [
         'Northeast',
         'Northwest',
         'Southeast',
         'Southwest',
-    ]
+    ],
 };

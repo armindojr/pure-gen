@@ -1,6 +1,9 @@
-const games = {
-    title: require('./title'),
-    genre: require('./genre'),
-    platform: require('./platform'),
+import genre from './genre.js';
+import platform from './platform.js';
+import title from './title.js';
+
+export default {
+    genre,
+    platform,
+    title,
 };
-module.exports = games;

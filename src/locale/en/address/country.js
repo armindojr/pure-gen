@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'Afghanistan',
     'Albania',
     'Algeria',
@@ -50,7 +50,7 @@ module.exports = [
     'Congo',
     'Cook Islands',
     'Costa Rica',
-    "Cote d'Ivoire",
+    'Cote d\'Ivoire',
     'Croatia',
     'Cuba',
     'Cyprus',
@@ -112,11 +112,11 @@ module.exports = [
     'Kazakhstan',
     'Kenya',
     'Kiribati',
-    "Democratic People's Republic of Korea",
+    'Democratic People\'s Republic of Korea',
     'Republic of Korea',
     'Kuwait',
     'Kyrgyz Republic',
-    "Lao People's Democratic Republic",
+    'Lao People\'s Democratic Republic',
     'Latvia',
     'Lebanon',
     'Lesotho',

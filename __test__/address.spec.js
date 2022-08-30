@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('address.js', () => {
     describe('city()', () => {
@@ -92,7 +92,7 @@ describe('address.js', () => {
     describe('cityPrefix()', () => {
         it('return a random city prefix', () => {
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
-                city_prefix: ['foo'],
+                cityPrefix: ['foo'],
             }));
 
             const prefix = pure.address.cityPrefix();
@@ -108,7 +108,7 @@ describe('address.js', () => {
     describe('citySuffix()', () => {
         it('return a random city suffix', () => {
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
-                city_suffix: ['foo'],
+                citySuffix: ['foo'],
             }));
 
             const suffix = pure.address.citySuffix();
@@ -407,12 +407,16 @@ describe('address.js', () => {
         });
 
         it('returns zipCode with proper locale format', () => {
-            // we'll use the en_CA locale..
-            pure.setLocale('en_CA');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                postcode: [
+                    'A#? #?#',
+                ],
+            }));
 
             const zipCode = pure.address.zipCode();
 
             expect(/^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/.test(zipCode)).toBe(true);
+            stub.restore();
         });
 
         it('returns random zipCode', () => {
@@ -433,7 +437,14 @@ describe('address.js', () => {
 
     describe('zipCodeByState()', () => {
         it('returns zipCode valid for specified State', () => {
-            pure.setLocale('en_US');
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                postcodeByState: {
+                    IL: { min: 60001, max: 62999 },
+                    GA: { min: 30001, max: 31999 },
+                    WA: { min: 98001, max: 99403 },
+                },
+            }));
+
             const states = ['IL', 'GA', 'WA'];
             const zipCode1 = pure.address.zipCodeByState(states[0]);
             const zipCode2 = pure.address.zipCodeByState(states[1]);
@@ -445,6 +456,8 @@ describe('address.js', () => {
             expect(zipCode2).toBeLessThanOrEqual(31999);
             expect(zipCode3).toBeGreaterThanOrEqual(98001);
             expect(zipCode3).toBeLessThanOrEqual(99403);
+
+            stub.restore();
         });
 
         it('returns undefined if state is invalid', () => {
@@ -458,8 +471,10 @@ describe('address.js', () => {
             pure.address.zipCode.restore();
         });
 
-        it('returns undefined if state is valid but localeis invalid', () => {
-            pure.setLocale('zh_CN');
+        it('returns undefined if state is valid but locale is invalid', () => {
+            const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
+                postcodeByState: {},
+            }));
             sinon.spy(pure.address, 'zipCode');
 
             const zipCode = pure.address.zipCodeByState('IL');
@@ -468,7 +483,7 @@ describe('address.js', () => {
             expect(pure.address.zipCode.called).toBe(true);
 
             pure.address.zipCode.restore();
-            pure.setLocale('en');
+            stub.restore();
         });
     });
 
@@ -595,7 +610,7 @@ describe('address.js', () => {
 
         it('returns abbreviation when useAbbr is true', () => {
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
-                direction_abbr: {
+                directionAbbr: {
                     cardinal: ['N'],
                 },
             }));
@@ -625,7 +640,7 @@ describe('address.js', () => {
 
         it('returns abbreviation when useAbbr is true stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
-                direction_abbr: {
+                directionAbbr: {
                     ordinal: ['SE'],
                 },
             }));
@@ -668,7 +683,7 @@ describe('address.js', () => {
 
         it('returns abbreviation when useAbbr is true stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'address').get(() => ({
-                direction_abbr: {
+                directionAbbr: {
                     cardinal: ['N'],
                 },
             }));

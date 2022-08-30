@@ -1,6 +1,6 @@
-const sinon = require('sinon');
-const slugify = require('slugify');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
+import slugify from 'slugify';
 
 describe('internet.js', () => {
     describe('email()', () => {

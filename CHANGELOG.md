@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v3.0.0
+
+*Attention! breaking changes between v2 and v3*
+
+pure-gen is now a native Node ECMAScript module This will require your Node runtime to support es modules, and your app to be an es module. To keep up with this changes we are upgrading minimum node version requiriments to v14 and above.
+
+If you cannot migrate, please remember you can keep using the v2.x release line until you're ready.
+
+### New API Methods
+* Added pure.internet.botUserAgent to generate bot user agent string based on locale
+
+### API Changes
+* pure.internet.userAgent now uses locale to generate random string
+* pure.fake renamed to pure.fake.parse for architecture reasons
+* pure.setLocale has now been changed to receiving json as parameter (with this we can turn localization into different packages)
+* Removed deprecated pure.company.suffixes
+
+### Locality Updates
+* Added more data to en locale
+
 ## v2.1.2
 
 ### API Fixes

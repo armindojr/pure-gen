@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('company.js', () => {
     describe('companyName()', () => {
@@ -57,14 +57,6 @@ describe('company.js', () => {
             expect(pure.name.lastName.calledOnce).toBe(true);
 
             pure.name.lastName.restore();
-        });
-    });
-
-    describe('companySuffix()', () => {
-        it('returns random value from company.suffixes array', () => {
-            const suffix = pure.company.companySuffix();
-
-            expect(pure.company.suffixes().indexOf(suffix)).toBeGreaterThanOrEqual(0);
         });
     });
 

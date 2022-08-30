@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'CS:GO',
     'League of Legends',
     'Overwatch',

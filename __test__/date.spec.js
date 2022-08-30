@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('date.js', () => {
     describe('past()', () => {
@@ -159,10 +159,10 @@ describe('date.js', () => {
             expect(pure.registeredModules.date.month.wide.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value from date.month.wide_context array for context option', () => {
+        it('returns random value from date.month.wideContext array for context option', () => {
             const month = pure.date.month({ context: true });
 
-            expect(pure.registeredModules.date.month.wide_context.indexOf(month)).toBeGreaterThanOrEqual(0);
+            expect(pure.registeredModules.date.month.wideContext.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.month.abbr array for abbr option', () => {
@@ -171,19 +171,19 @@ describe('date.js', () => {
             expect(pure.registeredModules.date.month.abbr.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value from date.month.abbr_context array for abbr and context option', () => {
+        it('returns random value from date.month.abbrContext array for abbr and context option', () => {
             const month = pure.date.month({ abbr: true, context: true });
 
-            expect(pure.registeredModules.date.month.abbr_context.indexOf(month)).toBeGreaterThanOrEqual(0);
+            expect(pure.registeredModules.date.month.abbrContext.indexOf(month)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value when wide_context array is missing', () => {
+        it('returns random value when wideContext array is missing', () => {
             const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
                 month: {
                     wide: [
                         'January',
                     ],
-                    wide_context: undefined,
+                    wideContext: undefined,
                 },
             }));
 
@@ -194,13 +194,13 @@ describe('date.js', () => {
             stub.restore();
         });
 
-        it('returns random value when abbr_context array is missing', () => {
+        it('returns random value when abbrContext array is missing', () => {
             const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
                 month: {
                     abbr: [
                         'Jan',
                     ],
-                    abbr_context: undefined,
+                    abbrContext: undefined,
                 },
             }));
 
@@ -219,10 +219,10 @@ describe('date.js', () => {
             expect(pure.registeredModules.date.weekday.wide.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value from date.weekday.wide_context array for context option', () => {
+        it('returns random value from date.weekday.wideContext array for context option', () => {
             const weekday = pure.date.weekday({ context: true });
 
-            expect(pure.registeredModules.date.weekday.wide_context.indexOf(weekday)).toBeGreaterThanOrEqual(0);
+            expect(pure.registeredModules.date.weekday.wideContext.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
         it('returns random value from date.weekday.abbr array for abbr option', () => {
@@ -231,16 +231,16 @@ describe('date.js', () => {
             expect(pure.registeredModules.date.weekday.abbr.indexOf(weekday)).toBeGreaterThanOrEqual(0);
         });
 
-        it('returns random value from date.weekday.abbr_context array for abbr and context option', () => {
+        it('returns random value from date.weekday.abbrContext array for abbr and context option', () => {
             const weekday = pure.date.weekday({ abbr: true, context: true });
 
-            expect(pure.registeredModules.date.weekday.abbr_context.indexOf(weekday) !== -1);
+            expect(pure.registeredModules.date.weekday.abbrContext.indexOf(weekday) !== -1);
         });
 
-        it('returns random value when wide_context array is missing', () => {
+        it('returns random value when wideContext array is missing', () => {
             const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
                 weekday: {
-                    wide_context: undefined,
+                    wideContext: undefined,
                     wide: [
                         'January',
                     ],
@@ -253,10 +253,10 @@ describe('date.js', () => {
             stub.restore();
         });
 
-        it('returns random value when abbr_context array is missing', () => {
+        it('returns random value when abbrContext array is missing', () => {
             const stub = sinon.stub(pure.registeredModules, 'date').get(() => ({
                 weekday: {
-                    abbr_context: undefined,
+                    abbrContext: undefined,
                     abbr: [
                         'Jan',
                     ],

@@ -1,6 +1,6 @@
-const sinon = require('sinon');
-const pure = require('../index');
-const Pure = require('../src');
+import sinon from 'sinon';
+import pure from '../index.js';
+import Pure from '../src/index.js';
 
 describe('random.js', () => {
     describe('number()', () => {
@@ -30,13 +30,10 @@ describe('random.js', () => {
 
         it('returns a random number between a range', () => {
             const options = { min: 22, max: 33 };
+            const result = pure.random.number(options);
 
-            for (let i = 0; i < 100; i += 1) {
-                const randomNumber = pure.random.number(options);
-
-                expect(randomNumber).toBeGreaterThanOrEqual(options.min);
-                expect(randomNumber).toBeLessThanOrEqual(options.max);
-            }
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
         });
 
         it('provides numbers with a given precision and a seed', () => {
@@ -45,8 +42,8 @@ describe('random.js', () => {
             const options = { min: 0, max: 1.5, precision: 1 };
             const result = pure.random.number(options);
 
-            expect(result).toBeGreaterThanOrEqual(0);
-            expect(result).toBeLessThanOrEqual(1.5);
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
 
             pure.seed();
         });
@@ -56,49 +53,33 @@ describe('random.js', () => {
             const result = pure.random.number(options);
 
             expect(result.toString().length).toBeLessThan(13);
-            expect(result).toBeLessThanOrEqual(2);
-            expect(result).toBeGreaterThanOrEqual(0);
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
         });
 
         it('provides numbers with precision less than 1', () => {
             const options = { min: 0, max: 2, precision: -1 };
             const result = pure.random.number(options);
 
-            expect(result).toBeLessThanOrEqual(2);
-            expect(result).toBeGreaterThanOrEqual(0);
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
         });
 
         it('provides numbers with a with exact precision', () => {
             const options = { min: 0.5, max: 0.99, precision: 1 };
+            const number = pure.random.number(options);
 
-            for (let i = 0; i < 100; i += 1) {
-                const number = pure.random.number(options);
-
-                expect(number).toEqual(Number(number.toFixed(2)));
-            }
-        });
-
-        it('should not modify the input object', () => {
-            const min = 1;
-            const max = 2;
-            const opts = {
-                min,
-                max,
-            };
-
-            pure.random.number(opts);
-
-            expect(opts.min).toEqual(min);
-            expect(opts.max).toEqual(max);
+            expect(number).toEqual(Number(number.toFixed(2)));
         });
 
         it('should return number less than maximum determined', () => {
             sinon.stub(Math, 'round').returns(4);
 
-            const result = pure.random.number({ min: 2, max: 3, precision: 2 });
+            const options = { min: 2, max: 3, precision: 2 };
+            const result = pure.random.number(options);
 
-            expect(result).toBeLessThanOrEqual(3);
-            expect(result).toBeGreaterThanOrEqual(2);
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
 
             Math.round.restore();
         });
@@ -106,10 +87,11 @@ describe('random.js', () => {
         it('should not return a value below minimum when using precision', () => {
             sinon.stub(Math, 'round').returns(-10);
 
-            const result = pure.random.number({ min: -5, max: 5, precision: 4 });
+            const options = { min: -5, max: 5, precision: 4 };
+            const result = pure.random.number(options);
 
-            expect(result).toBeGreaterThanOrEqual(-5);
-            expect(result).toBeLessThanOrEqual(5);
+            expect(result).toBeGreaterThanOrEqual(options.min);
+            expect(result).toBeLessThanOrEqual(options.max);
 
             Math.round.restore();
         });
@@ -154,13 +136,10 @@ describe('random.js', () => {
 
         it('returns a random number between a range', () => {
             const options = { min: 22, max: 33 };
+            const randomNumber = pure.random.float(options);
 
-            for (let i = 0; i < 5; i += 1) {
-                const randomNumber = pure.random.float(options);
-
-                expect(randomNumber).toBeGreaterThanOrEqual(options.min);
-                expect(randomNumber).toBeLessThanOrEqual(options.max);
-            }
+            expect(randomNumber).toBeGreaterThanOrEqual(options.min);
+            expect(randomNumber).toBeLessThanOrEqual(options.max);
         });
 
         it('provides numbers with a given precision', () => {
@@ -173,26 +152,9 @@ describe('random.js', () => {
 
         it('provides numbers with a with exact precision', () => {
             const options = { min: 0.5, max: 0.99, precision: 1 };
+            const number = pure.random.float(options);
 
-            for (let i = 0; i < 100; i += 1) {
-                const number = pure.random.float(options);
-
-                expect(number).toEqual(Number(number.toFixed(2)));
-            }
-        });
-
-        it('should not modify the input object', () => {
-            const min = 1;
-            const max = 2;
-            const opts = {
-                min,
-                max,
-            };
-
-            pure.random.float(opts);
-
-            expect(opts.min).toEqual(min);
-            expect(opts.max).toEqual(max);
+            expect(number).toEqual(Number(number.toFixed(2)));
         });
     });
 
@@ -477,7 +439,7 @@ describe('random.js', () => {
     });
 
     describe('words()', () => {
-        it('passing "count" parameter', () => {
+        it('passing \'count\' parameter', () => {
             const words = pure.random.words(5);
             const result = words.split(' ');
 

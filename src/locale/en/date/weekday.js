@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     wide: [
         'Sunday',
         'Monday',
@@ -8,7 +8,7 @@ module.exports = {
         'Friday',
         'Saturday',
     ],
-    wide_context: [
+    wideContext: [
         'Sunday',
         'Monday',
         'Tuesday',
@@ -17,6 +17,22 @@ module.exports = {
         'Friday',
         'Saturday',
     ],
-    abbr: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    abbr_context: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    abbr: [
+        'Sun',
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+    ],
+    abbrContext: [
+        'Sun',
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+    ],
 };

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     wide: [
         'January',
         'February',
@@ -13,7 +13,7 @@ module.exports = {
         'November',
         'December',
     ],
-    wide_context: [
+    wideContext: [
         'January',
         'February',
         'March',
@@ -41,7 +41,7 @@ module.exports = {
         'Nov',
         'Dec',
     ],
-    abbr_context: [
+    abbrContext: [
         'Jan',
         'Feb',
         'Mar',

@@ -1,6 +1,6 @@
-const sinon = require('sinon');
-const pure = require('../index');
-const luhnFormula = require('./support/luhnCheck');
+import sinon from 'sinon';
+import pure from '../index.js';
+import luhnFormula from './support/luhnCheck';
 
 describe('finance.js', () => {
     describe('account()', () => {
@@ -243,8 +243,8 @@ describe('finance.js', () => {
             const visa = pure.finance.creditCardNumber('visa');
             const mastercard = pure.finance.creditCardNumber('mastercard');
             const discover = pure.finance.creditCardNumber('discover');
-            const americanExpress = pure.finance.creditCardNumber('american_express');
-            const dinersClub = pure.finance.creditCardNumber('diners_club');
+            const americanExpress = pure.finance.creditCardNumber('american express');
+            const dinersClub = pure.finance.creditCardNumber('diners club');
             const jcb = pure.finance.creditCardNumber('jcb');
             const switchC = pure.finance.creditCardNumber('mastercard');
             const solo = pure.finance.creditCardNumber('solo');
@@ -277,9 +277,9 @@ describe('finance.js', () => {
             expect(luhnFormula(number2)).toEqual(true);
         });
 
-        it('returns a valid credit card number when locale credit_card provider has only one string', () => {
+        it('returns a valid credit card number when locale creditCard provider has only one string', () => {
             const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
-                credit_card: {
+                creditCard: {
                     visa: '4###########L',
                 },
             }));
@@ -291,9 +291,9 @@ describe('finance.js', () => {
             stub.restore();
         });
 
-        it('returns a valid credit card number when locale credit_card has one string', () => {
+        it('returns a valid credit card number when locale creditCard has one string', () => {
             const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
-                credit_card: '4###########L',
+                creditCard: '4###########L',
             }));
             const number = pure.finance.creditCardNumber();
 
@@ -303,10 +303,10 @@ describe('finance.js', () => {
             stub.restore();
         });
 
-        it('returns a valid credit card number when locale credit_card provider has only one string '
+        it('returns a valid credit card number when locale creditCard provider has only one string '
         + 'and provider is passed as parameter', () => {
             const stub = sinon.stub(pure.registeredModules, 'finance').get(() => ({
-                credit_card: {
+                creditCard: {
                     visa: '4###########L',
                 },
             }));

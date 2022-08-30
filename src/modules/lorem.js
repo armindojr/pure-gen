@@ -1,96 +1,95 @@
-class Lorem {
+export default class Lorem {
     constructor(pure) {
-        this.word = (length) => {
-            // when receiving parameter from bind, for somewhat they are in inverse order
-            const hasRightLength = (len, word) => word.length === len;
-            let properLengthWords;
-            if (typeof length === 'undefined') {
-                properLengthWords = pure.registeredModules.lorem.words;
-            } else {
-                properLengthWords = pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, length));
-                if (properLengthWords.length === 0) {
-                    properLengthWords = pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, 14));
-                }
+        this.pure = pure;
+    }
+
+    word(length) {
+        // when receiving parameter from bind, for somewhat they are in inverse order
+        const hasRightLength = (len, word) => word.length === len;
+        let properLengthWords;
+
+        if (typeof length === 'undefined') {
+            properLengthWords = this.pure.registeredModules.lorem.words;
+        } else {
+            properLengthWords = this.pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, length));
+            if (properLengthWords.length === 0) {
+                properLengthWords = this.pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, 14));
             }
+        }
 
-            return pure.random.arrayElement(properLengthWords);
-        };
+        return this.pure.random.arrayElement(properLengthWords);
+    }
 
-        this.words = (num = 3) => {
-            const words = [];
+    words(num = 3) {
+        const words = [];
 
-            for (let i = 0; i < num; i += 1) {
-                words.push(this.word());
-            }
+        for (let i = 0; i < num; i += 1) {
+            words.push(this.pure.lorem.word());
+        }
 
-            return words.join(' ');
-        };
+        return words.join(' ');
+    }
 
-        this.sentence = (wordCount) => {
-            const def = wordCount || pure.random.number({ min: 3, max: 10 });
-            const { sentences } = pure.registeredModules.lorem;
-            let sentence;
+    sentence(wordCount) {
+        const def = wordCount || this.pure.random.number({ min: 3, max: 10 });
 
-            if (sentences instanceof Object && def in sentences) {
-                sentence = pure.random.arrayElement(sentences[def]);
-            } else {
-                sentence = this.words(def);
-            }
+        const sentence = this.pure.lorem.words(def);
 
-            return `${sentence.charAt(0).toUpperCase() + sentence.slice(1)}.`;
-        };
+        return `${sentence.charAt(0).toUpperCase() + sentence.slice(1)}.`;
+    }
 
-        this.sentences = (options = {}) => {
-            let { sentenceCount = pure.random.number({ min: 2, max: 6 }) } = options;
-            const { separator = ' ' } = options;
-            const sentences = [];
+    sentences(options = {}) {
+        let { sentenceCount = this.pure.random.number({ min: 2, max: 6 }) } = options;
+        const { separator = ' ' } = options;
+        const sentences = [];
 
-            for (sentenceCount; sentenceCount > 0; sentenceCount -= 1) {
-                sentences.push(this.sentence());
-            }
+        for (sentenceCount; sentenceCount > 0; sentenceCount -= 1) {
+            sentences.push(this.pure.lorem.sentence());
+        }
 
-            return sentences.join(separator);
-        };
+        return sentences.join(separator);
+    }
 
-        this.slug = (wordCount) => {
-            const words = this.words(wordCount);
-            return pure.helpers.slugify(words);
-        };
+    slug(wordCount) {
+        const words = this.pure.lorem.words(wordCount);
 
-        this.paragraph = (sentenceCount = 3) => this.sentences({ sentenceCount });
+        return this.pure.helpers.slugify(words);
+    }
 
-        this.paragraphs = (options = {}) => {
-            let { paragraphCount = 3 } = options;
-            const { separator = '\n \r' } = options;
-            const paragraphs = [];
+    paragraph(sentenceCount = 3) {
+        return this.pure.lorem.sentences({ sentenceCount });
+    }
 
-            for (paragraphCount; paragraphCount > 0; paragraphCount -= 1) {
-                paragraphs.push(this.paragraph());
-            }
+    paragraphs(options = {}) {
+        let { paragraphCount = 3 } = options;
+        const { separator = '\n \r' } = options;
+        const paragraphs = [];
 
-            return paragraphs.join(separator);
-        };
+        for (paragraphCount; paragraphCount > 0; paragraphCount -= 1) {
+            paragraphs.push(this.pure.lorem.paragraph());
+        }
 
-        this.text = () => {
-            const loremMethods = [
-                'lorem.word',
-                'lorem.words',
-                'lorem.sentence',
-                'lorem.sentences',
-                'lorem.paragraph',
-                'lorem.paragraphs',
-                'lorem.lines',
-            ];
-            const randomLoremMethod = pure.random.arrayElement(loremMethods);
-            return pure.fake(`{{${randomLoremMethod}}}`);
-        };
+        return paragraphs.join(separator);
+    }
 
-        this.lines = (lineCount) => {
-            const def = lineCount || pure.random.number({ min: 1, max: 5 });
+    text() {
+        const loremMethods = [
+            'lorem.word',
+            'lorem.words',
+            'lorem.sentence',
+            'lorem.sentences',
+            'lorem.paragraph',
+            'lorem.paragraphs',
+            'lorem.lines',
+        ];
+        const randomLoremMethod = this.pure.random.arrayElement(loremMethods);
 
-            return this.sentences({ sentenceCount: def, separator: '\n' });
-        };
+        return this.pure.fake.parse(`{{${randomLoremMethod}}}`);
+    }
+
+    lines(lineCount) {
+        const def = lineCount || this.pure.random.number({ min: 1, max: 5 });
+
+        return this.pure.lorem.sentences({ sentenceCount: def, separator: '\n' });
     }
 }
-
-module.exports = Lorem;

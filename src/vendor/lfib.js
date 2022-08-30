@@ -2,7 +2,6 @@
 // Johannes Baagøe <baagoe@baagoe.com>, 2010
 function Mash() {
     var n = 0xefc8249d;
-
     var mash = function (data) {
         data = data.toString();
         for (var i = 0; i < data.length; i++) {
@@ -17,7 +16,6 @@ function Mash() {
         }
         return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
     };
-
     mash.version = 'Mash 0.9';
     return mash;
 }
@@ -25,11 +23,8 @@ function Mash() {
 function LFib() {
     return (function (args) {
         // Johannes Baagøe <baagoe@baagoe.com>, 2010
-        var k0 = 255,
-            k1 = 52,
-            k2 = 0;
+        var k0 = 255, k1 = 52, k2 = 0;
         var s = [];
-
         var mash = Mash();
         if (args.length === 0) {
             args = [+new Date()];
@@ -51,12 +46,10 @@ function LFib() {
             }
         }
         mash = null;
-
         var random = function () {
             k0 = (k0 + 1) & 255;
             k1 = (k1 + 1) & 255;
             k2 = (k2 + 1) & 255;
-
             var x = s[k0] - s[k1];
             if (x < 0.0) {
                 x += 1.0;
@@ -66,17 +59,15 @@ function LFib() {
                 x += 1.0;
             }
             return s[k0] = x;
-        }
-
+        };
         random.uint32 = function () {
             return random() * 0x100000000 >>> 0; // 2^32
         };
         random.fract53 = random;
         random.version = 'LFib 0.9';
         random.args = args;
-
         return random;
     }(Array.prototype.slice.call(arguments)));
-};
+}
 
-module.exports = LFib;
+export default LFib;

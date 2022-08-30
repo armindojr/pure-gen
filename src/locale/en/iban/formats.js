@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     {
         country: 'AL',
         total: 28,

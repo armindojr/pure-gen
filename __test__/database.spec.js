@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('database.js', () => {
     describe('column()', () => {
@@ -71,7 +71,7 @@ describe('database.js', () => {
 
         it('returns exact column type stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'database').get(() => ({
-                type: [ 'int' ],
+                dataType: [ 'int' ],
             }));
 
             const type = pure.database.type();

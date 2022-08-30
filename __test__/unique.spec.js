@@ -1,4 +1,4 @@
-const pure = require('../index');
+import pure from '../index.js';
 
 describe('unique.js', () => {
     describe('exec()', () => {
@@ -18,18 +18,18 @@ describe('unique.js', () => {
         it('is able to call same function with arguments and return a result', () => {
             // third argument is provider, or domain for email
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-
+            
             expect(/[@]c/.test(result)).toEqual(true);
         });
-
+        
         it('is able to exclude results as array', () => {
             const result = pure.unique.exec(pure.internet.protocol, [], { exclude: ['https'] });
-
+            
             expect(result).toEqual('http');
         });
-
+        
         it('is able to limit unique call by maxTime in ms', () => {
-            try {
+            expect(() => {
                 pure.unique.exec(pure.internet.protocol, [], {
                     maxTime: 1,
                     maxRetries: 9999,
@@ -38,13 +38,11 @@ describe('unique.js', () => {
                         'http',
                     ],
                 });
-            } catch (err) {
-                expect(err.message).toContain('Exceeded maxTime');
-            }
+            }).toThrow(/Exceeded maxTime/)
         });
-
+        
         it('is able to limit unique call by maxRetries', () => {
-            try {
+            expect(() => {
                 pure.unique.exec(pure.internet.protocol, [], {
                     maxTime: 5000,
                     maxRetries: 5,
@@ -53,9 +51,7 @@ describe('unique.js', () => {
                         'http',
                     ],
                 });
-            } catch (err) {
-                expect(err.message).toContain('Exceeded maxRetries');
-            }
+            }).toThrow(/Exceeded maxRetries/)
         });
 
         it('is able to call last function with arguments and return a result', () => {
@@ -68,10 +64,10 @@ describe('unique.js', () => {
 
     describe('clear()', () => {
         it('is able to clear the found items at global scope', () => {
-            pure.unique.clear();
             pure.unique.exec(pure.internet.protocol, [], {
                 exclude: ['https'],
             });
+            
             pure.unique.clear();
 
             const result = pure.unique.exec(pure.internet.protocol, [], {
@@ -86,6 +82,7 @@ describe('unique.js', () => {
                 exclude: ['https'],
                 scope: 'pureInternetProtocol',
             });
+
             pure.unique.clear('pureInternetProtocol');
 
             const result = pure.unique.exec(pure.internet.protocol, [], {

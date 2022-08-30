@@ -1,5 +1,5 @@
-const sinon = require('sinon');
-const pure = require('../index');
+import sinon from 'sinon';
+import pure from '../index.js';
 
 describe('git.js', () => {
     describe('branch()', () => {
@@ -66,7 +66,7 @@ describe('git.js', () => {
             expect(pure.name.lastName.calledTwice).toEqual(true);
         });
 
-        describe("with options['merge'] equal to true", () => {
+        describe('with merge equal to true', () => {
             beforeEach(() => {
                 sinon.spy(pure.git, 'shortSha');
             });

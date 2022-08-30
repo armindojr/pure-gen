@@ -1,11 +1,11 @@
-const sinon = require('sinon');
-const pure = require('../index');
-const luhnCheck = require('./support/luhnCheck');
+import sinon from 'sinon';
+import pure from '../index.js';
+import luhnCheck from './support/luhnCheck';
 
 describe('helpers.js', () => {
     describe('replaceSymbolWithNumber()', () => {
         describe('when no symbol passed in', () => {
-            it("uses '#' by default", () => {
+            it('uses \'#\' by default', () => {
                 const num = pure.helpers.replaceSymbolWithNumber({ string: '#AB' });
 
                 expect(/\dAB/.test(num)).toEqual(true);
@@ -30,7 +30,7 @@ describe('helpers.js', () => {
     });
 
     describe('replaceSymbols()', () => {
-        describe("when '*' passed", () => {
+        describe('when \'*\' passed', () => {
             it('replaces it with alphanumeric', () => {
                 const num = pure.helpers.replaceSymbols('*AB');
 
@@ -96,7 +96,7 @@ describe('helpers.js', () => {
     describe('slugify()', () => {
         it('removes unwanted characters from URI string', () => {
             expect(pure.helpers.slugify('Aiden.Harªann')).toEqual('Aiden.Haraann');
-            expect(pure.helpers.slugify("d'angelo.net")).toEqual('dangelo.net');
+            expect(pure.helpers.slugify('d\'angelo.net')).toEqual('dangelo.net');
         });
 
         it('return empty string if passed one is empty too', () => {

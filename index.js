@@ -1,4 +1,3 @@
-// since we are requiring the top level of pure-gen, load all locales by default
-const Pure = require('./src');
+import Pure from './src/index.js';
 
-module.exports = new Pure();
+export default new Pure();

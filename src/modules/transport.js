@@ -1,39 +1,58 @@
-class Transport {
+export default class Transport {
     constructor(pure) {
-        this.vehicleName = () => `${this.vehicleManufacturer()} ${this.vehicleModel()}`;
+        this.pure = pure;
+    }
 
-        this.vehicleManufacturer = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleManufacturer);
+    vehicleName() {
+        return `${this.pure.transport.vehicleManufacturer()} ${this.pure.transport.vehicleModel()}`;
+    }
 
-        this.vehicleModel = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleModel);
+    vehicleManufacturer() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.transport.vehicleManufacturer);
+    }
 
-        this.vehicleType = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleType);
+    vehicleModel() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.transport.vehicleModel);
+    }
 
-        this.vehicleFuel = () => pure.random.arrayElement(pure.registeredModules.transport.vehicleFuel);
+    vehicleType() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.transport.vehicleType);
+    }
 
-        this.vehicleVin = () => {
-            let result = pure.random.alphaNumeric(10);
-            result += pure.random.alpha({ count: 1, upcase: true });
-            result += pure.random.alphaNumeric(1);
-            // return five digit #
-            result += pure.random.number({ min: 10000, max: 99999 });
-            return result.toUpperCase();
-        };
+    vehicleFuel() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.transport.vehicleFuel);
+    }
 
-        this.vehicleColor = () => pure.commerce.color();
+    vehicleVin() {
+        let result = this.pure.random.alphaNumeric(10);
+        result += this.pure.random.alpha({ count: 1, upcase: true });
+        result += this.pure.random.alphaNumeric(1);
+        // return five digit #
+        result += this.pure.random.number({ min: 10000, max: 99999 });
 
-        this.vehicleRM = () => (
-            pure.random.alpha({ count: 2, upcase: true })
-                + pure.random.number({ min: 0, max: 9 })
-                + pure.random.number({ min: 0, max: 9 })
-                + pure.random.alpha({ count: 3, upcase: true })
-        ).toUpperCase();
+        return result.toUpperCase();
+    }
 
-        this.airportName = () => pure.random.arrayElement(pure.registeredModules.transport.airportName);
+    vehicleColor() {
+        return this.pure.commerce.color();
+    }
 
-        this.airportIata = () => pure.random.alpha({ count: 3, upcase: true });
+    vehicleRM() {
+        return (this.pure.random.alpha({ count: 2, upcase: true })
+        + this.pure.random.number({ min: 0, max: 9 })
+        + this.pure.random.number({ min: 0, max: 9 })
+        + this.pure.random.alpha({ count: 3, upcase: true })).toUpperCase();
+    }
 
-        this.airportIcao = () => pure.random.alpha({ count: 2, upcase: true });
+    airportName() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.transport.airportName);
+    }
+
+    airportIata() {
+        return this.pure.random.alpha({ count: 3, upcase: true });
+    }
+
+    airportIcao() {
+        return this.pure.random.alpha({ count: 2, upcase: true });
     }
 }
-
-module.exports = Transport;

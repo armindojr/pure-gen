@@ -1,11 +1,17 @@
-class Games {
+export default class Games {
     constructor(pure) {
-        this.title = () => pure.random.arrayElement(pure.registeredModules.games.title);
+        this.pure = pure;
+    }
 
-        this.genre = () => pure.random.arrayElement(pure.registeredModules.games.genre);
+    title() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.games.title);
+    }
 
-        this.platform = () => pure.random.arrayElement(pure.registeredModules.games.platform);
+    genre() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.games.genre);
+    }
+
+    platform() {
+        return this.pure.random.arrayElement(this.pure.registeredModules.games.platform);
     }
 }
-
-module.exports = Games;

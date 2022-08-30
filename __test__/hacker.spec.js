@@ -1,4 +1,4 @@
-const pure = require('../index');
+import pure from '../index.js';
 
 describe('hacker.js', () => {
     describe('abbreviation()', () => {

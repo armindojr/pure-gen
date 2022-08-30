@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     'Xbox',
     'Xbox 360',
     'Xbox One',

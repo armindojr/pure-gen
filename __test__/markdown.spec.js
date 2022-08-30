@@ -1,14 +1,14 @@
-const pure = require('../index');
+import pure from '../index.js';
 
 describe('markdown.js', () => {
     describe('header()', () => {
-        it("returns text beginning with '#'", () => {
+        it('returns text beginning with \'#\'', () => {
             const header = pure.markdown.header();
 
             expect(0).toEqual(header.indexOf('#'));
         });
 
-        it("returns text beginning with '#' * num", () => {
+        it('returns text beginning with \'#\' * num', () => {
             const header = pure.markdown.header(5);
 
             expect(0).toEqual(header.indexOf('#####'));
@@ -38,7 +38,7 @@ describe('markdown.js', () => {
             expect(table.length).toEqual(5);
         });
 
-        it("returns number of rows is 'num'", () => {
+        it('returns number of rows is \'num\'', () => {
             const table = pure.markdown.table(5).split('\n');
 
             expect(table.length).toEqual(7);

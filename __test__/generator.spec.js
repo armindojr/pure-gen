@@ -1,16 +1,8 @@
-const sinon = require('sinon');
-const inquirer = require('inquirer');
-const fs = require('fs');
-const pure = require('../index');
-const {
-    defaultTemplate,
-    validateTemplate,
-    validateRows,
-    conditionalPath,
-    validatePath,
-    conditionalName,
-    generator,
-} = require('../src/cli/generator');
+import inquirer from 'inquirer';
+import fs from 'fs';
+import sinon from 'sinon';
+import pure from '../index.js';
+import gen from '../src/cli/generator';
 
 describe('generator.js', () => {
     beforeEach(() => {
@@ -32,7 +24,7 @@ describe('generator.js', () => {
             saveName: 'stubtest',
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
         const resultFromFile = JSON.parse(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest.json`));
 
         expect(generatedResult.generated).toEqual(JSON.stringify(resultFromFile));
@@ -46,7 +38,6 @@ describe('generator.js', () => {
         pure.seed(1);
         sinon.stub(fs, 'writeFileSync').returns();
         sinon.stub(inquirer, 'prompt').resolves({
-            localeInput: 'en',
             formatType: 'json',
             templateStr: '{"number":{{random.number}},"zipCode":"{{address.zipCode}}"}',
             rows: 1,
@@ -55,7 +46,7 @@ describe('generator.js', () => {
             saveName: '-',
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
 
         expect(generatedResult.pathJoin).toContain(process.cwd());
 
@@ -66,7 +57,6 @@ describe('generator.js', () => {
     it('generate json file with two entries unique', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
-            localeInput: 'en',
             formatType: 'json',
             templateStr: '{"number":{{random.number}},"zipCode":"{{address.zipCode}}"}',
             rows: 2,
@@ -75,7 +65,7 @@ describe('generator.js', () => {
             saveName: 'stubtest1',
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
         const resultFromFile = JSON.parse(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest1.json`));
 
         expect(generatedResult.generated).toEqual(JSON.stringify(resultFromFile));
@@ -89,7 +79,6 @@ describe('generator.js', () => {
     it('generate txt file with two entries unique', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
-            localeInput: 'en',
             formatType: 'txt',
             templateStr: '{{random.number}}; {{address.zipCode}};\n',
             rows: 2,
@@ -98,7 +87,7 @@ describe('generator.js', () => {
             saveName: 'stubtest2',
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
         const resultFromFile = String(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest2.txt`));
 
         expect(generatedResult.generated).toEqual(resultFromFile);
@@ -109,7 +98,6 @@ describe('generator.js', () => {
     it('generate txt file with two entries', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
-            localeInput: 'en',
             formatType: 'txt',
             templateStr: '{{random.number}}; {{address.zipCode}};\n',
             rows: 2,
@@ -118,7 +106,7 @@ describe('generator.js', () => {
             saveName: 'stubtest3',
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
         const resultFromFile = String(fs.readFileSync(`${process.cwd()}/__test__/support/stubtest3.txt`));
 
         expect(generatedResult.generated).toEqual(resultFromFile);
@@ -129,14 +117,13 @@ describe('generator.js', () => {
     it('generate text and don\'t save', async () => {
         pure.seed(1);
         sinon.stub(inquirer, 'prompt').resolves({
-            localeInput: 'en',
             formatType: 'none',
             templateStr: '{{random.number}} <-> {{address.zipCode}}',
             rows: 1,
             uniqueRows: false,
         });
 
-        const generatedResult = await generator();
+        const generatedResult = await gen.generator({});
         const splitted = generatedResult.generated.split(' <-> ');
 
         expect(splitted.length).toEqual(2);
@@ -147,7 +134,7 @@ describe('generator.js', () => {
     it('generate and throws error', async () => {
         sinon.stub(inquirer, 'prompt').resolves();
 
-        await generator().catch((err) => {
+        await gen.generator({}).catch((err) => {
             expect(err).toBeDefined();
         });
 
@@ -156,79 +143,79 @@ describe('generator.js', () => {
 
     describe('call auxiliary functions', () => {
         it('defaultTemplate with formatType json', () => {
-            const result = defaultTemplate({ formatType: 'json' });
+            const result = gen.defaultTemplate({ formatType: 'json' });
 
             expect(result).toEqual('{ "number": {{random.number}}, "pass": "{{internet.password}}" }');
         });
 
         it('defaultTemplate with formatType csv', () => {
-            const result = defaultTemplate({ formatType: 'csv' });
+            const result = gen.defaultTemplate({ formatType: 'csv' });
 
-            expect(result).toEqual('{{random.number}}; {{internet.password}}; {{address.city}};');
+            expect(result).toEqual('{{random.number}}; {{internet.password}}; {{address.city}};\n');
         });
 
         it('validateTemplate passing invalid string', () => {
-            const result = validateTemplate('');
+            const result = gen.validateTemplate('');
 
             expect(result).toEqual('You need to pass a valid string!');
         });
 
         it('validateTemplate passing valid string', () => {
-            const result = validateTemplate('test');
+            const result = gen.validateTemplate('test');
 
             expect(result).toEqual(true);
         });
 
         it('validateRows passing invalid number', () => {
-            const result = validateRows(NaN);
+            const result = gen.validateRows(NaN);
 
             expect(result).toEqual('You need to pass a valid number');
         });
 
         it('validateRows passing valid number', () => {
-            const result = validateRows(1);
+            const result = gen.validateRows(1);
 
             expect(result).toEqual(true);
         });
 
         it('conditionalPath formatType json', () => {
-            const result = conditionalPath({ formatType: 'json' });
+            const result = gen.conditionalPath({ formatType: 'json' });
 
             expect(result).toEqual(true);
         });
 
         it('conditionalPath formatType none', () => {
-            const result = conditionalPath({ formatType: 'none' });
+            const result = gen.conditionalPath({ formatType: 'none' });
 
             expect(result).toEqual(false);
         });
 
         it('validatePath invalid string', () => {
-            const result = validatePath('');
+            const result = gen.validatePath('');
 
             expect(result).toEqual('You need to pass a valid string!');
         });
 
         it('validatePath invalid dir', () => {
-            const result = validatePath('/ehgdeuyhgfj');
+            const result = gen.validatePath('/ehgdeuyhgfj');
 
             expect(result).toEqual('No such directory. You need to pass a valid path!');
         });
 
         it('validatePath valid dir', () => {
-            const result = validatePath('./__test__');
+            const result = gen.validatePath('./__test__');
 
             expect(result).toEqual(true);
         });
 
         it('conditionalName formatType json', () => {
-            const result = conditionalName({ formatType: 'json' });
+            const result = gen.conditionalName({ formatType: 'json' });
 
             expect(result).toEqual(true);
         });
 
         it('conditionalName formatType none', () => {
-            const result = conditionalName({ formatType: 'none' });
+            const result = gen.conditionalName({ formatType: 'none' });
 
             expect(result).toEqual(false);
         });
