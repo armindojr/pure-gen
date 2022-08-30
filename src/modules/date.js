@@ -44,7 +44,6 @@ class pureDate {
             return date;
         };
 
-        // TODO: Review why is returning string and not date object
         this.between = (options) => {
             const def = options || {};
             const { from = this.past({ years: 5 }), to = new Date() } = def;
@@ -52,7 +51,7 @@ class pureDate {
             const fromMilli = Date.parse(from);
             const dateOffset = pure.random.number(Date.parse(to) - fromMilli);
 
-            return new Date(fromMilli + dateOffset).toISOString();
+            return new Date(fromMilli + dateOffset);
         };
 
         this.arrayBetween = (options) => {

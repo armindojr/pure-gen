@@ -128,7 +128,6 @@ describe('date.js', () => {
             const date = pure.date.between();
 
             expect(date).toBeDefined();
-            expect(typeof date).toBe('string');
         });
     });
 

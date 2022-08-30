@@ -110,15 +110,17 @@ class Helpers {
 
         this.regexpStyleStringParse = (string) => {
             let def = string || '';
-            // Deal with range repeat `{min,max}`
-            const RANGE_REP_REG = /(.)\{(\d+),(\d+)\}/;
-            const REP_REG = /(.)\{(\d+)\}/;
-            const RANGE_REG = /\[(\d+)-(\d+)\]/;
+            const rangeRepeat = /(.)\{(\d+),(\d+)\}/;
+            const exactRepeat = /(.)\{(\d+)\}/;
+            const digitInterval = /\[(\d+)-(\d+)\]/;
+
             let min;
             let max;
             let tmp;
             let repetitions;
-            let token = def.match(RANGE_REP_REG);
+
+            // Deal with range repeat char `{min,max}`
+            let token = def.match(rangeRepeat);
             while (token !== null) {
                 min = parseInt(token[2], 10);
                 max = parseInt(token[3], 10);
@@ -132,20 +134,22 @@ class Helpers {
                 def = def.slice(0, token.index)
                     + this.repeatString({ string: token[1], num: repetitions })
                     + def.slice(token.index + token[0].length);
-                token = def.match(RANGE_REP_REG);
+                token = def.match(rangeRepeat);
             }
-            // Deal with repeat `{num}`
-            token = def.match(REP_REG);
+
+            // Deal with exactly repeat `{num}`
+            token = def.match(exactRepeat);
             while (token !== null) {
                 repetitions = parseInt(token[2], 10);
                 def = def.slice(0, token.index)
                     + this.repeatString({ string: token[1], num: repetitions })
                     + def.slice(token.index + token[0].length);
-                token = def.match(REP_REG);
+                token = def.match(exactRepeat);
             }
-            // Deal with range `[min-max]` (only works with numbers for now)
+
+            // Deal with random digit from interval `[min-max]`
             // TODO: implement for letters e.g. [0-9a-zA-Z] etc.
-            token = def.match(RANGE_REG);
+            token = def.match(digitInterval);
             while (token !== null) {
                 // This time we are not capturing the char before `[]`
                 min = parseInt(token[1], 10);
@@ -159,8 +163,9 @@ class Helpers {
                 def = def.slice(0, token.index)
                     + pure.random.number({ min, max }).toString()
                     + def.slice(token.index + token[0].length);
-                token = def.match(RANGE_REG);
+                token = def.match(digitInterval);
             }
+
             return def;
         };
 

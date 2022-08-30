@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v2.1.2
+
+### API Fixes
+* Fixed bug on pure.date.between and pure.date.arrayBetween that was returning string and not an date object
+
 ## v2.1.1
 
 ### General Fixes
