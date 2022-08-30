@@ -1,7 +1,7 @@
 {
   "name": "pure-gen",
   "description": "Generate fake data to be used in test automation",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "keywords": [
     "pure",
     "generator",
