@@ -1,6 +1,6 @@
 # Run on new travis container (docker) based infrastructure
 language: node_js
-dist: xenial
+dist: focal
 os: linux
 node_js:
   - "18"
