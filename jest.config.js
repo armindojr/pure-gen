@@ -4,10 +4,10 @@ export default {
   collectCoverage: false,
 
   collectCoverageFrom: [
-    "src/cli/generator.js",
-    "src/modules/**.js",
-    "src/imports.js",
-    "src/index.js",
+    "packages/core/src/cli/generator.js",
+    "packages/core/src/modules/**.js",
+    "packages/core/src/imports.js",
+    "packages/core/src/index.js"
   ],
 
   coverageDirectory: "coverage",
