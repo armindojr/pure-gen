@@ -17,6 +17,7 @@
   "homepage": "https://armindojr.github.io/pure-gen/packages/pure-locale-en",
   "main": "index.js",
   "scripts": {
+    "build": "node generate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "GPL-3.0-only",

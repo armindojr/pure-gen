@@ -6,4 +6,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-fs.writeFileSync(path.join(__dirname, 'en.json'), JSON.stringify(en, undefined, 4))
+console.log('Generating en.json ...');
+fs.writeFileSync(path.join(__dirname, 'en.json'), JSON.stringify(en, undefined, 4));
+console.log('Done!');
