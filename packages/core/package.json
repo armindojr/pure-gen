@@ -45,7 +45,7 @@
     "randexp": "^0.5.3",
     "slugify": "^1.6.5",
     "uuid": "^8.3.2",
-    "pure-locale-en": "*"
+    "pure-locale-en": "3.0.0"
   },
   "bin": {
     "pure": "./bin/pure.js"

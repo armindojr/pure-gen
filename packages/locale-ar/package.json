@@ -1,6 +1,6 @@
 {
-  "name": "pure-locale-en",
-  "description": "English base localization for pure-gen",
+  "name": "pure-locale-ar",
+  "description": "Arabic localization for pure-gen",
   "version": "3.0.0",
   "keywords": [
     "pure",
@@ -19,6 +19,9 @@
   "scripts": {
     "build": "node generate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pure-gen": "3.0.0"
   },
   "license": "GPL-3.0-only",
   "type": "module",

@@ -20,11 +20,13 @@
     "url": "https://github.com/armindojr/pure-gen.git"
   },
   "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "graph": "npx nx graph",
+    "build": "npx lerna run build",
     "test": "npx lerna run test",
     "coverage": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "coverage:html": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --coverageReporters html",
-    "coverage:report": "codecov",
-    "bootstrap": "npx lerna bootstrap"
+    "coverage:report": "codecov"
   },
   "devDependencies": {
     "lerna": "^5.4.3"
