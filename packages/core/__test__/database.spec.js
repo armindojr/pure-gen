@@ -11,7 +11,7 @@ describe('database.js', () => {
 
         it('returns exact column name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'database').get(() => ({
-                column: [ 'title' ],
+                column: ['title'],
             }));
 
             const column = pure.database.column();
@@ -31,7 +31,7 @@ describe('database.js', () => {
 
         it('returns exact collation stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'database').get(() => ({
-                collation: [ 'utf8_bin' ],
+                collation: ['utf8_bin'],
             }));
 
             const collation = pure.database.collation();
@@ -51,7 +51,7 @@ describe('database.js', () => {
 
         it('returns exact engine stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'database').get(() => ({
-                engine: [ 'InnoDB' ],
+                engine: ['InnoDB'],
             }));
 
             const engine = pure.database.engine();
@@ -71,7 +71,7 @@ describe('database.js', () => {
 
         it('returns exact column type stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'database').get(() => ({
-                dataType: [ 'int' ],
+                dataType: ['int'],
             }));
 
             const type = pure.database.type();

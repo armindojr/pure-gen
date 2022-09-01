@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import startRepl from '../src/cli/repl.js';
-import { generator } from '../src/cli/generator.js';
+import gen from '../src/cli/generator.js';
 
 const program = new Command();
 
@@ -23,7 +23,7 @@ program
     .description('Generate fake data based on given template from CLI')
     .option('-l, --locale <path to locale>', 'specify the path to locale that will be used. It must be a json file.')
     .action((arg) => {
-        generator(arg);
+        gen.generator(arg);
     });
 
 program.parse(process.argv);

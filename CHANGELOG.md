@@ -4,7 +4,7 @@
 
 *Attention! breaking changes between v2 and v3*
 
-pure-gen is now a native Node ECMAScript module This will require your Node runtime to support es modules, and your app to be an es module. To keep up with this changes we are upgrading minimum node version requiriments to v14 and above.
+pure-gen is now a native Node ECMAScript module This will require your Node runtime to support es modules, and your app to be an es module. To keep up with this changes we are upgrading minimum node and npm version requirements. Node >= 14 and npm >= 8
 
 If you cannot migrate, please remember you can keep using the v2.x release line until you're ready.
 

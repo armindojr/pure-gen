@@ -5,10 +5,6 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
 import pure from '../../index.js';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const formats = [
     'csv',
@@ -169,7 +165,6 @@ function generator(arg) {
     });
 }
 
-export { generator };
 export default {
     defaultTemplate,
     validateTemplate,

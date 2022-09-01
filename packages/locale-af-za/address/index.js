@@ -4,5 +4,5 @@ const defaultCountry = ['South Africa'];
 
 export default {
     defaultCountry,
-    postcode
-}
+    postcode,
+};

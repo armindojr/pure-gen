@@ -1,5 +1,5 @@
-import * as imports from './imports.js';
 import en from 'pure-locale-en';
+import * as imports from './imports.js';
 
 /**
  *
@@ -7,7 +7,16 @@ import en from 'pure-locale-en';
  */
 class Pure {
     constructor(locale) {
-        this.registeredModules = locale || en;
+        this.registeredModules = {};
+
+        if (locale) {
+            this.registeredModules = {
+                ...en,
+                ...locale,
+            };
+        } else {
+            this.registeredModules = en;
+        }
 
         this.possibleLocales = [
             'af_ZA', 'ar', 'az', 'cz', 'de', 'de_AT', 'de_CH',
@@ -54,7 +63,10 @@ class Pure {
     }
 
     setLocale(locale) {
-        this.registeredModules = locale;
+        this.registeredModules = {
+            ...en,
+            ...locale,
+        };
     }
 
     getSeed() {

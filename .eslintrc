@@ -1,6 +1,6 @@
 {
     "env": {
-        "mocha": true,
+        "jest": true,
         "es6": true,
         "node": true
     },
@@ -11,6 +11,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": 9,
         "sourceType": "module"
@@ -20,14 +21,12 @@
             "error",
             4
         ],
-        "max-len": [
-            "warn",
-            120
-        ],
+        "max-len": "off",
         "no-global-assign": "warn",
         "no-bitwise": "off",
         "default-param-last": "off",
         "import/extensions": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "no-underscore-dangle": "off"
     }
 }

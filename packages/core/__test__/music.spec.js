@@ -11,7 +11,7 @@ describe('music.js', () => {
 
         it('returns exact genre stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'music').get(() => ({
-                genre: [ 'Rock' ],
+                genre: ['Rock'],
             }));
 
             const genre = pure.music.genre();

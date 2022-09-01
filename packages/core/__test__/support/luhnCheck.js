@@ -1,4 +1,4 @@
-export default function (number){
+export default function luhnCheck(number) {
     const nNumber = number.replace(/\D/g, '');
     let split = nNumber.split('');
     split = split.map((num) => parseInt(num, 10));
@@ -16,4 +16,4 @@ export default function (number){
     });
     const sum = split.reduce((prev, curr) => prev + curr);
     return (sum % 10 === check);
-};
+}

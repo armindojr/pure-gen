@@ -11,7 +11,7 @@ describe('dessert.js', () => {
 
         it('returns exact dessert flavor stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
-                flavor: [ 'Cake' ],
+                flavor: ['Cake'],
             }));
 
             const flavor = pure.dessert.flavor();
@@ -31,7 +31,7 @@ describe('dessert.js', () => {
 
         it('returns exact dessert topping stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
-                topping: [ 'Gummy Bears' ],
+                topping: ['Gummy Bears'],
             }));
 
             const topping = pure.dessert.topping();
@@ -51,7 +51,7 @@ describe('dessert.js', () => {
 
         it('returns exact dessert variety stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'dessert').get(() => ({
-                variety: [ 'Vanilla' ],
+                variety: ['Vanilla'],
             }));
 
             const variety = pure.dessert.variety();

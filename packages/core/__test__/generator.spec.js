@@ -1,10 +1,12 @@
+/* eslint no-console: "off" */
+
 import inquirer from 'inquirer';
 import fs from 'fs';
 import sinon from 'sinon';
-import pure from '../index.js';
-import gen from '../src/cli/generator';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import pure from '../index.js';
+import gen from '../src/cli/generator';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -113,6 +115,25 @@ describe('generator.js', () => {
 
         const generatedResult = await gen.generator({});
         const resultFromFile = String(fs.readFileSync(`${__dirname}/support/stubtest3.txt`));
+
+        expect(generatedResult.generated).toEqual(resultFromFile);
+
+        inquirer.prompt.restore();
+    });
+
+    it('generate json file with cli parameter', async () => {
+        pure.seed(1);
+        sinon.stub(inquirer, 'prompt').resolves({
+            formatType: 'txt',
+            templateStr: '{{address.defaultCountry}}\n',
+            rows: 1,
+            uniqueRows: true,
+            savePath: `${__dirname}/support`,
+            saveName: 'stubtest4',
+        });
+
+        const generatedResult = await gen.generator({ locale: `${__dirname}/support/localeTest.json` });
+        const resultFromFile = String(fs.readFileSync(`${__dirname}/support/stubtest4.txt`));
 
         expect(generatedResult.generated).toEqual(resultFromFile);
 

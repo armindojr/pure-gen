@@ -995,9 +995,9 @@
             "الطويل"
         ],
         "name": [
-            "#{prefix} #{first_name} #{last_name}",
-            "#{first_name} #{last_name}",
-            "#{last_name} #{first_name}"
+            "#{prefix} #{firstName} #{lastName}",
+            "#{firstName} #{lastName}",
+            "#{lastName} #{firstName}"
         ],
         "prefix": [
             "سيد",

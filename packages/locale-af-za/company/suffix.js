@@ -1,5 +1,5 @@
 export default [
-    'Pty Ltd', 
-    'Ltd', 
-    'CC'
+    'Pty Ltd',
+    'Ltd',
+    'CC',
 ];

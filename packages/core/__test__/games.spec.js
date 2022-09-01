@@ -11,7 +11,7 @@ describe('games.js', () => {
 
         it('returns exact game title stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'games').get(() => ({
-                title: [ 'Half-Life' ],
+                title: ['Half-Life'],
             }));
 
             const title = pure.games.title();
@@ -31,7 +31,7 @@ describe('games.js', () => {
 
         it('returns exact game genre stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'games').get(() => ({
-                genre: [ 'First-person shooter' ],
+                genre: ['First-person shooter'],
             }));
 
             const genre = pure.games.genre();
@@ -51,7 +51,7 @@ describe('games.js', () => {
 
         it('returns exact game platform stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'games').get(() => ({
-                platform: [ 'Nintendo DS' ],
+                platform: ['Nintendo DS'],
             }));
 
             const platform = pure.games.platform();

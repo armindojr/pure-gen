@@ -11,8 +11,8 @@ describe('transport.js', () => {
 
         it('returns exact vehicle stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
-                vehicleManufacturer: [ 'Ford' ],
-                vehicleModel: [ 'Explorer' ],
+                vehicleManufacturer: ['Ford'],
+                vehicleModel: ['Explorer'],
             }));
 
             const vehicle = pure.transport.vehicleName();
@@ -32,7 +32,7 @@ describe('transport.js', () => {
 
         it('returns exact manufacturer stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
-                vehicleManufacturer: [ 'Porsche' ],
+                vehicleManufacturer: ['Porsche'],
             }));
 
             const manufacturer = pure.transport.vehicleManufacturer();
@@ -52,7 +52,7 @@ describe('transport.js', () => {
 
         it('returns exact vehicle type stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
-                vehicleType: [ 'Minivan' ],
+                vehicleType: ['Minivan'],
             }));
 
             const type = pure.transport.vehicleType();
@@ -72,7 +72,7 @@ describe('transport.js', () => {
 
         it('returns exact fuel type stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
-                vehicleFuel: [ 'Hybrid' ],
+                vehicleFuel: ['Hybrid'],
             }));
 
             const fuel = pure.transport.vehicleFuel();
@@ -120,7 +120,7 @@ describe('transport.js', () => {
                 .onFirstCall()
                 .returns(5)
                 .onSecondCall()
-                .returns(9)
+                .returns(9);
 
             const vrm = pure.transport.vehicleRM();
 
@@ -147,7 +147,7 @@ describe('transport.js', () => {
 
         it('returns exact international airport stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'transport').get(() => ({
-                airportName: [ 'Los Angeles International Airport' ],
+                airportName: ['Los Angeles International Airport'],
             }));
 
             const airport = pure.transport.airportName();

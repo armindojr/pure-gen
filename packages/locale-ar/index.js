@@ -14,5 +14,5 @@ export default {
     commerce,
     name,
     team,
-    transport
-}
+    transport,
+};

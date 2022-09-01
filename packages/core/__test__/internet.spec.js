@@ -1,6 +1,6 @@
 import sinon from 'sinon';
-import pure from '../index.js';
 import slugify from 'slugify';
+import pure from '../index.js';
 
 describe('internet.js', () => {
     describe('email()', () => {
@@ -248,7 +248,13 @@ describe('internet.js', () => {
         it('returns a valid user-agent', () => {
             const ua = pure.internet.userAgent();
 
-            expect(ua).toBeDefined();
+            expect(typeof ua).toEqual('string');
+        });
+
+        it('returns a valid user-agent with specific provider', () => {
+            const ua = pure.internet.userAgent({ provider: 'safari' });
+
+            expect(typeof ua).toEqual('string');
         });
 
         it('is deterministic', () => {
@@ -257,6 +263,32 @@ describe('internet.js', () => {
 
             pure.seed(1);
             const ua2 = pure.internet.userAgent();
+
+            expect(ua1).toEqual(ua2);
+
+            pure.seed();
+        });
+    });
+
+    describe('botUserAgent()', () => {
+        it('returns a valid bot user-agent', () => {
+            const ua = pure.internet.botUserAgent();
+
+            expect(typeof ua).toEqual('string');
+        });
+
+        it('returns a valid bot user-agent with specific provider', () => {
+            const ua = pure.internet.botUserAgent({ provider: 'googlebot' });
+
+            expect(typeof ua).toEqual('string');
+        });
+
+        it('is deterministic', () => {
+            pure.seed(1);
+            const ua1 = pure.internet.botUserAgent();
+
+            pure.seed(1);
+            const ua2 = pure.internet.botUserAgent();
 
             expect(ua1).toEqual(ua2);
 

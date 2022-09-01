@@ -23,13 +23,15 @@
     "bootstrap": "npx lerna bootstrap",
     "graph": "npx nx graph",
     "build": "npx lerna run build",
+    "lint": "npx eslint -c ./.eslintrc ./packages",
+    "lint:fix": "npx eslint -c ./.eslintrc ./packages --fix",
     "test": "npx lerna run test",
     "coverage": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "coverage:html": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --coverageReporters html",
     "coverage:report": "codecov"
   },
   "devDependencies": {
-    "lerna": "^5.4.3"
+    "lerna": "^5.5.0"
   },
   "dependencies": {},
   "license": "GPL-3.0-only",

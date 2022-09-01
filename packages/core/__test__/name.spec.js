@@ -121,7 +121,7 @@ describe('name.js', () => {
     describe('lastName()', () => {
         it('returns a random name when locale doesn\'t have male and female names', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
+                lastName: ['foo'],
                 maleLastName: undefined,
                 femaleLastName: undefined,
             }));
@@ -136,9 +136,9 @@ describe('name.js', () => {
         it('returns a random name when random number is 0', () => {
             sinon.stub(pure.random, 'number').returns(0);
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
-                maleLastName: [ 'bar' ],
-                femaleLastName: [ 'test' ],
+                lastName: ['foo'],
+                maleLastName: ['bar'],
+                femaleLastName: ['test'],
             }));
 
             const lastName = pure.name.lastName();
@@ -152,9 +152,9 @@ describe('name.js', () => {
         it('returns a random name when random number is 1', () => {
             sinon.stub(pure.random, 'number').returns(1);
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
-                maleLastName: [ 'bar' ],
-                femaleLastName: [ 'test' ],
+                lastName: ['foo'],
+                maleLastName: ['bar'],
+                femaleLastName: ['test'],
             }));
 
             const lastName = pure.name.lastName();
@@ -167,9 +167,9 @@ describe('name.js', () => {
 
         it('returns a random name when parameter is 0', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
-                maleLastName: [ 'bar' ],
-                femaleLastName: [ 'test' ],
+                lastName: ['foo'],
+                maleLastName: ['bar'],
+                femaleLastName: ['test'],
             }));
 
             const lastName = pure.name.lastName(0);
@@ -181,9 +181,9 @@ describe('name.js', () => {
 
         it('returns a random name when parameter is 0 and male last name is undefined', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
+                lastName: ['foo'],
                 maleLastName: undefined,
-                femaleLastName: [ 'test' ],
+                femaleLastName: ['test'],
             }));
 
             const lastName = pure.name.lastName(0);
@@ -195,9 +195,9 @@ describe('name.js', () => {
 
         it('returns a random name when parameter is 1', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
-                maleLastName: [ 'bar' ],
-                femaleLastName: [ 'test' ],
+                lastName: ['foo'],
+                maleLastName: ['bar'],
+                femaleLastName: ['test'],
             }));
 
             const lastName = pure.name.lastName(1);
@@ -209,8 +209,8 @@ describe('name.js', () => {
 
         it('returns a random name when parameter is 1 and female last name is undefined', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
-                maleLastName: [ 'bar' ],
+                lastName: ['foo'],
+                maleLastName: ['bar'],
                 femaleLastName: undefined,
             }));
 
@@ -223,7 +223,7 @@ describe('name.js', () => {
 
         it('returns a random name when parameter is 0 and locale doesn\'t have gendered names', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                lastName: [ 'foo' ],
+                lastName: ['foo'],
                 maleLastName: undefined,
                 femaleLastName: undefined,
             }));
@@ -421,7 +421,7 @@ describe('name.js', () => {
     describe('suffix()', () => {
         it('returns random name suffix', () => {
             const stub = sinon.stub(pure.registeredModules, 'name').get(() => ({
-                suffix: [ 'foo' ]
+                suffix: ['foo'],
             }));
 
             const suffix = pure.name.suffix();
@@ -429,6 +429,6 @@ describe('name.js', () => {
             expect(suffix).toEqual('foo');
 
             stub.restore();
-        })
-    })
+        });
+    });
 });

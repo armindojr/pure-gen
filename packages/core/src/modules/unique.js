@@ -116,8 +116,6 @@ export default class Unique {
             this.exclude = [];
             this.startTime = 0;
             this.currentIterations = 0;
-            this.globalFound = {};
-            this.scopedFound = {};
 
             return result;
         }

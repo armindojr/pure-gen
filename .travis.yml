@@ -8,6 +8,7 @@ node_js:
   - "14"
 
 install:
+  - npm i npm@8 -g
   - npm i
 
 script:

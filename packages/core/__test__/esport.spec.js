@@ -11,7 +11,7 @@ describe('esport.js', () => {
 
         it('returns exact player name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
-                players: [ 'shroud' ],
+                players: ['shroud'],
             }));
 
             const players = pure.esport.players();
@@ -31,7 +31,7 @@ describe('esport.js', () => {
 
         it('returns exact teams name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
-                teams: [ 'FaZe' ],
+                teams: ['FaZe'],
             }));
 
             const teams = pure.esport.teams();
@@ -51,7 +51,7 @@ describe('esport.js', () => {
 
         it('returns exact events name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
-                events: [ 'ESL Cologne' ],
+                events: ['ESL Cologne'],
             }));
 
             const events = pure.esport.events();
@@ -71,7 +71,7 @@ describe('esport.js', () => {
 
         it('returns exact leagues name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
-                leagues: [ 'IEM' ],
+                leagues: ['IEM'],
             }));
 
             const leagues = pure.esport.leagues();
@@ -91,7 +91,7 @@ describe('esport.js', () => {
 
         it('returns exact games name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'esport').get(() => ({
-                games: [ 'CS:GO' ],
+                games: ['CS:GO'],
             }));
 
             const games = pure.esport.games();

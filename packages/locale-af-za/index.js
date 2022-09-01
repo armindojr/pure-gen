@@ -4,7 +4,7 @@ import internet from './internet/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
-const title = 'South Africa (Afrikaans)'
+const title = 'South Africa (Afrikaans)';
 
 export default {
     title,
@@ -12,5 +12,5 @@ export default {
     company,
     internet,
     name,
-    phoneNumber
-}
+    phoneNumber,
+};

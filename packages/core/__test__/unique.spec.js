@@ -6,6 +6,7 @@ describe('unique.js', () => {
             const result = pure.unique.exec(pure.internet.email);
 
             expect(typeof result).toBe('string');
+            pure.unique.clear();
         });
 
         it('is able to call a function with arguments and return a result', () => {
@@ -13,21 +14,31 @@ describe('unique.js', () => {
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
 
             expect(/[@]c/.test(result)).toEqual(true);
+            pure.unique.clear();
         });
 
         it('is able to call same function with arguments and return a result', () => {
             // third argument is provider, or domain for email
             const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-            
+
             expect(/[@]c/.test(result)).toEqual(true);
+            pure.unique.clear();
         });
-        
+
         it('is able to exclude results as array', () => {
             const result = pure.unique.exec(pure.internet.protocol, [], { exclude: ['https'] });
-            
+
             expect(result).toEqual('http');
+            pure.unique.clear();
         });
-        
+
+        it('is able to exclude results as string', () => {
+            const result = pure.unique.exec(pure.internet.protocol, [], { exclude: 'https' });
+
+            expect(result).toEqual('http');
+            pure.unique.clear();
+        });
+
         it('is able to limit unique call by maxTime in ms', () => {
             expect(() => {
                 pure.unique.exec(pure.internet.protocol, [], {
@@ -38,9 +49,9 @@ describe('unique.js', () => {
                         'http',
                     ],
                 });
-            }).toThrow(/Exceeded maxTime/)
+            }).toThrow(/Exceeded maxTime/);
         });
-        
+
         it('is able to limit unique call by maxRetries', () => {
             expect(() => {
                 pure.unique.exec(pure.internet.protocol, [], {
@@ -51,14 +62,7 @@ describe('unique.js', () => {
                         'http',
                     ],
                 });
-            }).toThrow(/Exceeded maxRetries/)
-        });
-
-        it('is able to call last function with arguments and return a result', () => {
-            // third argument is provider, or domain for email
-            const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
-
-            expect(/[@]c/.test(result)).toEqual(true);
+            }).toThrow(/Exceeded maxRetries/);
         });
     });
 
@@ -67,7 +71,7 @@ describe('unique.js', () => {
             pure.unique.exec(pure.internet.protocol, [], {
                 exclude: ['https'],
             });
-            
+
             pure.unique.clear();
 
             const result = pure.unique.exec(pure.internet.protocol, [], {

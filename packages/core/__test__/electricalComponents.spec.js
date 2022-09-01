@@ -11,7 +11,7 @@ describe('electricalComponents.js', () => {
 
         it('returns exact active components name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
-                active: [ 'Diode' ],
+                active: ['Diode'],
             }));
 
             const active = pure.electricalComponents.active();
@@ -31,7 +31,7 @@ describe('electricalComponents.js', () => {
 
         it('returns exact passive components name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
-                passive: [ 'Varistor' ],
+                passive: ['Varistor'],
             }));
 
             const passive = pure.electricalComponents.passive();
@@ -51,7 +51,7 @@ describe('electricalComponents.js', () => {
 
         it('returns exact electromechanical components name stubbed', () => {
             const stub = sinon.stub(pure.registeredModules, 'electricalComponents').get(() => ({
-                electromechanical: [ 'crystal' ],
+                electromechanical: ['crystal'],
             }));
 
             const electromechanical = pure.electricalComponents.electromechanical();
