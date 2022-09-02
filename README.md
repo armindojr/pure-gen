@@ -37,14 +37,14 @@ Run in your cli:
 $ npx pure repl
 ```
 
-This will start repl interface with pure. For more information see [Repl](https://armindojr.github.io/pure-gen/repl.html)
+This will start repl interface with pure. For more information see [Repl](https://armindojr.github.io/pure-gen/cli/repl)
 
 or:
 ```
 $ npx pure generate
 ```
 
-This will ask some questions and generate fake data based on pre-configured template. You can save in any given format. For more information see [Generator](https://armindojr.github.io/pure-gen/generator.html)
+This will ask some questions and generate fake data based on pre-configured template. You can save in any given format. For more information see [Generator](https://armindojr.github.io/pure-gen/cli/generator)
 
 
 ## Usage
@@ -55,7 +55,7 @@ $ npm i --save pure-gen
 ```
 
 ```js
-const pure = require('pure-gen');
+import pure from 'pure-gen';
 
 let randomName = pure.name.findName(); // Rowan Nikolaus
 ```
