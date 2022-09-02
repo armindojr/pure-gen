@@ -1,0 +1,31 @@
+{
+  "name": "pure-locale-de-at",
+  "description": "German (Austria) base localization for pure-gen",
+  "version": "3.0.0",
+  "keywords": [
+    "pure",
+    "generator",
+    "mock",
+    "fake",
+    "data",
+    "test",
+    "test automation"
+  ],
+  "contributors": [
+    "Armindo Junior <armindo.junior05@gmail.com>"
+  ],
+  "homepage": "https://armindojr.github.io/pure-gen/",
+  "main": "index.js",
+  "scripts": {
+    "build": "node generate.js",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "dependencies": {
+    "pure-gen": "3.0.0"
+  },
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
