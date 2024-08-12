@@ -10,3 +10,8 @@ nyc.conf.json
 .travis.yml
 .eslintignore
 .eslintrc
+.prettierrc
+babel.config.cjs
+eslint.config.js
+jest.config.js
+.github
