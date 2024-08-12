@@ -17,8 +17,8 @@
       <a href="https://www.travis-ci.com/github/armindojr/pure-gen">
         <img alt="Build Status" src="https://www.travis-ci.com/armindojr/pure-gen.svg?branch=master">
       </a>
-      <a href="https://codecov.io/gh/armindojr/pure-gen">
-        <img alt="CodeCov" src="https://codecov.io/gh/armindojr/pure-gen/branch/master/graph/badge.svg">
+      <a href="https://codecov.io/github/armindojr/pure-gen" > 
+        <img src="https://codecov.io/github/armindojr/pure-gen/branch/rc-v3/graph/badge.svg?token=V74CBGRUAC"/> 
       </a>
     </p>
 </div>
