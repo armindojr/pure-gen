@@ -1,13 +1,21 @@
-class Database {
-    constructor(pure) {
-        this.column = () => pure.random.arrayElement(pure.registeredModules.database.column);
+export class Database {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-        this.type = () => pure.random.arrayElement(pure.registeredModules.database.type);
+  column() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.database.column);
+  }
 
-        this.collation = () => pure.random.arrayElement(pure.registeredModules.database.collation);
+  type() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.database.dataType);
+  }
 
-        this.engine = () => pure.random.arrayElement(pure.registeredModules.database.engine);
-    }
+  collation() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.database.collation);
+  }
+
+  engine() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.database.engine);
+  }
 }
-
-module.exports = Database;

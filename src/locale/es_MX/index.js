@@ -1,14 +1,24 @@
-const es_MX = {
-    title: 'Spanish Mexico',
-    separator: ' & ',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
-    team: require('./team'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Spanish Mexico';
+const separator = ' & ';
+const localeName = 'es_MX';
+
+export const es_MX = {
+  address,
+  commerce,
+  company,
+  internet,
+  lorem,
+  name,
+  phoneNumber,
+  title,
+  separator,
+  localeName
 };
-module.exports = es_MX;

@@ -1,10 +1,10 @@
-module.exports = [
-    '#{male_first_name} #{male_last_name}',
-    '#{male_last_name} #{male_first_name}',
-    '#{male_first_name} #{male_middle_name} #{male_last_name}',
-    '#{male_last_name} #{male_first_name} #{male_middle_name}',
-    '#{female_first_name} #{female_last_name}',
-    '#{female_last_name} #{female_first_name}',
-    '#{female_first_name} #{female_middle_name} #{female_last_name}',
-    '#{female_last_name} #{female_first_name} #{female_middle_name}',
+export default [
+  '#{maleFirstName} #{maleLastName}',
+  '#{maleLastName} #{maleFirstName}',
+  '#{maleFirstName} #{male_middle_name} #{maleLastName}',
+  '#{maleLastName} #{maleFirstName} #{male_middle_name}',
+  '#{femaleFirstName} #{femaleLastName}',
+  '#{femaleLastName} #{femaleFirstName}',
+  '#{femaleFirstName} #{femaleMiddleName} #{femaleLastName}',
+  '#{femaleLastName} #{femaleFirstName} #{femaleMiddleName}'
 ];

@@ -1,11 +1,17 @@
-class Dessert {
-    constructor(pure) {
-        this.flavor = () => pure.random.arrayElement(pure.registeredModules.dessert.flavor);
+export class Dessert {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-        this.topping = () => pure.random.arrayElement(pure.registeredModules.dessert.topping);
+  flavor() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.dessert.flavor);
+  }
 
-        this.variety = () => pure.random.arrayElement(pure.registeredModules.dessert.variety);
-    }
+  topping() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.dessert.topping);
+  }
+
+  variety() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.dessert.variety);
+  }
 }
-
-module.exports = Dessert;

@@ -1,2 +1,5 @@
-const lorem = { words: require('./words') };
-module.exports = lorem;
+import words from './words.js';
+
+export default {
+  words
+};

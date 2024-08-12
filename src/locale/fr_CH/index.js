@@ -1,7 +1,14 @@
-const fr_CH = {
-    title: 'French (Switzerland)',
-    address: require('./address'),
-    internet: require('./internet'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import internet from './internet/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'French (Switzerland)';
+const localeName = 'fr_CH';
+
+export const fr_CH = {
+  address,
+  internet,
+  phoneNumber,
+  localeName,
+  title
 };
-module.exports = fr_CH;

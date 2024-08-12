@@ -1,7 +1,14 @@
-const zh_CN = {
-    title: 'Chinese',
-    address: require('./address'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Chinese';
+const localeName = 'zh_CN';
+
+export const zh_CN = {
+  address,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = zh_CN;

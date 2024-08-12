@@ -1,6 +1,9 @@
-const commerce = {
-    color: require('./color'),
-    department: require('./department'),
-    product_name: require('./product_name'),
+import color from './color.js';
+import department from './department.js';
+import productName from './productName.js';
+
+export default {
+  color,
+  department,
+  productName
 };
-module.exports = commerce;

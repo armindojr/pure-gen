@@ -1,2 +1,5 @@
-const music = { genre: require('./genre') };
-module.exports = music;
+import genre from './genre.js';
+
+export default {
+  genre
+};

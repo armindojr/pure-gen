@@ -1,4 +1,1 @@
-module.exports = [
-    '{{name.lastName}} {{company.companySuffix}}',
-    '{{name.lastName}} et {{name.lastName}}',
-];
+export default ['{{name.lastName}} {{company.companySuffix}}', '{{name.lastName}} et {{name.lastName}}'];

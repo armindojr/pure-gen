@@ -1,12 +1,18 @@
-const ar = {
-    title: 'Arabic',
-    separator: ' & ',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
-    team: require('./team'),
-    transport: require('./transport'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import name from './name/index.js';
+import transport from './transport/index.js';
+
+const title = 'Arabic';
+const separator = ' & ';
+const localeName = 'ar';
+
+export const ar = {
+  title,
+  separator,
+  localeName,
+  address,
+  commerce,
+  name,
+  transport
 };
-module.exports = ar;

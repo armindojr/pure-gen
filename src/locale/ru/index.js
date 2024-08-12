@@ -1,14 +1,28 @@
-const ru = {
-    title: 'Russian',
-    separator: ' и ',
-    address: require('./address'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    date: require('./date'),
-    hacker: require('./hacker'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import date from './date/index.js';
+import hacker from './hacker/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Russian';
+const separator = ' и ';
+const localeName = 'ru';
+
+export const ru = {
+  title,
+  separator,
+  localeName,
+  address,
+  commerce,
+  company,
+  date,
+  hacker,
+  internet,
+  lorem,
+  name,
+  phoneNumber
 };
-module.exports = ru;

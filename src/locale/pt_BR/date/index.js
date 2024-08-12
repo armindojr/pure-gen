@@ -1,2 +1,7 @@
-const date = { month: require('./month'), weekday: require('./weekday') };
-module.exports = date;
+import month from './month.js';
+import weekday from './weekday.js';
+
+export default {
+  month,
+  weekday
+};

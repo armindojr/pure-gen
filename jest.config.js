@@ -1,25 +1,25 @@
-module.exports = {
+export default {
   clearMocks: true,
 
   collectCoverage: false,
 
   collectCoverageFrom: [
-    "src/cli/generator.js",
-    "src/modules/**.js",
-    "src/imports.js",
-    "src/index.js",
+    'src/modules/**.js',
+    'src/imageProviders/**.js',
+    'src/cli/generator.js',
+    'src/imports.js',
+    'src/index.js'
   ],
 
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
-  coverageReporters: [
-    "text-summary",
-    "lcov",
-  ],
+  coverageReporters: ['text-summary', 'lcov'],
 
-  testMatch: [
-    "**/__test__/**.spec.js",
-  ],
+  testMatch: ['**/test/**.spec.js'],
+
+  transform: {
+    '\\.[jt]sx?$': 'babel-jest'
+  }
 };

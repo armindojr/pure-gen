@@ -1,11 +1,22 @@
-const cz = {
-    title: 'Czech',
-    address: require('./address'),
-    company: require('./company'),
-    date: require('./date'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Czech';
+const localeName = 'cz';
+
+export const cz = {
+  title,
+  localeName,
+  address,
+  company,
+  date,
+  internet,
+  lorem,
+  name,
+  phoneNumber
 };
-module.exports = cz;

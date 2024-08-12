@@ -1,14 +1,26 @@
-const lv = {
-    title: 'Latvian',
-    separator: ' un ',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    date: require('./date'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Latvian';
+const separator = ' un ';
+const localeName = 'lv';
+
+export const lv = {
+  address,
+  commerce,
+  company,
+  date,
+  internet,
+  lorem,
+  name,
+  phoneNumber,
+  title,
+  separator,
+  localeName
 };
-module.exports = lv;

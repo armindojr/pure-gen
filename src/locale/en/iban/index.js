@@ -1,4 +1,7 @@
-module.exports = {
-    countryCode: require('./countryCode'),
-    formats: require('./formats'),
+import countryCode from './countryCode.js';
+import formats from './formats.js';
+
+export default {
+  countryCode,
+  formats
 };

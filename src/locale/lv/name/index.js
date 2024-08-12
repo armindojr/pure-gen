@@ -1,11 +1,19 @@
-const name = {
-    male_first_name: require('./male_first_name'),
-    male_last_name: require('./male_last_name'),
-    female_first_name: require('./female_first_name'),
-    female_last_name: require('./female_last_name'),
-    title: require('./title'),
-    prefix: require('./prefix'),
-    suffix: require('./suffix'),
-    name: require('./name'),
+import femaleFirstName from './femaleFirstName.js';
+import femaleLastName from './femaleLastName.js';
+import maleFirstName from './maleFirstName.js';
+import maleLastName from './maleLastName.js';
+import name from './name.js';
+import prefix from './prefix.js';
+import suffix from './suffix.js';
+import title from './title.js';
+
+export default {
+  femaleFirstName,
+  femaleLastName,
+  maleFirstName,
+  maleLastName,
+  name,
+  prefix,
+  suffix,
+  title
 };
-module.exports = name;

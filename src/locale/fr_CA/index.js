@@ -1,7 +1,14 @@
-const fr_CA = {
-    title: 'Canada (French)',
-    address: require('./address'),
-    internet: require('./internet'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import internet from './internet/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Canada (French)';
+const localeName = 'fr_CA';
+
+export const fr_CA = {
+  address,
+  internet,
+  phoneNumber,
+  localeName,
+  title
 };
-module.exports = fr_CA;

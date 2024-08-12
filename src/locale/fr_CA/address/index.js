@@ -1,7 +1,12 @@
-const address = {
-    postcode: require('./postcode'),
-    state: require('./state'),
-    state_abbr: require('./state_abbr'),
-    default_country: require('./default_country'),
+import postcode from './postcode.js';
+import state from './state.js';
+import stateAbbr from './stateAbbr.js';
+
+const defaultCountry = ['Canada'];
+
+export default {
+  postcode,
+  state,
+  stateAbbr,
+  defaultCountry
 };
-module.exports = address;

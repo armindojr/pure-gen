@@ -1,5 +1,10 @@
-const en_BORK = {
-    title: 'Bork (English)',
-    lorem: require('./lorem'),
+import lorem from './lorem/index.js';
+
+const title = 'Bork (English)';
+const localeName = 'en_BORK';
+
+export const en_BORK = {
+  title,
+  localeName,
+  lorem
 };
-module.exports = en_BORK;

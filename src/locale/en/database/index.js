@@ -1,7 +1,11 @@
-const database = {
-    collation: require('./collation'),
-    column: require('./column'),
-    engine: require('./engine'),
-    type: require('./type'),
+import collation from './collation.js';
+import column from './column.js';
+import dataType from './dataType.js';
+import engine from './engine.js';
+
+export default {
+  collation,
+  column,
+  dataType,
+  engine
 };
-module.exports = database;

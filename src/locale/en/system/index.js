@@ -1,5 +1,7 @@
-const system = {
-    directoryPaths: require('./directoryPaths'),
-    mimeTypes: require('./mimeTypes'),
+import directoryPaths from './directoryPaths.js';
+import mimeTypes from './mimeTypes.js';
+
+export default {
+  directoryPaths,
+  mimeTypes
 };
-module.exports = system;

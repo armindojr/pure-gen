@@ -1,6 +1,9 @@
-const name = {
-    first_name: require('./first_name'),
-    last_name: require('./last_name'),
-    prefix: require('./prefix'),
+import firstName from './firstName.js';
+import lastName from './lastName.js';
+import prefix from './prefix.js';
+
+export default {
+  firstName,
+  lastName,
+  prefix
 };
-module.exports = name;

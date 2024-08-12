@@ -1,9 +1,1 @@
-module.exports = [
-    'Gruppen',
-    'AB',
-    'HB',
-    'Group',
-    'Investment',
-    'Kommanditbolag',
-    'Aktiebolag',
-];
+export default ['Gruppen', 'AB', 'HB', 'Group', 'Investment', 'Kommanditbolag', 'Aktiebolag'];

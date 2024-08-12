@@ -1,7 +1,11 @@
-const transport = {
-    vehicleManufacturer: require('./vehicleManufacturer'),
-    vehicleModel: require('./vehicleModel'),
-    vehicleType: require('./vehicleType'),
-    vehicleFuel: require('./vehicleFuel')
+import vehicleFuel from './vehicleFuel.js';
+import vehicleManufacturer from './vehicleManufacturer.js';
+import vehicleModel from './vehicleModel.js';
+import vehicleType from './vehicleType.js';
+
+export default {
+  vehicleFuel,
+  vehicleManufacturer,
+  vehicleModel,
+  vehicleType
 };
-module.exports = transport;

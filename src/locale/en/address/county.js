@@ -1,8 +1,1 @@
-module.exports = [
-    'Avon',
-    'Bedfordshire',
-    'Berkshire',
-    'Borders',
-    'Buckinghamshire',
-    'Cambridgeshire',
-];
+export default ['Avon', 'Bedfordshire', 'Berkshire', 'Borders', 'Buckinghamshire', 'Cambridgeshire'];

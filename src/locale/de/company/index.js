@@ -1,6 +1,7 @@
-const company = {
-    suffix: require('./suffix'),
-    legal_form: require('./legal_form'),
-    name: require('./name'),
+import name from './name.js';
+import suffix from './suffix.js';
+
+export default {
+  name,
+  suffix
 };
-module.exports = company;

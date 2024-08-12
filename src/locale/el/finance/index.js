@@ -1,6 +1,9 @@
-const finance = {
-    account_type: require('./account_type'),
-    transaction_type: require('./transaction_type'),
-    currency: require('./currency'),
+import accountType from './accountType.js';
+import currency from './currency.js';
+import transactionType from './transactionType.js';
+
+export default {
+  accountType,
+  currency,
+  transactionType
 };
-module.exports = finance;

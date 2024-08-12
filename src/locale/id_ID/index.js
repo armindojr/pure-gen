@@ -1,10 +1,20 @@
-const id = {
-    title: 'Indonesia',
-    address: require('./address'),
-    company: require('./company'),
-    date: require('./date'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Indonesia';
+const localeName = 'id_ID';
+
+export const id_ID = {
+  address,
+  company,
+  date,
+  internet,
+  name,
+  phoneNumber,
+  localeName,
+  title
 };
-module.exports = id;

@@ -1,19 +1,28 @@
-const el = {
-    title: 'Ελληνικά',
-    separator: ' & ',
-    address: require('./address'),
-    app: require('./app'),
-    business: require('./business'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    credit_card: require('./credit_card'),
-    finance: require('./finance'),
-    hacker: require('./hacker'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
-    team: require('./team'),
+import address from './address/index.js';
+import app from './app/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import finance from './finance/index.js';
+import hacker from './hacker/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Ελληνικά';
+const separator = ' & ';
+const localeName = 'el';
+
+export const el = {
+  title,
+  separator,
+  localeName,
+  address,
+  app,
+  commerce,
+  company,
+  finance,
+  hacker,
+  internet,
+  name,
+  phoneNumber
 };
-module.exports = el;

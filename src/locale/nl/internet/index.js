@@ -1,5 +1,7 @@
-const internet = {
-    free_email: require('./free_email'),
-    domain_suffix: require('./domain_suffix'),
+import domainSuffix from './domainSuffix.js';
+import freeEmail from './freeEmail.js';
+
+export default {
+  domainSuffix,
+  freeEmail
 };
-module.exports = internet;

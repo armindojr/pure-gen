@@ -1,11 +1,20 @@
-const pt_PT = {
-    title: 'Portuguese (Portugal)',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    date: require('./date'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Portuguese (Portugal)';
+const localeName = 'pt_PT';
+
+export const pt_PT = {
+  address,
+  commerce,
+  date,
+  internet,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = pt_PT;

@@ -1,13 +1,13 @@
-module.exports = [
-    '#{prefix} #{male_first_name} #{male_last_name}',
-    '#{male_first_name} #{male_last_name}',
-    '#{male_last_name} #{male_first_name}',
-    '#{male_first_name} #{male_first_name} #{male_last_name}',
-    '#{male_first_name} #{male_last_name}-#{male_last_name}',
-    '##{prefix} {female_first_name} #{female_last_name}',
-    '#{female_first_name} #{female_last_name} #{suffix}',
-    '#{female_first_name} #{female_last_name}',
-    '#{female_last_name} #{female_first_name}',
-    '#{female_first_name} #{female_first_name} #{female_last_name}',
-    '#{female_first_name} #{female_last_name}-#{female_last_name}',
+export default [
+  '#{prefix} #{maleFirstName} #{maleLastName}',
+  '#{maleFirstName} #{maleLastName}',
+  '#{maleLastName} #{maleFirstName}',
+  '#{maleFirstName} #{maleFirstName} #{maleLastName}',
+  '#{maleFirstName} #{maleLastName}-#{maleLastName}',
+  '#{prefix} {femaleFirstName} #{femaleLastName}',
+  '#{femaleFirstName} #{femaleLastName} #{suffix}',
+  '#{femaleFirstName} #{femaleLastName}',
+  '#{femaleLastName} #{femaleFirstName}',
+  '#{femaleFirstName} #{femaleFirstName} #{femaleLastName}',
+  '#{femaleFirstName} #{femaleLastName}-#{femaleLastName}'
 ];

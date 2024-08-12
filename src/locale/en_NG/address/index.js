@@ -1,8 +1,14 @@
-const address = {
-    city: require('./city'),
-    city_prefix: require('./city_prefix'),
-    default_country: require('./default_country'),
-    postcode: require('./postcode'),
-    state: require('./state'),
+import city from './city.js';
+import cityPrefix from './cityPrefix.js';
+import postcode from './postcode.js';
+import state from './state.js';
+
+const defaultCountry = ['Nigeria', 'Federal Republic of Nigeria', 'NG', 'NGN'];
+
+export default {
+  defaultCountry,
+  city,
+  cityPrefix,
+  postcode,
+  state
 };
-module.exports = address;

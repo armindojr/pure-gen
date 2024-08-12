@@ -1,9 +1,18 @@
-const en_NG = {
-    title: 'Nigeria (English)',
-    address: require('./address'),
-    company: require('./company'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Nigeria (English)';
+const localeName = 'en_NG';
+
+export const en_NG = {
+  address,
+  company,
+  internet,
+  name,
+  phoneNumber,
+  localeName,
+  title
 };
-module.exports = en_NG;

@@ -1,5 +1,8 @@
-const address = {
-    default_country: require('./default_country'),
-    postcode_by_state: require('./postcode_by_state'),
+import postcodeByState from './postcodeByState.js';
+
+const defaultCountry = ['United States', 'United States of America', 'USA'];
+
+export default {
+  postcodeByState,
+  defaultCountry
 };
-module.exports = address;

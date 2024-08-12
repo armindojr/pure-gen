@@ -1,23 +1,36 @@
-const address = {
-    city_prefix: require('./city_prefix'),
-    city_suffix: require('./city_suffix'),
-    county: require('./county'),
-    country: require('./country'),
-    country_code: require('./country_code'),
-    country_code_alpha_3: require('./country_code_alpha_3'),
-    building_number: require('./building_number'),
-    street_suffix: require('./street_suffix'),
-    secondary_address: require('./secondary_address'),
-    postcode: require('./postcode'),
-    postcode_by_state: require('./postcode_by_state'),
-    state: require('./state'),
-    state_abbr: require('./state_abbr'),
-    time_zone: require('./time_zone'),
-    city: require('./city'),
-    street_name: require('./street_name'),
-    street_address: require('./street_address'),
-    default_country: require('./default_country'),
-    direction: require('./direction'),
-    direction_abbr: require('./direction_abbr'),
+import city from './city.js';
+import cityPrefix from './cityPrefix.js';
+import citySuffix from './citySuffix.js';
+import country from './country.js';
+import countryCode from './countryCode.js';
+import countryCodeAlpha3 from './countryCodeAlpha3.js';
+import county from './county.js';
+import direction from './direction.js';
+import directionAbbr from './directionAbbr.js';
+import postcode from './postcode.js';
+import postcodeByState from './postcodeByState.js';
+import state from './state.js';
+import stateAbbr from './stateAbbr.js';
+import streetSuffix from './streetSuffix.js';
+import timeZone from './timeZone.js';
+
+const defaultCountry = ['United States of America'];
+
+export default {
+  defaultCountry,
+  city,
+  cityPrefix,
+  citySuffix,
+  country,
+  countryCode,
+  countryCodeAlpha3,
+  county,
+  direction,
+  directionAbbr,
+  postcode,
+  postcodeByState,
+  state,
+  stateAbbr,
+  streetSuffix,
+  timeZone
 };
-module.exports = address;

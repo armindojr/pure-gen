@@ -1,9 +1,18 @@
-const nl_BE = {
-    title: 'Dutch (Belgium)',
-    address: require('./address'),
-    company: require('./company'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Dutch (Belgium)';
+const localeName = 'nl_BE';
+
+export const nl_BE = {
+  address,
+  company,
+  internet,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = nl_BE;

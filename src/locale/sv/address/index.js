@@ -1,18 +1,24 @@
-const address = {
-    city_prefix: require('./city_prefix'),
-    city_suffix: require('./city_suffix'),
-    country: require('./country'),
-    common_street_suffix: require('./common_street_suffix'),
-    street_prefix: require('./street_prefix'),
-    street_root: require('./street_root'),
-    street_suffix: require('./street_suffix'),
-    state: require('./state'),
-    city: require('./city'),
-    street_name: require('./street_name'),
-    postcode: require('./postcode'),
-    building_number: require('./building_number'),
-    secondary_address: require('./secondary_address'),
-    street_address: require('./street_address'),
-    default_country: require('./default_country'),
+import city from './city.js';
+import cityPrefix from './cityPrefix.js';
+import citySuffix from './citySuffix.js';
+import country from './country.js';
+import postcode from './postcode.js';
+import secondaryAddress from './secondaryAddress.js';
+import state from './state.js';
+import streetPrefix from './streetPrefix.js';
+import streetSuffix from './streetSuffix.js';
+
+const defaultCountry = ['Sverige'];
+
+export default {
+  city,
+  cityPrefix,
+  citySuffix,
+  country,
+  defaultCountry,
+  postcode,
+  secondaryAddress,
+  state,
+  streetPrefix,
+  streetSuffix
 };
-module.exports = address;

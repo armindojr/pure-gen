@@ -1,13 +1,22 @@
-const sv = {
-    title: 'Swedish',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    date: require('./date'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
-    team: require('./team'),
+import address from './address/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+const title = 'Swedish';
+const localeName = 'sv';
+
+export const sv = {
+  address,
+  commerce,
+  company,
+  date,
+  internet,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = sv;

@@ -1,11 +1,12 @@
-const address = {
-    city: require('./city'),
-    street_root: require('./street_root'),
-    country: require('./country'),
-    postcode: require('./postcode'),
-    default_country: require('./default_country'),
-    building_number: require('./building_number'),
-    street_name: require('./street_name'),
-    street_address: require('./street_address'),
+import city from './city.js';
+import country from './country.js';
+import postcode from './postcode.js';
+
+const defaultCountry = ['Türkiye'];
+
+export default {
+  city,
+  country,
+  defaultCountry,
+  postcode
 };
-module.exports = address;

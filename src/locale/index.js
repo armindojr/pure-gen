@@ -1,50 +1,48 @@
-module.exports = {
-    af_ZA: require('./af_ZA'),
-    ar: require('./ar'),
-    az: require('./az'),
-    cz: require('./cz'),
-    de: require('./de'),
-    de_AT: require('./de_AT'),
-    de_CH: require('./de_CH'),
-    el: require('./el'),
-    en: require('./en'),
-    en_AU: require('./en_AU'),
-    en_au_ocker: require('./en_au_ocker'),
-    en_BORK: require('./en_BORK'),
-    en_CA: require('./en_CA'),
-    en_GB: require('./en_GB'),
-    en_IE: require('./en_IE'),
-    en_IND: require('./en_IND'),
-    en_NG: require('./en_NG'),
-    en_US: require('./en_US'),
-    en_ZA: require('./en_ZA'),
-    es: require('./es'),
-    es_MX: require('./es_MX'),
-    fa: require('./fa'),
-    fr: require('./fr'),
-    fr_CA: require('./fr_CA'),
-    fr_CH: require('./fr_CH'),
-    ge: require('./ge'),
-    id_ID: require('./id_ID'),
-    it: require('./it'),
-    ja: require('./ja'),
-    ko: require('./ko'),
-    lv: require('./lv'),
-    nb_NO: require('./nb_NO'),
-    nep: require('./nep'),
-    nl: require('./nl'),
-    nl_BE: require('./nl_BE'),
-    pl: require('./pl'),
-    pt_BR: require('./pt_BR'),
-    pt_PT: require('./pt_PT'),
-    ro: require('./ro'),
-    ru: require('./ru'),
-    sk: require('./sk'),
-    sv: require('./sv'),
-    tr: require('./tr'),
-    uk: require('./uk'),
-    vi: require('./vi'),
-    zh_CN: require('./zh_CN'),
-    zh_TW: require('./zh_TW'),
-    zu_ZA: require('./zu_ZA'),
-};
+export { af_ZA } from './af_ZA/index.js';
+export { ar } from './ar/index.js';
+export { az } from './az/index.js';
+export { cz } from './cz/index.js';
+export { de } from './de/index.js';
+export { de_AT } from './de_AT/index.js';
+export { de_CH } from './de_CH/index.js';
+export { el } from './el/index.js';
+export { en } from './en/index.js';
+export { en_AU } from './en_AU/index.js';
+export { en_au_ocker } from './en_au_ocker/index.js';
+export { en_BORK } from './en_BORK/index.js';
+export { en_CA } from './en_CA/index.js';
+export { en_GB } from './en_GB/index.js';
+export { en_IE } from './en_IE/index.js';
+export { en_IND } from './en_IND/index.js';
+export { en_NG } from './en_NG/index.js';
+export { en_US } from './en_US/index.js';
+export { en_ZA } from './en_ZA/index.js';
+export { es } from './es/index.js';
+export { es_MX } from './es_MX/index.js';
+export { fa } from './fa/index.js';
+export { fr } from './fr/index.js';
+export { fr_CA } from './fr_CA/index.js';
+export { fr_CH } from './fr_CH/index.js';
+export { ge } from './ge/index.js';
+export { id_ID } from './id_ID/index.js';
+export { it } from './it/index.js';
+export { ja } from './ja/index.js';
+export { ko } from './ko/index.js';
+export { lv } from './lv/index.js';
+export { nb_NO } from './nb_NO/index.js';
+export { nep } from './nep/index.js';
+export { nl } from './nl/index.js';
+export { nl_BE } from './nl_BE/index.js';
+export { pl } from './pl/index.js';
+export { pt_BR } from './pt_BR/index.js';
+export { pt_PT } from './pt_PT/index.js';
+export { ro } from './ro/index.js';
+export { ru } from './ru/index.js';
+export { sk } from './sk/index.js';
+export { sv } from './sv/index.js';
+export { tr } from './tr/index.js';
+export { uk } from './uk/index.js';
+export { vi } from './vi/index.js';
+export { zh_CN } from './zh_CN/index.js';
+export { zh_TW } from './zh_TW/index.js';
+export { zu_ZA } from './zu_ZA/index.js';
