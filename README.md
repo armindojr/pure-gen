@@ -14,11 +14,11 @@
 
 <div>
     <p align="center">
-      <a href="https://www.travis-ci.com/github/armindojr/pure-gen">
-        <img alt="Build Status" src="https://www.travis-ci.com/armindojr/pure-gen.svg?branch=master">
+      <a href="https://www.npmjs.com/package/pure-gen">
+        <img alt="NPM Version" src="https://img.shields.io/npm/v/pure-gen">
       </a>
       <a href="https://codecov.io/github/armindojr/pure-gen" > 
-        <img src="https://codecov.io/github/armindojr/pure-gen/branch/rc-v3/graph/badge.svg?token=V74CBGRUAC"/> 
+        <img src="https://codecov.io/github/armindojr/pure-gen/graph/badge.svg?token=V74CBGRUAC"/>
       </a>
     </p>
 </div>
