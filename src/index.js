@@ -30,8 +30,7 @@ export default class Pure {
   }
 
   seed(value) {
-    this.seedValue = value;
-    this.random = new imports.Random(this, this.seedValue);
+    this.random = new imports.Random(this, value);
   }
 
   setLocale(locale) {

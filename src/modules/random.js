@@ -1,5 +1,6 @@
 import * as uuid from 'uuid';
 import lfib from '../vendor/lfib.js';
+import * as constants from '../constants.js';
 
 export class Random {
   constructor(pure, seed) {
@@ -44,7 +45,9 @@ export class Random {
       result = def.max;
     } else if (def.precision >= 1) {
       const template = this.pure.helpers.repeatString({ string: '#', num: def.precision });
-      result = parseFloat(`${randomNumber}.${this.pure.helpers.replaceSymbolWithNumber({ string: template })}`);
+      result = parseFloat(
+        `${randomNumber}.${this.pure.helpers.replaceSymbolWithNumber({ string: template })}`
+      );
 
       if (result > def.max) {
         result = def.max;
@@ -219,34 +222,7 @@ export class Random {
     let wholeString = '';
 
     for (let i = 0; i < def.count; i += 1) {
-      wholeString += this.pure.random.arrayElement([
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'm',
-        'n',
-        'o',
-        'p',
-        'q',
-        'r',
-        's',
-        't',
-        'u',
-        'v',
-        'w',
-        'x',
-        'y',
-        'z'
-      ]);
+      wholeString += this.pure.random.arrayElement(constants.lowerAlpha);
     }
 
     return def.upcase ? wholeString.toUpperCase() : wholeString;
@@ -256,44 +232,7 @@ export class Random {
     let wholeString = '';
 
     for (let i = 0; i < count; i += 1) {
-      wholeString += this.pure.random.arrayElement([
-        '0',
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'm',
-        'n',
-        'o',
-        'p',
-        'q',
-        'r',
-        's',
-        't',
-        'u',
-        'v',
-        'w',
-        'x',
-        'y',
-        'z'
-      ]);
+      wholeString += this.pure.random.arrayElement(constants.alphaNum);
     }
 
     return wholeString;

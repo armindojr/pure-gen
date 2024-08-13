@@ -7,7 +7,8 @@ export class Name {
     let def = gender;
     let result = '';
     const maleVerification = typeof this.pure.registeredModules.name.maleFirstName !== 'undefined';
-    const femaleVerification = typeof this.pure.registeredModules.name.femaleFirstName !== 'undefined';
+    const femaleVerification =
+      typeof this.pure.registeredModules.name.femaleFirstName !== 'undefined';
 
     if (maleVerification && femaleVerification) {
       // some locale datasets ( like ru ) have firstName split by gender.
@@ -20,7 +21,9 @@ export class Name {
           if (def === 0) {
             result = this.pure.random.arrayElement(this.pure.registeredModules.name.maleFirstName);
           } else {
-            result = this.pure.random.arrayElement(this.pure.registeredModules.name.femaleFirstName);
+            result = this.pure.random.arrayElement(
+              this.pure.registeredModules.name.femaleFirstName
+            );
           }
         } else {
           // Fall back to non-gendered names if they exist and gender wasn't specified
@@ -41,7 +44,8 @@ export class Name {
   lastName(gender) {
     let def = gender;
     const maleVerification = typeof this.pure.registeredModules.name.maleLastName !== 'undefined';
-    const femaleVerification = typeof this.pure.registeredModules.name.femaleLastName !== 'undefined';
+    const femaleVerification =
+      typeof this.pure.registeredModules.name.femaleLastName !== 'undefined';
 
     if (maleVerification && femaleVerification) {
       // some locale datasets ( like ru ) have lastName split by gender.
@@ -121,7 +125,9 @@ export class Name {
   }
 
   title() {
-    const descriptor = this.pure.random.arrayElement(this.pure.registeredModules.name.title.descriptor);
+    const descriptor = this.pure.random.arrayElement(
+      this.pure.registeredModules.name.title.descriptor
+    );
     const level = this.pure.random.arrayElement(this.pure.registeredModules.name.title.level);
     const job = this.pure.random.arrayElement(this.pure.registeredModules.name.title.job);
 

@@ -38,13 +38,16 @@ export class Internet {
 
   exampleEmail(options = {}) {
     const { firstName, lastName } = options;
-    const provider = this.pure.random.arrayElement(this.pure.registeredModules.internet.exampleEmail);
+    const provider = this.pure.random.arrayElement(
+      this.pure.registeredModules.internet.exampleEmail
+    );
 
     return this.pure.internet.email({ firstName, lastName, provider });
   }
 
   userName(options = {}) {
-    const { firstName = this.pure.name.firstName(), lastName = this.pure.name.lastName() } = options;
+    const { firstName = this.pure.name.firstName(), lastName = this.pure.name.lastName() } =
+      options;
     const r = this.pure.random.number(2);
     let result;
 
@@ -53,7 +56,11 @@ export class Internet {
     } else if (r === 1) {
       result = firstName + this.pure.random.arrayElement(['.', '_']) + lastName;
     } else if (r === 2) {
-      result = firstName + this.pure.random.arrayElement(['.', '_']) + lastName + this.pure.random.number(99);
+      result =
+        firstName +
+        this.pure.random.arrayElement(['.', '_']) +
+        lastName +
+        this.pure.random.number(99);
     } else {
       result = firstName + this.pure.random.number(99);
     }
@@ -69,7 +76,10 @@ export class Internet {
   }
 
   url(options = {}) {
-    const { protocol = this.pure.internet.protocol(), domainName = this.pure.internet.domainName() } = options;
+    const {
+      protocol = this.pure.internet.protocol(),
+      domainName = this.pure.internet.domainName()
+    } = options;
 
     return `${protocol}://${domainName}`;
   }
@@ -135,7 +145,9 @@ export class Internet {
     let result = '';
 
     if (provider) {
-      result = this.pure.random.arrayElement(this.pure.registeredModules.internet.botUserAgent[provider]);
+      result = this.pure.random.arrayElement(
+        this.pure.registeredModules.internet.botUserAgent[provider]
+      );
     } else {
       const arr = this.pure.random.objectElement(this.pure.registeredModules.internet.botUserAgent);
       result = this.pure.random.arrayElement(arr);

@@ -1,3 +1,5 @@
+import * as constants from '../constants.js';
+
 export class Finance {
   constructor(pure) {
     this.pure = pure;
@@ -81,11 +83,10 @@ export class Finance {
 
   bitcoinAddress() {
     const addressLength = this.pure.random.number({ min: 25, max: 34 });
-    const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
     let address = this.pure.random.arrayElement(['1', '3']);
 
     for (let i = 0; i < addressLength - 1; i += 1) {
-      address += this.pure.random.arrayElement(alphanum);
+      address += this.pure.random.arrayElement(constants.alphaNumAddress);
     }
 
     return address;
@@ -93,11 +94,10 @@ export class Finance {
 
   litecoinAddress() {
     const addressLength = this.pure.random.number({ min: 26, max: 33 });
-    const alphanum = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'.split('');
     let address = this.pure.random.arrayElement(['L', 'M', '3']);
 
     for (let i = 0; i < addressLength; i += 1) {
-      address += this.pure.random.arrayElement(alphanum);
+      address += this.pure.random.arrayElement(constants.alphaNumAddress);
     }
 
     return address;
@@ -204,7 +204,8 @@ export class Finance {
       s = s.substring(0, count);
     }
 
-    let checksum = 98 - this.pure.helpers.mod97(this.pure.helpers.toDigitString(`${s + ibanFormat.country}00`));
+    let checksum =
+      98 - this.pure.helpers.mod97(this.pure.helpers.toDigitString(`${s + ibanFormat.country}00`));
 
     if (checksum < 10) {
       checksum = `0${checksum}`;
@@ -216,21 +217,22 @@ export class Finance {
   }
 
   bic() {
-    const vowels = ['A', 'E', 'I', 'O', 'U'];
     const prob = this.pure.random.number(100);
-    let verification1 = '';
+    let verification = '';
 
     if (prob < 10) {
-      verification1 = this.pure.helpers.replaceSymbols(`?${this.pure.random.arrayElement(vowels)}?`);
+      verification = this.pure.helpers.replaceSymbols(
+        `?${this.pure.random.arrayElement(constants.upperVowel)}?`
+      );
     } else if (prob < 40) {
-      verification1 = this.pure.helpers.replaceSymbols('###');
+      verification = this.pure.helpers.replaceSymbols('###');
     }
 
     return `${
       this.pure.helpers.replaceSymbols('???') +
-      this.pure.random.arrayElement(vowels) +
+      this.pure.random.arrayElement(constants.upperVowel) +
       this.pure.random.arrayElement(this.pure.registeredModules.iban.countryCode) +
       this.pure.helpers.replaceSymbols('?')
-    }1${verification1}`;
+    }1${verification}`;
   }
 }

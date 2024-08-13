@@ -11,9 +11,13 @@ export class Lorem {
     if (typeof length === 'undefined') {
       properLengthWords = this.pure.registeredModules.lorem.words;
     } else {
-      properLengthWords = this.pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, length));
+      properLengthWords = this.pure.registeredModules.lorem.words.filter(
+        hasRightLength.bind(this, length)
+      );
       if (properLengthWords.length === 0) {
-        properLengthWords = this.pure.registeredModules.lorem.words.filter(hasRightLength.bind(this, 14));
+        properLengthWords = this.pure.registeredModules.lorem.words.filter(
+          hasRightLength.bind(this, 14)
+        );
       }
     }
 

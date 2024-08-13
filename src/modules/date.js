@@ -124,7 +124,10 @@ export default class pureDate {
       type = 'abbr';
     }
 
-    if (def.context && typeof this.pure.registeredModules.date.month[`${type}Context`] !== 'undefined') {
+    if (
+      def.context &&
+      typeof this.pure.registeredModules.date.month[`${type}Context`] !== 'undefined'
+    ) {
       type += 'Context';
     }
 
@@ -142,7 +145,10 @@ export default class pureDate {
       type = 'abbr';
     }
 
-    if (def.context && typeof this.pure.registeredModules.date.weekday[`${type}Context`] !== 'undefined') {
+    if (
+      def.context &&
+      typeof this.pure.registeredModules.date.weekday[`${type}Context`] !== 'undefined'
+    ) {
       type += 'Context';
     }
 

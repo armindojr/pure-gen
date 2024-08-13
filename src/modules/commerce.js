@@ -35,7 +35,9 @@ export class Commerce {
       return def.symbol + 0.0;
     }
 
-    const randValue = this.pure.random.number({ max: def.max, min: def.min, precision: def.dec }).toFixed(def.dec);
+    const randValue = this.pure.random
+      .number({ max: def.max, min: def.min, precision: def.dec })
+      .toFixed(def.dec);
     const finalValue = def.symbol + randValue.toString();
 
     return def.comma ? finalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : finalValue;
@@ -52,7 +54,9 @@ export class Commerce {
     if (def > this.pure.registeredModules.commerce.department.length) {
       categories = this.pure.registeredModules.commerce.department;
     } else {
-      const shuffledArr = this.pure.helpers.shuffle(this.pure.registeredModules.commerce.department);
+      const shuffledArr = this.pure.helpers.shuffle(
+        this.pure.registeredModules.commerce.department
+      );
       const diff = this.pure.registeredModules.commerce.department.length - num;
       shuffledArr.splice(0, diff);
       categories = shuffledArr;
@@ -62,7 +66,9 @@ export class Commerce {
   }
 
   productAdjective() {
-    return this.pure.random.arrayElement(this.pure.registeredModules.commerce.productName.adjective);
+    return this.pure.random.arrayElement(
+      this.pure.registeredModules.commerce.productName.adjective
+    );
   }
 
   productMaterial() {

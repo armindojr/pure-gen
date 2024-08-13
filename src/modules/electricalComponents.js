@@ -12,6 +12,8 @@ export class ElectricalComponents {
   }
 
   electromechanical() {
-    return this.pure.random.arrayElement(this.pure.registeredModules.electricalComponents.electromechanical);
+    return this.pure.random.arrayElement(
+      this.pure.registeredModules.electricalComponents.electromechanical
+    );
   }
 }

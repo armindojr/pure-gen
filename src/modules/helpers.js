@@ -1,5 +1,6 @@
 import mustache from 'mustache';
 import slugify from 'slugify';
+import * as constants from '../constants.js';
 
 mustache.escape = text => text;
 
@@ -35,7 +36,7 @@ export class Helpers {
 
   replaceSymbolWithHex(options = {}) {
     const { string = '', symbol = '#' } = options;
-    const hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+    const hex = constants.hex;
     let str = '';
 
     for (let i = 0; i < string.length; i += 1) {
@@ -51,34 +52,7 @@ export class Helpers {
 
   replaceSymbols(string) {
     const def = string || '';
-    const alpha = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
+    const alpha = constants.upperAlpha;
     let str = '';
 
     for (let i = 0; i < def.length; i += 1) {
@@ -87,7 +61,9 @@ export class Helpers {
       } else if (def.charAt(i) === '?') {
         str += this.pure.random.arrayElement(alpha);
       } else if (def.charAt(i) === '*') {
-        str += this.pure.random.boolean() ? this.pure.random.arrayElement(alpha) : this.pure.random.number(9);
+        str += this.pure.random.boolean()
+          ? this.pure.random.arrayElement(alpha)
+          : this.pure.random.number(9);
       } else {
         str += def.charAt(i);
       }
@@ -293,7 +269,10 @@ export class Helpers {
       username: userName,
       avatar: this.pure.internet.avatar(),
       email: this.pure.internet.email({ firstName: userName }),
-      dob: this.pure.date.past({ years: 50, refDate: new Date('Sat Sep 20 1992 21:35:02 GMT+0200 (CEST)') }),
+      dob: this.pure.date.past({
+        years: 50,
+        refDate: new Date('Sat Sep 20 1992 21:35:02 GMT+0200 (CEST)')
+      }),
       phone: this.pure.phone.phoneNumber(),
       address: {
         street: this.pure.address.streetName(true),

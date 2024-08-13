@@ -40,7 +40,10 @@ export class Fake {
 
     Object.keys(result).forEach(module => {
       Object.keys(result[module]).forEach(method => {
-        if (typeof this.pure[module] === 'undefined' || typeof this.pure[module][method] === 'undefined') {
+        if (
+          typeof this.pure[module] === 'undefined' ||
+          typeof this.pure[module][method] === 'undefined'
+        ) {
           throw new Error(`${module}.${method} doesn't exist inside pure scope`);
         }
 

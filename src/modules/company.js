@@ -7,7 +7,9 @@ export class Company {
     let res;
 
     if (typeof format !== 'string') {
-      res = this.pure.fake.parse(this.pure.random.arrayElement(this.pure.registeredModules.company.name));
+      res = this.pure.fake.parse(
+        this.pure.random.arrayElement(this.pure.registeredModules.company.name)
+      );
     } else {
       res = this.pure.fake.parse(format);
     }

@@ -48,7 +48,9 @@ export class Address {
     let result = this.pure.random.arrayElement(this.pure.registeredModules.address.city[def]);
 
     if (result === undefined || result.length <= 1) {
-      result = this.pure.fake.parse(this.pure.random.arrayElement(this.pure.registeredModules.address.city));
+      result = this.pure.fake.parse(
+        this.pure.random.arrayElement(this.pure.registeredModules.address.city)
+      );
     }
 
     return result;
@@ -197,9 +199,13 @@ export class Address {
     let result = '';
 
     if (useAbbr) {
-      result = this.pure.random.arrayElement(this.pure.registeredModules.address.directionAbbr.cardinal);
+      result = this.pure.random.arrayElement(
+        this.pure.registeredModules.address.directionAbbr.cardinal
+      );
     } else {
-      result = this.pure.random.arrayElement(this.pure.registeredModules.address.direction.cardinal);
+      result = this.pure.random.arrayElement(
+        this.pure.registeredModules.address.direction.cardinal
+      );
     }
 
     return result;
@@ -209,7 +215,9 @@ export class Address {
     let result = '';
 
     if (useAbbr) {
-      result = this.pure.random.arrayElement(this.pure.registeredModules.address.directionAbbr.ordinal);
+      result = this.pure.random.arrayElement(
+        this.pure.registeredModules.address.directionAbbr.ordinal
+      );
     } else {
       result = this.pure.random.arrayElement(this.pure.registeredModules.address.direction.ordinal);
     }
@@ -247,7 +255,9 @@ export class Address {
       const lat1 = degreesToRadians(coord[0]);
       // Current long point converted to radians
       const lon1 = degreesToRadians(coord[1]);
-      const lat2 = Math.asin(Math.sin(lat1) * Math.cos(d / R) + Math.cos(lat1) * Math.sin(d / R) * Math.cos(bearing));
+      const lat2 = Math.asin(
+        Math.sin(lat1) * Math.cos(d / R) + Math.cos(lat1) * Math.sin(d / R) * Math.cos(bearing)
+      );
       let lon2 =
         lon1 +
         Math.atan2(
@@ -265,7 +275,12 @@ export class Address {
       return [radiansToDegrees(lat2), radiansToDegrees(lon2)];
     }
     // This approach will likely result in a higher density of points near the center.
-    const randomCoord = coordinateWithOffset(coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric);
+    const randomCoord = coordinateWithOffset(
+      coordinate,
+      degreesToRadians(Math.random() * 360.0),
+      radius,
+      isMetric
+    );
 
     return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
   }
