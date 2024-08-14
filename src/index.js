@@ -2,19 +2,13 @@ import * as locales from './locale/index.js';
 import * as imports from './imports.js';
 import * as constants from './constants.js';
 
-// Transform a string to camelCase
-const camelize = str =>
-  str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
-    .replace(/\s+/g, '');
-
 /**
  *
  * @namespace pure
  */
 export default class Pure {
   constructor(locale) {
-    this.registeredModules = {};
+    this.registeredModules = new Object();
     this.possibleLocales = constants.possibleLocales;
 
     if (locale) {
@@ -25,12 +19,12 @@ export default class Pure {
 
     // Dynamic import all modules
     Object.keys(imports).forEach(key => {
-      this[camelize(key)] = new imports[key](this);
+      this[key] = new imports[key](this);
     });
   }
 
   seed(value) {
-    this.random = new imports.Random(this, value);
+    this.random = new imports.random(this, value);
   }
 
   setLocale(locale) {

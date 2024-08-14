@@ -120,7 +120,9 @@ function generator(arg) {
           generated = [];
 
           for (let index = 0; index < answers.rows; index += 1) {
-            generated.push(pure.unique.exec(pure.fake.parse, [answers.templateStr.replace(/\n/g, '')]));
+            generated.push(
+              pure.unique.exec(pure.fake.parse, [answers.templateStr.replace(/\n/g, '')])
+            );
           }
 
           generated = `[${generated}]`;

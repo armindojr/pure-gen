@@ -122,13 +122,32 @@ describe('generator.js', () => {
       formatType: 'txt',
       templateStr: '{{address.defaultCountry}}\n',
       rows: 1,
-      uniqueRows: true,
+      uniqueRows: false,
       savePath: `${__dirname}/support`,
       saveName: 'stubtest4'
     });
 
     const generatedResult = await gen.generator({ locale: 'en' });
     const resultFromFile = String(fs.readFileSync(`${__dirname}/support/stubtest4.txt`));
+
+    expect(generatedResult.generated).toEqual(resultFromFile);
+
+    inquirer.prompt.restore();
+  });
+
+  it('generate json file with cli parameter and relative path', async () => {
+    pure.seed(1);
+    sinon.stub(inquirer, 'prompt').resolves({
+      formatType: 'txt',
+      templateStr: '{{address.defaultCountry}}\n',
+      rows: 1,
+      uniqueRows: false,
+      savePath: `./test/support`,
+      saveName: 'stubtest5'
+    });
+
+    const generatedResult = await gen.generator({ locale: 'en' });
+    const resultFromFile = String(fs.readFileSync(`${__dirname}/support/stubtest5.txt`));
 
     expect(generatedResult.generated).toEqual(resultFromFile);
 
@@ -173,9 +192,7 @@ describe('generator.js', () => {
   it('generate and throws error', async () => {
     sinon.stub(inquirer, 'prompt').resolves();
 
-    await gen.generator({}).catch(err => {
-      expect(err).toBeDefined();
-    });
+    await expect(gen.generator({})).rejects.toThrow('The following error has occurred');
 
     inquirer.prompt.restore();
   });
