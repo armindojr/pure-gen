@@ -3,7 +3,7 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 import gen from '../src/cli/generator';
 
 describe('generator.js', () => {

@@ -1,6 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
-import Pure from '../src/index.js';
+import { default as pure, Pure } from '../src/index.js';
 
 describe('random.js', () => {
   describe('number()', () => {

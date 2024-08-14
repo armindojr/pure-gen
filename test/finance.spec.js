@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 import luhnFormula from './support/luhnCheck';
 
 describe('finance.js', () => {
@@ -456,7 +456,9 @@ describe('finance.js', () => {
   describe('bic()', () => {
     it('returns a random yet formally correct BIC number', () => {
       const bic = pure.finance.bic();
-      const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+      const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join(
+        '|'
+      )})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
       const reg = new RegExp(exp, 'i');
 
       expect(reg.test(bic)).toEqual(true);
@@ -466,7 +468,9 @@ describe('finance.js', () => {
       sinon.stub(pure.random, 'number').returns(3);
 
       const bic = pure.finance.bic();
-      const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join('|')})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
+      const exp = `^[A-Z]{4}(${pure.registeredModules.iban.countryCode.join(
+        '|'
+      )})[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$`;
       const reg = new RegExp(exp, 'i');
 
       expect(reg.test(bic)).toEqual(true);

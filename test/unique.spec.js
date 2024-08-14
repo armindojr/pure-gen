@@ -1,4 +1,4 @@
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('unique.js', () => {
   describe('exec()', () => {
@@ -11,7 +11,9 @@ describe('unique.js', () => {
 
     it('is able to call a function with arguments and return a result', () => {
       // third argument is provider, or domain for email
-      const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
+      const result = pure.unique.exec(pure.internet.email, [
+        { firstName: 'a', lastName: 'b', provider: 'c' }
+      ]);
 
       expect(/[@]c/.test(result)).toEqual(true);
       pure.unique.clear();
@@ -19,7 +21,9 @@ describe('unique.js', () => {
 
     it('is able to call same function with arguments and return a result', () => {
       // third argument is provider, or domain for email
-      const result = pure.unique.exec(pure.internet.email, [{ firstName: 'a', lastName: 'b', provider: 'c' }]);
+      const result = pure.unique.exec(pure.internet.email, [
+        { firstName: 'a', lastName: 'b', provider: 'c' }
+      ]);
 
       expect(/[@]c/.test(result)).toEqual(true);
       pure.unique.clear();

@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 import luhnCheck from './support/luhnCheck';
 
 describe('helpers.js', () => {
@@ -161,19 +161,29 @@ describe('helpers.js', () => {
     });
 
     it('supports different symbols', () => {
-      const number = pure.helpers.replaceCreditCardSymbols({ string: '6453-****-****-****-***L', symbol: '*' });
+      const number = pure.helpers.replaceCreditCardSymbols({
+        string: '6453-****-****-****-***L',
+        symbol: '*'
+      });
 
       expect(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/.test(number)).toEqual(true);
       expect(luhnCheck(number)).toEqual(true);
     });
 
     it('handles regexp style input', () => {
-      const number = pure.helpers.replaceCreditCardSymbols({ string: '6453-*{4}-*{4}-*{4}-*{3}L', symbol: '*' });
-      const number2 = pure.helpers.replaceCreditCardSymbols({ string: '645[5-9]-#{4,6}-#{1,2}-#{4,6}-#{3}L' });
+      const number = pure.helpers.replaceCreditCardSymbols({
+        string: '6453-*{4}-*{4}-*{4}-*{3}L',
+        symbol: '*'
+      });
+      const number2 = pure.helpers.replaceCreditCardSymbols({
+        string: '645[5-9]-#{4,6}-#{1,2}-#{4,6}-#{3}L'
+      });
 
       expect(/^6453-([0-9]){4}-([0-9]){4}-([0-9]){4}-([0-9]){4}$/.test(number)).toEqual(true);
       expect(luhnCheck(number)).toEqual(true);
-      expect(/^645[5-9]-([0-9]){4,6}-([0-9]){1,2}-([0-9]){4,6}-([0-9]){4}$/.test(number2)).toEqual(true);
+      expect(/^645[5-9]-([0-9]){4,6}-([0-9]){1,2}-([0-9]){4,6}-([0-9]){4}$/.test(number2)).toEqual(
+        true
+      );
       expect(luhnCheck(number2)).toEqual(true);
     });
   });
@@ -200,9 +210,15 @@ describe('helpers.js', () => {
     });
 
     it('repeats string {n} number of times', () => {
-      expect(pure.helpers.regexpStyleStringParse('%{10}')).toEqual(pure.helpers.repeatString({ string: '%', num: 10 }));
-      expect(pure.helpers.regexpStyleStringParse('%{30}')).toEqual(pure.helpers.repeatString({ string: '%', num: 30 }));
-      expect(pure.helpers.regexpStyleStringParse('%{5}')).toEqual(pure.helpers.repeatString({ string: '%', num: 5 }));
+      expect(pure.helpers.regexpStyleStringParse('%{10}')).toEqual(
+        pure.helpers.repeatString({ string: '%', num: 10 })
+      );
+      expect(pure.helpers.regexpStyleStringParse('%{30}')).toEqual(
+        pure.helpers.repeatString({ string: '%', num: 30 })
+      );
+      expect(pure.helpers.regexpStyleStringParse('%{5}')).toEqual(
+        pure.helpers.repeatString({ string: '%', num: 5 })
+      );
     });
 
     it('creates a numerical range', () => {

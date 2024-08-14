@@ -6,7 +6,7 @@ import * as constants from './constants.js';
  *
  * @namespace pure
  */
-export default class Pure {
+export class Pure {
   constructor(locale) {
     this.registeredModules = new Object();
     this.possibleLocales = constants.possibleLocales;
@@ -42,3 +42,5 @@ export default class Pure {
     return this.random.returnSeed();
   }
 }
+
+export default new Pure();

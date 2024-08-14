@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('company.js', () => {
   describe('companyName()', () => {
@@ -50,7 +50,9 @@ describe('company.js', () => {
 
     it('returns three last names when parameter is a specific format', () => {
       sinon.spy(pure.name, 'lastName');
-      const name = pure.company.companyName('{{name.lastName}}, {{name.lastName}} and {{name.lastName}}');
+      const name = pure.company.companyName(
+        '{{name.lastName}}, {{name.lastName}} and {{name.lastName}}'
+      );
       const parts = name.split(' ');
 
       expect(parts.length).toEqual(4);

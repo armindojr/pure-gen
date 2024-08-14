@@ -1,5 +1,4 @@
-import Pure from '../src/index';
-import pure from '../index';
+import { default as pure, Pure } from '../src/index.js';
 
 describe('Setting up all possible locales', () => {
   pure.possibleLocales.forEach(locale => {

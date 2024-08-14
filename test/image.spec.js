@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('image.js', () => {
   describe('placeimg()', () => {
@@ -17,7 +17,11 @@ describe('image.js', () => {
       });
 
       it('returns a random image url for a specified category', () => {
-        const imageUrl = pure.image.placeimg.imageUrl({ width: 100, height: 100, category: 'abstract' });
+        const imageUrl = pure.image.placeimg.imageUrl({
+          width: 100,
+          height: 100,
+          category: 'abstract'
+        });
 
         expect(imageUrl).toEqual('https://placeimg.com/100/100/abstract');
       });
@@ -101,7 +105,11 @@ describe('image.js', () => {
 
     describe('image()', () => {
       it('returns a searching image url with keyword', () => {
-        const food = pure.image.unsplash.image({ width: 100, height: 200, keyword: 'keyword1,keyword2,keyword3' });
+        const food = pure.image.unsplash.image({
+          width: 100,
+          height: 200,
+          keyword: 'keyword1,keyword2,keyword3'
+        });
 
         expect(food).toEqual('https://source.unsplash.com/100x200?keyword1,keyword2,keyword3');
       });

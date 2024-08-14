@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('lorem.js', () => {
   describe('word()', () => {

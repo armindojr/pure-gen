@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('fake.js', () => {
   describe('fake()', () => {
@@ -10,7 +10,9 @@ describe('fake.js', () => {
     });
 
     it('replaces multiple tokens with random values for methods with no parameters', () => {
-      const name = pure.fake.parse('{{random.arrayElement}}{{random.arrayElement}}{{random.arrayElement}}');
+      const name = pure.fake.parse(
+        '{{random.arrayElement}}{{random.arrayElement}}{{random.arrayElement}}'
+      );
 
       expect(/[abc]{3}/.test(name)).toEqual(true);
     });
@@ -39,7 +41,9 @@ describe('fake.js', () => {
 
       const from = new Date('2015-01-01').getTime();
       const to = new Date('2015-01-05').getTime();
-      const result = pure.fake.parse('{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}');
+      const result = pure.fake.parse(
+        '{{date.between({ "from": "2015-01-01", "to": "2015-01-05" })}}'
+      );
 
       expect(pure.date.between.calledOnce).toEqual(true);
       expect(from).toBeLessThanOrEqual(new Date(`${result}`).getTime());

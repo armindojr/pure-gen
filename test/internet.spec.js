@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import slugify from 'slugify';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('internet.js', () => {
   describe('email()', () => {
@@ -25,7 +25,11 @@ describe('internet.js', () => {
 
     it('returns email passing specific first name, last name and provider', () => {
       pure.seed(416344349);
-      const email = pure.internet.email({ firstName: 'first', lastName: 'last', provider: 'email' });
+      const email = pure.internet.email({
+        firstName: 'first',
+        lastName: 'last',
+        provider: 'email'
+      });
 
       expect(email).toContain('first');
       expect(email).toContain('last');

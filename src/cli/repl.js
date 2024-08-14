@@ -1,6 +1,6 @@
 import * as colorette from 'colorette';
 import repl from 'repl';
-import pure from '../../index.js';
+import pure from '../index.js';
 
 function prettyPrint(message) {
   console.log(message);
@@ -21,7 +21,8 @@ function startRepl(arg) {
     
             ${colorette.gray('.exit or ctrl+c to exit Repl')}
             ${colorette.gray(
-              'Repl has autocomplete, type any pure method ' + 'then hit <tab> 2x after "." and Repl will suggest'
+              'Repl has autocomplete, type any pure method ' +
+                'then hit <tab> 2x after "." and Repl will suggest'
             )}
             ${colorette.gray('Methods: seed, setLocale, getSeed will not work inside Repl')}
         `;

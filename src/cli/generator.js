@@ -2,7 +2,7 @@ import * as colorette from 'colorette';
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
-import pure from '../../index.js';
+import pure from '../index.js';
 
 const formats = ['csv', 'json', 'txt', 'none'];
 

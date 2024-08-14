@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('date.js', () => {
   describe('past()', () => {
@@ -162,7 +162,9 @@ describe('date.js', () => {
     it('returns random value from date.month.wideContext array for context option', () => {
       const month = pure.date.month({ context: true });
 
-      expect(pure.registeredModules.date.month.wideContext.indexOf(month)).toBeGreaterThanOrEqual(0);
+      expect(pure.registeredModules.date.month.wideContext.indexOf(month)).toBeGreaterThanOrEqual(
+        0
+      );
     });
 
     it('returns random value from date.month.abbr array for abbr option', () => {
@@ -174,7 +176,9 @@ describe('date.js', () => {
     it('returns random value from date.month.abbrContext array for abbr and context option', () => {
       const month = pure.date.month({ abbr: true, context: true });
 
-      expect(pure.registeredModules.date.month.abbrContext.indexOf(month)).toBeGreaterThanOrEqual(0);
+      expect(pure.registeredModules.date.month.abbrContext.indexOf(month)).toBeGreaterThanOrEqual(
+        0
+      );
     });
 
     it('returns random value when wideContext array is missing', () => {
@@ -218,7 +222,9 @@ describe('date.js', () => {
     it('returns random value from date.weekday.wideContext array for context option', () => {
       const weekday = pure.date.weekday({ context: true });
 
-      expect(pure.registeredModules.date.weekday.wideContext.indexOf(weekday)).toBeGreaterThanOrEqual(0);
+      expect(
+        pure.registeredModules.date.weekday.wideContext.indexOf(weekday)
+      ).toBeGreaterThanOrEqual(0);
     });
 
     it('returns random value from date.weekday.abbr array for abbr option', () => {

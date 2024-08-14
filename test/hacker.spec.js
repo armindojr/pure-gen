@@ -1,4 +1,4 @@
-import pure from '../index.js';
+import pure from '../src/index.js';
 
 describe('hacker.js', () => {
   describe('abbreviation()', () => {
