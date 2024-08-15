@@ -8,11 +8,15 @@ import internet from './internet/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'Ελληνικά';
 const separator = ' & ';
 const localeName = 'el';
 
 export const el = {
+  ...en,
   title,
   separator,
   localeName,

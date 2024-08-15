@@ -4,10 +4,14 @@ import internet from './internet/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'South Africa (Zulu)';
 const localeName = 'zu_ZA';
 
 export const zu_ZA = {
+  ...en,
   address,
   company,
   internet,

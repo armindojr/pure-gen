@@ -7,11 +7,15 @@ import lorem from './lorem/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'Latvian';
 const separator = ' un ';
 const localeName = 'lv';
 
 export const lv = {
+  ...en,
   address,
   commerce,
   company,

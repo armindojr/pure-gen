@@ -8,11 +8,7 @@ function prettyPrint(message) {
 
 function startRepl(arg) {
   if (arg.locale) {
-    if (pure.possibleLocales.indexOf(arg.locale) === -1) {
-      throw new Error('Locale not found');
-    } else {
-      pure.setLocale(arg.locale);
-    }
+    pure.setLocale(arg.locale);
   }
 
   const sayWelcome = `
@@ -34,7 +30,8 @@ function startRepl(arg) {
 
   const myRepl = repl.start('[/] ');
 
-  Object.assign(myRepl.context, { pure });
+  // Add pure to the context
+  myRepl.context.pure = pure;
 
   myRepl.on('exit', () => prettyPrint(sayBye));
 }

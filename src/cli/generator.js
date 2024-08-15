@@ -50,11 +50,7 @@ function conditionalName(answers) {
 
 function generator(arg) {
   if (arg.locale) {
-    if (pure.possibleLocales.indexOf(arg.locale) === -1) {
-      throw new Error(colorette.red(`\n🛑 The following locale is not supported: ${arg.locale}`));
-    } else {
-      pure.setLocale(arg.locale);
-    }
+    pure.setLocale(arg.locale);
   }
 
   return new Promise((resolve, reject) => {
@@ -141,17 +137,16 @@ function generator(arg) {
         // Save output
         let pathJoin = '';
         if (answers.formatType !== 'none') {
+          const filename = `/${answers.saveName}.${answers.formatType}`;
+
           if (answers.savePath.includes(process.cwd())) {
-            const filename = `/${answers.saveName}.${answers.formatType}`;
             pathJoin = path.join(answers.savePath, filename);
-            fs.writeFileSync(pathJoin, generated);
-            console.log(colorette.gray('\nGenerated ✔️'));
           } else {
-            const filename = `/${answers.saveName}.${answers.formatType}`;
             pathJoin = path.join(process.cwd(), answers.savePath, filename);
-            fs.writeFileSync(pathJoin, generated);
-            console.log(colorette.gray('\nGenerated ✔️'));
           }
+
+          fs.writeFileSync(pathJoin, generated);
+          console.log(colorette.gray('\nGenerated ✔️'));
         } else {
           console.log(colorette.gray('\nResult 🖨️'));
           console.log(colorette.blue(generated));

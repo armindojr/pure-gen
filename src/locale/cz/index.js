@@ -6,10 +6,14 @@ import lorem from './lorem/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'Czech';
 const localeName = 'cz';
 
 export const cz = {
+  ...en,
   title,
   localeName,
   address,

@@ -31,10 +31,7 @@ export class Pure {
     if (this.possibleLocales.indexOf(locale) === -1) {
       throw new Error(`The following locale is not supported: ${locale}`);
     } else {
-      this.registeredModules = {
-        ...locales.en,
-        ...locales[locale]
-      };
+      this.registeredModules = locales[locale];
     }
   }
 

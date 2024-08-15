@@ -7,10 +7,14 @@ import lorem from './lorem/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'Portuguese (Brazil)';
 const localeName = 'pt_BR';
 
 export const pt_BR = {
+  ...en,
   address,
   commerce,
   company,

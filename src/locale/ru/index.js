@@ -8,11 +8,15 @@ import lorem from './lorem/index.js';
 import name from './name/index.js';
 import phoneNumber from './phoneNumber/index.js';
 
+// Merge fallback locale
+import { en } from '../en/index.js';
+
 const title = 'Russian';
 const separator = ' и ';
 const localeName = 'ru';
 
 export const ru = {
+  ...en,
   title,
   separator,
   localeName,
