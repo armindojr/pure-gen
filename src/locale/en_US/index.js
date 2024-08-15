@@ -1,7 +1,16 @@
-const en_US = {
-    title: 'United States (English)',
-    address: require('./address'),
-    internet: require('./internet'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import internet from './internet/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const title = 'United States (English)';
+const localeName = 'en_US';
+
+export const en_US = {
+  ...en,
+  address,
+  internet,
+  title,
+  localeName
 };
-module.exports = en_US;

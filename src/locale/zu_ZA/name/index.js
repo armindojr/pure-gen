@@ -1,7 +1,11 @@
-const name = {
-    male_first_name: require('./male_first_name'),
-    female_first_name: require('./female_first_name'),
-    first_name: require('./first_name'),
-    last_name: require('./last_name'),
+import femaleFirstName from './femaleFirstName.js';
+import firstName from './firstName.js';
+import lastName from './lastName.js';
+import maleFirstName from './maleFirstName.js';
+
+export default {
+  femaleFirstName,
+  firstName,
+  lastName,
+  maleFirstName
 };
-module.exports = name;

@@ -1,10 +1,22 @@
-const de_AT = {
-    title: 'German (Austria)',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    company: require('./company'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const title = 'German (Austria)';
+const localeName = 'de_AT';
+
+export const de_AT = {
+  ...en,
+  title,
+  localeName,
+  address,
+  company,
+  internet,
+  name,
+  phoneNumber
 };
-module.exports = de_AT;

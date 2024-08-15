@@ -1,17 +1,20 @@
-const address = {
-    city_prefix: require('./city_prefix'),
-    city_suffix: require('./city_suffix'),
-    country: require('./country'),
-    building_number: require('./building_number'),
-    secondary_address: require('./secondary_address'),
-    postcode: require('./postcode'),
-    state: require('./state'),
-    state_abbr: require('./state_abbr'),
-    time_zone: require('./time_zone'),
-    city: require('./city'),
-    street: require('./street'),
-    street_name: require('./street_name'),
-    street_address: require('./street_address'),
-    default_country: require('./default_country'),
+import city from './city.js';
+import cityPrefix from './cityPrefix.js';
+import citySuffix from './citySuffix.js';
+import country from './country.js';
+import postcode from './postcode.js';
+import secondaryAddress from './secondaryAddress.js';
+import timeZone from './timeZone.js';
+
+const defaultCountry = ['Slovensko'];
+
+export default {
+  city,
+  cityPrefix,
+  citySuffix,
+  country,
+  postcode,
+  secondaryAddress,
+  timeZone,
+  defaultCountry
 };
-module.exports = address;

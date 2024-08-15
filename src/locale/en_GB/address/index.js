@@ -1,7 +1,10 @@
-const address = {
-    county: require('./county'),
-    uk_country: require('./uk_country'),
-    default_country: require('./default_country'),
-    postcode: require('./postcode'),
+import county from './county.js';
+import postcode from './postcode.js';
+
+const defaultCountry = ['England', 'Scotland', 'Wales', 'Northern Ireland'];
+
+export default {
+  county,
+  postcode,
+  defaultCountry
 };
-module.exports = address;

@@ -1,46 +1,48 @@
-class Git {
-    constructor(pure) {
-        this.branch = () => {
-            const noun = pure.hacker.noun().replace(' ', '-');
-            const verb = pure.hacker.verb().replace(' ', '-');
-            return `${noun}-${verb}`;
-        };
+export class Git {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-        this.commitEntry = (options = {}) => {
-            let entry = 'commit {{git.commitSha}}\r\n';
+  branch() {
+    const noun = this.pure.hacker.noun().replace(' ', '-');
+    const verb = this.pure.hacker.verb().replace(' ', '-');
 
-            if (options.merge) {
-                entry += 'Merge: {{git.shortSha}} {{git.shortSha}}\r\n';
-            }
+    return `${noun}-${verb}`;
+  }
 
-            entry += 'Author: {{name.firstName}} {{name.lastName}} <{{internet.email}}>\r\n';
-            entry += `Date: ${pure.date.recent().toString()}\r\n`;
-            entry += '\r\n\xa0\xa0\xa0\xa0{{git.commitMessage}}\r\n';
+  commitEntry(options = {}) {
+    let entry = 'commit {{git.commitSha}}\r\n';
 
-            return pure.fake(entry);
-        };
-
-        this.commitMessage = () => {
-            const noun = pure.hacker.noun().replace(' ', '-');
-            const verb = pure.hacker.verb().replace(' ', '-');
-            const adjective = pure.hacker.adjective().replace(' ', '-');
-            return `${verb} ${adjective} ${noun}`;
-        };
-
-        this.commitSha = () => {
-            const template = pure.helpers.repeatString({ string: '#', num: 40 });
-            const commit = pure.helpers.replaceSymbolWithHex({ string: template });
-
-            return commit;
-        };
-
-        this.shortSha = () => {
-            const template = pure.helpers.repeatString({ string: '#', num: 7 });
-            const shortSha = pure.helpers.replaceSymbolWithHex({ string: template });
-
-            return shortSha;
-        };
+    if (options.merge) {
+      entry += 'Merge: {{git.shortSha}} {{git.shortSha}}\r\n';
     }
-}
 
-module.exports = Git;
+    entry += 'Author: {{name.firstName}} {{name.lastName}} <{{internet.email}}>\r\n';
+    entry += `Date: ${this.pure.date.recent().toString()}\r\n`;
+    entry += '\r\n\xa0\xa0\xa0\xa0{{git.commitMessage}}\r\n';
+
+    return this.pure.fake.parse(entry);
+  }
+
+  commitMessage() {
+    const noun = this.pure.hacker.noun().replace(' ', '-');
+    const verb = this.pure.hacker.verb().replace(' ', '-');
+    const adjective = this.pure.hacker.adjective().replace(' ', '-');
+
+    return `${verb} ${adjective} ${noun}`;
+  }
+
+  commitSha() {
+    const template = this.pure.helpers.repeatString({ string: '#', num: 40 });
+    const commit = this.pure.helpers.replaceSymbolWithHex({ string: template });
+
+    return commit;
+  }
+
+  shortSha() {
+    const template = this.pure.helpers.repeatString({ string: '#', num: 7 });
+    const shortSha = this.pure.helpers.replaceSymbolWithHex({ string: template });
+
+    return shortSha;
+  }
+}

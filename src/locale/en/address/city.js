@@ -1,5 +1,5 @@
-module.exports = {
-    'Alabama': [
+export default {
+    Alabama: [
         'Alexander City',
         'Andalusia',
         'Anniston',
@@ -38,9 +38,9 @@ module.exports = {
         'Troy',
         'Tuscaloosa',
         'Tuscumbia',
-        'Tuskegee'
+        'Tuskegee',
     ],
-    'Alaska': [
+    Alaska: [
         'Anchorage',
         'Cordova',
         'Fairbanks',
@@ -55,9 +55,9 @@ module.exports = {
         'Seward',
         'Sitka',
         'Skagway',
-        'Valdez'
+        'Valdez',
     ],
-    'Arizona': [
+    Arizona: [
         'Ajo',
         'Avondale',
         'Bisbee',
@@ -85,9 +85,9 @@ module.exports = {
         'Walpi',
         'Window Rock',
         'Winslow',
-        'Yuma'
+        'Yuma',
     ],
-    'Arkansas': [
+    Arkansas: [
         'Arkadelphia',
         'Arkansas Post',
         'Batesville',
@@ -117,9 +117,9 @@ module.exports = {
         'Searcy',
         'Stuttgart',
         'Van Buren',
-        'West Memphis'
+        'West Memphis',
     ],
-    'California': [
+    California: [
         'Alameda',
         'Alhambra',
         'Anaheim',
@@ -257,9 +257,9 @@ module.exports = {
         'Whittier',
         'Woodland',
         'Yorba Linda',
-        'Yuba City'
+        'Yuba City',
     ],
-    'Colorado': [
+    Colorado: [
         'Alamosa',
         'Aspen',
         'Aurora',
@@ -300,9 +300,9 @@ module.exports = {
         'Trinidad',
         'Vail',
         'Walsenburg',
-        'Westminster'
+        'Westminster',
     ],
-    'Connecticut': [
+    Connecticut: [
         'Ansonia',
         'Berlin',
         'Bloomfield',
@@ -360,18 +360,18 @@ module.exports = {
         'Windham',
         'Windsor',
         'Windsor Locks',
-        'Winsted'
+        'Winsted',
     ],
-    'Delaware': [
+    Delaware: [
         'Dover',
         'Lewes',
         'Milford',
         'New Castle',
         'Newark',
         'Smyrna',
-        'Wilmington'
+        'Wilmington',
     ],
-    'Florida': [
+    Florida: [
         'Apalachicola',
         'Bartow',
         'Belle Glade',
@@ -429,9 +429,9 @@ module.exports = {
         'West Palm Beach',
         'White Springs',
         'Winter Haven',
-        'Winter Park'
+        'Winter Park',
     ],
-    'Georgia': [
+    Georgia: [
         'Albany',
         'Americus',
         'Andersonville',
@@ -465,9 +465,9 @@ module.exports = {
         'Warm Springs',
         'Warner Robins',
         'Washington',
-        'Waycross'
+        'Waycross',
     ],
-    'Hawaii': [
+    Hawaii: [
         'Hanalei',
         'Hilo',
         'Honaunau',
@@ -480,9 +480,9 @@ module.exports = {
         'Laie',
         'Wahiawa',
         'Wailuku',
-        'Waimea'
+        'Waimea',
     ],
-    'Idaho': [
+    Idaho: [
         'Blackfoot',
         'Boise',
         'Bonners Ferry',
@@ -498,9 +498,9 @@ module.exports = {
         'Priest River',
         'Rexburg',
         'Sun Valley',
-        'Twin Falls'
+        'Twin Falls',
     ],
-    'Illinois': [
+    Illinois: [
         'Alton',
         'Arlington Heights',
         'Arthur',
@@ -595,9 +595,9 @@ module.exports = {
         'Wilmette',
         'Winnetka',
         'Wood River',
-        'Zion'
+        'Zion',
     ],
-    'Indiana': [
+    Indiana: [
         'Anderson',
         'Bedford',
         'Bloomington',
@@ -642,9 +642,9 @@ module.exports = {
         'Valparaiso',
         'Vincennes',
         'Wabash',
-        'West Lafayette'
+        'West Lafayette',
     ],
-    'Iowa': [
+    Iowa: [
         'Amana Colonies',
         'Ames',
         'Boone',
@@ -674,9 +674,9 @@ module.exports = {
         'Sioux City',
         'Waterloo',
         'Webster City',
-        'West Des Moines'
+        'West Des Moines',
     ],
-    'Kansas': [
+    Kansas: [
         'Abilene',
         'Arkansas City',
         'Atchison',
@@ -709,9 +709,9 @@ module.exports = {
         'Shawnee',
         'Smith Center',
         'Topeka',
-        'Wichita'
+        'Wichita',
     ],
-    'Kentucky': [
+    Kentucky: [
         'Ashland',
         'Barbourville',
         'Bardstown',
@@ -738,9 +738,9 @@ module.exports = {
         'Owensboro',
         'Paducah',
         'Paris',
-        'Richmond'
+        'Richmond',
     ],
-    'Louisiana': [
+    Louisiana: [
         'Abbeville',
         'Alexandria',
         'Bastrop',
@@ -760,9 +760,9 @@ module.exports = {
         'Ruston',
         'Saint Martinville',
         'Shreveport',
-        'Thibodaux'
+        'Thibodaux',
     ],
-    'Maine': [
+    Maine: [
         'Auburn',
         'Augusta',
         'Bangor',
@@ -794,9 +794,9 @@ module.exports = {
         'Saco',
         'Scarborough',
         'Waterville',
-        'York'
+        'York',
     ],
-    'Maryland': [
+    Maryland: [
         'Aberdeen',
         'Annapolis',
         'Baltimore',
@@ -823,9 +823,9 @@ module.exports = {
         'Silver Spring',
         'Takoma Park',
         'Towson',
-        'Westminster'
+        'Westminster',
     ],
-    'Massachusetts': [
+    Massachusetts: [
         'Abington',
         'Adams',
         'Amesbury',
@@ -927,9 +927,9 @@ module.exports = {
         'Williamstown',
         'Woburn',
         'Woods Hole',
-        'Worcester'
+        'Worcester',
     ],
-    'Michigan': [
+    Michigan: [
         'Adrian',
         'Alma',
         'Ann Arbor',
@@ -986,9 +986,9 @@ module.exports = {
         'Trenton',
         'Warren',
         'Wyandotte',
-        'Ypsilanti'
+        'Ypsilanti',
     ],
-    'Minnesota': [
+    Minnesota: [
         'Albert Lea',
         'Alexandria',
         'Austin',
@@ -1021,9 +1021,9 @@ module.exports = {
         'Stillwater',
         'Virginia',
         'Willmar',
-        'Winona'
+        'Winona',
     ],
-    'Mississippi': [
+    Mississippi: [
         'Bay Saint Louis',
         'Biloxi',
         'Canton',
@@ -1051,9 +1051,9 @@ module.exports = {
         'Tupelo',
         'Vicksburg',
         'West Point',
-        'Yazoo City'
+        'Yazoo City',
     ],
-    'Missouri': [
+    Missouri: [
         'Boonville',
         'Branson',
         'Cape Girardeau',
@@ -1088,9 +1088,9 @@ module.exports = {
         'Sedalia',
         'Springfield',
         'Warrensburg',
-        'West Plains'
+        'West Plains',
     ],
-    'Montana': [
+    Montana: [
         'Anaconda',
         'Billings',
         'Bozeman',
@@ -1106,9 +1106,9 @@ module.exports = {
         'Livingston',
         'Miles City',
         'Missoula',
-        'Virginia City'
+        'Virginia City',
     ],
-    'Nebraska': [
+    Nebraska: [
         'Beatrice',
         'Bellevue',
         'Boys Town',
@@ -1127,9 +1127,9 @@ module.exports = {
         'Omaha',
         'Plattsmouth',
         'Red Cloud',
-        'Sidney'
+        'Sidney',
     ],
-    'Nevada': [
+    Nevada: [
         'Boulder City',
         'Carson City',
         'Elko',
@@ -1143,7 +1143,7 @@ module.exports = {
         'Reno',
         'Sparks',
         'Virginia City',
-        'Winnemucca'
+        'Winnemucca',
     ],
     'New Hampshire': [
         'Berlin',
@@ -1166,7 +1166,7 @@ module.exports = {
         'Portsmouth',
         'Rochester',
         'Salem',
-        'Somersworth'
+        'Somersworth',
     ],
     'New Jersey': [
         'Asbury Park',
@@ -1231,7 +1231,7 @@ module.exports = {
         'West New York',
         'West Orange',
         'Willingboro',
-        'Woodbridge'
+        'Woodbridge',
     ],
     'New Mexico': [
         'Acoma',
@@ -1259,7 +1259,7 @@ module.exports = {
         'Socorro',
         'Taos',
         'Truth or Consequences',
-        'Tucumcari'
+        'Tucumcari',
     ],
     'New York': [
         'Albany',
@@ -1366,7 +1366,7 @@ module.exports = {
         'West Seneca',
         'White Plains',
         'Woodstock',
-        'Yonkers'
+        'Yonkers',
     ],
     'North Carolina': [
         'Asheboro',
@@ -1407,7 +1407,7 @@ module.exports = {
         'Washington',
         'Wilmington',
         'Wilson',
-        'Winston-Salem'
+        'Winston-Salem',
     ],
     'North Dakota': [
         'Bismarck',
@@ -1421,9 +1421,9 @@ module.exports = {
         'Rugby',
         'Valley City',
         'Wahpeton',
-        'Williston'
+        'Williston',
     ],
-    'Ohio': [
+    Ohio: [
         'Akron',
         'Alliance',
         'Ashtabula',
@@ -1491,9 +1491,9 @@ module.exports = {
         'Xenia',
         'Yellow Springs',
         'Youngstown',
-        'Zanesville'
+        'Zanesville',
     ],
-    'Oklahoma': [
+    Oklahoma: [
         'Ada',
         'Altus',
         'Alva',
@@ -1543,9 +1543,9 @@ module.exports = {
         'Tulsa',
         'Vinita',
         'Wewoka',
-        'Woodward'
+        'Woodward',
     ],
-    'Oregon': [
+    Oregon: [
         'Albany',
         'Ashland',
         'Astoria',
@@ -1583,9 +1583,9 @@ module.exports = {
         'Seaside',
         'Springfield',
         'The Dalles',
-        'Tillamook'
+        'Tillamook',
     ],
-    'Pennsylvania': [
+    Pennsylvania: [
         'Abington',
         'Aliquippa',
         'Allentown',
@@ -1655,7 +1655,7 @@ module.exports = {
         'West Chester',
         'Wilkes-Barre',
         'Williamsport',
-        'York'
+        'York',
     ],
     'Rhode Island': [
         'Barrington',
@@ -1678,7 +1678,7 @@ module.exports = {
         'Warwick',
         'Westerly',
         'Wickford',
-        'Woonsocket'
+        'Woonsocket',
     ],
     'South Carolina': [
         'Abbeville',
@@ -1702,7 +1702,7 @@ module.exports = {
         'Rock Hill',
         'Spartanburg',
         'Sumter',
-        'Union'
+        'Union',
     ],
     'South Dakota': [
         'Aberdeen',
@@ -1726,9 +1726,9 @@ module.exports = {
         'Sturgis',
         'Vermillion',
         'Watertown',
-        'Yankton'
+        'Yankton',
     ],
-    'Tennessee': [
+    Tennessee: [
         'Alcoa',
         'Athens',
         'Chattanooga',
@@ -1756,9 +1756,9 @@ module.exports = {
         'Norris',
         'Oak Ridge',
         'Shelbyville',
-        'Tullahoma'
+        'Tullahoma',
     ],
-    'Texas': [
+    Texas: [
         'Abilene',
         'Alpine',
         'Amarillo',
@@ -1835,9 +1835,9 @@ module.exports = {
         'Waco',
         'Weatherford',
         'Wichita Falls',
-        'Ysleta'
+        'Ysleta',
     ],
-    'Utah': [
+    Utah: [
         'Alta',
         'American Fork',
         'Bountiful',
@@ -1870,9 +1870,9 @@ module.exports = {
         'Spanish Fork',
         'Springville',
         'Tooele',
-        'Vernal'
+        'Vernal',
     ],
-    'Vermont': [
+    Vermont: [
         'Barre',
         'Bellows Falls',
         'Bennington',
@@ -1888,9 +1888,9 @@ module.exports = {
         'Saint Albans',
         'Saint Johnsbury',
         'Sharon',
-        'Winooski'
+        'Winooski',
     ],
-    'Virginia': [
+    Virginia: [
         'Abingdon',
         'Alexandria',
         'Bristol',
@@ -1920,9 +1920,9 @@ module.exports = {
         'Virginia Beach',
         'Waynesboro',
         'Williamsburg',
-        'Winchester'
+        'Winchester',
     ],
-    'Washington': [
+    Washington: [
         'Aberdeen',
         'Anacortes',
         'Auburn',
@@ -1956,7 +1956,7 @@ module.exports = {
         'Vancouver',
         'Walla Walla',
         'Wenatchee',
-        'Yakima'
+        'Yakima',
     ],
     'West Virginia': [
         'Bath',
@@ -1994,9 +1994,9 @@ module.exports = {
         'Weston',
         'Wheeling',
         'White Sulphur Springs',
-        'Williamson'
+        'Williamson',
     ],
-    'Wisconsin': [
+    Wisconsin: [
         'Appleton',
         'Ashland',
         'Baraboo',
@@ -2035,9 +2035,9 @@ module.exports = {
         'Wauwatosa',
         'West Allis',
         'West Bend',
-        'Wisconsin Dells'
+        'Wisconsin Dells',
     ],
-    'Wyoming': [
+    Wyoming: [
         'Buffalo',
         'Casper',
         'Cheyenne',
@@ -2058,6 +2058,6 @@ module.exports = {
         'Ten Sleep',
         'Thermopolis',
         'Torrington',
-        'Worland'
-    ]
+        'Worland',
+    ],
 };

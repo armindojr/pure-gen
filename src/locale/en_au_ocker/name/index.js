@@ -1,6 +1,7 @@
-const name = {
-    first_name: require('./first_name'),
-    last_name: require('./last_name'),
-    ocker_first_name: require('./ocker_first_name'),
+import firstName from './firstName.js';
+import lastName from './lastName.js';
+
+export default {
+  firstName,
+  lastName
 };
-module.exports = name;

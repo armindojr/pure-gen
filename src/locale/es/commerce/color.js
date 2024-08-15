@@ -1,11 +1,1 @@
-module.exports = [
-    'Rojo',
-    'Azul',
-    'Negro',
-    'Gris',
-    'Blanco',
-    'Amarillo',
-    'Verde',
-    'Morado',
-    'Violeta',
-];
+export default ['Rojo', 'Azul', 'Negro', 'Gris', 'Blanco', 'Amarillo', 'Verde', 'Morado', 'Violeta'];

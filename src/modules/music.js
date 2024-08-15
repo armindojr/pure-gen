@@ -1,7 +1,9 @@
-class Music {
-    constructor(pure) {
-        this.genre = () => pure.random.arrayElement(pure.registeredModules.music.genre);
-    }
-}
+export class Music {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-module.exports = Music;
+  genre() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.music.genre);
+  }
+}

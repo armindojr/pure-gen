@@ -1,1 +1,6 @@
-module.exports = { Ευρώ: { code: 'EUR', symbol: '€' } };
+export default {
+  Ευρώ: {
+    code: 'EUR',
+    symbol: '€'
+  }
+};

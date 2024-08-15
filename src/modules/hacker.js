@@ -1,28 +1,38 @@
-class Hacker {
-    constructor(pure) {
-        this.abbreviation = () => pure.random.arrayElement(pure.registeredModules.hacker.abbreviation);
+export class Hacker {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-        this.adjective = () => pure.random.arrayElement(pure.registeredModules.hacker.adjective);
+  abbreviation() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.hacker.abbreviation);
+  }
 
-        this.noun = () => pure.random.arrayElement(pure.registeredModules.hacker.noun);
+  adjective() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.hacker.adjective);
+  }
 
-        this.verb = () => pure.random.arrayElement(pure.registeredModules.hacker.verb);
+  noun() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.hacker.noun);
+  }
 
-        this.ingverb = () => pure.random.arrayElement(pure.registeredModules.hacker.ingverb);
+  verb() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.hacker.verb);
+  }
 
-        this.phrase = () => {
-            const data = {
-                abbreviation: this.abbreviation,
-                adjective: this.adjective,
-                ingverb: this.ingverb,
-                noun: this.noun,
-                verb: this.verb,
-            };
+  ingverb() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.hacker.ingverb);
+  }
 
-            const phrase = pure.random.arrayElement(pure.registeredModules.hacker.phrase);
-            return pure.helpers.mustache({ str: phrase, data });
-        };
-    }
+  phrase() {
+    const data = {
+      abbreviation: this.pure.hacker.abbreviation(),
+      adjective: this.pure.hacker.adjective(),
+      ingverb: this.pure.hacker.ingverb(),
+      noun: this.pure.hacker.noun(),
+      verb: this.pure.hacker.verb()
+    };
+    const phrase = this.pure.random.arrayElement(this.pure.registeredModules.hacker.phrase);
+
+    return this.pure.helpers.mustache({ str: phrase, data });
+  }
 }
-
-module.exports = Hacker;

@@ -1,7 +1,1 @@
-module.exports = [
-    'ESL',
-    'IEM',
-    'MLG',
-    'GFinity',
-    'Starladder',
-];
+export default ['ESL', 'IEM', 'MLG', 'GFinity', 'Starladder'];

@@ -1,10 +1,24 @@
-const nl = {
-    title: 'Dutch',
-    address: require('./address'),
-    company: require('./company'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import company from './company/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const title = 'Dutch';
+const localeName = 'nl';
+
+export const nl = {
+  ...en,
+  address,
+  company,
+  internet,
+  lorem,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = nl;

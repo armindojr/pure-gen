@@ -1,1 +1,1 @@
-module.exports = ['BV', 'V.O.F.', 'Group', 'en Zonen'];
+export default ['BV', 'V.O.F.', 'Group', 'en Zonen'];

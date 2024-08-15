@@ -1,7 +1,12 @@
-const address = {
-    city: require('./city'),
-    default_country: require('./default_country'),
-    postcode: require('./postcode'),
-    country: require('./country'),
+import city from './city.js';
+import country from './country.js';
+import postcode from './postcode.js';
+
+const defaultCountry = ['Việt Nam'];
+
+export default {
+  city,
+  country,
+  postcode,
+  defaultCountry
 };
-module.exports = address;

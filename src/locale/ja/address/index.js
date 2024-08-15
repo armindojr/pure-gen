@@ -1,11 +1,17 @@
-const address = {
-    postcode: require('./postcode'),
-    state: require('./state'),
-    state_abbr: require('./state_abbr'),
-    city_prefix: require('./city_prefix'),
-    city_suffix: require('./city_suffix'),
-    city: require('./city'),
-    street_name: require('./street_name'),
-    country: require('./country'),
+import city from './city.js';
+import cityPrefix from './cityPrefix.js';
+import citySuffix from './citySuffix.js';
+import country from './country.js';
+import postcode from './postcode.js';
+import state from './state.js';
+import stateAbbr from './stateAbbr.js';
+
+export default {
+  city,
+  cityPrefix,
+  citySuffix,
+  country,
+  postcode,
+  state,
+  stateAbbr
 };
-module.exports = address;

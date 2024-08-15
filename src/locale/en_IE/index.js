@@ -1,8 +1,18 @@
-const en_IE = {
-    title: 'Ireland (English)',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    internet: require('./internet'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import internet from './internet/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const title = 'Ireland (English)';
+const localeName = 'en_IE';
+
+export const en_IE = {
+  ...en,
+  title,
+  localeName,
+  address,
+  internet,
+  phoneNumber
 };
-module.exports = en_IE;

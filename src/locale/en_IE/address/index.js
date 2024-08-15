@@ -1,5 +1,8 @@
-const address = {
-    county: require('./county'),
-    default_country: require('./default_country'),
+import county from './county.js';
+
+const defaultCountry = ['Ireland'];
+
+export default {
+  county,
+  defaultCountry
 };
-module.exports = address;

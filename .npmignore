@@ -1,7 +1,7 @@
 docs/
 static/
 examples/
-__test__/
+test/
 CHANGELOG.md
 README.md
 jsdoc.conf.json
@@ -10,3 +10,8 @@ nyc.conf.json
 .travis.yml
 .eslintignore
 .eslintrc
+.prettierrc
+babel.config.cjs
+eslint.config.js
+jest.config.js
+.github

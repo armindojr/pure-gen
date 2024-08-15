@@ -1,10 +1,22 @@
-const ro = {
-    title: 'Romanian',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    date: require('./date'),
-    internet: require('./internet'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import date from './date/index.js';
+import internet from './internet/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const title = 'Romanian';
+const localeName = 'ro';
+
+export const ro = {
+  ...en,
+  address,
+  date,
+  internet,
+  name,
+  phoneNumber,
+  title,
+  localeName
 };
-module.exports = ro;

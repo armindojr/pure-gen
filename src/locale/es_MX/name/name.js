@@ -1,7 +1,6 @@
-module.exports = [
-    '#{prefix} #{first_name} #{last_name} #{last_name}',
-    '#{first_name} #{last_name} de #{last_name}',
-    '#{suffix} #{first_name} #{last_name} #{last_name}',
-    '#{first_name} #{last_name} #{last_name}',
-    '#{first_name} #{last_name} #{last_name}',
+export default [
+  '#{prefix} #{firstName} #{lastName} #{lastName}',
+  '#{firstName} #{lastName} de #{lastName}',
+  '#{suffix} #{firstName} #{lastName} #{lastName}',
+  '#{firstName} #{lastName} #{lastName}'
 ];

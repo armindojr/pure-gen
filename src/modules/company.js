@@ -1,41 +1,62 @@
-class Company {
-    constructor(pure) {
-        // TODO: Remove this method
-        this.suffixes = () => pure.registeredModules.company.suffix.slice(0);
+export class Company {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-        this.companyName = (format) => {
-            let res;
+  companyName(format) {
+    let res;
 
-            if (typeof format !== 'string') {
-                res = pure.fake(pure.random.arrayElement(pure.registeredModules.company.name));
-            } else {
-                res = pure.fake(format);
-            }
-
-            return res;
-        };
-
-        this.companySuffix = () => pure.random.arrayElement(pure.registeredModules.company.suffix);
-
-        this.companyPrefix = () => pure.random.arrayElement(pure.registeredModules.company.prefix);
-
-        this.catchPhrase = () => `${this.catchPhraseAdjective()} ${this.catchPhraseDescriptor()}`
-        + ` ${this.catchPhraseNoun()}`;
-
-        this.catchPhraseAdjective = () => pure.random.arrayElement(pure.registeredModules.company.adjective);
-
-        this.catchPhraseDescriptor = () => pure.random.arrayElement(pure.registeredModules.company.descriptor);
-
-        this.catchPhraseNoun = () => pure.random.arrayElement(pure.registeredModules.company.noun);
-
-        this.bs = () => `${this.bsBuzz()} ${this.bsAdjective()} ${this.bsNoun()}`;
-
-        this.bsAdjective = () => pure.random.arrayElement(pure.registeredModules.company.bs_adjective);
-
-        this.bsBuzz = () => pure.random.arrayElement(pure.registeredModules.company.bs_verb);
-
-        this.bsNoun = () => pure.random.arrayElement(pure.registeredModules.company.bs_noun);
+    if (typeof format !== 'string') {
+      res = this.pure.fake.parse(
+        this.pure.random.arrayElement(this.pure.registeredModules.company.name)
+      );
+    } else {
+      res = this.pure.fake.parse(format);
     }
-}
 
-module.exports = Company;
+    return res;
+  }
+
+  companySuffix() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.suffix);
+  }
+
+  companyPrefix() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.prefix);
+  }
+
+  catchPhrase() {
+    return (
+      `${this.pure.company.catchPhraseAdjective()} ${this.pure.company.catchPhraseDescriptor()}` +
+      ` ${this.pure.company.catchPhraseNoun()}`
+    );
+  }
+
+  catchPhraseAdjective() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.adjective);
+  }
+
+  catchPhraseDescriptor() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.descriptor);
+  }
+
+  catchPhraseNoun() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.noun);
+  }
+
+  bs() {
+    return `${this.pure.company.bsBuzz()} ${this.pure.company.bsAdjective()} ${this.pure.company.bsNoun()}`;
+  }
+
+  bsAdjective() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.bsAdjective);
+  }
+
+  bsBuzz() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.bsVerb);
+  }
+
+  bsNoun() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.company.bsNoun);
+  }
+}

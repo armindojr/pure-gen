@@ -1,28 +1,50 @@
-const en = {
-    title: 'English',
-    separator: ' & ',
-    address: require('./address'),
-    app: require('./app'),
-    business: require('./business'),
-    cell_phone: require('./cell_phone'),
-    commerce: require('./commerce'),
-    company: require('./company'),
-    database: require('./database'),
-    date: require('./date'),
-    dessert: require('./dessert'),
-    electricalComponents: require('./electrical_components'),
-    esport: require('./esport'),
-    finance: require('./finance'),
-    games: require('./games'),
-    hacker: require('./hacker'),
-    iban: require('./iban'),
-    internet: require('./internet'),
-    lorem: require('./lorem'),
-    music: require('./music'),
-    name: require('./name'),
-    phone_number: require('./phone_number'),
-    system: require('./system'),
-    team: require('./team'),
-    transport: require('./transport'),
+import address from './address/index.js';
+import app from './app/index.js';
+import commerce from './commerce/index.js';
+import company from './company/index.js';
+import database from './database/index.js';
+import date from './date/index.js';
+import dessert from './dessert/index.js';
+import electricalComponents from './electricalComponents/index.js';
+import esport from './esport/index.js';
+import finance from './finance/index.js';
+import games from './games/index.js';
+import hacker from './hacker/index.js';
+import iban from './iban/index.js';
+import internet from './internet/index.js';
+import lorem from './lorem/index.js';
+import music from './music/index.js';
+import name from './name/index.js';
+import phoneNumber from './phoneNumber/index.js';
+import system from './system/index.js';
+import transport from './transport/index.js';
+
+const title = 'English';
+const separator = ' & ';
+const localeName = 'en';
+
+export const en = {
+  title,
+  separator,
+  localeName,
+  address,
+  app,
+  commerce,
+  company,
+  database,
+  date,
+  dessert,
+  electricalComponents,
+  esport,
+  finance,
+  games,
+  hacker,
+  iban,
+  internet,
+  lorem,
+  music,
+  name,
+  phoneNumber,
+  system,
+  transport
 };
-module.exports = en;

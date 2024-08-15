@@ -1,3 +1,1 @@
-module.exports = [
-    '{{company.companyPrefix}} {{name.lastName}}'
-];
+export default ['{{company.companyPrefix}} {{name.lastName}}'];

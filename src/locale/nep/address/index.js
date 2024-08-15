@@ -1,7 +1,12 @@
-const address = {
-    postcode: require('./postcode'),
-    state: require('./state'),
-    city: require('./city'),
-    default_country: require('./default_country'),
+import city from './city.js';
+import postcode from './postcode.js';
+import state from './state.js';
+
+const defaultCountry = ['Nepal'];
+
+export default {
+  city,
+  postcode,
+  state,
+  defaultCountry
 };
-module.exports = address;

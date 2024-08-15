@@ -1,6 +1,5 @@
-const app = {
-    name: require('./name'),
-    version: require('./version'),
-    author: require('./author'),
+import name from './name.js';
+
+export default {
+  name
 };
-module.exports = app;

@@ -1,9 +1,15 @@
-const hacker = {
-    abbreviation: require('./abbreviation'),
-    adjective: require('./adjective'),
-    noun: require('./noun'),
-    verb: require('./verb'),
-    ingverb: require('./ingverb'),
-    phrase: require('./phrase'),
+import abbreviation from './abbreviation.js';
+import adjective from './adjective.js';
+import ingverb from './ingverb.js';
+import noun from './noun.js';
+import phrase from './phrase.js';
+import verb from './verb.js';
+
+export default {
+  abbreviation,
+  adjective,
+  ingverb,
+  noun,
+  phrase,
+  verb
 };
-module.exports = hacker;

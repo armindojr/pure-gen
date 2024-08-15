@@ -1,11 +1,19 @@
-const company = {
-    suffix: require('./suffix'),
-    adjetive: require('./adjetive'),
-    descriptor: require('./descriptor'),
-    noun: require('./noun'),
-    bs_verb: require('./bs_verb'),
-    bs_adjective: require('./bs_adjective'),
-    bs_noun: require('./bs_noun'),
-    name: require('./name'),
+import adjective from './adjective.js';
+import bsAdjective from './bsAdjective.js';
+import bsNoun from './bsNoun.js';
+import bsVerb from './bsVerb.js';
+import descriptor from './descriptor.js';
+import name from './name.js';
+import noun from './noun.js';
+import suffix from './suffix.js';
+
+export default {
+  adjective,
+  bsAdjective,
+  bsNoun,
+  bsVerb,
+  descriptor,
+  name,
+  noun,
+  suffix
 };
-module.exports = company;

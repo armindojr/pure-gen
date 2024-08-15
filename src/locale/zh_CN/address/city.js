@@ -1,3 +1,1 @@
-module.exports = [
-    '{{address.cityPrefix}}{{address.citySuffix}}'
-];
+export default ['{{address.cityPrefix}}{{address.citySuffix}}'];

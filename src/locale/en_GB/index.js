@@ -1,8 +1,16 @@
-const en_GB = {
-    title: 'Great Britain (English)',
-    address: require('./address'),
-    cell_phone: require('./cell_phone'),
-    internet: require('./internet'),
-    phone_number: require('./phone_number'),
+import address from './address/index.js';
+import internet from './internet/index.js';
+import phoneNumber from './phoneNumber/index.js';
+
+// Merge fallback locale
+import { en } from '../en/index.js';
+
+const localeName = 'en_GB';
+
+export const en_GB = {
+  ...en,
+  localeName,
+  address,
+  internet,
+  phoneNumber
 };
-module.exports = en_GB;

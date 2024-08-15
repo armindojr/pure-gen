@@ -1,92 +1,107 @@
-class System {
-    constructor(pure) {
-        this.fileName = (ext) => {
-            let def = ext;
-            if (typeof ext === 'undefined') {
-                def = this.fileExt();
-            } else if (ext[0] === '.') {
-                def = ext.substr(1, ext.length);
-            }
+export class System {
+  constructor(pure) {
+    this.pure = pure;
+  }
 
-            let str = `${pure.random.words()}.${def}`;
-            str = pure.helpers.slugify(str);
-            str = str.replace(/\s\\\/-,/g, '_');
-            str = str.toLowerCase();
-            return str;
-        };
+  fileName(ext) {
+    let def = ext;
 
-        this.commonFileName = (ext) => {
-            let def = ext;
-            if (typeof ext === 'undefined') {
-                def = this.commonFileExt();
-            } else if (ext[0] === '.') {
-                def = ext.substr(1, ext.length);
-            }
-
-            return this.fileName(def);
-        };
-
-        this.mimeType = () => pure.random.arrayElement(Object.keys(pure.registeredModules.system.mimeTypes));
-
-        this.commonFileType = () => {
-            const types = ['video', 'audio', 'image', 'text', 'application'];
-            return pure.random.arrayElement(types);
-        };
-
-        this.commonFileExt = () => {
-            const types = [
-                'application/pdf',
-                'audio/mpeg',
-                'audio/wav',
-                'image/png',
-                'image/jpeg',
-                'image/gif',
-                'video/mp4',
-                'video/mpeg',
-                'text/html',
-            ];
-            return this.fileExt(pure.random.arrayElement(types));
-        };
-
-        this.fileType = () => {
-            const types = [];
-            const mimes = pure.registeredModules.system.mimeTypes;
-            Object.keys(mimes).forEach((m) => {
-                const parts = m.split('/');
-                if (types.indexOf(parts[0]) === -1) {
-                    types.push(parts[0]);
-                }
-            });
-            return pure.random.arrayElement(types);
-        };
-
-        this.fileExt = (mimeType) => {
-            const exts = [];
-            const mimes = pure.registeredModules.system.mimeTypes;
-
-            // get specific ext by mime-type
-            if (typeof mimes[mimeType] === 'object') {
-                return pure.random.arrayElement(mimes[mimeType].extensions);
-            }
-
-            // reduce mime-types to those with file-extensions
-            Object.keys(mimes).forEach((m) => {
-                if (mimes[m].extensions instanceof Array) {
-                    mimes[m].extensions.forEach((ext) => {
-                        exts.push(ext);
-                    });
-                }
-            });
-
-            return pure.random.arrayElement(exts);
-        };
-
-        this.directoryPath = () => pure.random.arrayElement(pure.registeredModules.system.directoryPaths);
-
-        this.filePath = () => `${this.directoryPath()}/${this.fileName()}`;
-
-        this.semver = () => pure.helpers.replaceSymbolWithNumber({ string: '#.#.#' });
+    if (typeof ext === 'undefined') {
+      def = this.pure.system.fileExt();
+    } else if (ext[0] === '.') {
+      def = ext.substr(1, ext.length);
     }
-}
 
-module.exports = System;
+    let str = `${this.pure.random.words()}.${def}`;
+    str = this.pure.helpers.slugify(str);
+    str = str.replace(/\s\\\/-,/g, '_');
+    str = str.toLowerCase();
+
+    return str;
+  }
+
+  commonFileName(ext) {
+    let def = ext;
+
+    if (typeof ext === 'undefined') {
+      def = this.pure.system.commonFileExt();
+    } else if (ext[0] === '.') {
+      def = ext.substr(1, ext.length);
+    }
+
+    return this.pure.system.fileName(def);
+  }
+
+  mimeType() {
+    return this.pure.random.arrayElement(Object.keys(this.pure.registeredModules.system.mimeTypes));
+  }
+
+  commonFileType() {
+    const types = ['video', 'audio', 'image', 'text', 'application'];
+
+    return this.pure.random.arrayElement(types);
+  }
+
+  commonFileExt() {
+    const types = [
+      'application/pdf',
+      'audio/mpeg',
+      'audio/wav',
+      'image/png',
+      'image/jpeg',
+      'image/gif',
+      'video/mp4',
+      'video/mpeg',
+      'text/html'
+    ];
+
+    return this.pure.system.fileExt(this.pure.random.arrayElement(types));
+  }
+
+  fileType() {
+    const types = [];
+    const mimes = this.pure.registeredModules.system.mimeTypes;
+
+    Object.keys(mimes).forEach(m => {
+      const parts = m.split('/');
+      if (types.indexOf(parts[0]) === -1) {
+        types.push(parts[0]);
+      }
+    });
+
+    return this.pure.random.arrayElement(types);
+  }
+
+  fileExt(mimeType) {
+    const exts = [];
+    const mimes = this.pure.registeredModules.system.mimeTypes;
+
+    // get specific ext by mime-type
+    if (typeof mimes[mimeType] === 'object') {
+      return this.pure.random.arrayElement(mimes[mimeType].extensions);
+    }
+
+    // reduce mime-types to those with file-extensions
+    Object.keys(mimes).forEach(m => {
+      if (mimes[m].extensions instanceof Array) {
+        mimes[m].extensions.forEach(ext => {
+          exts.push(ext);
+        });
+      }
+    });
+
+    return this.pure.random.arrayElement(exts);
+  }
+
+  directoryPath() {
+    return this.pure.random.arrayElement(this.pure.registeredModules.system.directoryPaths);
+  }
+
+  filePath() {
+    return `${this.pure.system.directoryPath()}/${this.pure.system.fileName()}`;
+  }
+
+  semver() {
+    return this.pure.helpers.replaceSymbolWithNumber({ string: '#.#.#' });
+  }
+}

@@ -1,2 +1,5 @@
-const company = { suffix: require('./suffix') };
-module.exports = company;
+import suffix from './suffix.js';
+
+export default {
+  suffix
+};
